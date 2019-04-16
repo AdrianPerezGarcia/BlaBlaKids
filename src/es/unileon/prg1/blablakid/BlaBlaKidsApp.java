@@ -2,10 +2,10 @@
  * @author
  *
  */
-public class BlaBlaKids App {
+public class BlaBlaKidsApp {
 	public int numberOfKids;
 
-	public BlaBlaKids App() {
+	public BlaBlaKidsApp() {
 		
 	}
 
