@@ -1,4 +1,4 @@
-package es.unileon.prg1.blablakid
+package es.unileon.prg1.blablakid;
 /**
  * @author
  *
