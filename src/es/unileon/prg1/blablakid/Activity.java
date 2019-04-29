@@ -24,7 +24,7 @@ public class Activity {
 	 * @param endTime
 	 * @return Activity
 	 */
-	public Activity newActivity(String name, Place place, Day day, Kid kid, Hour startTime, hour endTime) {
+	public Activity newActivity(String name, Place place, Day day, Kid kid, Hour startTime, Hour endTime) {
 		// TODO Auto-generated method stub
 	}
 

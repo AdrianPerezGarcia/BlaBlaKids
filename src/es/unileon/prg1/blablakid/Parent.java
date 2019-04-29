@@ -24,5 +24,13 @@ public class Parent {
 		// TODO Auto-generated method stub
 	}
 
+	public String getNombre() {
+		return Nombre;
+	}
+
+	public void setNombre(String nombre) {
+		Nombre = nombre;
+	}
+
 }
 
