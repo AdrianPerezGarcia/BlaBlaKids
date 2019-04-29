@@ -5,12 +5,14 @@ package es.unileon.prg1.blablakid;
  */
 public class Week {
 	public Day[] days;
-
+	
+	static final int tamanyo = 7;
 	public Week() {
 		
 	}
 
 	/**
+	 * 
 	 * @return boolean
 	 */
 	public boolean addDay() {
