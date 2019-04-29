@@ -4,19 +4,30 @@ package es.unileon.prg1.blablakid;
  *
  */
 public class Kid {
-	public String Nombre;
+	private String Name;
 
 	public Kid() {
 		
 	}
 
 	/**
-	 * @param nombre
-	 * @return Kid
+	 * @param name Kid identifier
 	 */
-	public Kid newKid(String nombre) {
-		// TODO Auto-generated method stub
+	public Kid newKid(String name) {
+		this.Name = name;
+	}
+	
+	public String getName() {
+		return this.Name;
+	}
+	
+	public void setName(String name) {
+		this.Name = name;
 	}
 
+	@Override
+	public String toString() {
+		return this.Name;
+	}
 }
 
