@@ -6,24 +6,15 @@ package es.unileon.prg1.blablakid;
 public class Place {
 	public String place;
 
-	public Place() {
-		
+	public Place(String place) {
+		this.place = place;
 	}
 
-	/**
-	 * @return Place
-	 */
-	public Place newPlace() {
-		// TODO Auto-generated method stub
-	}
 
 	public String getPlace() {
 		return place;
 	}
 
-	public void setPlace(String place) {
-		this.place = place;
-	}
 
 }
 

@@ -1,26 +1,36 @@
 package es.unileon.prg1.blablakid;
 /**
- * @author
+ * @author PabloJ
  *
  */
 public class Parents {
 	public Parent[] parents;
 
-	public Parents() {
-		
-	}
-
+	
 	/**
-	 * @return Parent
+	 * @return boolean
+	 * @param parent
 	 */
-	public Parent addParent() {
+	public boolean removeParent(Parent parent) {
+		return false;
 		// TODO Auto-generated method stub
 	}
 
 	/**
 	 * @return boolean
+	 * @param parent
 	 */
-	private boolean isParentIncluded() {
+	public boolean addParent(Parent parent) {
+		return false;
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * @return boolean
+	 * @par
+	 */
+	private boolean isParentIncluded(String name) {
+		return false;
 		// TODO Auto-generated method stub
 	}
 
