@@ -1,31 +1,49 @@
 package es.unileon.prg1.blablakid;
 /**
- * @author
+ * @author Hector Castro
  *
  */
-public class Ride extends Activity {
+public class Ride{
 	public Parent parent;
 	public Activity activity;
 	public Place startPlace;
 	public Place endPlace;
+	public Hour startTime;
+	public Hour endTime;
 
-	public Ride() {
+	public Ride(Parent parent, Activity activity, Place startPlace, Place endPlace, Hour startTime, Hour endTime) {
+		this.parent = parent;	
+		this.activity = activity;
+		this.startPlace = startPlace;
+		this.endPlace = endPlace;
+		//TODO Falta comprobar si son validas
+		this.startTime = startTime;
+		this.endTime = endTime;
 		
 	}
 
-	/**
-	 * @param parent
-	 * @param activity
-	 * @param kid
-	 * @param startPlace
-	 * @param endPlace
-	 * @param startTime
-	 * @param endTime
-	 * @param day
-	 * @return Ride
-	 */
-	public Ride newRide(Parent parent, Activity activity, Kid kid, Place startPlace, Place endPlace, Hour startTime, Hour endTime, Day day) {
-		// TODO Auto-generated method stub
+	public Hour getStartTime() {
+		return startTime;
+	}
+
+	public Hour getEndTime() {
+		return endTime;
+	}
+
+	public Parent getParent() {
+		return parent;
+	}
+
+	public Activity getActivity() {
+		return activity;
+	}
+
+	public Place getStartPlace() {
+		return startPlace;
+	}
+
+	public Place getEndPlace() {
+		return endPlace;
 	}
 
 }
