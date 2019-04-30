@@ -9,7 +9,7 @@ public class BlaBlaKidsApp {
 	 */
 	public static void main(String[] args){
 		int numberOfKids;
-			if(args.length() != 1){
+			if(args.length != 1){
 				System.out.println("Error: Argumentos incorrectos");
 			}
 			else{
