@@ -4,7 +4,10 @@ package es.unileon.prg1.blablakid;
  *
  */
 public class Place {
-	public String place;
+	/**
+	 * 
+	 */
+	private String place;
 
 	public Place(String place) {
 		this.place = place;
@@ -15,6 +18,12 @@ public class Place {
 		return place;
 	}
 
+
+	@Override
+	public String toString() {
+		return "Place [" + (place != null ? "place=" + place : "") + "]";
+	}
+	
 
 }
 
