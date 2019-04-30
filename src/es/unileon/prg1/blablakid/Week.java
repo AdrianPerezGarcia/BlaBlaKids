@@ -5,17 +5,19 @@ package es.unileon.prg1.blablakid;
  */
 public class Week {
 	public Day[] days;
+	int next;
+	final int tam = 7;
 	
-	static final int tamanyo = 7;
 	public Week() {
-		
+		this.next = 0;
+		this.days = new Day[tam];
 	}
 
 	/**
 	 * 
 	 * @return boolean
 	 */
-	public boolean addDay() {
+	public boolean addDay(Day day) {
 		// TODO Auto-generated method stub
 	}
 

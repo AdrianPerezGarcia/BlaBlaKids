@@ -5,9 +5,11 @@ package es.unileon.prg1.blablakid;
  */
 public class Activities {
 	public Activity[] activities;
+	int next;
 
-	public Activities() {
-		
+	public Activities(int tam) {
+		this.next = 0;
+		this.activities = new Activity[tam];		
 	}
 
 	/**
@@ -16,6 +18,11 @@ public class Activities {
 	 */
 	public boolean addActivity(Activity activity) {
 		// TODO Auto-generated method stub
+		boolean salida = true;
+		if(this.isActivityIncluded()) {
+			salida = false;
+		}
+		return salida;
 	}
 
 	/**

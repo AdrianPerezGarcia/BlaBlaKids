@@ -1,4 +1,6 @@
 package es.unileon.prg1.blablakid;
+
+
 /**
  * @author
  *
@@ -6,17 +8,24 @@ package es.unileon.prg1.blablakid;
 public class Day {
 	public int day;
 
-	public Day() {
-		
-	}
-
+	
 	/**
 	 * @param day
-	 * @return Day
+	 * @throws DateException
 	 */
-	public Day newDay(int day) {
-		// TODO Auto-generated method stub
+	public Day(int day) throws DayException {
+		if(day>=0 && day <=6){
+			this.day = day;
+		}else {
+			throw new DayException("Dia no valido. El dia debe estar comprendido entre 0 y 6.");
+		}
 	}
 
+
+	public int getDay() {
+		return day;
+	}
+	
+	
 }
 
