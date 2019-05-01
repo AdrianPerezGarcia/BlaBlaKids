@@ -4,6 +4,11 @@ package es.unileon.prg1.blablakid;
  *
  */
 public class BlaBlaKidsApp {
-
+	
+	public int numberOfKids;
+	
+	public BlaBlaKidsApp(int numberKids){
+		
+	}
 }
 
