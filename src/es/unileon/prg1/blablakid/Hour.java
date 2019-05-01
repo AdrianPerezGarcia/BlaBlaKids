@@ -65,6 +65,17 @@ public class Hour {
 		}
 		return result;
 	}
+
+	
+	@Override
+	public String toString() {
+		StringBuilder result = new StringBuilder();
+		result.append(this.hour).append(":").append(this.minute);
+		return result.toString();
+	}
+	
 	
 }
+
+	
 

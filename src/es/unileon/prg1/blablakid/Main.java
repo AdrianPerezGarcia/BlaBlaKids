@@ -15,10 +15,14 @@ public class Main {
 			else{
 				try {
 					numberOfKids = Integer.parseInt(args[0]);
+					BlaBlaKidsApp blablakid = new BlaBlaKidsApp(numberOfKids);
+					TextUI textUI = new TextUI(blablakid);
+					textUI.start();
 				}catch(NumberFormatException e) {
 					System.out.println("Error: Caracter introducido como argumento no valido");
 				}
 				
 			}
+		
 	}
 }
