@@ -4,10 +4,20 @@ package es.unileon.prg1.blablakid;
  *
  */
 public class Kids {
+	/**
+	 * Array composed of kids
+	 * 
+	 * @see Kid[]
+	 */
 	public Kid[] kids;
 
+	/**
+	 *Creates the kid object with its name (identifier)
+	 * 
+	 * @param name Kid identifier
+	 */
 	public Kids(int numberOfKids){
-		
+		this.kids = new Kid[numberOfKids];
 	}
 
 	/**
@@ -29,6 +39,7 @@ public class Kids {
 	 * @return boolean
 	 */
 	private boolean isKidIncluded() {
+		return false;
 		// TODO Auto-generated method stub
 	}
 
