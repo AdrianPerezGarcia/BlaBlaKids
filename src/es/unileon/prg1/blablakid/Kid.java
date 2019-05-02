@@ -30,6 +30,10 @@ public class Kid {
 		return this.Name;
 	}
 	
+	public boolean equals(Kid kid2) {
+		return (this.Name == kid2.getName());
+	}
+	
 	/**
 	 * 
 	 * @return String version with the name of the kid
