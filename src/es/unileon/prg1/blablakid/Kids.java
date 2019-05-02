@@ -1,12 +1,12 @@
 package es.unileon.prg1.blablakid;
 /**
- * @author
+ * @author Adrian Perez
  *
  */
 public class Kids {
 	public Kid[] kids;
 
-	public Kids() {
+	public Kids(int numberOfKids){
 		
 	}
 
@@ -14,14 +14,14 @@ public class Kids {
 	 * @param nombre
 	 * @return Kid
 	 */
-	public Kid addKid(String nombre) {
+	public void addKid(String nombre) throws KidException{
 		// TODO Auto-generated method stub
 	}
 
 	/**
 	 * @return void
 	 */
-	public void remove() {
+	public void removeKid(String nombre) throws KidException{
 		// TODO Auto-generated method stub
 	}
 
