@@ -41,6 +41,8 @@ public class Parent {
 		this.numberKids = numberofkids;
 		this.Rides = numberofrides;
 	}
+	
+	
 
 	/**
 	 * @return the numberOfRides

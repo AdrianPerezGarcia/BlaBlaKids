@@ -20,10 +20,12 @@ public class Parents {
 	 * @return boolean
 	 * @param parent
 	 */
-	public boolean addParent(Parent parent) {
+	/*
+	public boolean addParent(Parent parent, Kids kids) {
 		return false;
 		// TODO Auto-generated method stub
 	}
+	*/
 
 	/**
 	 * @return boolean
