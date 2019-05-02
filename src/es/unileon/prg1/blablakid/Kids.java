@@ -20,7 +20,7 @@ public class Kids {
 		this.kids = new Kid[numberOfKids];
 	}
 
-	/**
+	/**  
 	 * @param nombre
 	 * @return Kid
 	 */
