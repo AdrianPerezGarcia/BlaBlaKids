@@ -11,10 +11,10 @@ public class Kid {
 	 * 
 	 * @see String
 	 */
-	
 	private String Name;
 	
 	/**
+	 *Creates the kid object with its name (identifier)
 	 * 
 	 * @param name Kid identifier
 	 */
