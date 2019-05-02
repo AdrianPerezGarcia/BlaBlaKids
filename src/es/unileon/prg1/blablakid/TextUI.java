@@ -53,5 +53,63 @@ public class TextUI {
 		System.out.print("\t\t\t\t\t\t\t╚====================================================╝\n");
 		return;
 	}
-}
-
+	/**
+	 * Reads a Kid's name, creates it and returns a Kid object
+	 * @return Kid object with the specified name
+	 */
+	public Kid askKid() {
+		String name =new String();
+		
+		do {
+			System.out.println("Introduce the Kids name: ");
+			name = Teclado.readString();
+			
+			//Checks if the sintax is correct, if not it gives a warning
+			if(name == null) {
+				System.out.println("Please, introduce a valid name");
+			}		
+		
+		}while(name == null);
+		
+		Kid kid = new Kid(name);
+		return kid;
+	}
+	
+	public Parent askParent() {
+		String name =new String();
+		//TODO pedir kids y demas
+		do {
+			name = Teclado.readString();
+			
+			//Checks if the sintax is correct, if not it gives a warning
+			if(name == null) {
+				System.out.println("Please, introduce a valid name");
+			}		
+		
+		}while(name == null);
+		
+		Parent parent = new Parent(name, );
+	}
+	
+	public Activity askActivity() {
+		//TODO Comprobaciones aqui y se le pasa filtrado al constructor
+	}
+	
+	public Ride askRide() {
+		String parent = new String();
+		String activity = new String();
+		String startPlace = new String();
+		String endPlace = new String();
+		String startTime = new String();
+		String endTime = new String();
+		char beforeRide;
+		//Gets the parent that makes the ride
+		do {
+			System.out.println("Intorduce the name of the parent that makes the ride: ");
+			parent = Teclado.readString();
+			//TODO pedir todo lo demas
+		}while()
+	}
+	
+	
+}	

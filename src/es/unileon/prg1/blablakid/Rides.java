@@ -12,21 +12,21 @@ public class Rides {
 
 	/**
 	 * @param ride
-	 * @return boolean
+	 * @return true if it was made and false if it couldn't
 	 */
 	public boolean addRide(Ride ride) {
 		// TODO Auto-generated method stub
 	}
 
 	/**
-	 * @return boolean
+	 * @return true if it was made and false if it couldn't
 	 */
-	public boolean remove() {
+	public boolean removeRide() {
 		// TODO Auto-generated method stub
 	}
 
 	/**
-	 * @return boolean
+	 * @return true if the ride is alredy included and false if it isn't
 	 */
 	private boolean isRideIncluded() {
 		// TODO Auto-generated method stub

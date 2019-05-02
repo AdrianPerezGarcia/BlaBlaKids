@@ -10,8 +10,9 @@ public class Ride{
 	public Place endPlace;
 	public Hour startTime;
 	public Hour endTime;
+	
 
-	public Ride(Parent parent, Activity activity, Place startPlace, Place endPlace, Hour startTime, Hour endTime) {
+	public Ride(Parent parent, Activity activity, Place startPlace, Place endPlace, Hour startTime, Hour endTime) throws RideException {
 		this.parent = parent;	
 		this.activity = activity;
 		this.startPlace = startPlace;
