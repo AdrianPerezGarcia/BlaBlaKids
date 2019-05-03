@@ -6,30 +6,43 @@ package es.unileon.prg1.blablakid;
 public class Activities {
 	private Activity[] activities;
 	private int next;
+	private int size;
 
-	public Activities(int tam) {
+	public Activities(int size) {
 		this.next = 0;
-		this.activities = new Activity[tam];		
+		this.size = size;
+		this.activities = new Activity[size];	
 	}
 
 	/**
 	 * @param activity
 	 * @return boolean
 	 */
-	public boolean addActivity(Activity activity) {
+	public boolean addActivity(Activity activity) throws ActivityException {
 		// TODO Auto-generated method stub
 		boolean salida = true;
-		if(this.isIncluded()) {
+		if(isIncluded(activity)) {
 			salida = false;
+			throw new ActivityException("Error: Activity already included");
+		}else {
+			if(this.next >= this.size) {
+				throw new ActivityException("Error: Activity list is full");
+			}else {
+				activities[this.next] = activity;
+				this.next++;
+			}
 		}
 		return salida;
 	}
-
+	
+	
 	/**
 	 * @return boolean
 	 */
 	public boolean remove() {
 		// TODO Auto-generated method stub
+		boolean salida = false;
+		return salida;
 	}
 
 	/**

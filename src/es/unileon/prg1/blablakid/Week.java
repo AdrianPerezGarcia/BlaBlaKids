@@ -6,21 +6,35 @@ package es.unileon.prg1.blablakid;
 public class Week {
 	public Day[] week;
 	int next;
-	final int tam = 7;
+	final int size = 7;
 	
 	public Week() {
 		this.next = 0;
-		this.week = new Day[tam];
+		this.week = new Day[size];
 	}
 
 	/**
 	 * 
 	 * @return boolean
 	 */
-	public boolean addDay(Day day) {
+	public boolean addDay(Day day) throws DayException{
 		// TODO Auto-generated method stub
+		boolean salida = true;
+		if(isIncluded(day)) {
+			salida = false;
+			throw new DayException("Error: Day already included");
+		}else {
+			if(this.next >= this.size) {
+				throw new DayException("Error: Day list is full");
+			}else {
+				week[this.next] = day;
+				this.next++;
+			}
+		}
+			return salida;
 	}
 
+	
 	/**
 	 * @return boolean
 	 */

@@ -82,11 +82,6 @@ public class Activity {
 	}
 
 
-	public Kid getKid() {
-		return kid;
-	}
-
-
 	public Hour getStartTime() {
 		return startTime;
 	}
