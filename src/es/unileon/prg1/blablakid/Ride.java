@@ -4,47 +4,104 @@ package es.unileon.prg1.blablakid;
  *
  */
 public class Ride{
-	public Parent parent;
-	public Activity activity;
-	public Place startPlace;
-	public Place endPlace;
-	public Hour startTime;
-	public Hour endTime;
+	private Parent parent;
+	private Activity activity;
+	private Place startPlace;
+	private Place endPlace;
+	private Hour startTime;
+	private Hour endTime;
+	private boolean beforeRide;
 	
-
-	public Ride(Parent parent, Activity activity, Place startPlace, Place endPlace, Hour startTime, Hour endTime) throws RideException {
+	
+	/**
+	 * 
+	 * @param parent
+	 * @param activity
+	 * @param startPlace
+	 * @param endPlace
+	 * @param startTime
+	 * @param endTime
+	 * @param beforeRide
+	 * @throws RideException
+	 */
+	public Ride(Parent parent, Activity activity, Place startPlace, Place endPlace, Hour startTime, Hour endTime, boolean beforeRide) throws RideException {
 		this.parent = parent;	
 		this.activity = activity;
 		this.startPlace = startPlace;
 		this.endPlace = endPlace;
-		//TODO Falta comprobar si son validas
-		this.startTime = startTime;
-		this.endTime = endTime;
 		
-	}
+		//Check that the ride isn't late. Must begin before the activity and arrive just on time.
+		if (beforeRide) {
+			
+			if ( (startTime.isLower(activity.startTime))  && (endTime.isSame(activity.startTime)) ) {
+				this.startTime = startTime;
+				this.endTime = endTime;
+			}
+			else {
+				throw new RideException("Invalid hours for this activity, the ride arrives late.");
+			}
+		}
+		
+		
+		//Check that the ride isn't late. Must begin just when the activity ends and end after.
+		else {
+			if( (startTime.isSame(activity.endTime)) && (endTime.isHigher(activity.endTime)) ) {
+				this.startTime = startTime;
+				this.endTime = endTime;
+			}
+			else {
+				throw new RideException("Invalid hours for this activity, the ride arrives late.");
+			}
+		}
 
-	public Hour getStartTime() {
-		return startTime;
 	}
-
-	public Hour getEndTime() {
-		return endTime;
-	}
-
+	/**
+	 * @return the parent that does the ride
+	 */
 	public Parent getParent() {
 		return parent;
 	}
 
+	/**
+	 * @return the activity
+	 */
 	public Activity getActivity() {
 		return activity;
 	}
 
+	/**
+	 * @return the start place
+	 */
 	public Place getStartPlace() {
 		return startPlace;
 	}
 
+	/**
+	 * @return the end place
+	 */
 	public Place getEndPlace() {
 		return endPlace;
+	}
+
+	/**
+	 * @return the start time
+	 */
+	public Hour getStartTime() {
+		return startTime;
+	}
+
+	/**
+	 * @return the end time
+	 */
+	public Hour getEndTime() {
+		return endTime;
+	}
+
+	/**
+	 * @return true if the ride is the one before the Activity or false if it isn't
+	 */
+	public boolean isBeforeRide() {
+		return beforeRide;
 	}
 
 }
