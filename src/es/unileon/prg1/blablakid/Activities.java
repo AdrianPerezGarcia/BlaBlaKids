@@ -4,8 +4,8 @@ package es.unileon.prg1.blablakid;
  *
  */
 public class Activities {
-	public Activity[] activities;
-	int next;
+	private Activity[] activities;
+	private int next;
 
 	public Activities(int tam) {
 		this.next = 0;
@@ -19,7 +19,7 @@ public class Activities {
 	public boolean addActivity(Activity activity) {
 		// TODO Auto-generated method stub
 		boolean salida = true;
-		if(this.isActivityIncluded()) {
+		if(this.isIncluded()) {
 			salida = false;
 		}
 		return salida;
@@ -35,8 +35,19 @@ public class Activities {
 	/**
 	 * @return boolean
 	 */
-	private boolean isActivityIncluded() {
+	private boolean isIncluded(Activity activity) {
 		// TODO Auto-generated method stub
+		boolean salida = false;
+		boolean end = false;
+		int i=0;
+		while(i<this.activities.length && end) {
+			if(this.activities[i].isSame(activity)){
+				salida = true;
+				end = true;
+			}
+			i++;
+		}
+		return salida;
 	}
 
 }

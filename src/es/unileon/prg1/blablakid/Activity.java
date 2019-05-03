@@ -4,12 +4,14 @@ package es.unileon.prg1.blablakid;
  *
  */
 public class Activity {
-	public String name;
-	public Place place;
-	public Day day;
-	public Kid kid;
-	public Hour startTime;
-	public Hour endTime;
+	private String name;
+	private Place place;
+	private Day day;
+	private Hour startTime;
+	private Hour endTime;
+	private Ride beforeRide;
+	private Ride afterRide;
+	
 
 	
 	/**
@@ -26,11 +28,44 @@ public class Activity {
 		this.name = name;
 		this.place = place;
 		this.day = day;
-		this.kid = kid;
 		this.startTime = startTime;
 		this.endTime = endTime;
 	}
 
+	
+	public Ride getBeforeRide() {
+		return beforeRide;
+	}
+
+
+	public void setBeforeRide(Ride beforeRide) {
+		this.beforeRide = beforeRide;
+	}
+
+
+	public Ride getAfterRide() {
+		return afterRide;
+	}
+
+
+	public void setAfterRide(Ride afterRide) {
+		this.afterRide = afterRide;
+	}
+
+
+	/**
+	 * Method that chek if two objects of type Activity are the same
+	 * 
+	 * @param activity
+	 * @return true if the activity is the same, false if not
+	 */
+	public boolean isSame(Activity activity) {
+		boolean salida = false;
+		if(this.name==activity.name && this.place==activity.place && this.day==activity.day && this.startTime==activity.startTime && this.endTime==activity.endTime) {
+			salida=true;
+		}	
+		return salida;
+	}
 	
 	public String getName() {
 		return name;
@@ -62,4 +97,3 @@ public class Activity {
 	}
 	
 }
-

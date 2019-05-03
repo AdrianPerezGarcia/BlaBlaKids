@@ -4,13 +4,13 @@ package es.unileon.prg1.blablakid;
  *
  */
 public class Week {
-	public Day[] days;
+	public Day[] week;
 	int next;
 	final int tam = 7;
 	
 	public Week() {
 		this.next = 0;
-		this.days = new Day[tam];
+		this.week = new Day[tam];
 	}
 
 	/**
@@ -34,6 +34,21 @@ public class Week {
 	private boolean isDayRight() {
 		// TODO Auto-generated method stub
 	}
+	
 
+	private boolean isIncluded(Day day) {
+		// TODO Auto-generated method stub
+		boolean salida = false;
+		boolean end = false;
+		int i=0;
+		while(i<this.week.length && end) {
+			if(this.week[i].isSame(day)){
+				salida = true;
+				end = true;
+			}
+			i++;
+		}
+		return salida;
+	}
 }
 
