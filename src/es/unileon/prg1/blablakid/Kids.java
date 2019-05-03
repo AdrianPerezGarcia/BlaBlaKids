@@ -1,4 +1,7 @@
 package es.unileon.prg1.blablakid;
+
+import java.util.Arrays;
+
 /**
  * @author Adrian Perez
  *
@@ -13,21 +16,29 @@ public class Kids {
 	private int next;
 	private int size;
 
-	/**
-	 *Create the array which will be managed by Kids
-	 * 
-	 * @param number of kids
-	 */
+
 	public Kids(int numberOfKids){
 		this.kids = new Kid[numberOfKids];
 		this.size = numberOfKids;
 		next = 0;
 	}
 
-	/**  
-	 * @param nombre
-	 * @return Kid
-	 */
+
+	public Kid get(int index) {
+		return this.kids[index];
+	}
+
+
+	public int getLenght() {
+		return this.size;
+	}
+
+
+	public int getSize() {
+		return this.kids.length;
+	}
+
+
 	public void add(Kid kid) throws KidException{
 		if( isIncluded(kid) ){
 			throw new KidException("Error: kid already included");
@@ -77,10 +88,11 @@ public class Kids {
 	}
 	
 	private int inWhichPosIs(Kid kid){
-		int count = 0, end = 0;
-		while(kids[count]!=null && end!=1) {
+		int count = 0;
+		boolean end = false;
+		while(kids[count]!=null && end) {
 			if(kids[count].isSame(kid)) {
-				end = 1;
+				end = true;
 			}
 			else {
 				count++;
@@ -89,37 +101,35 @@ public class Kids {
 		return count;
 	}
 	
-	public Kid get(int index) {
-		index--;
-		return this.kids[index];
-	}
-	
-	public int getLenght() {
-		return this.size;
-	}
-	
-	public int getSize() {
-		return this.kids.length;
-	}
-	
 	public Kid searchKid(String Name) {
 		int count = 0;
+		boolean end = false;
 		//I search in the array for a kid named like the param
-		for (int i = 0; i < kids.length; i++) {
-			if ( kids[i].getName().equals(Name) ){
-				//If i found it i set a mark (count) in that spot
-				count = i;
-				i = kids.length - 1;
+		while (count < kids.length  && end) {
+			if ( kids[count].getName().equals(Name) ){
+				//If i found it i set a mark (count) in that spot and i finish with the boolean end
+				end = true;
+			}
+			else {
+				count++;
 			}
 		}
-		//If count is different than the original valor there is a kid named like the param in position count
-		if (count != 0) {
+		//If end is different than the original valor there is a kid named like the param in position count
+		if (end) {
 			return kids[count];
 		}
 		else {
 			return null;
 		}
 	}
+
+
+	@Override
+	public String toString() {
+		return "Kids [kids=" + Arrays.toString(kids) + "]";
+	}
+	
+	
 
 }
 
