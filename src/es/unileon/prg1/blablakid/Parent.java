@@ -12,20 +12,15 @@ public class Parent {
 	 */
 	private String Name;
 	/**
-	 * This is the First son of the parent
-	 * @see Kid
-	 */
-	private Kid FKid;
-	/**
 	 * Number of kids assigned to the parent
 	 * @see int
 	 */
-	private int numberKids;
+	private Kids numberKids;
 	/**
 	 * Number of rides assigned to the parent
 	 * @see int
 	 */
-	private Ride Rides;
+	private int Rides;
 	
 	/**
 	 * 
@@ -35,11 +30,10 @@ public class Parent {
 	 * @param numberofkids Number of kids assigned to the parent
 	 * 
 	 */
-	public Parent(String name,Ride numberofrides, Kid firstkid, int numberofkids) {
+	public Parent(String name, Kids kids, int numberOfRides) {
 		this.Name = name;
-		this.FKid = firstkid;
-		this.numberKids = numberofkids;
-		this.Rides = numberofrides;
+		this.numberKids = kids;
+		this.Rides = numberOfRides;
 	}
 	
 	
@@ -47,22 +41,15 @@ public class Parent {
 	/**
 	 * @return the numberOfRides
 	 */
-	public Ride getRides() {
+	public int getRides() {
 		return Rides;
 	}
 
 	/**
 	 * @return the numberOfKids
 	 */
-	public int getNumberKids() {
+	public Kids getNumberKids() {
 		return numberKids;
-	}
-
-	/**
-	 * @return the firstKid
-	 */
-	public Kid getFirstKid() {
-		return FKid;
 	}
 
 	/**
@@ -74,10 +61,9 @@ public class Parent {
 
 	@Override
 	public String toString() {
-		return "Parent [" + (Name != null ? "Name=" + Name + ", " : "") + (FKid != null ? "FKid=" + FKid + ", " : "")
-				+ "numberKids=" + numberKids + ", " + (Rides != null ? "Rides=" + Rides : "") + "]";
+		return "Parent [" + (Name != null ? "Name=" + Name + ", " : "")
+				+ (numberKids != null ? "numberKids=" + numberKids + ", " : "") + "Rides=" + Rides + "]";
 	}
-
 
 	}
 
