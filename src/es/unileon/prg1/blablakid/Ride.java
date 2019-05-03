@@ -42,7 +42,6 @@ public class Ride{
 			}
 		}
 		
-		
 		//Check that the ride isn't late. Must begin just when the activity ends and end after.
 		else {
 			if( (startTime.isSame(activity.endTime)) && (endTime.isHigher(activity.endTime)) ) {

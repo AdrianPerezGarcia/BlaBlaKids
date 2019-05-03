@@ -1,6 +1,6 @@
 package es.unileon.prg1.blablakid;
 /**
- * @author
+ * @author Hector Castro
  *
  */
 public class Rides {

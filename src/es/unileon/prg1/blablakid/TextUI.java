@@ -4,8 +4,11 @@ package es.unileon.prg1.blablakid;
  *
  */
 public class TextUI {
-
-	public TextUI() {
+	public Kids allKids;
+	public int MaxKids;
+	
+	public TextUI(Kids allKids, int MaxKids) {
+		this.allKids = allKids;
 		
 	}
 
@@ -61,7 +64,7 @@ public class TextUI {
 		String name =new String();
 		
 		do {
-			System.out.println("Introduce the Kids name: ");
+			System.out.println("Introduce the number of the kidd to add: ");
 			name = Teclado.readString();
 			
 			//Checks if the sintax is correct, if not it gives a warning
@@ -77,18 +80,55 @@ public class TextUI {
 	
 	public Parent askParent() {
 		String name =new String();
-		//TODO pedir kids y demas
+		int numberOfKids, numberOfRides;
+		String kid = new String();
+		//Asks for its name
 		do {
+			System.out.println("Introduce the name of the parent to add");
 			name = Teclado.readString();
 			
 			//Checks if the sintax is correct, if not it gives a warning
 			if(name == null) {
 				System.out.println("Please, introduce a valid name");
 			}		
-		
 		}while(name == null);
 		
-		Parent parent = new Parent(name, );
+		//Asks for number of kids
+		do {
+			System.out.println("Introduce the number of kids that "+name+" has");
+			numberOfKids = Teclado.readInteger();
+			
+			if(numberOfKids<1) {
+				System.out.println("Introduce a valid number of kids, at least 1");
+			}
+		}while(numberOfKids<1);
+		Kids kids = new Kids(numberOfKids);
+		
+		//Asks for the name of its kids
+		for(int i=1; i<numberOfKids; i++) {
+			do {
+				System.out.println("Intoroduce the name for the kid number "+i);
+				kid = Teclado.readString();
+				
+				if(allKids.searchKid(kid) == null){
+					System.out.println("That kid doenst exist, first create the kid");
+				}
+				else {
+					kids.add(allKids.searchKid(kid));
+				}
+			}while(allKids.searchKid(kid) == null);
+		}
+		
+		//Asks for the number of rides
+		do {
+			System.out.println("Introduce the number of rides thath the parent will do");
+			numberOfRides = Teclado.readInteger();
+			if (numberOfRides<1) {
+				System.out.println("Introduce a valid number of kids, at least 1");
+			}
+		}while(numberOfRides<1);
+		
+		Parent parent = new Parent(name,kids,numberOfRides);
 	}
 	
 	public Activity askActivity() {
