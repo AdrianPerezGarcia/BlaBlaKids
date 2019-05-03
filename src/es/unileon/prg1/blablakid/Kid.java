@@ -30,6 +30,13 @@ public class Kid {
 		return this.Name;
 	}
 	
+	/**
+	 * Method that check is two kid object are equal
+	 * 
+	 * @param kid2
+	 * 
+	 * @return boolean that is true if kids are same or false if not
+	 */
 	public boolean isSame(Kid kid2) {
 		return (this.Name == kid2.getName());
 	}

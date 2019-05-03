@@ -1,7 +1,6 @@
 package es.unileon.prg1.blablakid;
 
 import java.util.Arrays;
-
 /**
  * @author Adrian Perez
  *
@@ -13,10 +12,26 @@ public class Kids {
 	 * @see Kid[]
 	 */
 	public Kid[] kids;
+	
+	/**
+	 * Indicator of the first position free int the array
+	 * 
+	 * @see int
+	 */
 	private int next;
+	
+	/**
+	 * Total size of the array
+	 * 
+	 * @see size
+	 */
 	private int size;
 
-
+	/**
+	 * Constructor of the class, inicializates the array and set the next at 0 and the size at the param numberOfKids
+	 * 
+	 * @param numberOfKids
+	 */
 	public Kids(int numberOfKids){
 		this.kids = new Kid[numberOfKids];
 		this.size = numberOfKids;
@@ -29,12 +44,12 @@ public class Kids {
 	}
 
 
-	public int getLenght() {
+	public int getSize() {
 		return this.size;
 	}
 
 
-	public int getSize() {
+	public int getLength() {
 		return this.kids.length;
 	}
 
