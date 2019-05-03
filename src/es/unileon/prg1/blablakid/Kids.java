@@ -46,14 +46,16 @@ public class Kids {
 	/**
 	 * @return void
 	 */
-	public void removeKid(Kid kid) throws KidException{
+	public void remove(Kid kid) throws KidException{
 		if( isKidIncluded(kid.getName()) ){
 			int pos = inWhichPosIs(kid.getName());
 			kids[pos] = null;
 			pos++;
 			while (kids[pos] != null) {
 				kids[(pos -1)] = kids [pos];
+				pos++;
 			}
+			kids[pos-1]=null;
 			next--;
 		}
 		else{
@@ -64,15 +66,25 @@ public class Kids {
 	/**
 	 * @return boolean
 	 */
-	public boolean isKidIncluded(String nombre){
-		return false;
-		// TODO Auto-generated method stub
+	public boolean isKidIncluded(String Name){
+		boolean result = false;
+		for (int i = 0; i < kids.length; i++) {
+			if (kids[i].getName().equals(Name)) {
+				result = true;
+			}
+		}
+		return result;
 	}
 	
-	private int inWhichPosIs(String Nombre){
-		int count = 0;
-		while(kids[count]!=null) {
-			
+	private int inWhichPosIs(String Name){
+		int count = 0, end = 0;
+		while(kids[count]!=null && end!=1) {
+			if(kids[count].getName().equals(Name)) {
+				end = 1;
+			}
+			else {
+				count++;
+			}
 		}
 		return count;
 	}
