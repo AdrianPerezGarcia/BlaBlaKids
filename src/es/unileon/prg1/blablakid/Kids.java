@@ -102,17 +102,23 @@ public class Kids {
 		return this.kids.length;
 	}
 	
-	public Kid search(String Name) {
+	public Kid searchKid(String Name) {
 		int count = 0;
-		while (kids[count]!=null || count!=-1){
-			if ( kids[count].getName().equals(Name) ){
-				count = -1;
-			}
-			else {
-				count++;
+		//I search in the array for a kid named like the param
+		for (int i = 0; i < kids.length; i++) {
+			if ( kids[i].getName().equals(Name) ){
+				//If i found it i set a mark (count) in that spot
+				count = i;
+				i = kids.length - 1;
 			}
 		}
-		return kids[count];
+		//If count is different than the original valor there is a kid named like the param in position count
+		if (count != 0) {
+			return kids[count];
+		}
+		else {
+			return null;
+		}
 	}
 
 }
