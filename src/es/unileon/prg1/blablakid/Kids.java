@@ -11,7 +11,7 @@ public class Kids {
 	 */
 	public Kid[] kids;
 	private int next;
-	private int length;
+	private int size;
 
 	/**
 	 *Create the array which will be managed by Kids
@@ -20,7 +20,7 @@ public class Kids {
 	 */
 	public Kids(int numberOfKids){
 		this.kids = new Kid[numberOfKids];
-		this.length = numberOfKids;
+		this.size = numberOfKids;
 		next = 0;
 	}
 
@@ -29,11 +29,11 @@ public class Kids {
 	 * @return Kid
 	 */
 	public void add(Kid kid) throws KidException{
-		if( isKidIncluded(kid.getName()) ){
+		if( isIncluded(kid) ){
 			throw new KidException("Error: kid already included");
 		}
 		else{
-			if (this.next >= this.length) {
+			if (this.next >= this.size) {
 				throw new KidException("Error: kid list is full");
 			}
 			else {
@@ -47,8 +47,8 @@ public class Kids {
 	 * @return void
 	 */
 	public void remove(Kid kid) throws KidException{
-		if( isKidIncluded(kid.getName()) ){
-			int pos = inWhichPosIs(kid.getName());
+		if( isIncluded(kid) ){
+			int pos = inWhichPosIs(kid);
 			kids[pos] = null;
 			pos++;
 			while (kids[pos] != null) {
@@ -66,20 +66,20 @@ public class Kids {
 	/**
 	 * @return boolean
 	 */
-	public boolean isKidIncluded(String Name){
+	public boolean isIncluded(Kid kid){
 		boolean result = false;
 		for (int i = 0; i < kids.length; i++) {
-			if (kids[i].getName().equals(Name)) {
+			if (kids[i].isSame(kid)) {
 				result = true;
 			}
 		}
 		return result;
 	}
 	
-	private int inWhichPosIs(String Name){
+	private int inWhichPosIs(Kid kid){
 		int count = 0, end = 0;
 		while(kids[count]!=null && end!=1) {
-			if(kids[count].getName().equals(Name)) {
+			if(kids[count].isSame(kid)) {
 				end = 1;
 			}
 			else {
@@ -95,7 +95,7 @@ public class Kids {
 	}
 	
 	public int getLenght() {
-		return this.length;
+		return this.size;
 	}
 	
 	public int getSize() {
