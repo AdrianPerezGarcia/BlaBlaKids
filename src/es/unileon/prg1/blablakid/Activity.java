@@ -61,7 +61,7 @@ public class Activity {
 	 */
 	public boolean isSame(Activity activity) {
 		boolean salida = false;
-		if(this.name==activity.name && this.place==activity.place && this.day==activity.day && this.startTime==activity.startTime && this.endTime==activity.endTime) {
+		if(this.name==activity.getName() && this.place==activity.getPlace() && this.day==activity.getDay() && this.startTime==activity.getStartTime() && this.endTime==activity.getEndTime()) {
 			salida=true;
 		}	
 		return salida;

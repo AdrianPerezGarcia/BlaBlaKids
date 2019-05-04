@@ -18,8 +18,7 @@ public class Activities {
 	 * @param activity
 	 * @return boolean
 	 */
-	public boolean addActivity(Activity activity) throws ActivityException {
-		// TODO Auto-generated method stub
+	public boolean add(Activity activity) throws ActivityException {
 		boolean salida = true;
 		if(isIncluded(activity)) {
 			salida = false;
@@ -39,12 +38,54 @@ public class Activities {
 	/**
 	 * @return boolean
 	 */
-	public boolean remove() {
+	public boolean remove(Activity activity) {
 		// TODO Auto-generated method stub
 		boolean salida = false;
+		if(this.isIncluded(activity)) {
+			int pos = this.inWhichPosIs(activity);
+			activities[pos]=null;
+			this.compact(pos);
+			this.next--;
+		}
 		return salida;
 	}
+	
 
+	/**
+	 * Method that compacts the array when an object is removed from it
+	 */
+	private void compact(int pos) {
+		pos++; //Actualizo la posicion para moverme al objeto que esta justo despues del que borro
+		//Cuando encuentro null paro, se acabo el array
+		while(activities[pos] != null) { 
+			//Guardo en la posicion anterior la posicion en la que me encuentro, es decir, desplazo todas a la izquierda desde el objeto que borro
+			activities[(pos-1)] = activities[pos];
+			pos++;
+		}
+	}
+	
+	
+	/**
+	 * Method that returns the position of an activity in its array
+	 * 
+	 * @param activity
+	 * @return The position of the object inside the array
+	 */
+	private int inWhichPosIs(Activity activity){
+		int count = 0;
+		boolean end = false;
+		while(activities[count]!=null && end) {
+			if(activities[count].isSame(activity)) {
+				end = true;
+			}
+			else {
+				count++;
+			}
+		}
+		return count;
+	}
+	
+	
 	/**
 	 * @return boolean
 	 */
@@ -63,5 +104,6 @@ public class Activities {
 		return salida;
 	}
 
+	
 }
 
