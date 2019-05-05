@@ -58,8 +58,10 @@ public class Parents {
 		return size;
 	}
 	
-	public int getSize() {
-		
+	/**
+	 * @return the size
+	 */
+	public int getSize() {		
 		return parents.length;
 	}
 	
@@ -68,6 +70,34 @@ public class Parents {
 	 */
 	public int getNext() {
 		return next;
+	}
+	
+	/**
+	 * 
+	 * @param index
+	 * @return Parent in the position of the index 
+	 */
+	public Parent get(int index) {
+		return this.parents[index];
+	}
+	
+	/**
+	 * 
+	 * @param kid
+	 * @return
+	 */
+	private int inWhichPosIs(Parent parent){
+		int count = 0;
+		boolean end = false;
+		while(parents[count]!=null && end) {
+			if(parents[count].isSame(parent)) {
+				end = true;
+			}
+			else {
+				count++;
+			}
+		}
+		return count;
 	}
 
 

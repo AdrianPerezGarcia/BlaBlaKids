@@ -58,7 +58,12 @@ public class Parent {
 	public String getName() {
 		return Name;
 	}
-
+	
+	
+	public boolean isSame(Parent parent2) {
+		return (this.Name == parent2.getName());
+	}
+	
 	@Override
 	public String toString() {
 		return "Parent [" + (Name != null ? "Name=" + Name + ", " : "")
