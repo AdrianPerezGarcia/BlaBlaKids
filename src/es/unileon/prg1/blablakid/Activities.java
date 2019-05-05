@@ -1,6 +1,6 @@
 package es.unileon.prg1.blablakid;
 /**
- * @author
+ * @author Pablo Bayon
  *
  */
 public class Activities {
@@ -15,8 +15,10 @@ public class Activities {
 	}
 
 	/**
+	 * Method that add an object activity to an array of activities if it's possible
+	 * 
 	 * @param activity
-	 * @return boolean
+	 * @return true if it's possible to add the object, false if not
 	 */
 	public boolean add(Activity activity) throws ActivityException {
 		boolean salida = true;
@@ -36,7 +38,10 @@ public class Activities {
 	
 	
 	/**
-	 * @return boolean
+	 * Method that removes an object of the array in which it's included
+	 * 
+	 * @param activity
+	 * @return true if its possible to remove it, false if not
 	 */
 	public boolean remove(Activity activity) {
 		// TODO Auto-generated method stub
@@ -53,12 +58,16 @@ public class Activities {
 
 	/**
 	 * Method that compacts the array when an object is removed from it
+	 * 
+	 * @param pos
 	 */
 	private void compact(int pos) {
-		pos++; //Actualizo la posicion para moverme al objeto que esta justo despues del que borro
-		//Cuando encuentro null paro, se acabo el array
+		pos++; 
+		// The position is incremented so as to move to the object just behind the one that has been removed
+		//When the array finds null the compaction is over
 		while(activities[pos] != null) { 
 			//Guardo en la posicion anterior la posicion en la que me encuentro, es decir, desplazo todas a la izquierda desde el objeto que borro
+			// The objects are moved one position to the left
 			activities[(pos-1)] = activities[pos];
 			pos++;
 		}
@@ -103,7 +112,16 @@ public class Activities {
 		}
 		return salida;
 	}
-
+	
+	/**
+	 * Method that returns an object activity using its position in the array
+	 * 
+	 * @param pos
+	 * @return the activity located in the position specified by the param
+	 */
+	public Activity get(int pos) {
+		return this.activities[pos];
+	}
 	
 }
 

@@ -28,7 +28,7 @@ public class Kids {
 	private int size;
 
 	/**
-	 * Constructor of the class, inicializates the array and set the next at 0 and the size at the param numberOfKids
+	 * Constructor of the class, initializes the array and set the next at 0 and the size at the param numberOfKids
 	 * 
 	 * @param numberOfKids
 	 */
@@ -119,7 +119,7 @@ public class Kids {
 	public Kid searchKid(String Name) {
 		int count = 0;
 		boolean end = false;
-		//I search in the array for a kid named like the param
+		//I search in the array for a kid named as the param
 		while (count < kids.length  && end) {
 			if ( kids[count].getName().equals(Name) ){
 				//If i found it i set a mark (count) in that spot and i finish with the boolean end
@@ -129,7 +129,7 @@ public class Kids {
 				count++;
 			}
 		}
-		//If end is different than the original valor there is a kid named like the param in position count
+		//If end is different than the original value there is a kid named like the param in position count
 		if (end) {
 			return kids[count];
 		}

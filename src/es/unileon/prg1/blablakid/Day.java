@@ -2,7 +2,7 @@ package es.unileon.prg1.blablakid;
 
 
 /**
- * @author
+ * @author Pablo Bayon
  *
  */
 public class Day {

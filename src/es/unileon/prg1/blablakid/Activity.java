@@ -54,7 +54,7 @@ public class Activity {
 
 
 	/**
-	 * Method that chek if two objects of type Activity are the same
+	 * Method that check if two objects of type Activity are the same
 	 * 
 	 * @param activity
 	 * @return true if the activity is the same, false if not
