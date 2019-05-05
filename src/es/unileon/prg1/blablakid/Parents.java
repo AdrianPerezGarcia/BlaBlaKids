@@ -4,8 +4,17 @@ package es.unileon.prg1.blablakid;
  *
  */
 public class Parents {
+	/**
+	 * @see Parent[]
+	 */
 	public Parent[] parents;
+	/**
+	 * @see int  Size of the array
+	 */
 	private int size;
+	/**
+	 * @see int 
+	 */
 	private int next;
 	
 	
@@ -22,6 +31,8 @@ public class Parents {
 	}
 
 	/**
+	 * This method return if the parent can be added to the array
+	 * 
 	 * @return boolean
 	 * @param parent
 	 */
@@ -54,14 +65,14 @@ public class Parents {
 	/**
 	 * @return the length
 	 */
-	public int getLength() {
+	public int getSize() {
 		return size;
 	}
 	
 	/**
 	 * @return the size
 	 */
-	public int getSize() {		
+	public int getLength() {		
 		return parents.length;
 	}
 	
@@ -83,7 +94,7 @@ public class Parents {
 	
 	/**
 	 * 
-	 * @param kid
+	 * @param parent
 	 * @return
 	 */
 	private int inWhichPosIs(Parent parent){
@@ -98,6 +109,23 @@ public class Parents {
 			}
 		}
 		return count;
+	}
+	
+	/**
+	 *  Method that returns if the parent is included
+	 *  
+	 *  @param parent
+	 *  @return result
+	 */
+	public boolean isIncluded(Parent parent) {
+		boolean resultado = false;
+		
+		for (int i = 0; i < this.parents.length; i++) {
+			if (this.parents[i].isSame(parent)) {
+				resultado = true;
+			}
+		}
+		return resultado;
 	}
 
 

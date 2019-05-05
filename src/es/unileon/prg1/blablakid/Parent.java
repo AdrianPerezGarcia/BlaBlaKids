@@ -59,7 +59,12 @@ public class Parent {
 		return Name;
 	}
 	
-	
+	/**
+	 * 
+	 *  Check if the parent is same parent as the param
+	 * @param parent2
+	 * @return
+	 */
 	public boolean isSame(Parent parent2) {
 		return (this.Name == parent2.getName());
 	}
