@@ -14,12 +14,20 @@ public class Kid {
 	private String Name;
 	
 	/**
+	 * Activities of each kid
+	 * 
+	 * @see Activities
+	 */
+	private Activities activities[];
+	
+	/**
 	 *Creates the kid object with its name (identifier)
 	 * 
 	 * @param name Kid identifier
 	 */
 	public Kid (String name){
 		this.Name = name;
+		this.activities = new Activities[3];
 	}
 	
 	/**
@@ -49,5 +57,10 @@ public class Kid {
 	public String toString() {
 		return this.Name;
 	}
+
+	public Activities[] getActivities() {
+		return activities;
+	}
+
 }
 
