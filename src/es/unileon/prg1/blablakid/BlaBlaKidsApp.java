@@ -5,10 +5,8 @@ package es.unileon.prg1.blablakid;
  */
 public class BlaBlaKidsApp {
 	
-	public int numberOfKids;
-	public int numberOfParents = numberOfKids * 2;
-	public int numberOfActivies = numberOfKids * 3;
-	public int numberOfRides = numberOfActivies * 2;
+	private int numberOfKids;
+	private int numberOfParents = numberOfKids * 2;
 	
 	private Kids kids;
 	private Parents parents;

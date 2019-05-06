@@ -6,12 +6,11 @@ package es.unileon.prg1.blablakid;
 public class Activities {
 	private Activity[] activities;
 	private int next;
-	private int size;
+	private final int MAXACTIVITIES = 3;
 
-	public Activities(int size) {
+	public Activities() {
 		this.next = 0;
-		this.size = size;
-		this.activities = new Activity[size];	
+		this.activities = new Activity[MAXACTIVITIES];	
 	}
 
 	/**
@@ -66,7 +65,6 @@ public class Activities {
 		// The position is incremented so as to move to the object just behind the one that has been removed
 		//When the array finds null the compaction is over
 		while(activities[pos] != null) { 
-			//Guardo en la posicion anterior la posicion en la que me encuentro, es decir, desplazo todas a la izquierda desde el objeto que borro
 			// The objects are moved one position to the left
 			activities[(pos-1)] = activities[pos];
 			pos++;
@@ -96,7 +94,8 @@ public class Activities {
 	
 	
 	/**
-	 * @return boolean
+	 * Method that checks if an activity is included in the array
+	 * @return true if the activity is included in the array, false if not
 	 */
 	private boolean isIncluded(Activity activity) {
 		// TODO Auto-generated method stub
@@ -123,7 +122,8 @@ public class Activities {
 		return this.activities[pos];
 	}
 	
-	public Activity search(String name, String kid, int day) {
+	
+	public Activity search(String name, int day) {
 		boolean end = false;
 		int i=0;
 		while((i < this.next) && (!end)) {
