@@ -15,17 +15,19 @@ public class BlaBlaKidsApp {
 		
 	}
 	
+	/*
 	public void add(Parent parent, Kids kids) {
 		for (int i = 0; i < kids.getSize(); i++) {
-			kid =this.kids.search(Kids.get(i).getŃame())==null {
+			kid = this.kids.search(Kids.get(i).getŃame()) == null;
 				if (kid == null) {
 					//Exception
 				}else {
-					parent.add(kid)
+					parent.add(kid);
 				}
-				this.parents.add(parent)
+				this.parents.add(parent);
 			}
 		}
 	}
+	*/
 }
 
