@@ -154,15 +154,14 @@ public class Kids {
 	 * @param position of the deleted kid
 	 */
 	private void compact(int position) {
-		position++;
+		int i;
 		//I use a loop to travel the array until next
-		for (int i = 0; i < this.next ; i++ ) { 
+		for (i = position; i < (this.next-1) ; i++ ) { 
 			//I make the compaction
-			kids[(position -1)] = kids[position];
-			position++;
+			kids[i] = kids[i+1];
 		}
 		//Equals to null the last position of the loop
-		kids[position-1]=null;
+		kids[i+1]=null;
 	}
 	
 	/**
