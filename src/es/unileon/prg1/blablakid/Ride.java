@@ -33,7 +33,7 @@ public class Ride{
 		//Check that the ride isn't late. Must begin before the activity and arrive just on time.
 		if (beforeRide) {
 			
-			if ( (startTime.isLower(activity.startTime))  && (endTime.isSame(activity.startTime)) ) {
+			if ( (startTime.isLower(activity.getStartTime()))  && (endTime.isSame(activity.getStartTime())) ) {
 				this.startTime = startTime;
 				this.endTime = endTime;
 			}
@@ -44,7 +44,7 @@ public class Ride{
 		
 		//Check that the ride isn't late. Must begin just when the activity ends and end after.
 		else {
-			if( (startTime.isSame(activity.endTime)) && (endTime.isHigher(activity.endTime)) ) {
+			if( (startTime.isSame(activity.getEndTime() ) ) && (endTime.isHigher(activity.getEndTime() ) ) ) {
 				this.startTime = startTime;
 				this.endTime = endTime;
 			}
@@ -104,4 +104,3 @@ public class Ride{
 	}
 
 }
-

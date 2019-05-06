@@ -1,21 +1,26 @@
 package es.unileon.prg1.blablakid;
 /**
- * @author
+ * @author Hector Castro
  *
  */
 public class TextUI {
-	public Kids allKids;
-	public int MaxKids;
+	private BlaBlaKidsApp blablakid;
+
 	
-	public TextUI(Kids allKids, int MaxKids) {
-		this.allKids = allKids;
-		
+	public TextUI(BlaBlaKidsApp blablakid) {
+		this.blablakid = blablakid;
 	}
 
+	
+	public void start(){
+		this.displayMenu();
+	}
+	
 	/**
-	 * @return int
+	 * Prints the apps menu
+	 * @return the option selected as an </CODE>int</CODE>
 	 */
-	public static int displayMenu() {
+	private static int displayMenu() {
 		// TODO Auto-generated method stub
 		int option;
 
@@ -38,6 +43,10 @@ public class TextUI {
 		}
 		return option;
 	}
+	
+	/**
+	 * Prints the apps ASCII Art header
+	 */
 	public static void displayIntro() {
 		System.out.print("\t\t\t\t\t\t\t╔====================================================╗\n");
 		System.out.print("\t\t\t\t\t\t\t|  ██████╗ ██╗      █████╗ ██████╗ ██╗      █████╗   |\n");
@@ -47,20 +56,22 @@ public class TextUI {
 		System.out.print("\t\t\t\t\t\t\t|  ██████╔╝███████╗██║  ██║██████╔╝███████╗██║  ██║  |\n");
 		System.out.print("\t\t\t\t\t\t\t|  ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝  |\n");
 		System.out.print("\t\t\t\t\t\t\t|                                                    |\n");
-		System.out.print("\t\t\t\t\t\t\t|  ██╗  ██╗██╗██████╗ ███████╗                       |\n");
-		System.out.print("\t\t\t\t\t\t\t|  ██║ ██╔╝██║██╔══██╗██╔════╝                       |\n");
-		System.out.print("\t\t\t\t\t\t\t|  █████╔╝ ██║██║  ██║███████╗                       |\n");
-		System.out.print("\t\t\t\t\t\t\t|  ██╔═██╗ ██║██║  ██║╚════██║                       |\n");
-		System.out.print("\t\t\t\t\t\t\t|  ██║  ██╗██║██████╔╝███████║                       |\n");
-		System.out.print("\t\t\t\t\t\t\t|  ╚═╝  ╚═╝╚═╝╚═════╝ ╚══════╝                       |\n");
+		System.out.print("\t\t\t\t\t\t\t|                 ██╗  ██╗██╗██████╗                 |\n");
+		System.out.print("\t\t\t\t\t\t\t|                 ██║ ██╔╝██║██╔══██╗                |\n");
+		System.out.print("\t\t\t\t\t\t\t|                 █████╔╝ ██║██║  ██║                |\n");
+		System.out.print("\t\t\t\t\t\t\t|                 ██╔═██╗ ██║██║  ██║                |\n");
+		System.out.print("\t\t\t\t\t\t\t|                 ██║  ██╗██║██████╔╝                |\n");
+		System.out.print("\t\t\t\t\t\t\t|                 ╚═╝  ╚═╝╚═╝╚═════╝                 |\n");
 		System.out.print("\t\t\t\t\t\t\t╚====================================================╝\n");
 		return;
 	}
+
+	
 	/**
-	 * Reads a Kid's name, creates it and returns a Kid object
-	 * @return Kid object with the specified name
+	 * Asks for all the data necesary to create a new kid and creates it.
+	 * @return Kid whith the given data
 	 */
-	public Kid askKid() {
+	private Kid askKid() {
 		String name =new String();
 		
 		do {
@@ -106,32 +117,37 @@ public class TextUI {
 		
 		//Asks for the name of its kids
 		for(int i=1; i<numberOfKids; i++) {
-			do {
-				System.out.println("Intoroduce the name for the kid number "+i);
-				kid = Teclado.readString();
-				
-				if(allKids.searchKid(kid) == null){
-					System.out.println("That kid doenst exist, first create the kid");
-				}
-				else {
-					kids.add(allKids.searchKid(kid));
-				}
-			}while(allKids.searchKid(kid) == null);
+			System.out.println("Intoroduce the name for the kid number "+i);
+			kid = Teclado.readString();
+			/*
+			try {
+				// kids.add(blablakid.getAllKids().searchKid(kid));
+			} catch (KidException e) {
+				System.out.println(e.getMessage());
+			}
+			*/
 		}
-		
+
 		//Asks for the number of rides
-		do {
+	
+				do {
 			System.out.println("Introduce the number of rides thath the parent will do");
 			numberOfRides = Teclado.readInteger();
-			if (numberOfRides<1) {
-				System.out.println("Introduce a valid number of kids, at least 1");
+			if (numberOfRides == Integer.MIN_VALUE) {
+				System.out.println("Introduce a valid number of kids.");
 			}
-		}while(numberOfRides<1);
+		}while(numberOfRides == Integer.MIN_VALUE); 
 		
 		Parent parent = new Parent(name,kids,numberOfRides);
+		return parent;
 	}
 	
+/*
+ * TODO
+
 	public Activity askActivity() {
+		Activity activity = new Activity();
+		return null;
 		//TODO Comprobaciones aqui y se le pasa filtrado al constructor
 	}
 	
@@ -148,8 +164,7 @@ public class TextUI {
 			System.out.println("Intorduce the name of the parent that makes the ride: ");
 			parent = Teclado.readString();
 			//TODO pedir todo lo demas
-		}while()
+		}while(parent == null);
 	}
-	
-	
+ */
 }	
