@@ -101,8 +101,7 @@ public class Kids {
 	public void remove(Kid kid) throws KidException{
 		if( isIncluded(kid) ){
 			int pos = inWhichPosIs(kid);
-			kids[pos] = null;
-			compact(pos);
+			removeAndCompact(pos);
 			next--;
 		}
 		else{
@@ -153,7 +152,7 @@ public class Kids {
 	 * 
 	 * @param position of the deleted kid
 	 */
-	private void compact(int position) {
+	private void removeAndCompact(int position) {
 		int i;
 		//I use a loop to travel the array until next
 		for (i = position; i < (this.next-1) ; i++ ) { 
