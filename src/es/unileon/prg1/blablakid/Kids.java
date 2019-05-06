@@ -161,7 +161,7 @@ public class Kids {
 			kids[i] = kids[i+1];
 		}
 		//Equals to null the last position of the loop
-		kids[i+1]=null;
+		kids[i+1]=null; 
 	}
 	
 	/**
