@@ -30,7 +30,7 @@ public class Day {
 		return salida;
 	}
 
-	public int getDay() {
+	public int getNumDay() {
 		return numday;
 	}
 	
