@@ -24,7 +24,7 @@ public class Hour {
 	*@param minutes of the Hour
 	*@param hours of the Hour
 	*
-	*@throws HourException if the hour can´t be created with the params
+	*@throws HourException if the hour cannot be created with the parametres
 	*
 	**/
 	public Hour(int minute, int hour) throws HourException{

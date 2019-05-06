@@ -1,4 +1,6 @@
 package es.unileon.prg1.blablakid;
+
+
 /**
  * @author PabloJ
  *
@@ -66,14 +68,7 @@ public class Parents {
 		if (isIncluded(parent)) {
 			
 			int position = inWhichPosIs(parent);
-			parents[position] = null;
-			position++;
-			
-			while (parents[position] != null) {
-				parents[(position -1)] = parents [position];
-				position++;
-			}
-			parents[position-1]=null;
+			removeAndCompact(position);
 			next--;
 		}
 		else {
@@ -183,6 +178,24 @@ public class Parents {
 		}
 		
 	}
+	/**
+	 * 
+	 *  Method that remove and compact
+	 *  
+	 * @param position
+	 */
+	private void removeAndCompact(int position){
+		int i;
+		//I use a loop to travel the array until next
+		for (i = position; i < (this.next-1) ; i++ ){ 
+			//I make the compaction
+			this.parents[i] = this.parents[i+1];
+		}
+		//Equals to null the last position of the loop
+		this.parents[i+1]=null; 
+	
+	}
+
 
 
 }

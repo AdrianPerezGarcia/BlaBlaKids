@@ -15,7 +15,7 @@ public class Parent {
 	 * Number of kids assigned to the parent
 	 * @see int
 	 */
-	private Kids numberKids;
+	private Kids kids;
 	/**
 	 * Number of rides assigned to the parent
 	 * @see int
@@ -32,7 +32,7 @@ public class Parent {
 	 */
 	public Parent(String name, Kids kids, int numberOfRides) {
 		this.Name = name;
-		this.numberKids = kids;
+		this.kids = kids;
 		this.Rides = numberOfRides;
 	}
 	
@@ -48,8 +48,8 @@ public class Parent {
 	/**
 	 * @return the numberOfKids
 	 */
-	public Kids getNumberKids() {
-		return numberKids;
+	public Kids getKids() {
+		return kids;
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class Parent {
 	@Override
 	public String toString() {
 		return "Parent [" + (Name != null ? "Name=" + Name + ", " : "")
-				+ (numberKids != null ? "numberKids=" + numberKids + ", " : "") + "Rides=" + Rides + "]";
+				+ (kids != null ? "numberKids=" + kids + ", " : "") + "Rides=" + Rides + "]";
 	}
 
 	}
