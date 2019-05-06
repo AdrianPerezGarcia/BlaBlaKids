@@ -4,12 +4,40 @@ package es.unileon.prg1.blablakid;
  *
  */
 public class Activity {
+	
+	/**
+	 * Name of the activity
+	 */
 	private String name;
+	
+	/**
+	 * Where the activity takes place
+	 */
 	private Place place;
+	
+	/**
+	 * Day of the activity
+	 */
 	private Day day;
+	
+	/**
+	 * Hour at which the activity starts
+	 */
 	private Hour startTime;
+	
+	/**
+	 * Hour at which the activity ends
+	 */
 	private Hour endTime;
+	
+	/**
+	 * Ride in which the kid arrives to the activity
+	 */
 	private Ride beforeRide;
+	
+	/**
+	 * Ride in which the kid leaves the activity
+	 */
 	private Ride afterRide;
 	
 
@@ -54,7 +82,7 @@ public class Activity {
 
 
 	/**
-	 * Method that check if two objects of type Activity are the same
+	 * Method that checks if two objects of type Activity are the same
 	 * 
 	 * @param activity
 	 * @return true if the activity is the same, false if not

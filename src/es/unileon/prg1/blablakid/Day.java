@@ -6,12 +6,16 @@ package es.unileon.prg1.blablakid;
  *
  */
 public class Day {
-	public int numday;
+	
+	/**
+	 * Number that establish the day of the week
+	 */
+	private int numday;
 
 	
 	/**
 	 * @param day
-	 * @throws DateException
+	 * @throws DayException
 	 */
 	public Day(int numday) throws DayException {
 		if(numday>=0 && numday <=6){
@@ -21,7 +25,12 @@ public class Day {
 		}
 	}
 	
-	
+	/**
+	 * Method that checks if two days are the same
+	 * 
+	 * @param day
+	 * @return true if two days are the same, false if not
+	 */
 	public boolean isSame(Day day) {
 		boolean salida = false;
 		if(this.numday==day.numday) {

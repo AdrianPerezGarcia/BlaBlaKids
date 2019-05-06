@@ -4,13 +4,25 @@ package es.unileon.prg1.blablakid;
  *
  */
 public class Week {
+	
+	/**
+	 * Array of objects of the type Day
+	 */
 	private Day[] week;
+	
+	/**
+	 * Integer used in order to control the next position that is going to be filled in the array
+	 */
 	private int next;
-	private final int size = 7;
+	
+	/**
+	 * Constant that establish the maximum length of the array
+	 */
+	private final int MAXDAYS = 7;
 	
 	public Week() {
 		this.next = 0;
-		this.week = new Day[size];
+		this.week = new Day[MAXDAYS];
 	}
 
 	/**
@@ -19,20 +31,17 @@ public class Week {
 	 * @param day
 	 * @return true if it's possible to add the object, false if not
 	 */
-	public boolean add(Day day) throws DayException{
-		boolean salida = true;
+	public void add(Day day) throws DayException{
 		if(isIncluded(day)) {
-			salida = false;
 			throw new DayException("Error: Day already included");
 		}else {
-			if(this.next >= this.size) {
+			if(this.next >= this.MAXDAYS) {
 				throw new DayException("Error: Day list is full");
 			}else {
 				week[this.next] = day;
 				this.next++;
 			}
 		}
-			return salida;
 	}
 
 	
@@ -42,33 +51,25 @@ public class Week {
 	 * @param day
 	 * @return true if it's possible to remove the object, false if not
 	 */
-	public boolean remove(Day day) {
-		// TODO Auto-generated method stub
-		boolean salida = false;
+	public void remove(Day day) {
 		if(this.isIncluded(day)) {
 			int pos = this.inWhichPosIs(day);
-			week[pos]=null;
 			this.compact(pos);
 			this.next--;
 		}
-		return salida;
 	}
 	
 	
 	/**
-	 * Method that compacts the array when an object is removed from it
+	 * Method that compacts the array and removes the object in the position of the param
 	 * 
 	 * @param pos
 	 */
 	private void compact(int pos) {
-		pos++; 
-		// The position is incremented so as to move to the object just behind the one that has been removed
-		//When the array finds null the compaction is over
-		while(week[pos] != null) { 
-			// The objects are moved one position to the left
-			week[(pos-1)] = week[pos];
-			pos++;
+		for(int i = 0; i < (this.next-1); i++) {
+			week[i] = week[i+1];
 		}
+		week[this.next-1] = null;
 	}
 	
 	/**

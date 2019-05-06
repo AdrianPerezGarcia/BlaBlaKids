@@ -4,8 +4,20 @@ package es.unileon.prg1.blablakid;
  *
  */
 public class Activities {
+	
+	/**
+	 * Array of objects of the type Activity
+	 */
 	private Activity[] activities;
+	
+	/**
+	 * Integer used in order to control the next position that is going to be filled in the array
+	 */
 	private int next;
+	
+	/**
+	 * Constant that establish the maximum length of the array
+	 */
 	private final int MAXACTIVITIES = 3;
 
 	public Activities() {
@@ -14,15 +26,13 @@ public class Activities {
 	}
 
 	/**
-	 * Method that add an object activity to an array of activities if it's possible
+	 * Method that add an object activity to an array of activities if it is possible
 	 * 
 	 * @param activity
 	 * @return true if it's possible to add the object, false if not
 	 */
-	public boolean add(Activity activity) throws ActivityException {
-		boolean salida = true;
+	public void add(Activity activity) throws ActivityException {
 		if(isIncluded(activity)) {
-			salida = false;
 			throw new ActivityException("Error: Activity already included");
 		}else {
 			if(this.next >= this.MAXACTIVITIES) {
@@ -32,43 +42,34 @@ public class Activities {
 				this.next++;
 			}
 		}
-		return salida;
 	}
 	
 	
 	/**
-	 * Method that removes an object of the array in which it's included
+	 * Method that removes an object of the array in which it is included
 	 * 
 	 * @param activity
 	 * @return true if its possible to remove it, false if not
 	 */
-	public boolean remove(Activity activity) {
-		// TODO Auto-generated method stub
-		boolean salida = false;
+	public void remove(Activity activity) {
 		if(this.isIncluded(activity)) {
 			int pos = this.inWhichPosIs(activity);
-			activities[pos]=null;
 			this.compact(pos);
 			this.next--;
 		}
-		return salida;
 	}
 	
 
 	/**
-	 * Method that compacts the array when an object is removed from it
+	 * Method that compacts the array and removes the object in the position of the param
 	 * 
 	 * @param pos
 	 */
 	private void compact(int pos) {
-		pos++; 
-		// The position is incremented so as to move to the object just behind the one that has been removed
-		//When the array finds null the compaction is over
-		while(activities[pos] != null) { 
-			// The objects are moved one position to the left
-			activities[(pos-1)] = activities[pos];
-			pos++;
+		for(int i = 0; i < (this.next-1); i++) {
+			activities[i] = activities[i+1];
 		}
+		activities[this.next-1] = null;
 	}
 	
 	
@@ -81,7 +82,7 @@ public class Activities {
 	private int inWhichPosIs(Activity activity){
 		int count = 0;
 		boolean end = false;
-		while(activities[count]!=null && end) {
+		while(activities[count] != null && end) {
 			if(activities[count].isSame(activity)) {
 				end = true;
 			}
@@ -95,10 +96,10 @@ public class Activities {
 	
 	/**
 	 * Method that checks if an activity is included in the array
+	 * 
 	 * @return true if the activity is included in the array, false if not
 	 */
 	private boolean isIncluded(Activity activity) {
-		// TODO Auto-generated method stub
 		boolean salida = false;
 		boolean end = false;
 		int i=0;
@@ -127,7 +128,7 @@ public class Activities {
 		boolean end = false;
 		int i=0;
 		while((i < this.next) && (!end)) {
-			//TODO me falta incluir la comprobacion del ninyo que tiene esa actividad pero no se como hacerlo
+			//TODO este metodo se llama a partir de un search de ninios que devuelve su array de actividades, luego con estas comprobaciones valdria, no?
 			if((this.activities[i].getName() == name) && (this.activities[i].getDay().getNumDay() == day)) {
 				end = true;
 			}else {
