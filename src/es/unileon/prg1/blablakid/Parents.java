@@ -68,7 +68,7 @@ public class Parents {
 		if (isIncluded(parent)) {
 			
 			int position = inWhichPosIs(parent);
-			removeAndCompact(position);
+			compact(position);
 			next--;
 		}
 		else {
@@ -184,7 +184,7 @@ public class Parents {
 	 *  
 	 * @param position
 	 */
-	private void removeAndCompact(int position){
+	private void compact(int position){
 		int i;
 		//I use a loop to travel the array until next
 		for (i = position; i < (this.next-1) ; i++ ){ 
