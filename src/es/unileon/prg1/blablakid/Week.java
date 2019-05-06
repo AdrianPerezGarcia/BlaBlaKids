@@ -4,9 +4,9 @@ package es.unileon.prg1.blablakid;
  *
  */
 public class Week {
-	public Day[] week;
-	int next;
-	final int size = 7;
+	private Day[] week;
+	private int next;
+	private final int size = 7;
 	
 	public Week() {
 		this.next = 0;
@@ -119,6 +119,28 @@ public class Week {
 	 */
 	public Day get(int pos) {
 		return this.week[pos];
+	}
+	
+	/**
+	 * Method that look for an object Day in an array of days
+	 * @param numDay
+	 * @return a kid is found, null if is not
+	 */
+	public Day search(int numDay) {
+		boolean end = false;
+		int i=0;
+		while((i < this.next) && (!end)) {
+			if(week[i].getDay() == numDay) {
+				end = true;
+			}else {
+				i++;
+			}
+		}
+		if(end) {
+			return this.week[i];
+		}else {
+			return null;
+		}
 	}
 }
 

@@ -123,5 +123,23 @@ public class Activities {
 		return this.activities[pos];
 	}
 	
+	public Activity search(String name, String kid, int day) {
+		boolean end = false;
+		int i=0;
+		while((i < this.next) && (!end)) {
+			//TODO me falta incluir la comprobacion del ninyo que tiene esa actividad pero no se como hacerlo
+			if((this.activities[i].getName() == name) && (this.activities[i].getDay().getNumDay() == day)) {
+				end = true;
+			}else {
+				i++;
+			}
+		}
+		if(end) {
+			return activities[i];
+		}else {
+			return null;
+		}
+	}
+	
 }
 
