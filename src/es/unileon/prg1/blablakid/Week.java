@@ -130,7 +130,7 @@ public class Week {
 		boolean end = false;
 		int i=0;
 		while((i < this.next) && (!end)) {
-			if(week[i].getDay() == numDay) {
+			if(week[i].getNumDay() == numDay) {
 				end = true;
 			}else {
 				i++;

@@ -25,7 +25,7 @@ public class Activities {
 			salida = false;
 			throw new ActivityException("Error: Activity already included");
 		}else {
-			if(this.next >= this.size) {
+			if(this.next >= this.MAXACTIVITIES) {
 				throw new ActivityException("Error: Activity list is full");
 			}else {
 				activities[this.next] = activity;
