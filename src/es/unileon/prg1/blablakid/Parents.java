@@ -1,5 +1,6 @@
 package es.unileon.prg1.blablakid;
 
+import java.util.Arrays;
 
 /**
  * @author PabloJ
@@ -25,6 +26,7 @@ public class Parents {
 	 * 
 	 * @param number of parents
 	 */
+	
 	public Parents(int numberOfParents) {
 		this.parents = new Parent[numberOfParents];
 		this.size = numberOfParents;
@@ -33,77 +35,82 @@ public class Parents {
 	}
 
 	/**
-	 * This method return if the parent can be added to the array
+	 * 	This method add a parent to a array of Parents
 	 * 
-	 * @return boolean
 	 * @param parent
 	 */
 	
-	public boolean addParent(Parent parent)throws ParentException{
+	public void addParent(Parent parent)throws ParentException{
 		// TODO Auto-generated method stub
-		boolean added = false;
+		//If the parent is not included add the parent into the first space that has no parent in it
 		if (isIncluded(parent)) {
 			throw new ParentException("Error, parent is already included");
 		}
 		else {
 			if (this.next >= this.size) {
+				//If next is equal or bigger than the size of the array , the list of parents is full
 				throw new ParentException("Error, the list of parents is full!");
 			}
 			else {
 				this.parents[this.next] = parent;
-				this.next++;
-				added = true;
+				this.next++;				
 			}
 		}		
-		return added;
 	}
 	
 	/**
-	 * @return boolean
+	 * 
+	 * Method that removes a parents from the arrays of Parents
+	 * 
 	 * @param parent
+	 * 
 	 */
-	public boolean removeParent(Parent parent) throws ParentException{
-		boolean removed = false;
-		
+	
+	public void removeParent(Parent parent) throws ParentException{
+		//If the parent is included take the position and removes the parent of the array
 		if (isIncluded(parent)) {
-			
+			//Also compacts the array replacing the next parent
 			int position = inWhichPosIs(parent);
 			compact(position);
-			next--;
+			this.next--;
 		}
 		else {
+			//If parent is not founded, throws an exception
 			throw new ParentException("Error, the parent is not in the list");
 		}
-		return removed;
 		// TODO Auto-generated method stub
 	}
 
 	/**
-	 * @return the length
+	 * 
+	 * Getter of the full size of the array
+	 * 
+	 * @return the size
 	 */
+	
 	public int getSize() {
 		return size;
 	}
 	
 	/**
-	 * @return the size
+	 * 
+	 * Getter of the length of the array
+	 * 
+	 * @return the length
 	 */
+	
 	public int getLength() {		
 		return parents.length;
 	}
 	
 	/**
-	 * @return the next
-	 */
-	public int getNext() {
-		return next;
-	}
-	
-	/**
+	 * 
+	 * 	Getter of the parent at a specific position
 	 * 
 	 * @param index
 	 * @return Parent in the position of the index 
 	 */
+	
 	public Parent get(int index) {
 		return this.parents[index];
 	}
@@ -113,9 +120,10 @@ public class Parents {
 	 * Method that shows in which position of the array is the parent
 	 * 
 	 * @param parent
-	 * @return the position of the array 
+	 * @return int of the position of the array 
 	 * 
 	 */
+	
 	private int inWhichPosIs(Parent parent){
 		int count = 0;
 		boolean end = false;
@@ -137,9 +145,10 @@ public class Parents {
 	 *  @return result
 	 *  
 	 */
+	
 	public boolean isIncluded(Parent parent) {
 		boolean resultado = false;
-		
+		//Check in the loop if the parent is in the array, returning true if the parent is included in the array
 		for (int i = 0; i < this.parents.length; i++) {
 			if (this.parents[i].isSame(parent)) {
 				resultado = true;
@@ -152,7 +161,7 @@ public class Parents {
 	 * 
 	 *  Method that search a parent in the array of parents
 	 *  
-	 *  @param name
+	 *  @param name 
 	 *  @return the parent or null if the parent isn't on the array
 	 *  
 	 */
@@ -160,7 +169,7 @@ public class Parents {
 	public Parent searchParent(String name) {
 		int count = 0;
 		boolean found = false;
-		
+		/*The loop check in all the spaces of the array if the parent is included (through his name) */
 		while (count < this.parents.length && !found) {
 			if (this.parents[count].getName().equals(name)) {
 				found = true;
@@ -169,10 +178,11 @@ public class Parents {
 				count++;
 			}
 		}
-		
+		/* When the parent has been founded the method return the parent */
 		if (found == true) {
 			return this.parents[count];
 		}
+		/* If the parent is not founded the method returns null */
 		else {
 			return null;
 		}
@@ -195,6 +205,18 @@ public class Parents {
 		this.parents[i+1]=null; 
 	
 	}
+	
+	/**
+	 * Method toString to print the status of the full array
+	 */
+	
+	@Override
+	public String toString() {
+		return "Parents [" + (parents != null ? "parents=" + Arrays.toString(parents) + ", " : "") + "size=" + size
+				+ ", next=" + next + "]";
+	}
+	
+	
 
 
 

@@ -24,9 +24,10 @@ public class Parent {
 	
 	/**
 	 * 
+	 * Builder of the object Parent
+	 * 
 	 * @param name Parent identifier
 	 * @param numberofrides Rides that the parent do
-	 * @param firstkid The First son of the parent
 	 * @param numberofkids Number of kids assigned to the parent
 	 * 
 	 */
