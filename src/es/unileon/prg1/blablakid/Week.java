@@ -29,18 +29,16 @@ public class Week {
 	 * Method that add an object day to an array of days if it's possible
 	 * 
 	 * @param day
-	 * @return true if it's possible to add the object, false if not
+	 * @throws DayException
 	 */
 	public void add(Day day) throws DayException{
 		if(isIncluded(day)) {
 			throw new DayException("Error: Day already included");
-		}else {
-			if(this.next >= this.MAXDAYS) {
-				throw new DayException("Error: Day list is full");
-			}else {
-				week[this.next] = day;
-				this.next++;
-			}
+		} else if(this.next >= this.MAXDAYS) {
+			throw new DayException("Error: Day list is full");
+		} else {
+			week[this.next] = day;
+			this.next++;
 		}
 	}
 
@@ -49,13 +47,15 @@ public class Week {
 	 * Method that removes an object of the array in which it's included
 	 * 
 	 * @param day
-	 * @return true if it's possible to remove the object, false if not
+	 * @throws DayException
 	 */
-	public void remove(Day day) {
+	public void remove(Day day) throws DayException {
 		if(this.isIncluded(day)) {
 			int pos = this.inWhichPosIs(day);
 			this.compact(pos);
 			this.next--;
+		} else {
+			throw new DayException("Error: Activity list is full");
 		}
 	}
 	

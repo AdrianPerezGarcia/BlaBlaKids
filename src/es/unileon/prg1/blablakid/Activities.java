@@ -24,23 +24,22 @@ public class Activities {
 		this.next = 0;
 		this.activities = new Activity[MAXACTIVITIES];	
 	}
+	
 
 	/**
 	 * Method that add an object activity to an array of activities if it is possible
 	 * 
 	 * @param activity
-	 * @return true if it's possible to add the object, false if not
+	 * @throws ActivityException
 	 */
 	public void add(Activity activity) throws ActivityException {
-		if(isIncluded(activity)) {
+		if(this.isIncluded(activity)) {
 			throw new ActivityException("Error: Activity already included");
-		}else {
-			if(this.next >= this.MAXACTIVITIES) {
-				throw new ActivityException("Error: Activity list is full");
-			}else {
-				activities[this.next] = activity;
-				this.next++;
-			}
+		} else if(this.next >= this.MAXACTIVITIES) {
+			throw new ActivityException("Error: Activity list is full");
+		} else {
+			activities[this.next] = activity;
+			this.next++;
 		}
 	}
 	
@@ -49,13 +48,15 @@ public class Activities {
 	 * Method that removes an object of the array in which it is included
 	 * 
 	 * @param activity
-	 * @return true if its possible to remove it, false if not
+	 * @throws ActivityException
 	 */
-	public void remove(Activity activity) {
+	public void remove(Activity activity) throws ActivityException{
 		if(this.isIncluded(activity)) {
 			int pos = this.inWhichPosIs(activity);
 			this.compact(pos);
 			this.next--;
+		} else {
+			throw new ActivityException("Error: kid wasn't included");
 		}
 	}
 	
