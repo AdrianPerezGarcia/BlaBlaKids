@@ -15,6 +15,7 @@ public class KidsTest {
 	@Before
 	public void setUp() throws KidException{
 		daniel = new Kid("Daniel");
+		kids = new Kids(3);
 		this.kids.add(daniel);
 		beatriz = new Kid("Beatriz");
 		this.kids.add(beatriz);
