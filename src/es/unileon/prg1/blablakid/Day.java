@@ -18,7 +18,7 @@ public class Day {
 	 * @throws DayException
 	 */
 	public Day(int numday) throws DayException {
-		if(numday>=0 && numday <=6){
+		if(numday>=0 && numday <=4){
 			this.numday = numday;
 		}else {
 			throw new DayException("Invalid day. Day must be between 0 and 6.");

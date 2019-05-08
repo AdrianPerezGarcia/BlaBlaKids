@@ -8,17 +8,23 @@ import org.junit.Test;
 public class KidsTest {
 
 	private Kids kids;
+	private Kid daniel;
+	private Kid beatriz;
+	private Kid manuel;
 	
 	@Before
 	public void setUp() throws KidException{
-		Kid daniel = new Kid("Daniel");
-		Kid beatriz = new Kid("Beatriz"); 
-		Kid manuel = new Kid("Manuel");
+		daniel = new Kid("Daniel");
+		this.kids.add(daniel);
+		beatriz = new Kid("Beatriz");
+		this.kids.add(beatriz);
+		manuel = new Kid("Manuel");
+		this.kids.add(manuel);
 	}
 	
 	
 	@Test
-	public void testKid() throws KidException{
+	public void testKids() throws KidException{
 		
 	}
 	
@@ -36,7 +42,12 @@ public class KidsTest {
 	
 	@Test 
 	public void testAddOk() throws KidException{
-		//kids.remove(daniel);
+		assertEquals(3,this.kids.getLength());
+		kids.remove(daniel);
+		assertEquals(2,this.kids.getLength());
+		Kid pablo = new Kid("Pablo");
+		this.kids.add(pablo);
+		assertEquals(3,this.kids.getLength());
 	}
 	
 	
