@@ -21,9 +21,9 @@ public class Kids {
 	private int next;
 	
 	/**
-	 * Total size of the array
+	 * Total size of the array (Not length)
 	 * 
-	 * @see size
+	 * @see int
 	 */
 	private int size;
 
@@ -79,15 +79,14 @@ public class Kids {
 		if( isIncluded(kid) ){
 			throw new KidException("Error: kid already included");
 		}
-		else{
-			if (this.next >= this.size) {
-				throw new KidException("Error: kid list is full");
-			}
-			else {
-				kids[this.next] = kid;
-				this.next++;
-			}
+		else if (this.next >= this.size) {
+			throw new KidException("Error: kid list is full");
 		}
+		else {
+			kids[this.next] = kid;
+			this.next++;
+		}
+		
 	}
 
 	/**
@@ -131,17 +130,14 @@ public class Kids {
 	 * 
 	 * @param kid who wants to know the position
 	 * 
-	 * @return int that contains the position
+	 * @return int that contains the position (0 - length-1)
 	 */
 	private int inWhichPosIs(Kid kid){
 		int count = 0;
-		boolean end = false;
-		while(this.kids[count]!=null && !end) {
+		for (int i = 0; i < this.next; i++) {
 			if(this.kids[count].isSame(kid)) {
-				end = true;
-			}
-			else {
-				count++;
+				count = i;
+				i = this.next -1;
 			}
 		}
 		return count;
@@ -164,27 +160,24 @@ public class Kids {
 	}
 	
 	/**
-	 * Method to search if there is a kid named like the param in the array
+	 * Method to search if there is a kid named like the parameter in the array
 	 * 
 	 * @param Name to search in the array
 	 * 
-	 * @return The kid if there is anyone named like the param or null
+	 * @return The kid if there is anyone named like the parameter or null
 	 */
 	public Kid searchKid(String Name) {
 		int count = 0;
-		boolean end = false;
-		//I search in the array for a kid named as the param
-		while (count < kids.length  && !end) {
+		//I search in the array for a kid named as the parameter
+		for (int i = 0; i < this.next; i++) {
 			if ( this.kids[count].getName().equals(Name) ){
-				//If i found it i set a mark (count) in that spot and i finish with the boolean end
-				end = true;
-			}
-			else {
-				count++;
+				//If i found it i set a mark (count) in that spot and i finish the loop
+				count = i;
+				i = this.next - 1;
 			}
 		}
-		//If end is different than the original value there is a kid named like the param in position count
-		if (end) {
+		//If count is different than the original value there is a kid named like the parameter in position count
+		if (count != 0) {
 			return kids[count];
 		}
 		else {
