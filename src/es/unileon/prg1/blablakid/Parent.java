@@ -31,7 +31,7 @@ public class Parent {
 	 * @param numberofkids Number of kids assigned to the parent
 	 * 
 	 */
-	public Parent(String name, Kids kids, int numberOfRides) {
+	public Parent(String name, Kids kids, int numberOfRides){
 		this.Name = name;
 		this.kids = kids;
 		this.Rides = numberOfRides;

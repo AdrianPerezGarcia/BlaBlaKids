@@ -23,11 +23,14 @@ public class Place {
 	public String getPlace() {
 		return place;
 	}
-
+	
+	public boolean isSame(Place place2){
+		return (this.place ==  place2.getPlace());
+	}
 
 	@Override
 	public String toString() {
-		return "Place [" + (place != null ? "place=" + place : "") + "]";
+		return "Place: "+ this.place;
 	}
 	
 
