@@ -33,14 +33,14 @@ public class Hour {
 			throw new HourException("Invalid hour (" +hour+ "). Hour must be in a 0-23 range.");
 		}
 		else {
-			hour = this.hour;
+			this.hour =hour;
 		}
         //I also check the minutes to generate a correct time
 		if ((minute < 0) || (minute > 59)) {
 			throw new HourException("Invalid minute (" +minute+ ").Minute must be in a 0-59 range.");
 		}
 		else {
-			minute = this.minute;
+			this.minute = minute;
 		}
 	}
 	
