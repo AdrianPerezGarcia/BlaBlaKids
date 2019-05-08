@@ -20,17 +20,17 @@ public class TextUI {
 			//Add Kid
 			case 1:
 				Kid kid = this.askKid();
-				blablakid.add(kid);
+				//TODO blablakid.add(kid);
 				break;
 			//Add Parent
 			case 3:
 				Parent parent = this.askParent();
-				blablakid.add(parent);
+				//TODO blablakid.add(parent);
 				break;
 			//Add Activity
 			case 5:
 				Activity activity = this.askActivity();
-				blablakid.add(activity);
+				//TODO blablakid.add(activity);
 				break;
 			//TODO Removes 
 		}
@@ -99,7 +99,7 @@ public class TextUI {
 			name = Teclado.readString();
 			
 			//Checks if the sintax is correct, if not it gives a warning
-			if(name == null) {
+			if(name.equals("")) {
 				System.out.println("Please, introduce a valid name");
 			}		
 		
@@ -111,6 +111,7 @@ public class TextUI {
 	
 	
 	private Parent askParent() {
+		Parent parent;
 		String name =new String();
 		int numberOfKids, numberOfRides;
 		Kid kid;
@@ -120,10 +121,10 @@ public class TextUI {
 			name = Teclado.readString();
 			
 			//Checks if the sintax is correct, if not it gives a warning
-			if(name == null) {
+			if(name.equals("")){
 				System.out.println("Please, introduce a valid name");
 			}		
-		}while(name == null);
+		}while(name.equals(""));
 		
 		//Asks for number of kids
 		do {
@@ -149,23 +150,25 @@ public class TextUI {
 
 		//Asks for the number of rides
 		do {
-			System.out.println("Introduce the number of rides thath the parent will do");
+			System.out.println("Introduce the number of rides thath the parent will do per day");
 			numberOfRides = Teclado.readInteger();
 			if (numberOfRides == Integer.MIN_VALUE) {
 				System.out.println("Introduce a valid number of kids.");
 			}
 		}while(numberOfRides == Integer.MIN_VALUE); 
 		
-		Parent parent = new Parent(name,kids,numberOfRides);
+		parent = new Parent(name,kids,numberOfRides);
 		return parent;
 	}
 	
 	
 	private Activity askActivity() {
-		Activity activity;
-		String name, place;
-		Day day;
+		Activity activity = null;
+		String name;
+		Day day = null;
 		Hour startTime, endTime;
+		Place place;
+		int weekDay;
 		
 		//Asks for the name
 		do {
@@ -174,14 +177,37 @@ public class TextUI {
 		}while(name.equals(""));
 		
 		//Asks for the place
-		do {
-			System.out.println("Introduce a name for the activity: ");
-			place = Teclado.readString();	
-		}while(place.equals(""));
+		place = this.askPlace();
 		
 		//Asks for the day
+		do {
+			System.out.println("Introduce the number of the day from 1 to 5 (Monday to Friday)");
+			weekDay = Teclado.readInteger();
+			if (weekDay == Integer.MIN_VALUE) {
+				System.out.println("Introduce a valid number");
+			}
+			else {
+				try {
+					day = new Day(weekDay);
+				} catch (DayException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+		}while(weekDay == Integer.MIN_VALUE);
+		
+		//Asks for the start time
+		System.out.println("Start Time");
+		startTime = this.askHour();
+		
+		//Asks for the end time
+		System.out.println("End Time");
+		endTime = this.askHour();
+		
+		activity = new Activity(name,place,day,startTime,endTime);
+		return activity;
 	}
 	
+	/*TODO
 	private Ride askRide() {
 		String parent = new String();
 		String activity = new String();
@@ -194,12 +220,63 @@ public class TextUI {
 			System.out.println("Intorduce the name of the parent that makes the ride: ");
 			parent = Teclado.readString();
 		}while(parent.equals(""));
+	
+		
 		//TODO pedir lo demas
 		Ride ride = new Ride(parent,activity,startPlace,endPlace,startTime,endTime);
 		return ride;
 	}
- 
+   */
+	
 	private Hour askHour() {
-		Hour hour
+		Hour hour = null;
+		int hours,minutes;
+		//Asks for the hours
+		do {
+			System.out.println("Introduce a hour from 0 to 23");
+			hours = Teclado.readInteger();
+			if(hours == Integer.MIN_VALUE) {
+				System.out.println("Introduce a valid number");
+			}
+		}while(hours == Integer.MIN_VALUE);
+		
+		do {
+			System.out.println("Introduce a minute from 0 to 59");
+			minutes = Teclado.readInteger();
+			if(minutes == Integer.MIN_VALUE) {
+				System.out.println("Introduce a valid number");
+			}
+		}while(minutes == Integer.MIN_VALUE);
+		
+		try {
+			hour = new Hour(hours,minutes);
+		} catch (HourException e) {
+			System.out.println(e.getMessage());
+		}
+		return hour;
 	}
+	
+	private Place askPlace() {
+		String name =new String();
+		
+		do {
+			System.out.println("Introduce the name of the place to add: ");
+			name = Teclado.readString();
+			
+			//Checks if the sintax is correct, if not it gives a warning
+			if(name.equals("")) {
+				System.out.println("Please, introduce a valid name");
+			}		
+		
+		}while(name.equals(""));
+		
+		Place place = new Place(name);
+		return place;
+	}
+	
+	
+	
+	
+	
+	
 }	
