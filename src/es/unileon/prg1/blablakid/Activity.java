@@ -52,7 +52,7 @@ public class Activity {
 	 * @param startTime
 	 * @param endTime
 	 */
-	public Activity(String name, Place place, Day day, Kid kid, Hour startTime, Hour endTime) {
+	public Activity(String name, Place place, Day day, Hour startTime, Hour endTime) {
 		this.name = name;
 		this.place = place;
 		this.day = day;
