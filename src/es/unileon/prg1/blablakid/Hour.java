@@ -27,7 +27,7 @@ public class Hour {
 	*@throws HourException if the hour cannot be created with the parametres
 	*
 	**/
-	public Hour(int minute, int hour) throws HourException{
+	public Hour(int hour, int minute) throws HourException{
 		//I throw exception if the time is not valid
 		if ((hour < 0) || (hour > 24)) {
 			throw new HourException("Invalid hour (" +hour+ "). Hour must be in a 0-23 range.");
