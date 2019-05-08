@@ -19,8 +19,9 @@
 	</target>
 
 	<target name="run" depends="compile">
-		<args value="3"/>
+
 		<java classname="es.unileon.prg1.blablakid.Main">
+		<arg value = "3"/>
 			<classpath>
 				<pathelement path="${classes}" />
 			</classpath>
