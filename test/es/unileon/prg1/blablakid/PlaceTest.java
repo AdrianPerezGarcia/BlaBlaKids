@@ -10,7 +10,7 @@ public class PlaceTest{
 
 	@Before
 	public void setUp(){
-		place = new Place("Palomera");
+		this.place = new Place("Palomera");
 	}
 
 	@Test
@@ -22,7 +22,12 @@ public class PlaceTest{
 	public void testIsSame(){
 		Place place2 = new Place("Palomera");
 		assertEquals(true, place.isSame(place2));
-		
+	}
+	
+	@Test
+	public void testIsSameWrong(){
+		Place place2 = new Place("Crucero");
+		assertEquals(false, place.isSame(place2));
 	}
 	
 	@Test
