@@ -54,6 +54,16 @@ public class Ride{
 		}
 
 	}
+	
+	public boolean isSame(Ride ride) {
+		boolean same = false;
+		if( this.parent == ride.getParent() && this.activity == ride.getActivity() && this.startPlace == ride.getStartPlace() && this.endPlace == ride.getEndPlace()) {
+			same = true;
+		}
+		
+		return same;
+	}
+	
 	/**
 	 * @return the parent that does the ride
 	 */

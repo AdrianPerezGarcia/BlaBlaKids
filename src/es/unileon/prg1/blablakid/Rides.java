@@ -52,13 +52,36 @@ public class Rides {
 			}
 		}
 	}
-
+	/**
+	 * 
+	 * @param activity
+	 * @return The position of a Ride in an Rides array
+	 */
+	private int inWhichPosIs(Ride ride){
+		int count = 0;
+		boolean end = false;
+		while(rides[count]!=null && end) {
+			if(rides[count].isSame(ride)) {
+				end = true;
+			}
+			else {
+				count++;
+			}
+		}
+		return count;
+	}
+	
 	/**
 	 * Remoces a Ride from an array
 	 * @param Ride that must be deleted
 	 */
 	public void removeRide(Ride ride) {
-
+		if(this.isIncluded(ride)) {
+			int pos = this.inWhichPosIs(ride);
+			rides[pos]=null;
+			this.compact(pos);
+			this.next--;
+		}
 	}
 
 	/**
@@ -66,11 +89,16 @@ public class Rides {
 	 * @param Ride to be checked
 	 */
 	private boolean isIncluded(Ride ride) {
-		return false;
-		// TODO Auto-generated method stub
+		boolean same = false;
+		for (int i = 0; i < next; i++) {
+			if(rides[i].isSame(ride)) {
+				same = true;
+			}
+		}
+		return same;
 	}
 	
-	public void compact(int pos) {
+	private void compact(int pos) {
 		pos++; 
 		// The position is incremented so as to move to the object just behind the one that has been removed
 		//When the array finds null the compaction is over
