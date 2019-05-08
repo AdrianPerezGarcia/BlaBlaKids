@@ -13,29 +13,49 @@ public class TextUI {
 
 	
 	public void start(){
-		this.displayMenu();
+		this.displayIntro();
+		int select = this.displayMenu();
+		
+		switch(select) {
+			//Add Kid
+			case 1:
+				Kid kid = this.askKid();
+				blablakid.add(kid);
+				break;
+			//Add Parent
+			case 3:
+				Parent parent = this.askParent();
+				blablakid.add(parent);
+				break;
+			//Add Activity
+			case 5:
+				Activity activity = this.askActivity();
+				blablakid.add(activity);
+				break;
+			//TODO Removes 
+		}
 	}
 	
 	/**
 	 * Prints the apps menu
 	 * @return the option selected as an </CODE>int</CODE>
 	 */
-	private static int displayMenu() {
-		// TODO Auto-generated method stub
+	private int displayMenu() {
 		int option;
 
-		System.out.println("Select an option:");
-		System.out.println("[1] Add kid");
-		System.out.println("[2] Remove kid");
-		System.out.println("[3] Add parent");
-		System.out.println("[4] Remove parent");
-		System.out.println("[5] Add activity");
-		System.out.println("[6] Remove activity");
-		System.out.println("[7] Add ride");
-		System.out.println("[8] Remove ride");
-		System.out.println("[9] Show summary");
-		System.out.println("[10] Check status");
-		System.out.println("[0] EXIT");
+		System.out.println("### Select an option ###");
+		System.out.println("# [1] Add kid          #");
+		System.out.println("# [2] Remove kid       #");
+		System.out.println("# [3] Add parent       #");
+		System.out.println("# [4] Remove parent    #");
+		System.out.println("# [5] Add activity     #");
+		System.out.println("# [6] Remove activity  #");
+		System.out.println("# [7] Add ride         #");
+		System.out.println("# [8] Remove ride      #");
+		System.out.println("# [9] Show summary     #");
+		System.out.println("# [10] Check status    #");
+		System.out.println("# [0] EXIT             #");
+		System.out.println("########################");
 		option = Teclado.readInteger();
 		
 		if(option<0 || option>10){
@@ -47,7 +67,7 @@ public class TextUI {
 	/**
 	 * Prints the apps ASCII Art header
 	 */
-	public static void displayIntro() {
+	public void displayIntro() {
 		System.out.print("\t\t\t\t\t\t\t╔====================================================╗\n");
 		System.out.print("\t\t\t\t\t\t\t|  ██████╗ ██╗      █████╗ ██████╗ ██╗      █████╗   |\n");
 		System.out.print("\t\t\t\t\t\t\t|  ██╔══██╗██║     ██╔══██╗██╔══██╗██║     ██╔══██╗  |\n");
@@ -75,7 +95,7 @@ public class TextUI {
 		String name =new String();
 		
 		do {
-			System.out.println("Introduce the number of the kidd to add: ");
+			System.out.println("Introduce the name of the kidd to add: ");
 			name = Teclado.readString();
 			
 			//Checks if the sintax is correct, if not it gives a warning
@@ -83,16 +103,17 @@ public class TextUI {
 				System.out.println("Please, introduce a valid name");
 			}		
 		
-		}while(name == null);
+		}while(name.equals(""));
 		
 		Kid kid = new Kid(name);
 		return kid;
 	}
 	
-	public Parent askParent() {
+	
+	private Parent askParent() {
 		String name =new String();
 		int numberOfKids, numberOfRides;
-		String kid = new String();
+		Kid kid;
 		//Asks for its name
 		do {
 			System.out.println("Introduce the name of the parent to add");
@@ -117,20 +138,17 @@ public class TextUI {
 		
 		//Asks for the name of its kids
 		for(int i=1; i<numberOfKids; i++) {
-			System.out.println("Intoroduce the name for the kid number "+i);
-			kid = Teclado.readString();
-			/*
+			System.out.println("Kid number "+i);
+			kid = this.askKid();
 			try {
-				// kids.add(blablakid.getAllKids().searchKid(kid));
+				kids.add(kid);
 			} catch (KidException e) {
 				System.out.println(e.getMessage());
 			}
-			*/
 		}
 
 		//Asks for the number of rides
-	
-				do {
+		do {
 			System.out.println("Introduce the number of rides thath the parent will do");
 			numberOfRides = Teclado.readInteger();
 			if (numberOfRides == Integer.MIN_VALUE) {
@@ -142,29 +160,46 @@ public class TextUI {
 		return parent;
 	}
 	
-/*
- * TODO
-
-	public Activity askActivity() {
-		Activity activity = new Activity();
-		return null;
-		//TODO Comprobaciones aqui y se le pasa filtrado al constructor
+	
+	private Activity askActivity() {
+		Activity activity;
+		String name, place;
+		Day day;
+		Hour startTime, endTime;
+		
+		//Asks for the name
+		do {
+			System.out.println("Introduce a name for the activity: ");
+			name = Teclado.readString();	
+		}while(name.equals(""));
+		
+		//Asks for the place
+		do {
+			System.out.println("Introduce a name for the activity: ");
+			place = Teclado.readString();	
+		}while(place.equals(""));
+		
+		//Asks for the day
 	}
 	
-	public Ride askRide() {
+	private Ride askRide() {
 		String parent = new String();
 		String activity = new String();
 		String startPlace = new String();
 		String endPlace = new String();
-		String startTime = new String();
-		String endTime = new String();
-		char beforeRide;
+		Hour startTime, endTime;
+		boolean beforeRide;
 		//Gets the parent that makes the ride
 		do {
 			System.out.println("Intorduce the name of the parent that makes the ride: ");
 			parent = Teclado.readString();
-			//TODO pedir todo lo demas
-		}while(parent == null);
+		}while(parent.equals(""));
+		//TODO pedir lo demas
+		Ride ride = new Ride(parent,activity,startPlace,endPlace,startTime,endTime);
+		return ride;
 	}
- */
+ 
+	private Hour askHour() {
+		Hour hour
+	}
 }	
