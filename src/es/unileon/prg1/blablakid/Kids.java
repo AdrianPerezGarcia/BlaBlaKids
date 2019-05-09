@@ -35,7 +35,7 @@ public class Kids {
 	public Kids(int numberOfKids){
 		this.kids = new Kid[numberOfKids];
 		this.size = numberOfKids;
-		next = 0;
+		this.next = 0;
 	}
 
 	/**

@@ -21,13 +21,13 @@ public class PlaceTest{
 	@Test
 	public void testIsSame(){
 		Place place2 = new Place("Palomera");
-		assertEquals(true, place.isSame(place2));
+		assertTrue(place.isSame(place2));
 	}
 	
 	@Test
 	public void testIsSameWrong(){
 		Place place2 = new Place("Crucero");
-		assertEquals(false, place.isSame(place2));
+		assertFalse(place.isSame(place2));
 	}
 	
 	@Test
