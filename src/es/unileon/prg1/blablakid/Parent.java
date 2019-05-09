@@ -91,8 +91,8 @@ public class Parent {
 	
 	@Override
 	public String toString() {
-		return "Parent [" + (Name != null ? "Name=" + Name + ", " : "")
-				+ (kids != null ? "numberKids=" + kids + ", " : "") + "Rides=" + Rides + "]";
+		return "Parent: "+ this.Name + "Kids: " + this.kids + "Number of rides: "+ this.Rides + "Days of Week: "+ this.days ;
+				
 	}
 
 
