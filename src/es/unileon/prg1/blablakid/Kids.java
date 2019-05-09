@@ -20,22 +20,16 @@ public class Kids {
 	 */
 	private int next;
 	
+	
 	/**
-	 * Total size of the array (Not length)
+	 * Constructor of the class, initializes the array and set the next at 0
 	 * 
-	 * @see int
-	 */
-	private int size;
-
-	/**
-	 * Constructor of the class, initializes the array and set the next at 0 and the size at the param numberOfKids
 	 * 
 	 * @param numberOfKids
 	 */
 	public Kids(int numberOfKids){
 		this.kids = new Kid[numberOfKids];
-		this.size = numberOfKids;
-		next = 0;
+		this.next = 0;
 	}
 
 	/**
@@ -50,13 +44,13 @@ public class Kids {
 	}
 
 	/**
-	 * Getter of the full size of the array
 	 * 
-	 * @return the size (Max number of kids)
+	 * @return the number of kids included in the array
 	 */
-	public int getSize() {
-		return this.size;
+	public int getNumberOfKids() {
+		return this.next;
 	}
+	
 
 	/**
 	 * Getter of the length
@@ -79,7 +73,7 @@ public class Kids {
 		if( isIncluded(kid) ){
 			throw new KidException("Error: kid already included");
 		}
-		else if (this.next >= this.size) {
+		else if (this.next >= this.kids.length) {
 			throw new KidException("Error: kid list is full");
 		}
 		else {
@@ -117,7 +111,7 @@ public class Kids {
 	 */
 	public boolean isIncluded(Kid kid){
 		boolean result = false;
-		for (int i = 0; i < kids.length; i++) {
+		for (int i = 0; i < this.next; i++) {
 			if (kids[i].isSame(kid)) {
 				result = true;
 			}
@@ -156,8 +150,8 @@ public class Kids {
 			kids[i] = kids[i+1];
 		}
 		//Equals to null the last position of the loop
-		kids[i+1]=null; 
-	}
+		kids[i]=null; 
+	} 
 	
 	/**
 	 * Method to search if there is a kid named like the parameter in the array
