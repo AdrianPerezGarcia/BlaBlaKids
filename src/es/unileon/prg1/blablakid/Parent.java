@@ -24,6 +24,14 @@ public class Parent {
 	
 	/**
 	 * 
+	 * Days of the parent
+	 * @see Week
+	 * 
+	 */
+	private Week days[];
+	
+	/**
+	 * 
 	 * Builder of the object Parent
 	 * 
 	 * @param name Parent identifier
@@ -35,6 +43,7 @@ public class Parent {
 		this.Name = name;
 		this.kids = kids;
 		this.Rides = numberOfRides;
+		this.days = new Week[5];
 	}
 	
 	
@@ -62,6 +71,16 @@ public class Parent {
 	
 	/**
 	 * 
+	 * @return days of the parent
+	 * 
+	 */
+
+	public Week[] getDays() {
+		return days;
+	}
+	
+	/**
+	 * 
 	 *  Check if the parent is same parent as the param
 	 * @param parent2
 	 * @return
@@ -72,13 +91,12 @@ public class Parent {
 	
 	@Override
 	public String toString() {
-		return "Parent [" + (Name != null ? "Name=" + Name + ", " : "")
-				+ (kids != null ? "numberKids=" + kids + ", " : "") + "Rides=" + Rides + "]";
+		return "Parent: "+ this.Name + "Kids: " + this.kids + "Number of rides: "+ this.Rides + "Days of Week: "+ this.days ;
+				
 	}
 
-	}
 
-
+}
 
 
 
