@@ -14,14 +14,14 @@ import org.junit.Test;
 
 public class KidTest {
 	private Kid daniel;
-	
+
 	@Before
-	public void setUp() throws KidException{
+	public void setUp() throws KidException {
 		this.daniel = new Kid("Daniel");
 	}
-	
-	@Test 
-	public void testGetActivities() throws HourException, DayException, ActivityException{
+
+	@Test
+	public void testGetActivities() throws HourException, DayException, ActivityException {
 		Place palomera = new Place("Palomera");
 		Hour startTime = new Hour(18, 00);
 		Hour endTime = new Hour(20, 00);

@@ -1,4 +1,5 @@
 package es.unileon.prg1.blablakid;
+
 /**
  * 
  * @author Pablo Bayon
@@ -17,9 +18,9 @@ public class KidsTest {
 	private Kid daniel;
 	private Kid beatriz;
 	private Kid manuel;
-	
+
 	@Before
-	public void setUp() throws KidException{ 
+	public void setUp() throws KidException {
 		this.kids = new Kids(3);
 		this.daniel = new Kid("Daniel");
 		this.kids.add(this.daniel);
@@ -28,71 +29,67 @@ public class KidsTest {
 		manuel = new Kid("Manuel");
 		this.kids.add(manuel);
 	}
-	
-	
+
 	@Test
-	public void testisIncluded() throws KidException{
+	public void testisIncluded() throws KidException {
 		assertTrue(this.kids.isIncluded(daniel));
 		Kid carlos = new Kid("carlos");
 		assertFalse(this.kids.isIncluded(carlos));
 	}
-	
-	
-	
-	@Test (expected = KidException.class)
-	public void testAddIncluded() throws KidException{
+
+	@Test(expected = KidException.class)
+	public void testAddIncluded() throws KidException {
 		Kid kid = new Kid("Daniel");
-		this.kids.add(kid); 
+		this.kids.add(kid);
 	}
-	
-	
-	
-	@Test (expected = KidException.class)
-	public void testAddFull() throws KidException{
+
+	@Test(expected = KidException.class)
+	public void testAddFull() throws KidException {
 		Kid kid = new Kid("Pablo");
 		kids.add(kid);
 	}
-	
-	
-	
-	@Test 
-	public void testAddOk() throws KidException{
-		assertEquals(3,this.kids.getNumberOfKids()); 
+
+	@Test
+	public void testAddOk() throws KidException {
+		assertEquals(3, this.kids.getNumberOfKids());
 		this.kids.remove(daniel);
-		assertEquals(2,this.kids.getNumberOfKids());
+		assertEquals(2, this.kids.getNumberOfKids());
 		Kid pablo = new Kid("Pablo");
 		this.kids.add(pablo);
-		assertEquals(3,this.kids.getNumberOfKids());
+		assertEquals(3, this.kids.getNumberOfKids());
 	}
-	
-	@Test public void testGet() {
-		assertEquals(daniel, this.kids.get(0)); 	}
-	
-	@Test (expected = KidException.class)
-	public void testRemoveFail() throws KidException{
+
+	@Test
+	public void testGet() {
+		assertEquals(daniel, this.kids.get(0));
+	}
+
+	@Test(expected = KidException.class)
+	public void testRemoveFail() throws KidException {
 		Kid kid = new Kid("Pablo");
 		this.kids.remove(kid);
 	}
-	
+
 	@Test
-	public void testInWhichPosIs() throws KidException{
-		//Al ser un metodo privado, cubro la branch que me faltaba a traves del metodo remove
+	public void testInWhichPosIs() throws KidException {
+		// Al ser un metodo privado, cubro la branch que me faltaba a traves del metodo
+		// remove
 		this.kids.remove(beatriz);
 	}
-	
+
 	@Test
 	public void testSearchOk() {
-		assertEquals(beatriz ,this.kids.searchKid("Beatriz"));
+		assertEquals(beatriz, this.kids.searchKid("Beatriz"));
 	}
-	
-	@Test  
+
+	@Test
 	public void testSearchFail() {
 		assertEquals(null, this.kids.searchKid("Martin"));
 	}
-	
+
 	@Test
 	public void testToString() {
 		assertEquals("Kids [kids=[Daniel, Beatriz, Manuel]]", this.kids.toString());
 	}
-	
+
 }

@@ -1,25 +1,27 @@
 package es.unileon.prg1.blablakid;
+
 /**
  * @author Pablo Bayon
  *
  */
 public class Week {
-	
+
 	/**
 	 * Array of objects of the type Day
 	 */
 	private Day[] week;
-	
+
 	/**
-	 * Integer used in order to control the next position that is going to be filled in the array
+	 * Integer used in order to control the next position that is going to be filled
+	 * in the array
 	 */
 	private int next;
-	
+
 	/**
 	 * Constant that establish the maximum length of the array
 	 */
 	private final int MAXDAYS = 7;
-	
+
 	public Week() {
 		this.next = 0;
 		this.week = new Day[MAXDAYS];
@@ -31,10 +33,10 @@ public class Week {
 	 * @param day
 	 * @throws DayException
 	 */
-	public void add(Day day) throws DayException{
-		if(isIncluded(day)) {
+	public void add(Day day) throws DayException {
+		if (isIncluded(day)) {
 			throw new DayException("Error: Day already included");
-		} else if(this.next >= this.MAXDAYS) {
+		} else if (this.next >= this.MAXDAYS) {
 			throw new DayException("Error: Day list is full");
 		} else {
 			week[this.next] = day;
@@ -42,7 +44,6 @@ public class Week {
 		}
 	}
 
-	
 	/**
 	 * Method that removes an object of the array in which it's included
 	 * 
@@ -50,42 +51,41 @@ public class Week {
 	 * @throws DayException
 	 */
 	public void remove(Day day) throws DayException {
-		if(this.isIncluded(day)) {
-			int pos = this.inWhichPosIs(day);
+		if (this.isIncluded(day)) {
+			int pos = this.getPos(day);
 			this.compact(pos);
 			this.next--;
 		} else {
 			throw new DayException("Error: Activity list is full");
 		}
 	}
-	
-	
+
 	/**
-	 * Method that compacts the array and removes the object in the position of the param
+	 * Method that compacts the array and removes the object in the position of the
+	 * param
 	 * 
 	 * @param pos
 	 */
 	private void compact(int pos) {
-		for(int i = 0; i < (this.next-1); i++) {
-			week[i] = week[i+1];
+		for (int i = 0; i < (this.next - 1); i++) {
+			week[i] = week[i + 1];
 		}
-		week[this.next-1] = null;
+		week[this.next - 1] = null;
 	}
-	
+
 	/**
 	 * Method that returns the position of an activity in its array
 	 * 
 	 * @param activity
 	 * @return The position of the object inside the array
 	 */
-	private int inWhichPosIs(Day day){
+	private int getPos(Day day) {
 		int count = 0;
 		boolean end = false;
-		while(week[count]!=null && end) {
-			if(week[count].isSame(day)) {
+		while (week[count] != null && end) {
+			if (week[count].isSame(day)) {
 				end = true;
-			}
-			else {
+			} else {
 				count++;
 			}
 		}
@@ -93,7 +93,7 @@ public class Week {
 	}
 
 	/**
-	 * Method that checks if an object is included in the arraya
+	 * Method that checks if an object is included in the array
 	 * 
 	 * @param day
 	 * @return true if the object is included in the array, false if not
@@ -101,9 +101,9 @@ public class Week {
 	private boolean isIncluded(Day day) {
 		boolean salida = false;
 		boolean end = false;
-		int i=0;
-		while(i<this.week.length && end) {
-			if(this.week[i].isSame(day)){
+		int i = 0;
+		while (i < this.week.length && end) {
+			if (this.week[i].isSame(day)) {
 				salida = true;
 				end = true;
 			}
@@ -111,35 +111,36 @@ public class Week {
 		}
 		return salida;
 	}
-	
+
 	/**
 	 * Method that returns an object day using its position in the array
 	 * 
 	 * @param pos
 	 * @return the kid located in the position specified by the param
 	 */
-	public Day get(int pos) {
+	public Day getDay(int pos) {
 		return this.week[pos];
 	}
-	
+
 	/**
 	 * Method that look for an object Day in an array of days
+	 * 
 	 * @param numDay
 	 * @return a kid is found, null if is not
 	 */
 	public Day search(int numDay) {
 		boolean end = false;
-		int i=0;
-		while((i < this.next) && (!end)) {
-			if(week[i].getNumDay() == numDay) {
+		int i = 0;
+		while ((i < this.next) && (!end)) {
+			if (week[i].getNumDay() == numDay) {
 				end = true;
-			}else {
+			} else {
 				i++;
 			}
 		}
-		if(end) {
+		if (end) {
 			return this.week[i];
-		}else {
+		} else {
 			return null;
 		}
 	}
