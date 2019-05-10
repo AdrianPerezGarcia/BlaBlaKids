@@ -162,12 +162,12 @@ public class Kids {
 	 */
 	public Kid searchKid(String Name) {
 		int count = 0;
+		boolean end = false;
 		//I search in the array for a kid named as the parameter
-		for (int i = 0; i < this.next; i++) {
+		while(count < this.next && !end) {
 			if ( this.kids[count].getName().equals(Name) ){
 				//If i found it i set a mark (count) in that spot and i finish the loop
-				count = i;
-				i = this.next - 1;
+				end = true;
 			}
 		}
 		//If count is different than the original value there is a kid named like the parameter in position count
@@ -177,6 +177,8 @@ public class Kids {
 		else {
 			return null;
 		}
+		
+		
 	}
 
 	/**
