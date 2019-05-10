@@ -2,6 +2,8 @@ package es.unileon.prg1.blablakid;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,10 +15,10 @@ public class KidsTest {
 	private Kid manuel;
 	
 	@Before
-	public void setUp() throws KidException{
-		daniel = new Kid("Daniel");
-		kids = new Kids(3);
-		this.kids.add(daniel);
+	public void setUp() throws KidException{ 
+		this.kids = new Kids(3);
+		this.daniel = new Kid("Daniel");
+		this.kids.add(this.daniel);
 		beatriz = new Kid("Beatriz");
 		this.kids.add(beatriz);
 		manuel = new Kid("Manuel");
@@ -25,15 +27,21 @@ public class KidsTest {
 	
 	
 	@Test
-	public void testKids() throws KidException{
-		
+	public void testisIncluded() throws KidException{
+		assertTrue(this.kids.isIncluded(daniel));
+		Kid carlos = new Kid("carlos");
+		assertFalse(this.kids.isIncluded(carlos));
 	}
 	
+	
+	
 	@Test (expected = KidException.class)
-	public void testAddInluded() throws KidException{
+	public void testAddIncluded() throws KidException{
 		Kid kid = new Kid("Daniel");
-		kids.add(kid);
+		this.kids.add(kid); 
 	}
+	
+	
 	
 	@Test (expected = KidException.class)
 	public void testAddFull() throws KidException{
@@ -41,15 +49,47 @@ public class KidsTest {
 		kids.add(kid);
 	}
 	
+	
+	
 	@Test 
 	public void testAddOk() throws KidException{
-		assertEquals(3,this.kids.getLength());
-		kids.remove(daniel);
-		assertEquals(2,this.kids.getLength());
+		assertEquals(3,this.kids.getNumberOfKids()); 
+		this.kids.remove(daniel);
+		assertEquals(2,this.kids.getNumberOfKids());
 		Kid pablo = new Kid("Pablo");
 		this.kids.add(pablo);
-		assertEquals(3,this.kids.getLength());
+		assertEquals(3,this.kids.getNumberOfKids());
 	}
 	
+	@Test public void testGet() {
+		assertEquals(daniel, this.kids.get(0));
+	}
+	
+	@Test (expected = KidException.class)
+	public void testRemoveFail() throws KidException{
+		Kid kid = new Kid("Pablo");
+		this.kids.remove(kid);
+	}
+	
+	@Test
+	public void testInWhichPosIs() throws KidException{
+		//Al ser un metodo privado, cubro la branch que me faltaba a traves del metodo remove
+		this.kids.remove(beatriz);
+	}
+	
+	@Test
+	public void testSearchOk() {
+		assertEquals(beatriz ,this.kids.searchKid("Beatriz"));
+	}
+	
+	@Test  
+	public void testSearchFail() {
+		assertEquals(null, this.kids.searchKid("Martin"));
+	}
+	
+	@Test
+	public void testToString() {	
+		assertEquals("Kids [kids=[Daniel, Beatriz, Manuel]]", this.kids.toString());
+	}
 	
 }
