@@ -1,5 +1,11 @@
 package es.unileon.prg1.blablakid;
 
+/**
+ * 
+ * @author Pablo Bayon
+ * 
+ */
+
 import static org.junit.Assert.*;
 
 import org.junit.Before;

@@ -1,5 +1,9 @@
 package es.unileon.prg1.blablakid;
-
+/**
+ * 
+ * @author Pablo Bayon
+ * 
+ */
 import static org.junit.Assert.*;
 
 import java.util.Arrays;
@@ -62,8 +66,7 @@ public class KidsTest {
 	}
 	
 	@Test public void testGet() {
-		assertEquals(daniel, this.kids.get(0));
-	}
+		assertEquals(daniel, this.kids.get(0)); 	}
 	
 	@Test (expected = KidException.class)
 	public void testRemoveFail() throws KidException{
@@ -88,7 +91,7 @@ public class KidsTest {
 	}
 	
 	@Test
-	public void testToString() {	
+	public void testToString() {
 		assertEquals("Kids [kids=[Daniel, Beatriz, Manuel]]", this.kids.toString());
 	}
 	

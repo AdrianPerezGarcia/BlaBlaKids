@@ -18,7 +18,7 @@ public class Kid {
 	 * 
 	 * @see Activities
 	 */
-	private Activities activities[];
+	private Activities activities;
 	
 	/**
 	 *Creates the kid object with its name (identifier)
@@ -27,7 +27,7 @@ public class Kid {
 	 */
 	public Kid (String name){
 		this.Name = name;
-		this.activities = new Activities[3];
+		this.activities = new Activities();
 	}
 	
 	/**
@@ -58,7 +58,7 @@ public class Kid {
 		return this.Name;
 	}
 
-	public Activities[] getActivities() {
+	public Activities getActivities() {
 		return activities;
 	}
 
