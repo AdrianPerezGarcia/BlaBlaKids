@@ -13,27 +13,32 @@ public class TextUI {
 
 	
 	public void start(){
-		this.displayIntro();
-		int select = this.displayMenu();
+		int select = 10;
 		
-		switch(select) {
-			//Add Kid
-			case 1:
-				Kid kid = this.askKid();
-				//TODO blablakid.add(kid);
-				break;
-			//Add Parent
-			case 3:
-				Parent parent = this.askParent();
-				//TODO blablakid.add(parent);
-				break;
-			//Add Activity
-			case 5:
-				Activity activity = this.askActivity();
-				//TODO blablakid.add(activity);
-				break;
-			//TODO Removes 
-		}
+		this.displayIntro();
+		do {
+			select = this.displayMenu();
+			switch(select) {
+				//Add Kid
+				case 1:
+					Kid kid = this.askKid();
+					//TODO blablakid.add(kid);
+					break;
+				//Add Parent
+				case 3:
+					Parent parent = this.askParent();
+					//TODO blablakid.add(parent);
+					break;
+				//Add Activity
+				case 5:
+					Activity activity = this.askActivity();
+					//TODO blablakid.add(activity);
+					break;
+				default:
+					System.out.println("Please, select a valid option");
+				//TODO Removes 
+			}
+		}while(select!=0);
 	}
 	
 	/**
@@ -43,19 +48,19 @@ public class TextUI {
 	private int displayMenu() {
 		int option;
 
-		System.out.println("### Select an option ###");
-		System.out.println("# [1] Add kid          #");
-		System.out.println("# [2] Remove kid       #");
-		System.out.println("# [3] Add parent       #");
-		System.out.println("# [4] Remove parent    #");
-		System.out.println("# [5] Add activity     #");
-		System.out.println("# [6] Remove activity  #");
-		System.out.println("# [7] Add ride         #");
-		System.out.println("# [8] Remove ride      #");
-		System.out.println("# [9] Show summary     #");
-		System.out.println("# [10] Check status    #");
-		System.out.println("# [0] EXIT             #");
-		System.out.println("########################");
+		System.out.println("	### Select an option ###");
+		System.out.println("	# [1] Add kid          #");
+		System.out.println("	# [2] Remove kid       #");
+		System.out.println("	# [3] Add parent       #");
+		System.out.println("	# [4] Remove parent    #");
+		System.out.println("	# [5] Add activity     #");
+		System.out.println("	# [6] Remove activity  #");
+		System.out.println("	# [7] Add ride         #");
+		System.out.println("	# [8] Remove ride      #");
+		System.out.println("	# [9] Show summary     #");
+		System.out.println("	# [10] Check status    #");
+		System.out.println("	# [0] EXIT             #");
+		System.out.println("	########################");
 		option = Teclado.readInteger();
 		
 		if(option<0 || option>10){
