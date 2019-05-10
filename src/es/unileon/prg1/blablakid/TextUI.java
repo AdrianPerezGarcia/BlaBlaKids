@@ -136,10 +136,10 @@ public class TextUI {
 			System.out.println("Introduce the number of kids that "+name+" has");
 			numberOfKids = Teclado.readInteger();
 			
-			if(numberOfKids<1) {
+			if(numberOfKids<1 || numberOfKids==Integer.MIN_VALUE) {
 				System.out.println("Introduce a valid number of kids, at least 1");
 			}
-		}while(numberOfKids<1);
+		}while(numberOfKids<1 || numberOfKids==Integer.MIN_VALUE);
 		Kids kids = new Kids(numberOfKids);
 		
 		//Asks for the name of its kids
