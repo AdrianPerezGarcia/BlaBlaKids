@@ -143,7 +143,7 @@ public class TextUI {
 		Kids kids = new Kids(numberOfKids);
 		
 		//Asks for the name of its kids
-		for(int i=1; i<numberOfKids; i++) {
+		for(int i=1; i<=numberOfKids; i++) {
 			System.out.println("Kid number "+i);
 			kid = this.askKid();
 			try {
@@ -155,7 +155,7 @@ public class TextUI {
 
 		//Asks for the number of rides
 		do {
-			System.out.println("Introduce the number of rides thath the parent will do per day");
+			System.out.println("Introduce the number of rides that the parent will do per day");
 			numberOfRides = Teclado.readInteger();
 			if (numberOfRides == Integer.MIN_VALUE) {
 				System.out.println("Introduce a valid number of kids.");
