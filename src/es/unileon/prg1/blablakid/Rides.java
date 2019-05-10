@@ -11,11 +11,6 @@ public class Rides {
 	public Ride[] rides;
 	
 	/**
-	 * Size of the array
-	 */
-	public int size;
-	
-	/**
 	 * First free position in the array
 	 */
 	public int next;
@@ -25,8 +20,7 @@ public class Rides {
 	 * @param numberOfRides maximun number of rides that defines the arrays lenght
 	 */
 	public Rides(int numberOfRides){
-	 this.size = numberOfRides;
-	 this.rides = new Ride[size];
+	 this.rides = new Ride[numberOfRides];
 	 this.next = 0;
 	}
 
@@ -34,6 +28,20 @@ public class Rides {
 	 * Adds a Ride to an array
 	 * @param Ride that must be added
 	 */
+	public Ride search(String activityName,boolean beforeRide) {
+		boolean found = false;
+		int count = 0;
+		while(!found && count<this.rides.length) {
+			if(activityName.equals(this.rides[count].getActivity().getName()) && beforeRide == this.rides[count].isBeforeRide()) {
+				found = true;
+			}
+			else {
+				count++;
+			}
+		}
+		return rides[count];
+	}
+	
 	public void addRide(Ride ride) throws RideException{
 		//Checks if the ride is alrede in the array
 		if(isIncluded(ride)){
@@ -43,7 +51,7 @@ public class Rides {
 		//Adds the ride in the first free position in the array
 		else{
 			//Thows an exception if the array is full
-			if (this.next >= this.size) {
+			if (this.next >= this.rides.length) {
 				throw new RideException("Error: Ride list is full");
 			}
 			else {
