@@ -139,4 +139,12 @@ public class Activities {
 		}
 	}
 
+	@Override
+	public String toString() {
+		String salida = "";
+		for (Activity activityAux : activities) {
+			salida += activityAux.toString() + "\n";
+		}
+		return salida;
+	}
 }
