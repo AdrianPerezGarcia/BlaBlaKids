@@ -141,10 +141,10 @@ public class Activities {
 
 	@Override
 	public String toString() {
-		String salida = "";
-		for (Activity activityAux : activities) {
-			salida += activityAux.toString() + "\n";
+		StringBuilder out = new StringBuilder();
+		for (int i = 0; i<this.next; i++) {
+			out.append(this.get(i).toString() + "\n");
 		}
-		return salida;
+		return out.toString();
 	}
 }

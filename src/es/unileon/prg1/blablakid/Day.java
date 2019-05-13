@@ -9,15 +9,15 @@ public class Day {
 	/**
 	 * Number that establish the day of the week
 	 */
-	private int numday;
+	private WeekDays day;
 
 	/**
 	 * @param day
 	 * @throws DayException
 	 */
-	public Day(int numday) throws DayException {
-		if (numday >= 0 && numday <= 4) {
-			this.numday = numday;
+	public Day(WeekDays day) throws DayException {
+		if (day.ordinal() >= 0 && day.ordinal() <= 4) {
+			this.day = day;
 		} else {
 			throw new DayException("Invalid day. Day must be between 0 and 4.");
 		}
@@ -31,14 +31,21 @@ public class Day {
 	 */
 	public boolean isSame(Day day) {
 		boolean salida = false;
-		if (this.numday == day.numday) {
+		if (this == day) {
 			salida = true;
 		}
 		return salida;
 	}
 
 	public int getNumDay() {
-		return numday;
+		return day.ordinal();
 	}
+
+	@Override
+	public String toString() {
+		return this.day.name();
+	}
+	
+	
 
 }

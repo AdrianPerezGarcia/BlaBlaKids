@@ -68,20 +68,13 @@ public class BlaBlaKidsApp {
 		return parents;
 	}
 
-	
-	/*
-	public void add(Parent parent, Kids kids) {
-		for (int i = 0; i < kids.getSize(); i++) {
-			kid = this.kids.search(Kids.get(i).getŃame()) == null;
-				if (kid == null) {
-					//Exception
-				}else {
-					parent.add(kid);
-				}
-				this.parents.add(parent);
-			}
-		}
+	public void add(Parent parent) throws ParentException{
+		this.parents.addParent(parent);
 	}
-	*/
+	
+	public void add(Kid kid) throws KidException{
+		this.kids.add(kid);
+	}
+	
 }
 

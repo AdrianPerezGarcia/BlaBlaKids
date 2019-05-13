@@ -113,12 +113,11 @@ public class Activity {
 
 	@Override
 	public String toString() {
-		String linea1 = name + " (" + place + " - " + day + ")" + startTime + " > " + endTime;
-		String linea2 = beforeRide.getStartPlace() + " > " + beforeRide.getEndPlace() + " : "
-				+ beforeRide.getStartTime() + "/" + beforeRide.getEndTime();
-		String linea3 = afterRide.getStartPlace() + " > " + afterRide.getEndPlace() + " : " + afterRide.getStartTime()
-				+ "/" + beforeRide.getEndTime();
-		return linea1 + "\n" + linea2 + "\n" + linea3 + "\n";
+		StringBuilder out = new StringBuilder();
+		out.append(name + " (" + place + " - " + day + ")" + startTime + " > " + endTime);
+		out.append(beforeRide.getStartPlace() + " > " + beforeRide.getEndPlace() + " : " + beforeRide.getStartTime() + "/" + beforeRide.getEndTime());
+		out.append(afterRide.getStartPlace() + " > " + afterRide.getEndPlace() + " : " + afterRide.getStartTime()+ "/" + beforeRide.getEndTime());
+		return out.toString();
 	}
 
 }
