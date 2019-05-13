@@ -203,7 +203,7 @@ public class TextUI {
 		Day day = null;
 		Hour startTime, endTime;
 		Place place;
-		int weekDay;
+		
 		
 		//Asks for the name
 		do {
@@ -214,21 +214,8 @@ public class TextUI {
 		//Asks for the place
 		place = this.askPlace();
 		
-		//Asks for the day TODO askDay
-		do {
-			System.out.println("Introduce the number of the day from 0 to 4 (Monday to Friday)");
-			weekDay = Teclado.readInteger();
-			if (weekDay == Integer.MIN_VALUE) {
-				System.out.println("Introduce a valid number");
-			}
-			else {
-				try {
-					day = new Day(weekDay);
-				} catch (DayException e) {
-					System.out.println(e.getMessage());
-				}
-			}
-		}while(weekDay == Integer.MIN_VALUE);
+		// Asks for the day
+		day = this.askDay();
 		
 		//Asks for the start time
 		System.out.println("Start Time");
@@ -309,21 +296,49 @@ public class TextUI {
 		return place;
 	}
 	
-	/** TODO
-	private WeekDays askDay() {
-		int day;
+	
+	private Day askDay() {
+		int numday;
 		do {
 			System.out.println("Introduce the number of the day from 0 to 4 (Monday to Friday)");
-			day = Teclado.readInteger();
-			if (day == Integer.MIN_VALUE) {
+			numday = Teclado.readInteger();
+			if (numday == Integer.MIN_VALUE) {
 				System.out.println("Introduce a valid number");
 			}
-		}while(day == Integer.MIN_VALUE);
+		}while(numday == Integer.MIN_VALUE);
 		
+		WeekDays wday;
+		Day day = null;
+		
+		try{
+		
+			switch (numday) {
+			case 0:
+				wday = WeekDays.MONDAY;
+				day = new Day(wday);
+				break; 
+			case 1:
+				 wday = WeekDays.TUESDAY;
+				 day = new Day(wday);
+				break;
+			case 2:
+				 wday = WeekDays.WEDNESDAY;
+				 day = new Day(wday);
+				break;
+			case 3:
+				 wday = WeekDays.THURSDAY;
+				 day = new Day(wday);
+				break;
+			case 4:
+				 wday = WeekDays.FRIDAY;
+				 day = new Day(wday);
+				break;
+			}
+		} catch (DayException e) {
+			System.out.println(e.getMessage());
+		}
+	return day;	
 	}
-	*/
 	
-	
-	
-	
-}	
+		
+}
