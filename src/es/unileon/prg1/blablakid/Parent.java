@@ -10,7 +10,7 @@ public class Parent {
 	 * Name of the parent, used as his/her identifier
 	 * @see String
 	 */
-	private String Name;
+	private String name;
 	/**
 	 * Number of kids assigned to the parent
 	 * @see int
@@ -20,7 +20,7 @@ public class Parent {
 	 * Number of rides assigned to the parent
 	 * @see int
 	 */
-	private int Rides;
+	private int rides;
 	
 	/**
 	 * 
@@ -40,9 +40,9 @@ public class Parent {
 	 * 
 	 */
 	public Parent(String name, Kids kids, int numberOfRides){
-		this.Name = name;
+		this.name = name;
 		this.kids = kids;
-		this.Rides = numberOfRides;
+		this.rides = numberOfRides;
 		this.days = new Week();
 	}
 	
@@ -52,7 +52,7 @@ public class Parent {
 	 * @return the numberOfRides
 	 */
 	public int getRides() {
-		return Rides;
+		return rides;
 	}
 
 	/**
@@ -66,7 +66,7 @@ public class Parent {
 	 * @return the name
 	 */
 	public String getName() {
-		return Name;
+		return name;
 	}
 	
 	/**
@@ -86,14 +86,14 @@ public class Parent {
 	 * @return
 	 */
 	public boolean isSame(Parent parent2) {
-		return (this.Name == parent2.getName());
+		return (this.name.equals(parent2.getName()));
 	}
 	
 	@Override
 	public String toString() {
 		StringBuilder salida = new StringBuilder();
 		
-		salida.append("######").append(this.Name).append("######\n");
+		salida.append("######").append(this.name).append("######\n");
 		salida.append("Kids: \n").append(this.kids.toString()).append("\n");		
 		salida.append("Rides: \n").append(this.days.toString()).append("\n");
 			
