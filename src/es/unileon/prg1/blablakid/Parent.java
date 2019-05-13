@@ -86,7 +86,19 @@ public class Parent {
 	 * @return
 	 */
 	public boolean isSame(Parent parent2) {
-		return (this.name.equals(parent2.getName()));
+		boolean isSame = false;
+		
+		if (this.name.equals(parent2.getName())) {
+			if (this.rides == parent2.getRides()) {
+				if (this.kids.equals(parent2.getKids())) {
+				
+					isSame = true;
+				}
+			}
+		}
+		
+		return isSame;
+
 	}
 	
 	@Override
