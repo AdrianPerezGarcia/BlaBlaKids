@@ -185,7 +185,12 @@ public class Parents {
 	
 	@Override
 	public String toString() {
-		return "Parents [" + this.parents + "]";
+		StringBuilder salida = new StringBuilder();
+		for (int i = 0; i < this.next; i++) {
+			salida.append(this.parents[i].toString()).append("\n");
+		}
+		
+		return salida.toString();
 	}
 	
 

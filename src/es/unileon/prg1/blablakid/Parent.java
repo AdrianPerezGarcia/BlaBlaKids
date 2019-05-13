@@ -91,8 +91,13 @@ public class Parent {
 	
 	@Override
 	public String toString() {
-		return "Parent: "+ this.Name + "Kids: " + this.kids + "Number of rides: "+ this.Rides + "Days of Week: "+ this.days ;
-				
+		StringBuilder salida = new StringBuilder();
+		
+		salida.append("######").append(this.Name).append("######\n");
+		salida.append("Kids: \n").append(this.kids.toString()).append("\n");		
+		salida.append("Rides: \n").append(this.days.toString()).append("\n");
+			
+		return salida.toString();
 	}
 
 
