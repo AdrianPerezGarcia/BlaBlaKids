@@ -142,6 +142,7 @@ public class Parents {
 	public Parent search(String name) {
 		int count = 0;
 		boolean found = false;
+		Parent parentOut = null;
 		/*The loop check in all the spaces of the array if the parent is included (through his name) */
 		while (count < this.next && !found) {
 			if (this.parents[count].getName().equals(name)) {
@@ -153,12 +154,11 @@ public class Parents {
 		}
 		/* When the parent has been founded the method return the parent */
 		if (count != 0) {
-			return this.parents[count];
+			parentOut = this.parents[count];
 		}
 		/* If the parent is not founded the method returns null */
-		else {
-			return null;
-		}
+		
+		return parentOut;
 		
 	}
 	/**
