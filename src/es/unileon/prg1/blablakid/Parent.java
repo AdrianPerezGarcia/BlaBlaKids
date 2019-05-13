@@ -86,7 +86,7 @@ public class Parent {
 	 * @return
 	 */
 	public boolean isSame(Parent parent2) {
-		return (this.Name == parent2.getName());
+		return (this.Name.equals(parent2.getName()));
 	}
 	
 	@Override
