@@ -5,7 +5,6 @@ package es.unileon.prg1.blablakid;
  */
 public class TextUI {
 	private BlaBlaKidsApp blablakid;
-
 	
 	public TextUI(BlaBlaKidsApp blablakid) {
 		this.blablakid = blablakid;
@@ -30,12 +29,22 @@ public class TextUI {
 					break;
 				//Remove kid
 				case 2:
-					System.out.println("Not implemented");
+					//System.out.println("Not implemented");
+					Kid kidDelete = this.askKid();
+					try {
+						this.blablakid.getKids().remove(kidDelete);
+					} catch (KidException e) {
+						System.out.println(e.getMessage());
+				}
 					break;
 				//Add Parent
 				case 3:
 					Parent parent = this.askParent();
-					//TODO blablakid.add(parent);
+					try {
+						this.blablakid.add(parent);
+					} catch (ParentException e){
+						System.out.println(e.getMessage());
+					}
 					break;
 				//Remove parent
 				case 4:
@@ -59,9 +68,14 @@ public class TextUI {
 					System.out.println("Not implemented");
 					break;
 				case 9:
-					System.out.println("Not implemented");
+					System.out.println("/////////////////////////////");
+				
+					System.out.println("KIDS:");
 					System.out.println(this.blablakid.getKids().toString());
-					this.blablakid.getKids().toString();
+					
+					System.out.println("\n PARENTS: \n");
+					System.out.println(this.blablakid.getParents().toString());
+					System.out.println("/////////////////////////////");
 					break;
 				case 0:
 					System.out.println("Good Bye :)");
@@ -169,21 +183,28 @@ public class TextUI {
 			System.out.println("Introduce the number of kids that "+name+" has");
 			numberOfKids = Teclado.readInteger();
 			
-			if(numberOfKids<1 || numberOfKids==Integer.MIN_VALUE) {
-				System.out.println("Introduce a valid number of kids, at least 1");
+			if(numberOfKids<1 || numberOfKids==Integer.MIN_VALUE || numberOfKids>blablakid.getNumberOfKids()) {
+				System.out.println("Introduce a valid number of kids, at least 1 and no " + blablakid.getNumberOfKids());
 			}
-		}while(numberOfKids<1 || numberOfKids==Integer.MIN_VALUE);
+		}while(numberOfKids<1 || numberOfKids==Integer.MIN_VALUE || numberOfKids>blablakid.getNumberOfKids());
 		Kids kids = new Kids(numberOfKids);
 		
 		//Asks for the name of its kids
 		for(int i=1; i<=numberOfKids; i++) {
 			System.out.println("Kid number "+i);
-			kid = this.askKid();
-			try {
-				kids.add(kid);
-			} catch (KidException e) {
-				System.out.println(e.getMessage());
-			}
+			do {
+				kid = this.askKid();
+				if(this.blablakid.getKids().isIncluded(kid) == false) {
+					System.out.println("This kid does not exist");
+				}
+				else {
+					try {
+						kids.add(kid);
+					} catch (KidException e) {
+						System.out.println(e.getMessage());
+					}
+				}
+			}while(blablakid.getKids().isIncluded(kid) == false);
 		}
 
 		//Asks for the number of rides
@@ -342,6 +363,4 @@ public class TextUI {
 		}
 	return day;	
 	}
-	
-		
 }
