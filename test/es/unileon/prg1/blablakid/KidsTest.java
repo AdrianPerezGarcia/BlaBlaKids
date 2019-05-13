@@ -39,6 +39,7 @@ public class KidsTest {
 
 	@Test(expected = KidException.class)
 	public void testAddIncluded() throws KidException {
+		this.kids.remove(beatriz);
 		Kid kid = new Kid("Daniel");
 		this.kids.add(kid);
 	}

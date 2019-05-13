@@ -11,7 +11,7 @@ public class Kid {
 	 * 
 	 * @see String
 	 */
-	private String Name;
+	private String name;
 	
 	/**
 	 * Activities of each kid
@@ -26,7 +26,7 @@ public class Kid {
 	 * @param name Kid identifier
 	 */
 	public Kid (String name){
-		this.Name = name;
+		this.name = name;
 		this.activities = new Activities();
 	}
 	
@@ -35,7 +35,7 @@ public class Kid {
 	 * @return name of kid
 	 */
 	public String getName() {
-		return this.Name;
+		return this.name;
 	}
 	
 	/**
@@ -46,7 +46,7 @@ public class Kid {
 	 * @return boolean that is true if kids are same or false if not
 	 */
 	public boolean isSame(Kid kid2) {
-		return (this.Name == kid2.getName());
+		return (this.name.equals(kid2.getName()));
 	}
 	
 	public Activities getActivities() {
@@ -60,7 +60,7 @@ public class Kid {
 	@Override
 	public String toString() {
 		StringBuilder salida = new StringBuilder();
-		salida.append("****** ").append(this.Name).append(" ******\n");
+		salida.append("****** ").append(this.name).append(" ******\n");
 		salida.append(this.activities.toString());
 		return salida.toString();
 	}

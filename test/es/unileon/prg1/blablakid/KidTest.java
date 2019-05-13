@@ -34,4 +34,10 @@ public class KidTest {
 		activities.add(baloncesto);
 		assertEquals(baloncesto, this.daniel.getActivities().get(0));
 	}
+	
+	@Test
+	public void testIsSame() {
+		Kid daniel2 = new Kid("Daniel");
+		assertTrue(this.daniel.isSame(daniel2));
+	}
 }
