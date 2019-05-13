@@ -35,7 +35,7 @@
 		</java>
     </target>
 
-	<target name="run" depends="test">
+	<target name="run" depends="compile">
 			<java classname="es.unileon.prg1.blablakid.Main">
 			<arg value = "3"/>
 				<classpath>
@@ -43,6 +43,6 @@
 				</classpath>
 			</java>
 		</target>
-    <target name="todo" depends="run"/>
+    <target name="todo" depends="test,run"/>
 
 </project>
