@@ -22,6 +22,7 @@ public class TextUI {
 				//Add Kid
 				case 1:
 					Kid kid = this.askKid();
+			
 					//TODO blablakid.add(kid);
 					break;
 				//Remove kid
@@ -56,6 +57,8 @@ public class TextUI {
 					break;
 				case 9:
 					System.out.println("Not implemented");
+					this.blablakid.getKids().toString();
+					this.blablakid.getKids().toString();
 					break;
 				case 0:
 					System.out.println("Good Bye :)");
@@ -73,7 +76,7 @@ public class TextUI {
 	 */
 	private int displayMenu() {
 		int option;
-
+		System.out.println();
 		System.out.println("	### Select an option ###");
 		System.out.println("	# [1] Add kid          #");
 		System.out.println("	# [2] Remove kid       #");
@@ -87,10 +90,11 @@ public class TextUI {
 		System.out.println("	# [10] Check status    #");
 		System.out.println("	# [0] EXIT             #");
 		System.out.println("	########################");
+		System.out.println();
 		option = Teclado.readInteger();
 		
 		if(option<0 || option>10){
-			System.out.println("Opcion invalida");
+			System.out.println("Invalid option. Plese select from the menu");
 		}
 		return option;
 	}
@@ -210,9 +214,9 @@ public class TextUI {
 		//Asks for the place
 		place = this.askPlace();
 		
-		//Asks for the day
+		//Asks for the day TODO askDay
 		do {
-			System.out.println("Introduce the number of the day from 1 to 5 (Monday to Friday)");
+			System.out.println("Introduce the number of the day from 0 to 4 (Monday to Friday)");
 			weekDay = Teclado.readInteger();
 			if (weekDay == Integer.MIN_VALUE) {
 				System.out.println("Introduce a valid number");
@@ -305,7 +309,19 @@ public class TextUI {
 		return place;
 	}
 	
-	
+	/** TODO
+	private WeekDays askDay() {
+		int day;
+		do {
+			System.out.println("Introduce the number of the day from 0 to 4 (Monday to Friday)");
+			day = Teclado.readInteger();
+			if (day == Integer.MIN_VALUE) {
+				System.out.println("Introduce a valid number");
+			}
+		}while(day == Integer.MIN_VALUE);
+		
+	}
+	*/
 	
 	
 	
