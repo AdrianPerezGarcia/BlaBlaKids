@@ -65,7 +65,7 @@ public class Rides {
 	 * @param activity
 	 * @return The position of a Ride in an Rides array
 	 */
-	private int inWhichPosIs(Ride ride){
+	private int getPos(Ride ride){
 		int count = 0;
 		boolean end = false;
 		while(rides[count]!=null && end) {
@@ -85,7 +85,7 @@ public class Rides {
 	 */
 	public void removeRide(Ride ride) {
 		if(this.isIncluded(ride)) {
-			int pos = this.inWhichPosIs(ride);
+			int pos = this.getPos(ride);
 			rides[pos]=null;
 			this.compact(pos);
 			this.next--;
