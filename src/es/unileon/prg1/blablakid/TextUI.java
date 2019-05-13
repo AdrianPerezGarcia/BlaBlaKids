@@ -29,7 +29,7 @@ public class TextUI {
 					break;
 				//Remove kid
 				case 2:
-					//System.out.println("Not implemented");
+					//TODO falta borrar el kid del array de kids de su parent, si es que estaba incluido en alguno
 					Kid kidDelete = this.askKid();
 					try {
 						this.blablakid.getKids().remove(kidDelete);
@@ -48,7 +48,12 @@ public class TextUI {
 					break;
 				//Remove parent
 				case 4:
-					System.out.println("Not implemented");
+					//System.out.println("Not implemented");
+				try {
+					this.blablakid.getParents().removeParent(this.askParentRemove());
+				} catch (ParentException e) {
+					System.out.println(e.getMessage());
+				}
 					break;
 				//Add Activity
 				case 5:
@@ -147,7 +152,7 @@ public class TextUI {
 		String name =new String();
 		
 		do {
-			System.out.println("Introduce the name of the kid to add: ");
+			System.out.println("Introduce the name of the kid : ");
 			name = Teclado.readString();
 			
 			//Checks if the sintax is correct, if not it gives a warning
@@ -184,7 +189,7 @@ public class TextUI {
 			numberOfKids = Teclado.readInteger();
 			
 			if(numberOfKids<1 || numberOfKids==Integer.MIN_VALUE || numberOfKids>blablakid.getNumberOfKids()) {
-				System.out.println("Introduce a valid number of kids, at least 1 and no " + blablakid.getNumberOfKids());
+				System.out.println("Introduce a valid number of kids(Between 1 and" + blablakid.getNumberOfKids() + ")");
 			}
 		}while(numberOfKids<1 || numberOfKids==Integer.MIN_VALUE || numberOfKids>blablakid.getNumberOfKids());
 		Kids kids = new Kids(numberOfKids);
@@ -218,6 +223,23 @@ public class TextUI {
 		
 		parent = new Parent(name,kids,numberOfRides);
 		return parent;
+	}
+	
+	private Parent askParentRemove() {
+		String name =new String();
+		
+		do {
+			System.out.println("Introduce the name of the parent : ");
+			name = Teclado.readString();
+			
+			//Checks if the sintax is correct, if not it gives a warning
+			if(name.equals("")) {
+				System.out.println("Please, introduce a valid name.");
+			}		
+		
+		}while(name.equals(""));
+		
+		return this.blablakid.getParents().search(name);
 	}
 	
 	
