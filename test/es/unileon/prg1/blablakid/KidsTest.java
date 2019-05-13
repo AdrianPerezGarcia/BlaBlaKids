@@ -24,9 +24,9 @@ public class KidsTest {
 		this.kids = new Kids(3);
 		this.daniel = new Kid("Daniel");
 		this.kids.add(this.daniel);
-		beatriz = new Kid("Beatriz");
+		this.beatriz = new Kid("Beatriz");
 		this.kids.add(beatriz);
-		manuel = new Kid("Manuel");
+		this.manuel = new Kid("Manuel");
 		this.kids.add(manuel);
 	}
 

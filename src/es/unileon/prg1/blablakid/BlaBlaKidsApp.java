@@ -37,6 +37,9 @@ public class BlaBlaKidsApp {
 		
 		this.numberOfKids = numberKids;
 		this.numberOfParents = numberKids * 2;
+		this.kids = new Kids(this.numberOfKids);
+		this.parents = new Parents(this.numberOfParents);
+		
 		
 	}
 
@@ -73,7 +76,7 @@ public class BlaBlaKidsApp {
 	}
 	
 	public void add(Kid kid) throws KidException{
-		this.kids.add(kid);
+			this.kids.add(kid);
 	}
 	
 }

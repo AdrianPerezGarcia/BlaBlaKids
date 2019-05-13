@@ -12,8 +12,8 @@ public class TextUI {
 	}
 
 	
-	public void start(){
-		int select = 10;
+	public void start() {
+		int select;
 		
 		this.displayIntro();
 		do {
@@ -22,8 +22,11 @@ public class TextUI {
 				//Add Kid
 				case 1:
 					Kid kid = this.askKid();
-			
-					//TODO blablakid.add(kid);
+					try {
+						this.blablakid.add(kid);
+					} catch (KidException e) {
+						System.out.println(e.getMessage());
+					}
 					break;
 				//Remove kid
 				case 2:
@@ -57,7 +60,7 @@ public class TextUI {
 					break;
 				case 9:
 					System.out.println("Not implemented");
-					this.blablakid.getKids().toString();
+					System.out.println(this.blablakid.getKids().toString());
 					this.blablakid.getKids().toString();
 					break;
 				case 0:
@@ -130,7 +133,7 @@ public class TextUI {
 		String name =new String();
 		
 		do {
-			System.out.println("Introduce the name of the kidd to add: ");
+			System.out.println("Introduce the name of the kid to add: ");
 			name = Teclado.readString();
 			
 			//Checks if the sintax is correct, if not it gives a warning
