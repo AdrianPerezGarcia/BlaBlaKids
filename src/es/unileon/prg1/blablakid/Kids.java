@@ -171,7 +171,8 @@ public class Kids {
             return null;
         }
     }
-    -++
+    
+    
     /**
      * Method toString to print the status of the full array
      */

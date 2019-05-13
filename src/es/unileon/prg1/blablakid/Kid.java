@@ -59,7 +59,7 @@ public class Kid {
 	}
 
 	public Activities getActivities() {
-		return activities;
+		return activities; 
 	}
 
 }
