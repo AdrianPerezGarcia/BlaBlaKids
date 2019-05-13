@@ -20,7 +20,7 @@ public class Week {
 	/**
 	 * Constant that establish the maximum length of the array
 	 */
-	private final int MAXDAYS = 7;
+	private final int MAXDAYS = 5;
 
 	public Week() {
 		this.next = 0;

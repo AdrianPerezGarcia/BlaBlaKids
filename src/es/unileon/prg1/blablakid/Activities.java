@@ -81,9 +81,9 @@ public class Activities {
 	 * @return The position of the object inside the array
 	 */
 	private int inWhichPosIs(Activity activity) {
-		int count = 0;
+		int count = 0; 
 		boolean end = false;
-		while (activities[count] != null && end) {
+		while (activities[count] != null && !end) {
 			if (activities[count].isSame(activity)) {
 				end = true;
 			} else {
@@ -123,20 +123,19 @@ public class Activities {
 	}
 
 	public Activity search(String name, int day) {
+		Activity found = null;
 		boolean end = false;
 		int i = 0;
 		while ((i < this.next) && (!end)) {
-			if ((this.activities[i].getName() == name) && (this.activities[i].getDay().getNumDay() == day)) {
+			
+			if ((this.activities[i].getName().equals(name) ) && (this.activities[i].getDay().getNumDay() == day)) {
 				end = true;
+				found = activities[i];
 			} else {
 				i++;
 			}
-		}
-		if (end) {
-			return activities[i];
-		} else {
-			return null;
-		}
+		} 
+		return found;
 	}
 
 	@Override
