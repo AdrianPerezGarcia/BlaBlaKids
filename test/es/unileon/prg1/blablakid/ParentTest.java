@@ -93,5 +93,10 @@ public class ParentTest {
 		Parent parent2 = new Parent("Juan",parentKids2, 7);
 		assertFalse(this.parent.isSame(parent2));
 	}
-
+		
+	@Test
+	public void testGetDays() {
+		Week days = new Week();
+		assertEquals(days, this.parent.getDays());
+	}
 }
