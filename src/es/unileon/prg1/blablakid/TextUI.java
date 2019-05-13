@@ -24,15 +24,41 @@ public class TextUI {
 					Kid kid = this.askKid();
 					//TODO blablakid.add(kid);
 					break;
+				//Remove kid
+				case 2:
+					System.out.println("Not implemented");
+					break;
 				//Add Parent
 				case 3:
 					Parent parent = this.askParent();
 					//TODO blablakid.add(parent);
 					break;
+				//Remove parent
+				case 4:
+					System.out.println("Not implemented");
+					break;
 				//Add Activity
 				case 5:
 					Activity activity = this.askActivity();
 					//TODO blablakid.add(activity);
+					break;
+				//Remove Activity
+				case 6:
+					System.out.println("Not implemented");
+					break;
+				//Add Ride
+				case 7:
+					System.out.println("Not implemented");
+					break;
+				//Remove Ride
+				case 8:
+					System.out.println("Not implemented");
+					break;
+				case 9:
+					System.out.println("Not implemented");
+					break;
+				case 0:
+					System.out.println("Good Bye :)");
 					break;
 				default:
 					System.out.println("Please, select a valid option");

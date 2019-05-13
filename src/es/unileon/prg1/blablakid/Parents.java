@@ -1,7 +1,5 @@
 package es.unileon.prg1.blablakid;
 
-import java.util.Arrays;
-
 /**
  * @author PabloJ
  *
@@ -11,10 +9,7 @@ public class Parents {
 	 * @see Parent[]
 	 */
 	public Parent[] parents;
-	/**
-	 * @see int  Size of the array
-	 */
-	private int size;
+	
 	/**
 	 * @see int 
 	 */
@@ -29,8 +24,7 @@ public class Parents {
 	
 	public Parents(int numberOfParents) {
 		this.parents = new Parent[numberOfParents];
-		this.size = numberOfParents;
-		next = 0;
+		this.next = 0;
 		
 	}
 
@@ -46,17 +40,18 @@ public class Parents {
 		if (isIncluded(parent)) {
 			throw new ParentException("Error, parent is already included");
 		}
-		else {
-			if (this.next >= this.size) {
+		else if (this.next >= this.parents.length) {
+			
 				//If next is equal or bigger than the size of the array , the list of parents is full
 				throw new ParentException("Error, the list of parents is full!");
-			}
-			else {
+			
+		}
+		else {
 				this.parents[this.next] = parent;
 				this.next++;				
 			}
-		}		
-	}
+		}	
+				
 	
 	/**
 	 * 
@@ -79,28 +74,6 @@ public class Parents {
 			throw new ParentException("Error, the parent is not in the list");
 		}
 		// TODO Auto-generated method stub
-	}
-
-	/**
-	 * 
-	 * Getter of the full size of the array
-	 * 
-	 * @return the size
-	 */
-	
-	public int getSize() {
-		return size;
-	}
-	
-	/**
-	 * 
-	 * Getter of the length of the array
-	 * 
-	 * @return the length
-	 */
-	
-	public int getLength() {		
-		return parents.length;
 	}
 	
 	/**
@@ -149,7 +122,7 @@ public class Parents {
 	public boolean isIncluded(Parent parent) {
 		boolean resultado = false;
 		//Check in the loop if the parent is in the array, returning true if the parent is included in the array
-		for (int i = 0; i < this.parents.length; i++) {
+		for (int i = 0; i < this.next; i++) {
 			if (this.parents[i].isSame(parent)) {
 				resultado = true;
 			}
@@ -166,11 +139,11 @@ public class Parents {
 	 *  
 	 */
 	
-	public Parent searchParent(String name) {
+	public Parent search(String name) {
 		int count = 0;
 		boolean found = false;
 		/*The loop check in all the spaces of the array if the parent is included (through his name) */
-		while (count < this.parents.length && !found) {
+		while (count < this.next && !found) {
 			if (this.parents[count].getName().equals(name)) {
 				found = true;
 			}
@@ -179,7 +152,7 @@ public class Parents {
 			}
 		}
 		/* When the parent has been founded the method return the parent */
-		if (found == true) {
+		if (count != 0) {
 			return this.parents[count];
 		}
 		/* If the parent is not founded the method returns null */
@@ -212,10 +185,8 @@ public class Parents {
 	
 	@Override
 	public String toString() {
-		return "Parents [" + (parents != null ? "parents=" + Arrays.toString(parents) + ", " : "") + "size=" + size
-				+ ", next=" + next + "]";
+		return "Parents [" + this.parents + "]";
 	}
-	
 	
 
 
