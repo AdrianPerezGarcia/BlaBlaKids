@@ -1,6 +1,5 @@
 package es.unileon.prg1.blablakid;
- 
-import java.util.Arrays;
+
 /**
  * @author Adrian Perez
  *
@@ -178,7 +177,11 @@ public class Kids {
      */
     @Override
     public String toString() {
-        return "Kids [kids=" + Arrays.toString(kids) + "]";
+    	StringBuilder salida = new StringBuilder();
+        for (int i = 0; i < this.next; i++) {
+			salida.append(this.kids[i].toString()).append("\n");
+		}
+        return salida.toString();
     }
    
 }

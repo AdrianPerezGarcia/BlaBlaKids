@@ -49,18 +49,23 @@ public class Kid {
 		return (this.Name == kid2.getName());
 	}
 	
+	public Activities getActivities() {
+		return activities; 
+	}
+	
 	/**
 	 * 
 	 * @return String version with the name of the kid
 	 */
 	@Override
 	public String toString() {
-		return this.Name;
+		StringBuilder salida = new StringBuilder();
+		salida.append("****** ").append(this.Name).append(" ******\n");
+		salida.append(this.activities.toString());
+		return salida.toString();
 	}
 
-	public Activities getActivities() {
-		return activities; 
-	}
+
 
 }
 
