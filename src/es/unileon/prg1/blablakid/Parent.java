@@ -28,7 +28,7 @@ public class Parent {
 	 * @see Week
 	 * 
 	 */
-	private Week days[];
+	private Week days;
 	
 	/**
 	 * 
@@ -43,7 +43,7 @@ public class Parent {
 		this.Name = name;
 		this.kids = kids;
 		this.Rides = numberOfRides;
-		this.days = new Week[5];
+		this.days = new Week();
 	}
 	
 	
@@ -75,7 +75,7 @@ public class Parent {
 	 * 
 	 */
 
-	public Week[] getDays() {
+	public Week getDays() {
 		return days;
 	}
 	
