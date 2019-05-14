@@ -89,12 +89,8 @@ public class Parent {
 		boolean isSame = false;
 		
 		if (this.name.equals(parent2.getName())) {
-			if (this.rides == parent2.getRides()) {
-				if (this.kids.equals(parent2.getKids())) {
 				
-					isSame = true;
-				}
-			}
+					isSame = true;		
 		}
 		
 		return isSame;

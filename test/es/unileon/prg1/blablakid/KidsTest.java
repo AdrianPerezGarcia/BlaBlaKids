@@ -80,12 +80,12 @@ public class KidsTest {
 
 	@Test
 	public void testSearchOk() {
-		assertEquals(beatriz, this.kids.searchKid("Beatriz"));
+		assertEquals(beatriz, this.kids.search("Beatriz"));
 	}
 
 	@Test
 	public void testSearchFail() {
-		assertEquals(null, this.kids.searchKid("Martin"));
+		assertEquals(null, this.kids.search("Martin"));
 	}
 
 	@Test

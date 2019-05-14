@@ -56,10 +56,10 @@ public class BlaBlaKidsApp {
 	}
 		
 	public void add(Activity activity, String kidName) throws ActivityException, KidException {
-		if(this.kids.searchKid(kidName) == null) {
+		if(this.kids.search(kidName) == null) {
 			throw new KidException("The kid " + kidName + " doesn't exist.");
 		} else {
-			this.kids.searchKid(kidName).getActivities().add(activity);
+			this.kids.search(kidName).getActivities().add(activity);
 		}
 	}
 
@@ -70,12 +70,12 @@ public class BlaBlaKidsApp {
 			throw new ParentException(parentName + " doesn't exist.");
 		} else if (this.parents.search(parentName).getDays().search(numDay) == null) {
 			throw new ParentException(parentName + " doesn't have any activity on that day.");
-		} else if (this.kids.searchKid(kidName) == null) {
+		} else if (this.kids.search(kidName) == null) {
 			throw new KidException(kidName + " doesn't exist.");
-		} else if (this.kids.searchKid(kidName).getActivities().search(activityName, numDay) == null) {
+		} else if (this.kids.search(kidName).getActivities().search(activityName, numDay) == null) {
 			throw new ActivityException(kidName + " doesn't have the activity " + activityName);
 		} else {
-			this.kids.searchKid(kidName).getActivities().search(activityName, numDay);
+			this.kids.search(kidName).getActivities().search(activityName, numDay);
 			this.parents.search(parentName).getDays().search(numDay).getRides().addRide(ride);
 		}
 	}
