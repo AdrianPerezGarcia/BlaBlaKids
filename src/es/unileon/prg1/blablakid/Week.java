@@ -129,20 +129,18 @@ public class Week {
 	 * @return a kid is found, null if is not
 	 */
 	public Day search(int numDay) {
+		Day founDay = null;
 		boolean end = false;
 		int i = 0;
 		while ((i < this.next) && (!end)) {
 			if (week[i].getNumDay() == numDay) {
 				end = true;
+				founDay = week[i];
 			} else {
 				i++;
 			}
 		}
-		if (end) {
-			return this.week[i];
-		} else {
-			return null;
-		}
+		return founDay;
 	}
 }
 

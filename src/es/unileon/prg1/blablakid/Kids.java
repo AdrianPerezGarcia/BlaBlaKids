@@ -92,7 +92,7 @@ public class Kids {
             next--;
         }
         else{
-            throw new KidException("Error: kid wasn't included");
+            throw new KidException("Error: kid isn't included, so it can't be removed.");
         }
     }
  

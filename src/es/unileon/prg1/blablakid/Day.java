@@ -10,6 +10,11 @@ public class Day {
 	 * Number that establish the day of the week
 	 */
 	private WeekDays day;
+	
+	/**
+	 * Object that holds the array that the parent has on that day
+	 */
+	private Rides rides;
 
 	/**
 	 * @param day
@@ -39,6 +44,10 @@ public class Day {
 
 	public int getNumDay() {
 		return day.ordinal();
+	}
+	
+	public Rides getRides() {
+		return this.rides;
 	}
 
 	@Override

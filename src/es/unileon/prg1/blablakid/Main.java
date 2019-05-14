@@ -15,19 +15,13 @@ public class Main {
 			else{
 				try {
 					numberOfKids = Integer.parseInt(args[0]);
-					if(numberOfKids < 1) {
-						System.out.println("Error: The maximum number of children must be one at least.");
-					}
-					else {
-						BlaBlaKidsApp blablakid = new BlaBlaKidsApp(numberOfKids);
-						TextUI textUI = new TextUI(blablakid);
-						textUI.start();
-					}
-				}catch(NumberFormatException e) {
-					System.out.println("Error: Character introduced as argument is invalid.");
+					BlaBlaKidsApp blablakid = new BlaBlaKidsApp(numberOfKids);
+					TextUI textUI = new TextUI(blablakid);
+					textUI.start();
+				}catch(Exception e) {
+					System.out.println(e.getMessage());
 				}
 				
 			}
-		
 	}
 }

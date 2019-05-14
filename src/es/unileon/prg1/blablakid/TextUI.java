@@ -42,9 +42,9 @@ public class TextUI {
 					//Add Activity
 					case 5:
 						Activity activity = this.askActivity();
-						String askKid = new String("Introduce the name of the kid you want to add the activity to: ");
+						String askKid = new String("Name of the kid taking the activity: ");
 						String kidName = this.askString(askKid);
-						this.blablakid.add(activity, askKid);
+						this.blablakid.add(activity, kidName);
 						
 						break;
 					//Remove Activity
