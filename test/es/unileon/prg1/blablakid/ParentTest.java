@@ -31,15 +31,8 @@ public class ParentTest {
 	}
 	
 	@Test
-	public void testGetKids()throws KidException{
-		Kids parentKids2 = new Kids(3);
-		Kid Juan2 = new Kid("Juan");
-		Kid Roberto2 = new Kid("Roberto");
-		Kid Hector2 = new Kid("Hector");
-		parentKids2.add(Juan2);
-		parentKids2.add(Roberto2);
-		parentKids2.add(Hector2);
-		assertEquals(parentKids2, this.parent.getKids());
+	public void testGetKids() {
+		assertEquals("Roberto", this.parent.getKids().get(1));
 	}
 	
 	@Test
