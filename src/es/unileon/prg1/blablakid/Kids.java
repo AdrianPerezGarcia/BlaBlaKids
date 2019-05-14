@@ -122,10 +122,10 @@ public class Kids {
      */
     private int inWhichPosIs(Kid kid){
         int count = 0;
-        for (int i = 0; i < this.next; i++) {
-            if(this.kids[count].isSame(kid)) {
-                count = i;
-                i = this.next -1;
+        boolean end = false;
+        while( count < this.next && !end) {
+        	if(this.kids[count].isSame(kid)) {
+                end = true;
             }
         }
         return count;
@@ -154,25 +154,22 @@ public class Kids {
      *
      * @return The kid if there is anyone named like the parameter or null
      */
-    public Kid searchKid(String Name) {
+    public Kid search(String Name) {
         int count = 0;
         boolean end = false;
+        Kid found =  null;
         //I search in the array for a kid named as the parameter
         while(count < this.next && !end) {
             if ( this.kids[count].getName().equals(Name) ){
-                //If i found it i set a mark (count) in that spot and i finish the loop
+                //If i found it i set the kid valor to found and i finish the loop
+            	found = new Kid(kids[count].getName());
                 end = true;
             }else {
                 count++;
             }
         }
         //If count is different than the original value there is a kid named like the parameter in position count
-        if (end) {
-            return kids[count];
-        }
-        else {
-            return null;
-        }
+       return found;
     }
     
     

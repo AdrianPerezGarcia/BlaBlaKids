@@ -12,7 +12,7 @@ public class ParentTest {
 	public void setUp()throws KidException{
 		Kids parentKids = new Kids(3);
 		Kid Juan = new Kid("Juan");
-		Kid Roberto = new Kid("Alberto");
+		Kid Roberto = new Kid("Roberto");
 		Kid Hector = new Kid("Hector");
 		parentKids.add(Juan);
 		parentKids.add(Roberto);
@@ -56,7 +56,7 @@ public class ParentTest {
 	}
 	
 	@Test
-	public void testIsSameWrongName()throws KidException{
+	public void testIsSameWrong()throws KidException{
 		Kids parentKids2 = new Kids(3);
 		Kid Juan2 = new Kid("Juan");
 		Kid Roberto2 = new Kid("Roberto");
@@ -68,32 +68,6 @@ public class ParentTest {
 		assertFalse(this.parent.isSame(parent2));
 	}
 	
-	@Test
-	public void testIsSameWrongKids()throws KidException{
-		Kids parentKids2 = new Kids(3);
-		Kid Juan2 = new Kid("Juan");
-		Kid Roberto2 = new Kid("Robert");
-		Kid Hector2 = new Kid("Hector");
-		parentKids2.add(Juan2);
-		parentKids2.add(Roberto2);
-		parentKids2.add(Hector2);
-		Parent parent2 = new Parent("Juan",parentKids2, 6);
-		assertFalse(this.parent.isSame(parent2));
-	}
-	
-	@Test
-	public void testIsSameWrongRides()throws KidException{
-		Kids parentKids2 = new Kids(3);
-		Kid Juan2 = new Kid("Juan");
-		Kid Roberto2 = new Kid("Roberto");
-		Kid Hector2 = new Kid("Hector");
-		parentKids2.add(Juan2);
-		parentKids2.add(Roberto2);
-		parentKids2.add(Hector2);
-		Parent parent2 = new Parent("Juan",parentKids2, 7);
-		assertFalse(this.parent.isSame(parent2));
-	}
-		
 	@Test
 	public void testGetDays() {
 		Week days = new Week();
