@@ -88,7 +88,7 @@ public class Kids {
     public void remove(Kid kid) throws KidException{
         if( isIncluded(kid) ){
             int pos = inWhichPosIs(kid);
-            removeAndCompact(pos);
+            compact(pos);
             next--;
         }
         else{
@@ -136,15 +136,14 @@ public class Kids {
      *
      * @param position of the deleted kid
      */
-    private void removeAndCompact(int position) {
-        int i;
+    private void compact(int position) {
         //I use a loop to travel the array until next
-        for (i = position; i < (this.next-1) ; i++ ) {
+        for (int i = position; i < (this.next-1) ; i++ ) {
             //I make the compaction
             kids[i] = kids[i+1];
         }
         //Equals to null the last position of the loop
-        kids[i]=null;
+        kids[this.next - 1]=null;
     }
    
     /**
