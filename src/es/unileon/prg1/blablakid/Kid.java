@@ -60,7 +60,7 @@ public class Kid {
 	@Override
 	public String toString() {
 		StringBuilder salida = new StringBuilder();
-		salida.append("****** ").append(this.name).append(" ******\n");
+		salida.append(this.name);
 		salida.append(this.activities.toString());
 		return salida.toString();
 	}
