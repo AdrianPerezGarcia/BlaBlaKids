@@ -114,9 +114,17 @@ public class Activity {
 	@Override
 	public String toString() {
 		StringBuilder out = new StringBuilder();
-		out.append(name + " (" + place + " - " + day + ")" + startTime + " > " + endTime);
-		out.append(beforeRide.getStartPlace() + " > " + beforeRide.getEndPlace() + " : " + beforeRide.getStartTime() + "/" + beforeRide.getEndTime());
-		out.append(afterRide.getStartPlace() + " > " + afterRide.getEndPlace() + " : " + afterRide.getStartTime()+ "/" + beforeRide.getEndTime());
+		out.append(name + " (" + place + " - " + day + ")" + startTime + " > " + endTime+"\n");
+		if(beforeRide!=null) {
+			out.append(beforeRide.getStartPlace() + " > " + beforeRide.getEndPlace() + " : " + beforeRide.getStartTime() + "/" + beforeRide.getEndTime() + "\n");
+		}else {
+			out.append("No ride before "+name+" assigned\n");
+		}
+		if(afterRide!=null) {
+			out.append(afterRide.getStartPlace() + " > " + afterRide.getEndPlace() + " : " + afterRide.getStartTime()+ "/" + beforeRide.getEndTime() + "\n");
+		}else {
+			out.append("No ride after "+name+" assigned\n");
+		}
 		return out.toString();
 	}
 

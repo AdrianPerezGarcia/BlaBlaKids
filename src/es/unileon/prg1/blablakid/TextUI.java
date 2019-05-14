@@ -249,8 +249,9 @@ public class TextUI {
 		Activity activity = null;
 		String name;
 		Day day = null;
-		Hour startTime, endTime;
-		Place place;
+		Hour startTime = null;
+		Hour endTime = null;
+		Place place = null;
 		
 		
 		//Asks for the name
@@ -261,17 +262,29 @@ public class TextUI {
 		
 		//Asks for the place
 		place = this.askPlace();
+			
 		
 		// Asks for the day
-		day = this.askDay();
+		do {
+			day = this.askDay();
+		}while(day==null);
 		
-		//Asks for the start time
-		System.out.println("Start Time");
-		startTime = this.askHour();
+		do {
+			do {
+			//Asks for the start time
+			System.out.println("Start Time");
+			startTime = this.askHour();
+			}while(startTime==null);
 		
-		//Asks for the end time
-		System.out.println("End Time");
-		endTime = this.askHour();
+			do {
+			//Asks for the end time
+			System.out.println("End Time");
+			endTime = this.askHour();
+			}while(endTime==null);
+			if(!startTime.isLower(endTime)) {
+				System.out.println("Activity end time must be higher than start time");
+			}
+		}while(!startTime.isLower(endTime));
 		
 		activity = new Activity(name,place,day,startTime,endTime);
 		return activity;
@@ -381,6 +394,8 @@ public class TextUI {
 				 wday = WeekDays.FRIDAY;
 				 day = new Day(wday);
 				break;
+			default:
+				throw new DayException("Invalid day. Day must be between 0 and 4.");
 			}
 		} catch (DayException e) {
 			System.out.println(e.getMessage());

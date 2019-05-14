@@ -161,7 +161,7 @@ public class Kids {
         while(count < this.next && !end) {
             if ( this.kids[count].getName().equals(Name) ){
                 //If i found it i set the kid valor to found and i finish the loop
-            	found = new Kid(kids[count].getName());
+            	found = kids[count];
                 end = true;
             }else {
                 count++;
