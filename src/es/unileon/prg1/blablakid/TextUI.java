@@ -12,86 +12,88 @@ public class TextUI {
 
 	
 	public void start() {
-		int select;
-		
+		int select;		
 		this.displayIntro();
 		do {
 			select = this.displayMenu();
-			switch(select) {
-				//Add Kid
-				case 1:
-					Kid kid = this.askKid();
-					try {
+			
+			try {
+				switch(select) {
+					//Add Kid
+					case 1:
+						Kid kid = this.askKid();
 						this.blablakid.add(kid);
-					} catch (KidException e) {
-						System.out.println(e.getMessage());
-					}
-					break;
-				//Remove kid
-				case 2:
-					//TODO falta borrar el kid del array de kids de su parent, si es que estaba incluido en alguno
-					Kid kidDelete = this.askKid();
-					try {
+						break;
+					//Remove kid
+					case 2:
+						//TODO falta borrar el kid del array de kids de su parent, si es que estaba incluido en alguno
+						Kid kidDelete = this.askKid();
 						this.blablakid.getKids().remove(kidDelete);
-					} catch (KidException e) {
-						System.out.println(e.getMessage());
-				}
-					break;
-				//Add Parent
-				case 3:
-					Parent parent = this.askParent();
-					try {
+						break;
+					//Add Parent
+					case 3:
+						Parent parent = this.askParent();
 						this.blablakid.add(parent);
-					} catch (ParentException e){
-						System.out.println(e.getMessage());
-					}
-					break;
-				//Remove parent
-				case 4:
-					//System.out.println("Not implemented");
-				try {
+						break;
+					//Remove parent
+					case 4:
 					this.blablakid.getParents().removeParent(this.askParentRemove());
-				} catch (ParentException e) {
-					System.out.println(e.getMessage());
-				}
 					break;
-				//Add Activity
-				case 5:
-					Activity activity = this.askActivity();
-					//TODO blablakid.add(activity);
-					break;
-				//Remove Activity
-				case 6:
-					System.out.println("Not implemented");
-					break;
-				//Add Ride
-				case 7:
-					System.out.println("Not implemented");
-					break;
-				//Remove Ride
-				case 8:
-					System.out.println("Not implemented");
-					break;
-				case 9:
-					System.out.println("/////////////////////////////");
-				
-					System.out.println("KIDS:");
-					System.out.println(this.blablakid.getKids().toString());
+					//Add Activity
+					case 5:
+						Activity activity = this.askActivity();
+						String askKid = new String("Introduce the name of the kid you want to add the activity to: ");
+						String kidName = this.askString(askKid);
+						this.blablakid.add(activity, askKid);
+						
+						break;
+					//Remove Activity
+					case 6:
+						System.out.println("Not implemented");
+						break;
+					//Add Ride
+					case 7:
+						System.out.println("Not implemented");
+						break;
+					//Remove Ride
+					case 8:
+						System.out.println("Not implemented");
+						break;
+					case 9:
+						System.out.println("/////////////////////////////");
 					
-					System.out.println("\n PARENTS: \n");
-					System.out.println(this.blablakid.getParents().toString());
-					System.out.println("/////////////////////////////");
-					break;
-				case 0:
-					System.out.println("Good Bye :)");
-					break;
-				default:
-					System.out.println("Please, select a valid option");
-				//TODO Removes 
+						System.out.println("KIDS:");
+						System.out.println(this.blablakid.getKids().toString());
+						
+						System.out.println("\n PARENTS: \n");
+						System.out.println(this.blablakid.getParents().toString());
+						System.out.println("/////////////////////////////");
+						break;
+					case 0:
+						System.out.println("Good Bye :)");
+						break;
+					default:
+						System.out.println("Please, select a valid option");
+					//TODO Removes 
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());
 			}
 		}while(select!=0);
 	}
 	
+	private String askString(String question) {
+		System.out.println(question);
+		String output;
+		do{
+			output = Teclado.readString();
+		}while(output.equals(""));
+		
+		return output;
+	}
+
+
 	/**
 	 * Prints the apps menu
 	 * @return the option selected as an </CODE>int</CODE>
@@ -188,10 +190,10 @@ public class TextUI {
 			System.out.println("Introduce the number of kids that "+name+" has");
 			numberOfKids = Teclado.readInteger();
 			
-			if(numberOfKids<1 || numberOfKids==Integer.MIN_VALUE || numberOfKids>blablakid.getNumberOfKids()) {
-				System.out.println("Introduce a valid number of kids(Between 1 and" + blablakid.getNumberOfKids() + ")");
+			if(numberOfKids<1 || numberOfKids==Integer.MIN_VALUE || numberOfKids>blablakid.getKids().getLength()) {
+				System.out.println("Introduce a valid number of kids(Between 1 and" + blablakid.getKids().getLength() + ")");
 			}
-		}while(numberOfKids<1 || numberOfKids==Integer.MIN_VALUE || numberOfKids>blablakid.getNumberOfKids());
+		}while(numberOfKids<1 || numberOfKids==Integer.MIN_VALUE || numberOfKids>blablakid.getKids().getLength());
 		Kids kids = new Kids(numberOfKids);
 		
 		//Asks for the name of its kids

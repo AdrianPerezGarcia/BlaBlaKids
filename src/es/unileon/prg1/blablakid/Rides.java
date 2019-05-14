@@ -106,6 +106,9 @@ public class Rides {
 		return same;
 	}
 	
+	/**
+	 * @param pos
+	 */
 	private void compact(int pos) {
 		pos++; 
 		// The position is incremented so as to move to the object just behind the one that has been removed

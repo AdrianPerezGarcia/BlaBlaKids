@@ -3,12 +3,14 @@
     <property name="test" value="test"/>
     <property name="lib" value="lib/junit-4.8.2.jar"/>
     <property name="classes" value="classes"/>
+	<property name="doc" value="doc"/>
 
     <property name="paquetes" value="es.unileon.prg1.blablakid"/>
-    <property name="titulo" value="Compile, Run and run Tests"/>
+    <property name="titulo" value="BlaBlaKid"/>
 
     <target name="clean">
       <delete dir="${classes}"/>
+      <delete dir="${doc}"/>
     </target>
 
     <target name="compile" depends="clean">
@@ -43,6 +45,13 @@
 				</classpath>
 			</java>
 		</target>
-    <target name="todo" depends="test,run"/>
-
+ 	
+	<target name="doc" depends="clean">
+	      <mkdir dir="${doc}"/>
+		 <javadoc destdir="${doc}" splitindex = "true"	>
+		        <fileset dir="${src}" />
+		 </javadoc>
+	 </target>
+	
+	  <target name="todo" depends="doc,test,run"/>
 </project>
