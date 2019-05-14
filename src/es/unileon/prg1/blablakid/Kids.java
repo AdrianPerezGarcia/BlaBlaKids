@@ -41,6 +41,7 @@ public class Kids {
     public Kid get(int index) {
         return this.kids[index];
     }
+    
  
     /**
      *
@@ -50,6 +51,9 @@ public class Kids {
         return this.next;
     }
    
+    public int getLength() {
+    	return this.kids.length;
+    }
  
     /**
      * Method to add a kid from the array

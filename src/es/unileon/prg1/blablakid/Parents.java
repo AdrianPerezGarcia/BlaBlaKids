@@ -88,6 +88,11 @@ public class Parents {
 		return this.parents[index];
 	}
 	
+	public int getLength() {
+		return this.parents.length;
+	}
+	
+
 	/**
 	 * 
 	 * Method that shows in which position of the array is the parent

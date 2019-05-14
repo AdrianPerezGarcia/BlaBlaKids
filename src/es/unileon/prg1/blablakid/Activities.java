@@ -121,6 +121,10 @@ public class Activities {
 	public Activity get(int pos) {
 		return this.activities[pos];
 	}
+	
+	public int getLength() {
+		return this.activities.length;
+	}
 
 	public Activity search(String name, int day) {
 		Activity found = null;
