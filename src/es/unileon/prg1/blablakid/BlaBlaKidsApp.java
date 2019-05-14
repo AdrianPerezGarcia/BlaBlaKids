@@ -7,18 +7,6 @@ public class BlaBlaKidsApp {
 	
 	/**
 	 * 
-	 */
-	private int numberOfKids;
-	/**
-	 * 
-	 * Number of parents in BlablakidsApp
-	 * @see int 
-	 * 
-	 */
-	private int numberOfParents;
-	
-	/**
-	 * 
 	 *	Array of kids in BlaBlaKidsApp
 	 *	@see Kids
 	 *
@@ -33,28 +21,11 @@ public class BlaBlaKidsApp {
 	 */
 	private Parents parents;
 	
-	public BlaBlaKidsApp(int numberKids){
-		
-		this.numberOfKids = numberKids;
-		this.numberOfParents = numberKids * 2;
-		this.kids = new Kids(this.numberOfKids);
-		this.parents = new Parents(this.numberOfParents);
+	public BlaBlaKidsApp(int numberOfKids){
+		this.kids = new Kids(numberOfKids);
+		this.parents = new Parents(numberOfKids*2);
 		
 		
-	}
-
-	/**
-	 * @return the numberOfKids
-	 */
-	public int getNumberOfKids() {
-		return numberOfKids;
-	}
-
-	/**
-	 * @return the numberOfParents
-	 */
-	public int getNumberOfParents() {
-		return numberOfParents;
 	}
 
 	/**
@@ -79,5 +50,8 @@ public class BlaBlaKidsApp {
 			this.kids.add(kid);
 	}
 	
+	public void add(Activity activity, String kidName) throws ActivityException{
+		this.kids.searchKid(kidName).getActivities().add(activity);
+	}
 }
 
