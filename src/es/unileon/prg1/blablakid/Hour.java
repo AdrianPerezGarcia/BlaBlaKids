@@ -45,6 +45,7 @@ public class Hour {
 	}
 	
 	/**
+	 * Getter of the hour valor
 	 * 
 	 * @return hours of the Hour
 	 */
@@ -53,6 +54,7 @@ public class Hour {
 	}
 
 	/**
+	 * Getter of the minute valor
 	 * 
 	 * @return minutes of the Hour
 	 */
@@ -61,6 +63,7 @@ public class Hour {
 	}
 	
 	/**
+	 * Method to check is one hour is higher than other
 	 * 
 	 * @param Another hour to compare
 	 * 
@@ -80,6 +83,7 @@ public class Hour {
 	}
 	
 	/**
+	 * Method to check if two hours are equals
 	 * 
 	 * @param Another hour to compare
 	 * 
@@ -94,6 +98,7 @@ public class Hour {
 	}
 	
 	/**
+	 * Method to check if one hour is lower than other
 	 * 
 	 * @param Another hour to compare
 	 * 
@@ -113,13 +118,14 @@ public class Hour {
 	}
 
 	/**
+	 * Method who returns the classic version of an hour (hour:minutes)
 	 * 
 	 * @return Hour version in the classic format
 	 */
 	@Override
 	public String toString() {
 		StringBuilder result = new StringBuilder();
-		result.append(String.format("%02d",this.hour)).append(":").append(String.format("%02d",this.minute));
+		result.append(this.hour).append(":").append(this.minute);
 		return result.toString();
 	}
 	
