@@ -125,7 +125,7 @@ public class Hour {
 	@Override
 	public String toString() {
 		StringBuilder result = new StringBuilder();
-		result.append(this.hour).append(":").append(this.minute);
+		result.append(String.format("%02d",this.hour)).append(":").append(String.format("%02d",this.minute));
 		return result.toString();
 	}
 	
