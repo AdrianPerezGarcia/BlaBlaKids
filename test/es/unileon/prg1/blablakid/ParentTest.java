@@ -32,7 +32,7 @@ public class ParentTest {
 	
 	@Test
 	public void testGetKids() {
-		assertEquals("Roberto", this.parent.getKids().get(1));
+		assertEquals("Roberto", this.parent.getKids().get(1).getName());
 	}
 	
 	@Test

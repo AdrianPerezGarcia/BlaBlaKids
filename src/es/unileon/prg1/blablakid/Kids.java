@@ -13,7 +13,7 @@ public class Kids {
     public Kid[] kids;
    
     /**
-     * Indicator of the first position free int the array
+     * Indicator of the first position free on the array
      *
      * @see int
      */
@@ -32,6 +32,15 @@ public class Kids {
     }
  
     /**
+	 * Getter of the first free position of the array
+	 *
+	 * @return the number of kids included in the array
+	 */
+	public int getNumberOfKids() {
+	    return this.next;
+	}
+
+	/**
      * Getter of the kid at a specific position
      *
      * @param position of the array that you want to get the kid
@@ -44,14 +53,31 @@ public class Kids {
     
  
     /**
-     *
-     * @return the number of kids included in the array
-     */
-    public int getNumberOfKids() {
-        return this.next;
-    }
-   
-    public int getLength() {
+	 * Method who return in which position of the array is one Kid
+	 *
+	 * @param kid who wants to know the position
+	 *
+	 * @return int that contains the position (0 - length-1)
+	 */
+	private int getPos(Kid kid){
+	    int count = 0;
+	    boolean end = false;
+	    while( count < this.next && !end) {
+	    	if(this.kids[count].isSame(kid)) {
+	            end = true;
+	        } else {
+	        	count ++;
+	        }
+	    }
+	    return count;
+	}
+	
+	/**
+	 * Getter of the full length of the array
+	 * 
+	 * @return the length of the array
+	 */
+	public int getLength() {
     	return this.kids.length;
     }
  
@@ -87,7 +113,7 @@ public class Kids {
      */
     public void remove(Kid kid) throws KidException{
         if( isIncluded(kid) ){
-            int pos = inWhichPosIs(kid);
+            int pos = getPos(kid);
             compact(pos);
             next--;
         }
@@ -114,29 +140,9 @@ public class Kids {
     }
    
     /**
-     * Method who return in which position of the array is one Kid
-     *
-     * @param kid who wants to know the position
-     *
-     * @return int that contains the position (0 - length-1)
-     */
-    private int inWhichPosIs(Kid kid){
-        int count = 0;
-        boolean end = false;
-        while( count < this.next && !end) {
-        	if(this.kids[count].isSame(kid)) {
-                end = true;
-            } else {
-            	count ++;
-            }
-        }
-        return count;
-    }
-   
-    /**
      * Private method to compact the array after deleting a kid
      *
-     * @param position of the deleted kid
+     * @param position of the kid to be deleted
      */
     private void compact(int position) {
         //I use a loop to travel the array until next
@@ -160,7 +166,7 @@ public class Kids {
         boolean end = false;
         Kid found =  null;
         //I search in the array for a kid named as the parameter
-        while(count < this.next && !end) {
+        while( (count < this.next) && (!end) ) {
             if ( this.kids[count].getName().equals(Name) ){
                 //If i found it i set the kid valor to found and i finish the loop
             	found = kids[count];
@@ -169,13 +175,12 @@ public class Kids {
                 count++;
             }
         }
-        //If count is different than the original value there is a kid named like the parameter in position count
        return found;
     }
     
     
     /**
-     * Method toString to print the status of the full array
+     * Method toString to print the full array of kids as solicited in Show Summary Option
      */
     @Override
     public String toString() {
