@@ -101,9 +101,9 @@ public class Parent {
 	public String toString() {
 		StringBuilder salida = new StringBuilder();
 		
-		salida.append("######").append(this.name).append("######\n");
-		salida.append("Kids: \n").append(this.kids.toString()).append("\n");		
-		salida.append("Rides: \n").append(this.days.toString()).append("\n");
+		salida.append(this.name);
+		salida.append(this.kids.toString());		
+		salida.append(this.days.toString());
 			
 		return salida.toString();
 	}
