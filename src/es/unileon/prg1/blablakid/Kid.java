@@ -31,6 +31,7 @@ public class Kid {
 	}
 	
 	/**
+	 * Getter of the kid name
 	 * 
 	 * @return name of kid
 	 */
@@ -39,9 +40,18 @@ public class Kid {
 	}
 	
 	/**
+	 * Getter of the activities array 
+	 * 
+	 * @return activities object with all the activities that the kid have
+	 */
+	public Activities getActivities() {
+		return activities; 
+	}
+
+	/**
 	 * Method that check is two kid object are equal
 	 * 
-	 * @param kid2
+	 * @param kid to check if is same
 	 * 
 	 * @return boolean that is true if kids are same or false if not
 	 */
@@ -49,18 +59,15 @@ public class Kid {
 		return (this.name.equals(kid2.getName()));
 	}
 	
-	public Activities getActivities() {
-		return activities; 
-	}
-	
 	/**
+	 * Method toString as requested in the Show Summary option
 	 * 
 	 * @return String version with the name of the kid
 	 */
 	@Override
 	public String toString() {
 		StringBuilder salida = new StringBuilder();
-		salida.append(this.name);
+		salida.append("****** ").append(this.name).append(" ******");
 		salida.append(this.activities.toString());
 		return salida.toString();
 	}
