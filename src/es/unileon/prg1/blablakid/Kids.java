@@ -126,6 +126,8 @@ public class Kids {
         while( count < this.next && !end) {
         	if(this.kids[count].isSame(kid)) {
                 end = true;
+            } else {
+            	count ++;
             }
         }
         return count;
