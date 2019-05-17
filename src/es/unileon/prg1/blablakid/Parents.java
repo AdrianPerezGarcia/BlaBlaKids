@@ -34,7 +34,7 @@ public class Parents {
 	 * @param parent
 	 */
 	
-	public void addParent(Parent parent)throws ParentException{
+	public void add(Parent parent)throws ParentException{
 		// TODO Auto-generated method stub
 		//If the parent is not included add the parent into the first space that has no parent in it
 		if (isIncluded(parent)) {
@@ -61,7 +61,7 @@ public class Parents {
 	 * 
 	 */
 	
-	public void removeParent(Parent parent) throws ParentException{
+	public void remove(Parent parent) throws ParentException{
 		//If the parent is included take the position and removes the parent of the array
 		if (isIncluded(parent)) {
 			//Also compacts the array replacing the next parent

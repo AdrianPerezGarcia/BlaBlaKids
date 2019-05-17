@@ -48,7 +48,7 @@ public class BlaBlaKidsApp {
 	}
 
 	public void add(Parent parent) throws ParentException {
-		this.parents.addParent(parent);
+		this.parents.add(parent);
 	}
 
 	public void add(Kid kid) throws KidException {

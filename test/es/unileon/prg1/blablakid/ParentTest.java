@@ -63,7 +63,6 @@ public class ParentTest {
 	
 	@Test
 	public void testGetDays() {
-		Week days = new Week();
-		assertEquals(days, this.parent.getDays());
+		assertNull(this.parent.getDays().getDay(2));
 	}
 }

@@ -41,9 +41,9 @@ public class ParentsTest {
 		parent1 = new Parent("Juan", kids, 6);
 		parent2 = new Parent("Alvaro", kids2, 3);
 		parent3 = new Parent("Jose", kids3, 4);
-		parents.addParent(parent1);
-		parents.addParent(parent2);
-		parents.addParent(parent3);
+		parents.add(parent1);
+		parents.add(parent2);
+		parents.add(parent3);
 	}
 	
 	@Test
@@ -58,22 +58,37 @@ public class ParentsTest {
 
 	@Test(expected = ParentException.class)
 	public void testAddIncluded() throws ParentException, KidException {
-		this.parents.removeParent(parent2);
+		this.parents.remove(parent2);
 		Kids kids = new Kids(2);
 		Kid kid = new Kid("Daniel");
 		Kid kid2 = new Kid("Pablito");
 		kids.add(kid);
 		kids.add(kid2);
 		Parent parent = new Parent("Jose", kids, 1);
-		this.parents.addParent(parent);
+		this.parents.add(parent);
 	}
 
 	@Test(expected = KidException.class)
-	public void testAddFull() throws ParentException {
+	public void testAddFull() throws ParentException, KidException {
+		Kids kids = new Kids(2);
+		Kid kid = new Kid("Ezequiel");
+		Kid kid2 = new Kid("Antonio");
+		kids.add(kid);
+		kids.add(kid2);
+		Parent parent = new Parent("Joaquin", kids, 1);
+		this.parents.add(parent);
 	}
 
 	@Test
-	public void testAddOk() throws ParentException {
+	public void testAddOk() throws ParentException, KidException {
+		this.parents.remove(parent2);
+		Kids kids = new Kids(2);
+		Kid kid = new Kid("David");
+		Kid kid2 = new Kid("Angel");
+		kids.add(kid);
+		kids.add(kid2);
+		Parent parent = new Parent("Federico", kids, 1);
+		this.parents.add(parent);
 	}
 
 }
