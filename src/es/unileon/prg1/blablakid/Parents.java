@@ -65,7 +65,7 @@ public class Parents {
 		//If the parent is included take the position and removes the parent of the array
 		if (isIncluded(parent)) {
 			//Also compacts the array replacing the next parent
-			int position = inWhichPosIs(parent);
+			int position = getPos(parent);
 			compact(position);
 			this.next--;
 		}
@@ -102,11 +102,11 @@ public class Parents {
 	 * 
 	 */
 	
-	private int inWhichPosIs(Parent parent){
+	private int getPos(Parent parent){
 		int count = 0;
 		boolean end = false;
-		while(parents[count]!=null && end) {
-			if(parents[count].isSame(parent)) {
+		while(count < this.next && !end) {
+			if(this.parents[count].isSame(parent)) {
 				end = true;
 			}
 			else {
@@ -149,18 +149,17 @@ public class Parents {
 		boolean found = false;
 		Parent parentOut = null;
 		/*The loop check in all the spaces of the array if the parent is included (through his name) */
-		while (count < this.next && !found) {
+		while ((count < this.next) && (!found)) {
 			if (this.parents[count].getName().equals(name)) {
+				/* When the parent has been founded the method return the parent */
+				parentOut = this.parents[count];
 				found = true;
 			}
 			else {
 				count++;
 			}
 		}
-		/* When the parent has been founded the method return the parent */
-		if (count != 0) {
-			parentOut = this.parents[count];
-		}
+		
 		/* If the parent is not founded the method returns null */
 		
 		return parentOut;
@@ -180,7 +179,7 @@ public class Parents {
 			this.parents[i] = this.parents[i+1];
 		}
 		//Equals to null the last position of the loop
-		this.parents[i+1]=null; 
+		this.parents[this.next-1]=null; 
 	
 	}
 	
