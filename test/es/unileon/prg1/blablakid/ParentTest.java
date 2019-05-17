@@ -1,5 +1,9 @@
 package es.unileon.prg1.blablakid;
 
+/**
+ * @author Adrian Perez
+ *
+ */
 import static org.junit.Assert.*;
 
 import org.junit.Before;

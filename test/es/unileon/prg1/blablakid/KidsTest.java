@@ -85,7 +85,7 @@ public class KidsTest {
 
 	@Test
 	public void testSearchFail() {
-		assertEquals(null, this.kids.search("Martin"));
+		assertNull(this.kids.search("Martin"));
 	}
 
 	@Test

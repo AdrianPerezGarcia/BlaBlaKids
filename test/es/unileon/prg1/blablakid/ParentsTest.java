@@ -1,4 +1,5 @@
 package es.unileon.prg1.blablakid;
+
 /**
  * @author Adrian Perez
  *
@@ -68,7 +69,7 @@ public class ParentsTest {
 		this.parents.add(parent);
 	}
 
-	@Test(expected = KidException.class)
+	@Test(expected = ParentException.class)
 	public void testAddFull() throws ParentException, KidException {
 		Kids kids = new Kids(2);
 		Kid kid = new Kid("Ezequiel");
@@ -89,6 +90,52 @@ public class ParentsTest {
 		kids.add(kid2);
 		Parent parent = new Parent("Federico", kids, 1);
 		this.parents.add(parent);
+	}
+	
+	@Test
+	public void testGet() {
+		assertEquals(parent1, this.parents.get(0));
+	}
+	
+	@Test
+	public void testGetLength() {
+		assertEquals(3, this.parents.getLength());
+	}
+	
+	@Test(expected = ParentException.class)
+	public void testRemoveFail() throws KidException, ParentException {
+		Kids kids = new Kids(2);
+		Kid kid = new Kid("Juan");
+		Kid kid2 = new Kid("Alvaro");
+		kids.add(kid);
+		kids.add(kid2);
+		Parent parent = new Parent("Miguel", kids, 1);
+		this.parents.remove(parent);
+	}
+	
+	@Test
+	public void testInWhichPosIs() throws ParentException {
+		//Cause it is a private method, i cover it launching a method that calls him
+		this.parents.remove(parent1);
+	}
+	
+	@Test
+	public void testSearchOk() {
+		assertEquals(parent1, this.parents.search("Juan"));
+	}
+
+	@Test
+	public void testSearchFail() {
+		assertNull(this.parents.search("Francisco"));
+	}
+	
+	@Test
+	public void testToString() {
+		StringBuilder expected = new StringBuilder();
+		expected.append(this.parent1.toString()).append("\n");
+		expected.append(this.parent2.toString()).append("\n");
+		expected.append(this.parent3.toString()).append("\n");
+        assertEquals(expected.toString(), this.parents.toString());
 	}
 
 }
