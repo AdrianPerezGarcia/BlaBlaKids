@@ -25,7 +25,7 @@ public class Place {
 	}
 	
 	public boolean isSame(Place place2){
-		return (this.place ==  place2.getPlace());
+		return (this.place.equals(place2.getPlace()));
 	}
 
 	@Override

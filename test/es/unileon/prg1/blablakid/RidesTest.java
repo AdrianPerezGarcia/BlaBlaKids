@@ -47,7 +47,7 @@ public class RidesTest {
 	@Test(expected = RideException.class)
 	public void testAddIncluded() throws HourException, RideException{
 		
-		this.rides.removeRide(ride2);
+		this.rides.remove(ride2);
 		
 		Place startPlace = new Place("La Robla");
 		Place endPlace = new Place("Universidad de Leon");
@@ -74,9 +74,36 @@ public class RidesTest {
 	}
 	
 	@Test
-	public void testAddOk()throws RideException{
+	public void testAddOk()throws RideException, HourException{
 		
-		this.rides.removeRide(ride2);
+		this.rides.remove(ride2);
+		
+		Place startPlace = new Place("Murcia");
+		Place endPlace = new Place("Piscina de Trobajo");
+		Hour startHour = new Hour(18,00);
+		Hour endHour = new Hour(19,00);
+		
+		Ride ride = new Ride(startPlace, endPlace, startHour, endHour);
+		
+		this.rides.addRide(ride);
+		
+	}
+	
+	@Test
+	public void testGet() throws RideException {
+		
+		assertEquals(ride1, this.rides.get(0));
+	}
+	
+	@Test
+	public void testGetLength() {
+		
+		//assertEquals(3, this.rides.getLength);
+	}
+	
+	@Test
+	public void testRemoveFail() {
+		
 		
 	}
 }
