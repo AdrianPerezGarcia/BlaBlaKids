@@ -59,8 +59,8 @@ public class Ride{
 	 */
 	public boolean isSame(Ride ride) {
 		boolean same = false;
-		if (this.startPlace.equals(getStartPlace()) && this.endPlace.equals(ride.getEndPlace())
-				&& this.startTime.isSame(ride.getStartTime()) && this.endTime.isSame(ride.getEndTime())) {
+		if (this.startPlace.getPlace().equals(ride.getStartPlace().getPlace()) && this.endPlace.getPlace().equals(ride.getEndPlace().getPlace()) && 
+				this.startTime.isSame(ride.getStartTime()) && this.endTime.isSame(ride.getEndTime()) ) {
 			same = true;
 		}
 		return same;
