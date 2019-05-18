@@ -81,18 +81,38 @@ public class Rides {
 		return count;
 	}
 	
+	public Ride get(int pos) throws RideException {
+		Ride ride = null;
+		if(pos<0 || pos>=this.next) {
+			throw new RideException("Position out of range");
+			
+		}
+		else {
+			ride = this.rides[pos];
+		}
+		return ride;
+	}
+	
+	
 	/**
 	 * Remoces a Ride from an array
 	 * @param Ride that must be deleted
+	 * @throws RideException 
 	 */
-	public void removeRide(Ride ride) {
-		if(this.isIncluded(ride)) {
-			int pos = this.getPos(ride);
-			this.rides[pos]=null;
+	public void remove(Ride ride) throws RideException {
+		//If the ride is included take the position and removes the ride from the array
+		if (this.isIncluded(ride)) {
+			//Also compacts the array replacing the next parent
+			int pos = getPos(ride);
 			this.compact(pos);
 			this.next--;
 		}
+		else {
+			//If parent is not founded, throws an exception
+			throw new RideException("Error, the ride is not in the list");
+		}
 	}
+			
 
 	/**
 	 * Checks if a Ride is icluded in an array
@@ -112,14 +132,13 @@ public class Rides {
 	 * @param pos
 	 */
 	private void compact(int pos) {
-		pos++; 
-		// The position is incremented so as to move to the object just behind the one that has been removed
-		//When the array finds null the compaction is over
-		while(this.rides[pos] != null) { 
-			//Guardo en la posicion anterior la posicion en la que me encuentro, es decir, desplazo todas a la izquierda desde el objeto que borro
-			// The objects are moved one position to the left
-			this.rides[(pos-1)] = this.rides[pos];
-			pos++;
+		int i;
+		//I use a loop to travel the array until next
+		for (i = pos; i < (this.next-1) ; i++ ){ 
+			//I make the compaction
+			this.rides[i] = this.rides[i+1];
 		}
+		//Equals to null the last position of the loop
+		this.rides[this.next-1]=null; 
 	}
 }
