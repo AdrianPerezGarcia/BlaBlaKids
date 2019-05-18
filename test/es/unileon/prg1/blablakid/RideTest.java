@@ -36,25 +36,58 @@ public class RideTest {
 	}
 	
 	@Test
-	public void testIsNotSameStartPlace() {
+	public void testIsNotSameStartPlace() throws HourException, RideException{
 		
+		Place startPlace2 = new Place("Poligono");
+		Place endPlace2 = new Place("Casa");
+		Hour startHour2 = new Hour(22,00);
+		Hour endHour2 = new Hour(23,00);
 		
-	}
-	
-	@Test
-	public void testIsNotSameEndPlace() {
+		Ride viaje2 = new Ride(startPlace2, endPlace2, startHour2, endHour2);
 		
-		
-	}
-	
-	@Test
-	public void testIsNotSameStartHour() {
-		
+		assertFalse(this.viaje.isSame(viaje2));		
 		
 	}
 	
 	@Test
-	public void testIsNotSameEndHour() {
+	public void testIsNotSameEndPlace() throws HourException, RideException{
+		
+		Place startPlace2 = new Place("Palomera");
+		Place endPlace2 = new Place("Puticlub");
+		Hour startHour2 = new Hour(22,00);
+		Hour endHour2 = new Hour(23,00);
+		
+		Ride viaje2 = new Ride(startPlace2, endPlace2, startHour2, endHour2);
+		
+		assertFalse(this.viaje.isSame(viaje2));
+		
+	}
+	
+	@Test
+	public void testIsNotSameStartHour() throws HourException, RideException{
+		
+		Place startPlace2 = new Place("Palomera");
+		Place endPlace2 = new Place("Casa");
+		Hour startHour2 = new Hour(22,30);
+		Hour endHour2 = new Hour(23,00);
+		
+		Ride viaje2 = new Ride(startPlace2, endPlace2, startHour2, endHour2);
+		
+		assertFalse(this.viaje.isSame(viaje2));
+		
+	}
+	
+	@Test
+	public void testIsNotSameEndHour() throws HourException, RideException{
+		
+		Place startPlace2 = new Place("Palomera");
+		Place endPlace2 = new Place("Casa");
+		Hour startHour2 = new Hour(22,00);
+		Hour endHour2 = new Hour(23,30);
+		
+		Ride viaje2 = new Ride(startPlace2, endPlace2, startHour2, endHour2);
+		
+		assertFalse(this.viaje.isSame(viaje2));
 		
 		
 	}
