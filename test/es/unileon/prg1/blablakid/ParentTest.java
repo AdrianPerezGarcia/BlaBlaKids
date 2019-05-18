@@ -10,7 +10,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class ParentTest {
-	Parent parent;
+	
+	private Parent parent;
 
 	@Before
 	public void setUp()throws KidException{

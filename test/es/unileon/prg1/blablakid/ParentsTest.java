@@ -46,16 +46,6 @@ public class ParentsTest {
 		parents.add(parent2);
 		parents.add(parent3);
 	}
-	
-	@Test
-	public void testisIncluded() throws KidException {
-		assertTrue(this.parents.isIncluded(parent1));
-		Kids kids = new Kids(1);
-		Kid kid = new Kid("carlos");
-		kids.add(kid);
-		Parent parent = new Parent("Joaquin", kids, 2);
-		assertFalse(this.parents.isIncluded(parent));
-	}
 
 	@Test(expected = ParentException.class)
 	public void testAddIncluded() throws ParentException, KidException {
