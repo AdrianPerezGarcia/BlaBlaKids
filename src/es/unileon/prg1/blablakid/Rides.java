@@ -41,7 +41,7 @@ public class Rides {
 				count++;
 			}
 		}
-		return rides[count];
+		return this.rides[count];
 	}
 	
 	public void addRide(Ride ride) throws RideException{
@@ -57,7 +57,7 @@ public class Rides {
 				throw new RideException("Error: Ride list is full");
 			}
 			else {
-				rides[this.next] = ride;
+				this.rides[this.next] = ride;
 				this.next++;
 			}
 		}
@@ -70,8 +70,8 @@ public class Rides {
 	private int getPos(Ride ride){
 		int count = 0;
 		boolean end = false;
-		while(rides[count]!=null && end) {
-			if(rides[count].isSame(ride)) {
+		while(this.rides[count]!=null && end) {
+			if(this.rides[count].isSame(ride)) {
 				end = true;
 			}
 			else {
@@ -88,7 +88,7 @@ public class Rides {
 	public void removeRide(Ride ride) {
 		if(this.isIncluded(ride)) {
 			int pos = this.getPos(ride);
-			rides[pos]=null;
+			this.rides[pos]=null;
 			this.compact(pos);
 			this.next--;
 		}
@@ -101,7 +101,7 @@ public class Rides {
 	private boolean isIncluded(Ride ride) {
 		boolean same = false;
 		for (int i = 0; i < next; i++) {
-			if(rides[i].isSame(ride)) {
+			if(this.rides[i].isSame(ride)) {
 				same = true;
 			}
 		}
@@ -115,10 +115,10 @@ public class Rides {
 		pos++; 
 		// The position is incremented so as to move to the object just behind the one that has been removed
 		//When the array finds null the compaction is over
-		while(rides[pos] != null) { 
+		while(this.rides[pos] != null) { 
 			//Guardo en la posicion anterior la posicion en la que me encuentro, es decir, desplazo todas a la izquierda desde el objeto que borro
 			// The objects are moved one position to the left
-			rides[(pos-1)] = rides[pos];
+			this.rides[(pos-1)] = this.rides[pos];
 			pos++;
 		}
 	}
