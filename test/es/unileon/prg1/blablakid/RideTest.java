@@ -9,50 +9,54 @@ public class RideTest {
 	private Ride viaje;
 	
 	@Before	
-	public void setUp()throws RideException, HourException, DayException, KidException{
+	public void setUp()throws RideException, HourException{
 		
-		Kids niños = new Kids(2);
-		Kid daniel = new Kid("Daniel");
-		Kid pablo = new Kid("Pablo");
-		niños.add(daniel);
-		niños.add(pablo);		
-			Parent pedro = new Parent("Pedro",niños, 3);
-			Place startPlace = new Place("Palomera");
-		Hour startTimeActivity = new Hour(18,00);
-		Hour endTimeActivity = new Hour(20,00);
-		WeekDays day = WeekDays.MONDAY;
-		Day today = new Day(day);
-			Activity baloncesto = new Activity("Baloncesto", startPlace, today, startTimeActivity, endTimeActivity);
-			Place endPlace = new Place("Casa");
-			Hour startTime = new Hour(20,00);
-			Hour endTime = new Hour(21,00);
+		Place startPlace = new Place("Palomera");
+		Place endPlace = new Place("Casa");
+		Hour startHour = new Hour(22,00);
+		Hour endHour = new Hour(23,00);
 		
-		this.viaje = new Ride(pedro,baloncesto,startPlace,endPlace,startTime,endTime,false);
+		
+		this.viaje = new Ride(startPlace, endPlace, startHour, endHour);
 		
 	}
 	
 	@Test
-	public void testIsSame() throws HourException, DayException, KidException, RideException {
+	public void testIsSame() throws HourException, RideException {
 		
-		Kids niños = new Kids(2);
-		Kid daniel = new Kid("Daniel");
-		Kid pablo = new Kid("Pablo");
-		niños.add(daniel);
-		niños.add(pablo);		
-			Parent pedro = new Parent("Pedro",niños, 3);
-			Place startPlace = new Place("Palomera");
-		Hour startTimeActivity = new Hour(18,00);
-		Hour endTimeActivity = new Hour(20,00);
-		WeekDays day = WeekDays.MONDAY;
-		Day today = new Day(day);
-			Activity baloncesto = new Activity("Baloncesto", startPlace, today, startTimeActivity, endTimeActivity);
-			Place endPlace = new Place("Casa");
-			Hour startTime = new Hour(20,00);
-			Hour endTime = new Hour(21,00);
+		Place startPlace2 = new Place("Palomera");
+		Place endPlace2 = new Place("Casa");
+		Hour startHour2 = new Hour(22,00);
+		Hour endHour2 = new Hour(23,00);
 		
-		Ride viaje2 = new Ride(pedro,baloncesto,startPlace,endPlace,startTime,endTime,false);
+		
+		Ride viaje2 = new Ride(startPlace2, endPlace2, startHour2, endHour2);
 		
 		assertTrue(this.viaje.isSame(viaje2));
+	}
+	
+	@Test
+	public void testIsNotSameStartPlace() {
+		
+		
+	}
+	
+	@Test
+	public void testIsNotSameEndPlace() {
+		
+		
+	}
+	
+	@Test
+	public void testIsNotSameStartHour() {
+		
+		
+	}
+	
+	@Test
+	public void testIsNotSameEndHour() {
+		
+		
 	}
 	
 	
