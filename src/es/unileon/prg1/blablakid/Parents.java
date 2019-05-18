@@ -124,7 +124,7 @@ public class Parents {
 	 *  
 	 */
 	
-	public boolean isIncluded(Parent parent) {
+	private boolean isIncluded(Parent parent) {
 		boolean resultado = false;
 		//Check in the loop if the parent is in the array, returning true if the parent is included in the array
 		for (int i = 0; i < this.next; i++) {

@@ -46,7 +46,7 @@ public class RidesTest {
 	@Test
 	public void isIncluded() {
 		
-		
+		assertTrue(this.rides.isIncluded(ride1));
 	}
 	
 	@Test
