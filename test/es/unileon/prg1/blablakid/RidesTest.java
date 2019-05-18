@@ -1,5 +1,7 @@
 package es.unileon.prg1.blablakid;
 
+import static org.junit.Assert.*;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -42,34 +44,39 @@ public class RidesTest {
 		
 	}
 	
-	
-	@Test
-	public void isIncluded() {
+	@Test(expected = RideException.class)
+	public void testAddIncluded() throws HourException, RideException{
 		
-		assertTrue(this.rides.isIncluded(ride1));
-	}
-	
-	@Test
-	public void isNotIncluded() {
+		this.rides.removeRide(ride2);
 		
+		Place startPlace = new Place("La Robla");
+		Place endPlace = new Place("Universidad de Leon");
+		Hour startHour = new Hour(11,00);
+		Hour endHour = new Hour(12,00);
 		
+		Ride ride = new Ride(startPlace, endPlace, startHour, endHour);
+		
+		this.rides.addRide(ride);
 	}
 	
 	@Test(expected = RideException.class)
-	public void testAddIncluded() {
+	public void testAddFull() throws HourException, RideException{
 		
+		Place startPlace = new Place("Mercadona");
+		Place endPlace = new Place("La Lastra");
+		Hour startHour = new Hour(16,00);
+		Hour endHour = new Hour(17,00);
 		
-	}
-	
-	@Test(expected = RideException.class)
-	public void testAddFull() {
+		Ride ride = new Ride (startPlace, endPlace, startHour, endHour);
 		
+		this.rides.addRide(ride);
 		
 	}
 	
 	@Test
 	public void testAddOk()throws RideException{
 		
+		this.rides.removeRide(ride2);
 		
 	}
 }
