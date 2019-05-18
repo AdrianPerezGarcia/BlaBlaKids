@@ -6,8 +6,6 @@ package es.unileon.prg1.blablakid;
  */
 import static org.junit.Assert.*;
 
-import java.util.Arrays;
-
 import org.junit.Before;
 import org.junit.Test;
 
