@@ -141,4 +141,10 @@ public class Rides {
 		//Equals to null the last position of the loop
 		this.rides[this.next-1]=null; 
 	}
+	
+	public int getLength() {
+		
+		return this.rides.length;
+		
+	}
 }

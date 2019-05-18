@@ -98,12 +98,46 @@ public class RidesTest {
 	@Test
 	public void testGetLength() {
 		
-		//assertEquals(3, this.rides.getLength);
+		assertEquals(3, this.rides.getLength());
 	}
 	
 	@Test
-	public void testRemoveFail() {
+	public void testRemoveFail() throws HourException, RideException {
 		
+		Place startPlace = new Place("Palomera");
+		Place endPlace = new Place("Lidl");
+		Hour startHour = new Hour(12,00);
+		Hour endHour = new Hour(13,00);
+		
+		Ride ride = new Ride(startPlace, endPlace, startHour, endHour);
+		
+		this.rides.remove(ride);
 		
 	}
+	
+	@Test
+	public void getPos() throws RideException {
+		//With this method I don't miss any branch in remove from Rides
+		this.rides.remove(ride1);
+		
+	}
+	
+	@Test
+	public void searchOk() {
+		
+		assertEquals(ride1, this.rides.search("Palomera", "Casa"));
+	}
+	
+	@Test
+	public void searchFail() {
+		
+		assertNull(this.rides.search("Pamplona", "Colegio"));
+	}
+	
+	@Test
+	public void testToString() {
+		
+	}
+	
+	
 }
