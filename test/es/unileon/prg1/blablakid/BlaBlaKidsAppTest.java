@@ -15,10 +15,16 @@ public class BlaBlaKidsAppTest {
 		this.blablakid = new BlaBlaKidsApp(3);
 	}
 	
+	@Test(expected = BlaBlaKidException.class)
+	public void testWrongConstructor() throws BlaBlaKidException {
+		@SuppressWarnings("unused")
+		BlaBlaKidsApp app = new BlaBlaKidsApp(-1);
+	}
+	
 	@Test
 	public void testGetKids() throws KidException {
 		Kid kid = new Kid("Naiara");
-		blablakid.getKids().add(kid);
+		blablakid.add(kid);
 		assertEquals("Naiara", this.blablakid.getKids().get(0).getName());
 	}
 	
@@ -32,12 +38,6 @@ public class BlaBlaKidsAppTest {
 		Parent parent = new Parent("Argimiro", kidsParents, 3);
 		blablakid.add(parent);
 		assertEquals("Argimiro", blablakid.getParents().get(0).getName());
-	}
-	
-	@Test
-	public void testAddKid() throws KidException {
-		Kid kid = new Kid("Hermenegilda");
-		blablakid.add(kid);
 	}
 	
 }
