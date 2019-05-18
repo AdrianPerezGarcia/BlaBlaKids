@@ -92,5 +92,10 @@ public class KidsTest {
 	public void testToString() {
 		assertEquals("Kids [kids=[Daniel, Beatriz, Manuel]]", this.kids.toString());
 	}
+	
+	@Test
+	public void testGetLength() {
+		assertEquals(3, this.kids.getLength());
+	}
 
 }

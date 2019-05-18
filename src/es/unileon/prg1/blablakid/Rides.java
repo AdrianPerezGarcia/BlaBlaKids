@@ -1,4 +1,6 @@
 package es.unileon.prg1.blablakid;
+
+
 /**
  * @author Hector Castro
  *
@@ -25,14 +27,14 @@ public class Rides {
 	}
 
 	/**
-	 * Adds a Ride to an array
-	 * @param Ride that must be added
+	 * 
+	 * @param Ride that must be found
 	 */
-	public Ride search(String activityName,boolean beforeRide) {
+	public Ride search(String startPlace,String endPlace) {
 		boolean found = false;
 		int count = 0;
 		while(!found && count<this.rides.length) {
-			if(activityName.equals(this.rides[count].getActivity().getName()) && beforeRide == this.rides[count].isBeforeRide()) {
+			if(startPlace.equals(this.rides[count].getStartPlace().getPlace()) && endPlace.equals(this.rides[count].getEndPlace().getPlace())) {
 				found = true;
 			}
 			else {

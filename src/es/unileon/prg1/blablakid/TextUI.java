@@ -1,6 +1,6 @@
 package es.unileon.prg1.blablakid;
 /**
- * @author Hector Castro
+ * @author Hector Castro, Pablo Bayon
  *
  */
 public class TextUI {
@@ -37,7 +37,7 @@ public class TextUI {
 						break;
 					//Remove parent
 					case 4:
-					this.blablakid.getParents().removeParent(this.askParentRemove());
+					this.blablakid.getParents().remove(this.askParentRemove());
 					break;
 					//Add Activity
 					case 5:
@@ -49,14 +49,25 @@ public class TextUI {
 						break;
 					//Remove Activity
 					case 6:
+						//TODO
 						System.out.println("Not implemented");
 						break;
 					//Add Ride
 					case 7:
-						System.out.println("Not implemented");
+						String askParent = "Name of the parent in charge of the ride: ";
+						String parentRide = this.askString(askParent);
+						String askActivity = "Name of the activity of the ride: ";
+						String activityRide = this.askString(askActivity);
+						String askKidRide = "Name of the kid taking the activity: ";
+						String kidRide = this.askString(askKidRide);
+						System.out.println("Introduce the number of the day from 0 to 4 (Monday to Friday)");
+						int numDay = Teclado.readInteger();
+						Ride ride = this.askRide();
+						this.blablakid.add(ride, parentRide, kidRide, activityRide, numDay);
 						break;
 					//Remove Ride
 					case 8:
+						//TODO
 						System.out.println("Not implemented");
 						break;
 					case 9:
@@ -68,6 +79,10 @@ public class TextUI {
 						System.out.println("\n PARENTS: \n");
 						System.out.println(this.blablakid.getParents().toString());
 						System.out.println("/////////////////////////////");
+						break;
+					case 10:
+						//TODO
+						System.out.println("Not implemented.");
 						break;
 					case 0:
 						System.out.println("Good Bye :)");
@@ -290,26 +305,57 @@ public class TextUI {
 		return activity;
 	}
 	
-	/*TODO
-	private Ride askRide() {
-		String parent = new String();
-		String activity = new String();
-		String startPlace = new String();
-		String endPlace = new String();
-		Hour startTime, endTime;
-		boolean beforeRide;
-		//Gets the parent that makes the ride
-		do {
-			System.out.println("Intorduce the name of the parent that makes the ride: ");
-			parent = Teclado.readString();
-		}while(parent.equals(""));
 	
+	private Ride askRide() {
+		String startPlaceString = new String();
+		Place startPlace = null;
+		String endPlaceString = new String();
+		Place endPlace = null;
+		Hour startTime = null;
+		Hour endTime = null;
 		
-		//TODO pedir lo demas
-		Ride ride = new Ride(parent,activity,startPlace,endPlace,startTime,endTime);
+		Ride ride = null;
+		
+		do {
+			System.out.println("Where does the ride start? ");
+			startPlaceString = Teclado.readString();
+		} while(startPlaceString.equals(""));
+		
+		startPlace = new Place(startPlaceString);
+		
+		
+		do {
+			System.out.println("Where does the ride end? ");
+			endPlaceString = Teclado.readString();
+		} while(endPlaceString.equals(""));
+		
+		endPlace = new Place(endPlaceString);
+		
+		do {
+			do {
+			//Asks for the start time
+			System.out.println("When does the ride start?");
+			startTime = this.askHour();
+			}while(startTime==null);
+		
+			do {
+			//Asks for the end time
+			System.out.println("When does the ride end?");
+			endTime = this.askHour();
+			}while(endTime==null);
+			if(!startTime.isLower(endTime)) {
+				System.out.println("Activity end time must be higher than start time");
+			}
+		}while(!startTime.isLower(endTime));
+		try {
+			ride = new Ride(startPlace,endPlace,startTime,endTime);
+		} catch (RideException e) {
+			System.out.println(e.getMessage());
+		}
+		
 		return ride;
 	}
-   */
+
 	
 	private Hour askHour() {
 		Hour hour = null;
