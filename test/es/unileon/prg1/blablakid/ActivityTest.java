@@ -89,9 +89,24 @@ public class ActivityTest {
 		assertTrue(this.actividad.getEndTime().isSame(this.endTime));
 	}
 
+
 	@Test
-	public void testToString() {
-		//TODO
+	public void testToStringNoRides() {
+		StringBuilder out = new StringBuilder();
+		out.append(name + " (" + palomera + " - " + day + ")" + startTime + " > " + endTime+"\n");
+		out.append("No ride before "+name+" assigned\n");
+		out.append("No ride after "+name+" assigned\n");
+		assertTrue(out.toString().equals(this.actividad.toString()));
 	}
-	 
+
+	@Test
+	public void testToStringRides() {
+		this.actividad.setBeforeRide(beforeRide);
+		this.actividad.setAfterRide(afterRide);
+		StringBuilder out = new StringBuilder();
+		out.append(name + " (" + palomera + " - " + day + ")" + startTime + " > " + endTime+"\n");
+		out.append(beforeRide.getStartPlace() + " > " + beforeRide.getEndPlace() + " : " + beforeRide.getStartTime() + "/" + beforeRide.getEndTime() + "\n");
+		out.append(afterRide.getStartPlace() + " > " + afterRide.getEndPlace() + " : " + afterRide.getStartTime()+ "/" + beforeRide.getEndTime() + "\n");
+		assertTrue(out.toString().equals(this.actividad.toString()));
+	} 
 }
