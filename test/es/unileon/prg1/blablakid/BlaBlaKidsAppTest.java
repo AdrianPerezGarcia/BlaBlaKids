@@ -22,14 +22,14 @@ public class BlaBlaKidsAppTest {
 	}
 	
 	@Test
-	public void testGetKids() throws KidException {
+	public void testGetAndAddKids() throws KidException {
 		Kid kid = new Kid("Naiara");
 		blablakid.add(kid);
 		assertEquals("Naiara", this.blablakid.getKids().get(0).getName());
 	}
 	
 	@Test
-	public void testGetParents() throws KidException, ParentException {
+	public void testGetAndAddParents() throws KidException, ParentException {
 		Kids kidsParents = new Kids(2);
 		Kid kidParent = new Kid("Adoracion");
 		Kid kidParent2 = new Kid("Camino");
@@ -38,6 +38,30 @@ public class BlaBlaKidsAppTest {
 		Parent parent = new Parent("Argimiro", kidsParents, 3);
 		blablakid.add(parent);
 		assertEquals("Argimiro", blablakid.getParents().get(0).getName());
+	}
+	
+	@Test
+	public void testAddActivities() throws DayException, HourException, KidException, ActivityException {
+		Kid kid = new Kid("Adrian");
+		this.blablakid.add(kid);
+		Place place = new Place("Biblioteca");
+		WeekDays wDay = WeekDays.MONDAY;
+		Day day = new Day(wDay);
+		Hour startHour = new Hour(8, 00);
+		Hour endHour = new Hour(23, 59);
+		Activity activity = new Activity("Programar", place, day, startHour, endHour);
+		this.blablakid.add(activity, "Adrian");
+	}
+	
+	@Test (expected = KidException.class)
+	public void testAddActivitiesWrong() throws DayException, HourException, KidException, ActivityException {
+		Place place = new Place("Biblioteca");
+		WeekDays wDay = WeekDays.MONDAY;
+		Day day = new Day(wDay);
+		Hour startHour = new Hour(8, 00);
+		Hour endHour = new Hour(23, 59);
+		Activity activity = new Activity("Programar", place, day, startHour, endHour);
+		this.blablakid.add(activity, "Adrian");
 	}
 	
 }
