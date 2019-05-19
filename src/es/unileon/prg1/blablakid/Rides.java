@@ -143,8 +143,18 @@ public class Rides {
 	}
 	
 	public int getLength() {
-		
 		return this.rides.length;
-		
+	}
+	
+	public String toString() {
+		StringBuilder out = new StringBuilder();
+		for (int i = 0; i<this.next; i++) {
+			try {
+				out.append(this.get(i).toString() + "\n");
+			} catch (RideException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return out.toString();
 	}
 }

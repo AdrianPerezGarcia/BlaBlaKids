@@ -65,5 +65,9 @@ public class Ride{
 		}
 		return same;
 	}
-
+	public String toString() { 
+		StringBuilder out = new StringBuilder();
+		out.append(startPlace + " > " + endPlace + " : " + this.getStartTime().toString() + "/" + this.getEndTime().toString() );
+		return out.toString();
+	}
 }
