@@ -1,5 +1,10 @@
 package es.unileon.prg1.blablakid;
 
+/**
+ * @author PabloJ
+ *
+ */
+
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;

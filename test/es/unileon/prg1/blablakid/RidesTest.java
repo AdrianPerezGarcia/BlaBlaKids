@@ -1,5 +1,10 @@
 package es.unileon.prg1.blablakid;
 
+/**
+ * @author PabloJ
+ *
+ */
+
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -137,7 +142,10 @@ public class RidesTest {
 	@Test
 	public void testToString() {
 		
+		//assertEquals("",);
 	}
+	
+	
 	
 	
 }
