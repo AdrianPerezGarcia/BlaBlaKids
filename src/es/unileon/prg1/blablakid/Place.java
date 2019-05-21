@@ -24,7 +24,7 @@ public class Place {
 		return place;
 	}
 	
-	public boolean isSame(Place place2){
+	public boolean isSame(Place place2){ 
 		return (this.place.equals(place2.getPlace()));
 	}
 

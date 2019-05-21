@@ -83,7 +83,7 @@ public class Activities {
 	private int inWhichPosIs(Activity activity) {
 		int count = 0; 
 		boolean end = false;
-		while (activities[count] != null && !end) {
+		while (count < this.next && !end) {
 			if (activities[count].isSame(activity)) {
 				end = true;
 			} else {
@@ -101,7 +101,7 @@ public class Activities {
 	private boolean isIncluded(Activity activity) {
 		boolean end = false;
 		int i = 0;
-		while (i < this.activities.length && !end) {
+		while (i < this.next && !end) {
 			if (this.activities[i].isSame(activity)) {
 				end = true;
 			} else {

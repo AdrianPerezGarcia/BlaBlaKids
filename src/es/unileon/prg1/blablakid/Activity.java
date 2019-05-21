@@ -84,8 +84,8 @@ public class Activity {
 	 */
 	public boolean isSame(Activity activity) {
 		boolean salida = false;
-		if (this.name.equals(activity.getName()) && this.place == activity.getPlace() && this.day == activity.getDay()
-				&& this.startTime == activity.getStartTime() && this.endTime == activity.getEndTime()) {
+		if (this.name.equals(activity.getName()) && this.place.isSame(activity.getPlace()) && this.day.isSame(activity.getDay()) 
+				&& this.startTime.isSame(activity.getStartTime())  && this.endTime.isSame(activity.getEndTime())) {
 			salida = true;
 		}
 		return salida;

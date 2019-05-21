@@ -36,7 +36,7 @@ public class Day {
 	 */
 	public boolean isSame(Day day) {
 		boolean salida = false;
-		if (this == day) {
+		if (this.getNumDay() == day.getNumDay()) { 
 			salida = true;
 		}
 		return salida;
