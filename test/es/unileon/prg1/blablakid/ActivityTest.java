@@ -3,11 +3,7 @@
  */
 package es.unileon.prg1.blablakid;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -116,7 +112,7 @@ public class ActivityTest {
 		StringBuilder out = new StringBuilder();
 		out.append(name + " (" + palomera + " - " + day + ")" + startTime + " > " + endTime+"\n");
 		out.append(beforeRide.getStartPlace() + " > " + beforeRide.getEndPlace() + " : " + beforeRide.getStartTime() + "/" + beforeRide.getEndTime() + "\n");
-		out.append(afterRide.getStartPlace() + " > " + afterRide.getEndPlace() + " : " + afterRide.getStartTime()+ "/" + beforeRide.getEndTime() + "\n");
-		assertTrue(out.toString().equals(this.actividad.toString()));
+		out.append(afterRide.getStartPlace() + " > " + afterRide.getEndPlace() + " : " + afterRide.getStartTime()+ "/" + afterRide.getEndTime() + "\n");
+		assertEquals(out.toString(),(this.actividad.toString()));
 	} 
 }
