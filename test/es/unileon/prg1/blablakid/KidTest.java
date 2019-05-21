@@ -40,4 +40,9 @@ public class KidTest {
 		Kid daniel2 = new Kid("Daniel");
 		assertTrue(this.daniel.isSame(daniel2));
 	}
+	
+	@Test
+	public void testToString() {
+		assertEquals("****** Daniel ******", this.daniel.toString());
+	}
 }
