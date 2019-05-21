@@ -48,11 +48,19 @@ public class BlaBlaKidsApp {
 	}
 
 	public void add(Parent parent) throws ParentException {
-		this.parents.add(parent);
+		try {
+			this.parents.add(parent);
+		}catch(ParentException e) {
+			e.getMessage();
+		}
 	}
 
 	public void add(Kid kid) throws KidException {
-		this.kids.add(kid);
+		try {
+			this.kids.add(kid);
+		}catch(KidException e) {
+			e.getMessage();
+		}
 	}
 		
 	public void add(Activity activity, String kidName) throws ActivityException, KidException {
@@ -67,6 +75,14 @@ public class BlaBlaKidsApp {
 		try {
 			this.parents.remove(parent);
 		}catch(ParentException e) {
+			e.getMessage();
+		}
+	}
+	
+	public void remove(Kid kid)throws KidException {
+		try {
+			this.kids.remove(kid);
+		}catch(KidException e) {
 			e.getMessage();
 		}
 	}

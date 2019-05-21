@@ -64,5 +64,18 @@ public class BlaBlaKidsAppTest {
 		this.blablakid.add(activity, "Adrian");
 	}
 	
+	@Test
+	public void testRemoveKid() throws KidException {
+		Kid kid = new Kid("Daniel");
+		this.blablakid.add(kid);
+		this.blablakid.remove(kid);
+	}
+	
+	@Test
+	public void testRemoveKidWrong() throws KidException {
+		Kid kid = new Kid("Daniel");
+		this.blablakid.remove(kid);
+	}
+	
 }
  
