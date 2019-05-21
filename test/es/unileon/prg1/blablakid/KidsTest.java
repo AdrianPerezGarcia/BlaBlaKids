@@ -90,7 +90,7 @@ public class KidsTest {
 
 	@Test
 	public void testToString() {
-		assertEquals("Kids [kids=[Daniel, Beatriz, Manuel]]", this.kids.toString());
+		assertEquals("****** Daniel ******\n****** Beatriz ******\n****** Manuel ******\n", this.kids.toString());
 	}
 	
 	@Test
