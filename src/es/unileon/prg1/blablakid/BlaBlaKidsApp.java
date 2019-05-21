@@ -62,6 +62,14 @@ public class BlaBlaKidsApp {
 			this.kids.search(kidName).getActivities().add(activity);
 		}
 	}
+	
+	public void remove(Parent parent)throws ParentException {
+		try {
+			this.parents.remove(parent);
+		}catch(ParentException e) {
+			e.getMessage();
+		}
+	}
 
 
 	public void add(Ride ride, String parentName, String kidName, String activityName, int numDay)
