@@ -57,7 +57,7 @@ public class Activities {
 			this.compact(pos);
 			this.next--;
 		} else {
-			throw new ActivityException("Error: kid wasn't included");
+			throw new ActivityException("Error: Activity wasn't included");
 		}
 	}
 
@@ -99,17 +99,16 @@ public class Activities {
 	 * @return true if the activity is included in the array, false if not
 	 */
 	private boolean isIncluded(Activity activity) {
-		boolean salida = false;
 		boolean end = false;
 		int i = 0;
-		while (i < this.activities.length && end) {
+		while (i < this.activities.length && !end) {
 			if (this.activities[i].isSame(activity)) {
-				salida = true;
 				end = true;
+			} else {
+				i++;
 			}
-			i++;
 		}
-		return salida;
+		return end;
 	}
 
 	/**
