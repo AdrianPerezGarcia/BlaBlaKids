@@ -22,22 +22,66 @@ public class BlaBlaKidsAppTest {
 	}
 	
 	@Test
-	public void testGetAndAddKids() throws KidException {
-		Kid kid = new Kid("Naiara");
-		blablakid.add(kid);
-		assertEquals("Naiara", this.blablakid.getKids().get(0).getName());
+	public void testKids() throws KidException {
+		Kid kid = new Kid("Beatriz");
+		this.blablakid.add(kid);
+		assertNotNull(this.blablakid.getKids().search("Beatriz"));
+		this.blablakid.remove(kid);
+		assertNull(this.blablakid.getKids().search("Beatriz"));
 	}
 	
 	@Test
-	public void testGetAndAddParents() throws KidException, ParentException {
+	public void testKidsWrongAdd() throws KidException {
+		Kid kid = new Kid("Beatriz");
+		Kid kid2 = new Kid("Manuel");
+		Kid kid3 = new Kid("Daniel");
+		Kid kid4 = new Kid("Juan");
+		this.blablakid.add(kid);
+		this.blablakid.add(kid2);
+		this.blablakid.add(kid3);
+		this.blablakid.add(kid4);
+	}
+	
+	@Test
+	public void testKidsWrongRemove() throws KidException {
+		Kid kid = new Kid("Beatriz");
+		this.blablakid.remove(kid);
+	}
+	
+	@Test
+	public void testParents() throws KidException, ParentException {
 		Kids kidsParents = new Kids(2);
-		Kid kidParent = new Kid("Adoracion");
-		Kid kidParent2 = new Kid("Camino");
+		Kid kidParent = new Kid("Beatriz");
+		Kid kidParent2 = new Kid("Manuel");
 		kidsParents.add(kidParent);
 		kidsParents.add(kidParent2);
-		Parent parent = new Parent("Argimiro", kidsParents, 3);
-		blablakid.add(parent);
-		assertEquals("Argimiro", blablakid.getParents().get(0).getName());
+		Parent parent = new Parent("Pedro", kidsParents, 3);
+		this.blablakid.add(parent);
+		assertNotNull(this.blablakid.getParents().search("Pedro"));
+		this.blablakid.remove(parent);
+		assertNull(this.blablakid.getParents().search("Pedro"));
+	}
+	
+	@Test
+	public void testParentWrongAdd() throws KidException, ParentException {
+		Kids kidsParents = new Kids(2);
+		Kid kidParent = new Kid("Beatriz");
+		Kid kidParent2 = new Kid("Manuel");
+		kidsParents.add(kidParent);
+		kidsParents.add(kidParent2);
+		Parent parent = new Parent("Pedro", kidsParents, 3);
+		this.blablakid.add(parent);
+		Parent parent2 = new Parent("Pedro", kidsParents, 6);
+		this.blablakid.add(parent2);
+	}
+	
+	@Test
+	public void testParentWrongRemove() throws KidException, ParentException {
+		Kids kidsParents = new Kids(1);
+		Kid kidParent = new Kid("Beatriz");
+		kidsParents.add(kidParent);
+		Parent parent = new Parent("Pedro", kidsParents, 7);	
+		this.blablakid.remove(parent);
 	}
 	
 	@Test
@@ -62,19 +106,6 @@ public class BlaBlaKidsAppTest {
 		Hour endHour = new Hour(23, 59);
 		Activity activity = new Activity("Programar", place, day, startHour, endHour);
 		this.blablakid.add(activity, "Adrian");
-	}
-	
-	@Test
-	public void testRemoveKid() throws KidException {
-		Kid kid = new Kid("Daniel");
-		this.blablakid.add(kid);
-		this.blablakid.remove(kid);
-	}
-	
-	@Test
-	public void testRemoveKidWrong() throws KidException {
-		Kid kid = new Kid("Daniel");
-		this.blablakid.remove(kid);
 	}
 	
 }

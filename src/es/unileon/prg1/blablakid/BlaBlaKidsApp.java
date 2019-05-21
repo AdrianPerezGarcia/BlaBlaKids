@@ -87,9 +87,9 @@ public class BlaBlaKidsApp {
 		}
 	}
 
-
 	public void add(Ride ride, String parentName, String kidName, String activityName, int numDay)
 			throws ParentException, KidException, ActivityException, DayException, RideException {
+		/**
 		//TODO estan mal las comprobaciones, revisar
 		if (this.parents.search(parentName) == null) {
 			throw new ParentException(parentName + " doesn't exist.");
@@ -103,5 +103,6 @@ public class BlaBlaKidsApp {
 			this.kids.search(kidName).getActivities().search(activityName, numDay);
 			this.parents.search(parentName).getDays().search(numDay).getRides().addRide(ride);
 		}
+		**/
 	}
 }
