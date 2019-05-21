@@ -1,9 +1,9 @@
 <project name="BlaBlaKid" basedir="." default="todo">
-    <property name="src" value="src"/>
-    <property name="test" value="test"/>
-    <property name="lib" value="lib/junit-4.8.2.jar"/>
-    <property name="classes" value="classes"/>
-	<property name="doc" value="doc"/>
+    <property name="src" value="../src"/>
+    <property name="test" value="../test"/>
+    <property name="lib" value="../lib/junit-4.8.2.jar"/>
+    <property name="classes" value="../classes"/>
+	<property name="doc" value="../doc"/>
 
     <property name="paquetes" value="es.unileon.prg1.blablakid"/>
     <property name="titulo" value="BlaBlaKid"/>
