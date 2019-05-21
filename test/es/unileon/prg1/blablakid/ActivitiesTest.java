@@ -9,6 +9,8 @@ public class ActivitiesTest {
 	private Activities actividades;
 	private Activity actividad;
 	private Activity actividad2;
+	private Activity actividad3;
+	private Activity actividad4;
 	private Ride beforeRide;
 	private Ride afterRide;
 	private String name;
@@ -42,14 +44,24 @@ public class ActivitiesTest {
 		this.afterRide = new Ride(palomera,casa,afterRideStart,afterRideEnd);
 		this.actividades = new Activities();
 		this.actividad2 = new Activity(name2,palomera,day,startTime,endTime);
+		this.actividad3 = new Activity("Badminton",palomera,day,startTime,endTime);
+		this.actividad4 = new Activity("Futbol",palomera,day,startTime,endTime);
 	}
-
+	
 	@Test
 	public void testAddGet() throws ActivityException {
-		this.actividades.add(actividad);
+		this.actividades.add(this.actividad);
 		assertTrue(this.actividades.get(0).isSame(actividad));
 	}
 
+	@Test(expected = ActivityException.class)
+	public void testAddMax() throws ActivityException {
+		this.actividades.add(actividad);
+		this.actividades.add(actividad2);
+		this.actividades.add(actividad3);
+		this.actividades.add(actividad4);
+	}
+	
 	@Test(expected = ActivityException.class)
 	public void testAddSame() throws ActivityException {
 		this.actividades.add(actividad);
@@ -58,6 +70,7 @@ public class ActivitiesTest {
 	
 	@Test
 	public void testSearchRemove() throws ActivityException {
+		this.actividades.add(actividad);
 		this.actividades.remove(actividades.search(name,this.actividad.getDay().getNumDay()));
 		assertNull(this.actividades.get(0));
 	}
@@ -72,14 +85,15 @@ public class ActivitiesTest {
 	}
 
 	@Test
-	public void testToString() {
+	public void testToString() throws ActivityException {
+		this.actividades.add(actividad);
 		this.actividad.setBeforeRide(beforeRide);
 		this.actividad.setAfterRide(afterRide);
 		StringBuilder out = new StringBuilder();
 		out.append(name + " (" + palomera + " - " + day + ")" + startTime + " > " + endTime+"\n");
 		out.append(beforeRide.getStartPlace() + " > " + beforeRide.getEndPlace() + " : " + beforeRide.getStartTime() + "/" + beforeRide.getEndTime() + "\n");
-		out.append(afterRide.getStartPlace() + " > " + afterRide.getEndPlace() + " : " + afterRide.getStartTime()+ "/" + beforeRide.getEndTime() + "\n");
-		assertTrue(out.toString().equals(this.actividades.toString()));
+		out.append(afterRide.getStartPlace() + " > " + afterRide.getEndPlace() + " : " + afterRide.getStartTime()+ "/" + afterRide.getEndTime() + "\n");
+		assertEquals(out.toString(),(this.actividades.toString()));
 	}
 
 }

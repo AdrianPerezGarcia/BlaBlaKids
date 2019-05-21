@@ -145,7 +145,7 @@ public class Activities {
 	public String toString() {
 		StringBuilder out = new StringBuilder();
 		for (int i = 0; i<this.next; i++) {
-			out.append(this.get(i).toString() + "\n");
+			out.append(this.get(i).toString());
 		}
 		return out.toString();
 	}
