@@ -84,8 +84,9 @@ public class Activity {
 	 */
 	public boolean isSame(Activity activity) {
 		boolean salida = false;
-		if (this.name.equals(activity.getName()) && this.place.isSame(activity.getPlace()) && this.day.isSame(activity.getDay()) 
-				&& this.startTime.isSame(activity.getStartTime())  && this.endTime.isSame(activity.getEndTime())) {
+		if (this.name.equals(activity.getName()) && this.place.isSame(activity.getPlace())
+				&& this.day.isSame(activity.getDay()) && this.startTime.isSame(activity.getStartTime())
+				&& this.endTime.isSame(activity.getEndTime())) {
 			salida = true;
 		}
 		return salida;
@@ -114,16 +115,16 @@ public class Activity {
 	@Override
 	public String toString() {
 		StringBuilder out = new StringBuilder();
-		out.append(name + " (" + place + " - " + day + ")" + startTime + " > " + endTime+"\n");
-		if(beforeRide!=null) {
-			out.append(beforeRide.getStartPlace() + " > " + beforeRide.getEndPlace() + " : " + beforeRide.getStartTime() + "/" + beforeRide.getEndTime() + "\n");
-		}else {
-			out.append("No ride before "+name+" assigned\n");
+		out.append(name + " (" + place + " - " + day + ")" + startTime + " > " + endTime + "\n");
+		if (beforeRide != null) {
+			out.append(this.getBeforeRide().toString());
+		} else {
+			out.append("No ride before " + name + " assigned\n");
 		}
-		if(afterRide!=null) {
-			out.append(afterRide.getStartPlace() + " > " + afterRide.getEndPlace() + " : " + afterRide.getStartTime()+ "/" + beforeRide.getEndTime() + "\n");
-		}else {
-			out.append("No ride after "+name+" assigned\n");
+		if (afterRide != null) {
+			out.append(this.getAfterRide().toString());
+		} else {
+			out.append("No ride after " + name + " assigned\n");
 		}
 		return out.toString();
 	}
