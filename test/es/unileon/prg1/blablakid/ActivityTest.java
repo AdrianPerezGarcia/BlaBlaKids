@@ -4,6 +4,7 @@
 package es.unileon.prg1.blablakid;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,9 +15,11 @@ import org.junit.Test;
 public class ActivityTest {
 	
 	private Activity actividad;
+	private Activity actividad2;
 	private Ride beforeRide;
 	private Ride afterRide;
 	private String name;
+	private String name2;
 	private Place palomera;
 	private Place casa;
 	private Day day;
@@ -31,6 +34,7 @@ public class ActivityTest {
 	@Before
 	public void setUp()throws ActivityException, DayException, HourException, RideException{
 		this.name = new String("Baloncesto");
+		this.name2 = new String("Basket");
 		this.palomera = new Place("Palomera");
 		this.casa = new Place("Casa");
 		this.day = new Day(WeekDays.MONDAY);
@@ -42,6 +46,7 @@ public class ActivityTest {
 		this.afterRideEnd = new Hour(16,30);
 		
 		this.actividad = new Activity(name,palomera,day,startTime,endTime);
+		this.actividad2 = new Activity(name2,palomera,day,startTime,endTime);
 		this.beforeRide = new Ride(casa,palomera,beforeRideStart,beforeRideEnd);
 		this.afterRide = new Ride(palomera,casa,afterRideStart,afterRideEnd);
 		
@@ -62,6 +67,11 @@ public class ActivityTest {
 	public void testIsSame() {
 		assertTrue(this.actividad.isSame(this.actividad));
 	
+	}
+	
+	@Test
+	public void testIsSameDifferent() {
+		assertFalse(this.actividad.isSame(this.actividad2));
 	}
 
 	@Test
