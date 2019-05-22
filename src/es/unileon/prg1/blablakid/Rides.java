@@ -19,7 +19,7 @@ public class Rides {
 
 	/**
 	 * 
-	 * @param numberOfRides maximun number of rides that defines the arrays lenght
+	 * @param numberOfRides maximum number of rides that defines the arrays length
 	 */
 	public Rides(int numberOfRides){
 	 this.rides = new Ride[numberOfRides];
@@ -33,26 +33,28 @@ public class Rides {
 	public Ride search(String startPlace,String endPlace) {
 		boolean found = false;
 		int count = 0;
-		while(!found && count<this.rides.length) {
+		Ride rideOut = null;
+		while((!found) && count<this.next) {
 			if(startPlace.equals(this.rides[count].getStartPlace().getPlace()) && endPlace.equals(this.rides[count].getEndPlace().getPlace())) {
 				found = true;
+				rideOut = this.rides[count];
 			}
 			else {
 				count++;
 			}
 		}
-		return this.rides[count];
+		return rideOut;
 	}
 	
 	public void addRide(Ride ride) throws RideException{
-		//Checks if the ride is alrede in the array
+		//Checks if the ride is already in the array
 		if(isIncluded(ride)){
 			throw new RideException("Error: Ride already included");
 		}
 		
 		//Adds the ride in the first free position in the array
 		else{
-			//Thows an exception if the array is full
+			//Throws an exception if the array is full
 			if (this.next >= this.rides.length) {
 				throw new RideException("Error: Ride list is full");
 			}
@@ -70,7 +72,7 @@ public class Rides {
 	private int getPos(Ride ride){
 		int count = 0;
 		boolean end = false;
-		while(this.rides[count]!=null && end) {
+		while(count < this.next && !end) {
 			if(this.rides[count].isSame(ride)) {
 				end = true;
 			}
@@ -87,7 +89,7 @@ public class Rides {
 	
 	
 	/**
-	 * Remoces a Ride from an array
+	 * Removes a Ride from an array
 	 * @param Ride that must be deleted
 	 * @throws RideException 
 	 */
@@ -107,7 +109,7 @@ public class Rides {
 			
 
 	/**
-	 * Checks if a Ride is icluded in an array
+	 * Checks if a Ride is included in an array
 	 * @param Ride to be checked
 	 */
 	private boolean isIncluded(Ride ride) {
@@ -141,7 +143,7 @@ public class Rides {
 	public String toString() {
 		StringBuilder out = new StringBuilder();
 		for (int i = 0; i<this.next; i++) {
-			out.append(this.get(i).toString());
+			out.append(this.get(i).toString()).append("\n");
 		}
 		return out.toString();
 	}

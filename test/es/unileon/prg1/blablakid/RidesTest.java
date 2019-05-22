@@ -106,7 +106,7 @@ public class RidesTest {
 		assertEquals(3, this.rides.getLength());
 	}
 	
-	@Test
+	@Test(expected = RideException.class)
 	public void testRemoveFail() throws HourException, RideException {
 		
 		Place startPlace = new Place("Palomera");
@@ -136,13 +136,19 @@ public class RidesTest {
 	@Test
 	public void searchFail() {
 		
-		assertNull(this.rides.search("Pamplona", "Colegio"));
+		assertNull(this.rides.search("Pamplona","Colegio"));
 	}
 	
 	@Test
 	public void testToString() {
 		
-		//assertEquals("",);
+		StringBuilder expect = new StringBuilder();
+		
+		expect.append(this.ride1.toString()).append("\n");
+		expect.append(this.ride2.toString()).append("\n");
+		expect.append(this.ride3.toString()).append("\n");
+		
+		assertEquals(expect.toString(), this.rides.toString());
 	}
 	
 	
