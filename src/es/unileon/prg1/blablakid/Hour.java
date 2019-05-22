@@ -21,8 +21,8 @@ public class Hour {
 	/**
 	*Creates the hour with it hours and minutes
 	*
-	*@param int representing minutes of the Hour
-	*@param int representing hours of the Hour
+	*@param hour representing minutes of the Hour
+	*@param minute representing hours of the Hour
 	*
 	*@throws HourException if the hour cannot be created with the parametres
 	*
@@ -65,7 +65,7 @@ public class Hour {
 	/**
 	 * Method to check is one hour is higher than other
 	 * 
-	 * @param Hour Another hour to compare
+	 * @param hour2 Another hour to compare
 	 * 
 	 * @return Boolean that returns true if the method name is true
 	 */
@@ -85,7 +85,7 @@ public class Hour {
 	/**
 	 * Method to check if two hours are equals
 	 * 
-	 * @param Hour Another hour to compare
+	 * @param hour2 Another hour to compare
 	 * 
 	 * @return Boolean that returns true if the method name is true
 	 */
@@ -100,7 +100,7 @@ public class Hour {
 	/**
 	 * Method to check if one hour is lower than other
 	 * 
-	 * @param Hour Another hour to compare
+	 * @param hour2 Another hour to compare
 	 * 
 	 * @return Boolean that returns true if the method name is true
 	 */

@@ -35,8 +35,8 @@ public class Parent {
 	 * Builder of the object Parent
 	 * 
 	 * @param name Parent identifier
-	 * @param numberofrides Rides that the parent do
-	 * @param numberofkids Number of kids assigned to the parent
+	 * @param kids Rides that the parent do
+	 * @param numberOfRides Number of kids assigned to the parent
 	 * 
 	 */
 	public Parent(String name, Kids kids, int numberOfRides){
@@ -81,9 +81,11 @@ public class Parent {
 	
 	/**
 	 * 
-	 *  Check if the parent is same parent as the param
-	 * @param parent2
-	 * @return
+	 * Check if the parent is same parent as the parameter
+	 * 
+	 * @param parent2 Another parent to compare
+	 * 
+	 * @return Boolean with true if the hours are equals
 	 */
 	public boolean isSame(Parent parent2) {
 		boolean isSame = false;

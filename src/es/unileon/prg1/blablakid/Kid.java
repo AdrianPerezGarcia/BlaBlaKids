@@ -51,7 +51,7 @@ public class Kid {
 	/**
 	 * Method that check is two kid object are equal
 	 * 
-	 * @param kid to check if is same
+	 * @param kid2 to check if is same
 	 * 
 	 * @return boolean that is true if kids are same or false if not
 	 */
