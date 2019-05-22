@@ -73,20 +73,19 @@ public class BlaBlaKidsApp {
 
 	public void add(Ride ride, String parentName, String kidName, String activityName, int numDay)
 			throws ParentException, KidException, ActivityException, DayException, RideException {
-		/**
-		//TODO estan mal las comprobaciones, revisar
+		//TODO  revisar
 		if (this.parents.search(parentName) == null) {
 			throw new ParentException(parentName + " doesn't exist.");
-		} else if (this.parents.search(parentName).getDays().search(numDay) == null) {
-			throw new ParentException(parentName + " doesn't have any activity on that day.");
 		} else if (this.kids.search(kidName) == null) {
 			throw new KidException(kidName + " doesn't exist.");
-		} else if (this.kids.search(kidName).getActivities().search(activityName, numDay) == null) {
+		} else if (this.kids.search(kidName).search(activityName, numDay) == null) {
 			throw new ActivityException(kidName + " doesn't have the activity " + activityName);
-		} else {
+			//TODO como gestionar beforeRide y afterRide para hacer comprobaciones
+		} else if(!(this.kids.search(kidName).getActivities().search(activityName, numDay).getPlace().isSame(ride.getStartPlace()))) {
+			throw new RideException("The activity is not on that place.");
+		}else {
 			this.kids.search(kidName).getActivities().search(activityName, numDay);
 			this.parents.search(parentName).getDays().search(numDay).getRides().addRide(ride);
 		}
-		**/
 	}
 }

@@ -47,15 +47,8 @@ public class Parent {
 	/**
 	 * @return the numberOfRides
 	 */
-	public int getRides() {
+	public int getNumRides() {
 		return rides;
-	}
-
-	/**
-	 * @return the numberOfKids
-	 */
-	public Kids getKids() {
-		return kids;
 	}
 
 	/**

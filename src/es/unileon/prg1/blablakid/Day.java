@@ -20,7 +20,7 @@ public class Day {
 	 * @param day
 	 * @throws DayException
 	 */
-	public Day(WeekDays day) throws DayException {
+	public Day(WeekDays day, int maxRides) throws DayException {
 		/**
 		if (day.ordinal() >= 0 && day.ordinal() <= 4) {
 			this.day = day;

@@ -38,15 +38,6 @@ public class Kid {
 	}
 	
 	/**
-	 * Getter of the activities array 
-	 * 
-	 * @return activities object with all the activities that the kid have
-	 */
-	public Activities getActivities() {
-		return activities; 
-	}
-
-	/**
 	 * Method that check is two kid object are equal
 	 * 
 	 * @param kid2 to check if is same
@@ -56,7 +47,13 @@ public class Kid {
 	public boolean isSame(Kid kid2) {
 		return (this.name.equals(kid2.getName()));
 	}
-	
+
+
+	public Activity search(String activityName, int numDay) {
+		// TODO Auto-generated method stub
+		return this.activities.search(activityName, numDay);
+	}
+
 	/**
 	 * Method toString as requested in the Show Summary option
 	 * 

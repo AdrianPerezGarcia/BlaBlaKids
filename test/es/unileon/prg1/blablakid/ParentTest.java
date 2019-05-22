@@ -32,7 +32,7 @@ public class ParentTest {
 	
 	@Test
 	public void testGetRides(){
-		assertEquals(6, parent.getRides());
+		assertEquals(6, parent.getNumRides());
 	}
 	
 	@Test

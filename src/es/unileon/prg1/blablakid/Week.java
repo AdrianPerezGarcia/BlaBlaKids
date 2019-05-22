@@ -22,9 +22,10 @@ public class Week {
 	 */
 	private final int MAXDAYS = 5;
 
-	public Week() {
+	public Week(int maxRides) {
 		this.next = 0;
 		this.week = new Day[MAXDAYS];
+		//TODO CREAR LOS DIAS CON MAXRIDES
 	}
 
 	/**
