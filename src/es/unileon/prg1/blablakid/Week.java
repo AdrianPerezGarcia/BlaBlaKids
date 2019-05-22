@@ -36,8 +36,6 @@ public class Week {
 	public void add(Day day) throws DayException {
 		if (isIncluded(day)) {
 			throw new DayException("Error: Day already included");
-		} else if (this.next >= this.MAXDAYS) {
-			throw new DayException("Error: Day list is full");
 		} else {
 			week[this.next] = day;
 			this.next++;
@@ -73,12 +71,6 @@ public class Week {
 		week[this.next - 1] = null;
 	}
 
-	/**
-	 * Method that returns the position of an activity in its array
-	 * 
-	 * @param activity
-	 * @return The position of the object inside the array
-	 */
 	private int getPos(Day day) {
 		int count = 0;
 		boolean end = false;
@@ -102,7 +94,7 @@ public class Week {
 		boolean salida = false;
 		boolean end = false;
 		int i = 0;
-		while (i < this.week.length && end) {
+		while (i < this.next && !end) {
 			if (this.week[i].isSame(day)) {
 				salida = true;
 				end = true;

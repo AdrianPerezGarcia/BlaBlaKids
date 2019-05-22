@@ -7,23 +7,17 @@ package es.unileon.prg1.blablakid;
 public class Kids {
     /**
      * Array composed of kids
-     *
-     * @see Kid[]
      */
     public Kid[] kids;
    
     /**
      * Indicator of the first position free on the array
-     *
-     * @see int
      */
     private int next;
    
    
     /**
      * Constructor of the class, initializes the array and set the next at 0
-     *
-     *
      * @param numberOfKids
      */
     public Kids(int numberOfKids){
@@ -43,7 +37,7 @@ public class Kids {
 	/**
      * Getter of the kid at a specific position
      *
-     * @param position of the array that you want to get the kid
+     * @param index of the array that you want to get the kid
      *
      * @return the kid at the specific position
      */

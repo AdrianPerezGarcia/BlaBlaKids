@@ -48,7 +48,6 @@ public class Activity {
 	 * @param name
 	 * @param place
 	 * @param day
-	 * @param kid
 	 * @param startTime
 	 * @param endTime
 	 */

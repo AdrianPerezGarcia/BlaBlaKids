@@ -30,7 +30,6 @@ public class Teclado {
   * 
   * @see BufferedReader
   * @seeInputStreamReader
-  * @see System.in
   */
   private static final BufferedReader in =
     new BufferedReader(new InputStreamReader (System.in)) ;

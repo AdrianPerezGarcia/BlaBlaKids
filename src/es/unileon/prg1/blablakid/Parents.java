@@ -5,21 +5,16 @@ package es.unileon.prg1.blablakid;
  *
  */
 public class Parents {
-	/**
-	 * @see Parent[]
-	 */
+
 	public Parent[] parents;
 	
-	/**
-	 * @see int 
-	 */
 	private int next;
 	
 	
 	/**
 	 *	Create the array which will be managed by Parents
 	 * 
-	 * @param number of parents
+	 * @param numberOfParents of parents
 	 */
 	
 	public Parents(int numberOfParents) {

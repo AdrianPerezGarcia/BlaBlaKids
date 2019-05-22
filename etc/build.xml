@@ -48,7 +48,7 @@
  	
 	<target name="doc" depends="clean">
 	      <mkdir dir="${doc}"/>
-		 <javadoc destdir="${doc}" splitindex = "true"	>
+		 <javadoc destdir="${doc}" splitindex = "true" private = "true" version = "true" author = "true" linksource = "true" overview ="../src/overview.html" >
 		        <fileset dir="${src}" />
 		 </javadoc>
 	 </target>

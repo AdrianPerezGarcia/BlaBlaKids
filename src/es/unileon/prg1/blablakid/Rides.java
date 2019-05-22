@@ -26,10 +26,7 @@ public class Rides {
 	 this.next = 0;
 	}
 
-	/**
-	 * 
-	 * @param Ride that must be found
-	 */
+
 	public Ride search(String startPlace,String endPlace) {
 		boolean found = false;
 		int count = 0;
@@ -64,11 +61,7 @@ public class Rides {
 			}
 		}
 	}
-	/**
-	 * 
-	 * @param activity
-	 * @return The position of a Ride in an Rides array
-	 */
+
 	private int getPos(Ride ride){
 		int count = 0;
 		boolean end = false;
@@ -88,11 +81,6 @@ public class Rides {
 	}
 	
 	
-	/**
-	 * Removes a Ride from an array
-	 * @param Ride that must be deleted
-	 * @throws RideException 
-	 */
 	public void remove(Ride ride) throws RideException {
 		//If the ride is included take the position and removes the ride from the array
 		if (this.isIncluded(ride)) {
@@ -107,11 +95,6 @@ public class Rides {
 		}
 	}
 			
-
-	/**
-	 * Checks if a Ride is included in an array
-	 * @param Ride to be checked
-	 */
 	private boolean isIncluded(Ride ride) {
 		boolean same = false;
 		for (int i = 0; i < next; i++) {
@@ -122,9 +105,6 @@ public class Rides {
 		return same;
 	}
 	
-	/**
-	 * @param pos
-	 */
 	private void compact(int pos) {
 		int i;
 		//I use a loop to travel the array until next
