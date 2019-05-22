@@ -8,24 +8,20 @@ public class Parent {
 	
 	/**
 	 * Name of the parent, used as his/her identifier
-	 * @see String
 	 */
 	private String name;
 	/**
 	 * Number of kids assigned to the parent
-	 * @see int
 	 */
 	private Kids kids;
 	/**
 	 * Number of rides assigned to the parent
-	 * @see int
 	 */
 	private int rides;
 	
 	/**
 	 * 
 	 * Days of the parent
-	 * @see Week
 	 * 
 	 */
 	private Week days;

@@ -6,15 +6,11 @@ package es.unileon.prg1.blablakid;
 public class Hour {
 	/**
 	 * hours of the Hour
-	 * 
-	 * @see int
 	 */
 	public int hour;
 	
 	/**
 	 * minutes of the Hour
-	 * 
-	 * @see int
 	 */
 	public int minute;
 

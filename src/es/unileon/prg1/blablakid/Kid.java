@@ -9,14 +9,12 @@ public class Kid {
 	/**
 	 * Name of the kid, used as his/her identifier
 	 * 
-	 * @see String
 	 */
 	private String name;
 	
 	/**
 	 * Activities of each kid
 	 * 
-	 * @see Activities
 	 */
 	private Activities activities;
 	
