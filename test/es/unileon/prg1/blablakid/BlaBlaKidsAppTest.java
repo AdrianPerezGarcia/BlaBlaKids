@@ -30,7 +30,7 @@ public class BlaBlaKidsAppTest {
 		assertNull(this.blablakid.getKids().search("Beatriz"));
 	}
 	
-	@Test
+	@Test (expected = KidException.class)
 	public void testKidsWrongAdd() throws KidException {
 		Kid kid = new Kid("Beatriz");
 		Kid kid2 = new Kid("Manuel");
@@ -42,7 +42,7 @@ public class BlaBlaKidsAppTest {
 		this.blablakid.add(kid4);
 	}
 	
-	@Test
+	@Test (expected = KidException.class)
 	public void testKidsWrongRemove() throws KidException {
 		Kid kid = new Kid("Beatriz");
 		this.blablakid.remove(kid);
@@ -62,7 +62,7 @@ public class BlaBlaKidsAppTest {
 		assertNull(this.blablakid.getParents().search("Pedro"));
 	}
 	
-	@Test
+	@Test (expected = ParentException.class)
 	public void testParentWrongAdd() throws KidException, ParentException {
 		Kids kidsParents = new Kids(2);
 		Kid kidParent = new Kid("Beatriz");
@@ -75,7 +75,7 @@ public class BlaBlaKidsAppTest {
 		this.blablakid.add(parent2);
 	}
 	
-	@Test
+	@Test (expected = ParentException.class)
 	public void testParentWrongRemove() throws KidException, ParentException {
 		Kids kidsParents = new Kids(1);
 		Kid kidParent = new Kid("Beatriz");
