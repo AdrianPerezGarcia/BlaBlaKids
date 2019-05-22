@@ -21,11 +21,15 @@ public class Day {
 	 * @throws DayException
 	 */
 	public Day(WeekDays day) throws DayException {
+		/**
 		if (day.ordinal() >= 0 && day.ordinal() <= 4) {
 			this.day = day;
 		} else {
 			throw new DayException("Invalid day. Day must be between 0 and 4.");
 		}
+		**/
+		this.day = day;
+		this.rides = new Rides(3);
 	}
 
 	/**
