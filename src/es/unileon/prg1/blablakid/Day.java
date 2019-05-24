@@ -1,5 +1,6 @@
 package es.unileon.prg1.blablakid;
 
+
 /**
  * @author Pablo Bayon
  *
@@ -20,16 +21,13 @@ public class Day {
 	 * @param day
 	 * @throws DayException
 	 */
-	public Day(WeekDays day, int maxRides) throws DayException {
-		/**
-		if (day.ordinal() >= 0 && day.ordinal() <= 4) {
-			this.day = day;
-		} else {
-			throw new DayException("Invalid day. Day must be between 0 and 4.");
-		}
-		**/
+	public Day(WeekDays day, int maxRides) {
 		this.day = day;
 		this.rides = new Rides(3);
+	}
+	
+	public Ride search(String startPlace, String endPlace) {
+		return this.rides.search(startPlace, endPlace);
 	}
 
 	/**
@@ -50,15 +48,10 @@ public class Day {
 		return day.ordinal();
 	}
 	
-	public Rides getRides() {
-		return this.rides;
-	}
 
 	@Override
 	public String toString() {
 		return this.day.name();
 	}
 	
-	
-
 }

@@ -358,6 +358,7 @@ public class TextUI {
 
 	
 	private Hour askHour() {
+		//TODO pensar como adaptar los cambios
 		Hour hour = null;
 		int hours,minutes;
 		//Asks for the hours

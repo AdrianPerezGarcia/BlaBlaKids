@@ -1,5 +1,6 @@
 package es.unileon.prg1.blablakid;
 
+
 /**
  * @author Pablo Bayon
  *
@@ -63,17 +64,14 @@ public class Activity {
 		return beforeRide;
 	}
 
-	public void setBeforeRide(Ride beforeRide) {
-		this.beforeRide = beforeRide;
-	}
-
 	public Ride getAfterRide() {
 		return afterRide;
 	}
-
-	public void setAfterRide(Ride afterRide) {
-		this.afterRide = afterRide;
+	
+	public void setRides() {
+		//TODO comprobaciones, candidatos  a beforeRide, afterRide o invalido
 	}
+
 
 	/**
 	 * Method that checks if two objects of type Activity are the same

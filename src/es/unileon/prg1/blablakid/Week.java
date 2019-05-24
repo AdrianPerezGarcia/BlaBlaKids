@@ -25,7 +25,11 @@ public class Week {
 	public Week(int maxRides) {
 		this.next = 0;
 		this.week = new Day[MAXDAYS];
-		//TODO CREAR LOS DIAS CON MAXRIDES
+		this.week[0] = new Day(WeekDays.MONDAY, maxRides);
+		this.week[1] = new Day(WeekDays.TUESDAY, maxRides);
+		this.week[2] = new Day(WeekDays.WEDNESDAY, maxRides);
+		this.week[3] = new Day(WeekDays.THURSDAY, maxRides);
+		this.week[4] = new Day(WeekDays.FRIDAY, maxRides);
 	}
 
 	/**
