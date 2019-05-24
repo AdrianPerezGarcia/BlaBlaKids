@@ -84,6 +84,11 @@ public class Parent {
 			
 	}
 	
+	public Kid searck(String Kidname) {
+		
+		return this.kids.search(Kidname);
+		
+	}
 	@Override
 	public String toString() {
 		StringBuilder salida = new StringBuilder();
