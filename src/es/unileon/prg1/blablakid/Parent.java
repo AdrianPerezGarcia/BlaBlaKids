@@ -84,7 +84,7 @@ public class Parent {
 			
 	}
 	
-	public Kid searck(String Kidname) {
+	public Kid search(String Kidname) {
 		
 		return this.kids.search(Kidname);
 		
