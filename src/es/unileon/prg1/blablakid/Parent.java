@@ -39,7 +39,7 @@ public class Parent {
 		this.name = name;
 		this.kids = kids;
 		this.rides = numberOfRides;
-		this.days = new Week();
+		this.days = new Week(numberOfRides);
 	}
 	
 	
@@ -60,16 +60,6 @@ public class Parent {
 	
 	/**
 	 * 
-	 * @return days of the parent
-	 * 
-	 */
-
-	public Week getDays() {
-		return days;
-	}
-	
-	/**
-	 * 
 	 * Check if the parent is same parent as the parameter
 	 * 
 	 * @param parent2 Another parent to compare
@@ -86,6 +76,12 @@ public class Parent {
 		
 		return isSame;
 
+	}
+	
+	public Day search(int numDay) {
+		
+		return this.days.search(numDay);
+			
 	}
 	
 	@Override
