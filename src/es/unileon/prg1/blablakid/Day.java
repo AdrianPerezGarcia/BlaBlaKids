@@ -26,6 +26,11 @@ public class Day {
 		this.rides = new Rides(3);
 	}
 	
+	//Para las activities
+	public Day(WeekDays wDay) {
+		this.day = wDay;
+	}
+
 	public Ride search(String startPlace, String endPlace) {
 		return this.rides.search(startPlace, endPlace);
 	}

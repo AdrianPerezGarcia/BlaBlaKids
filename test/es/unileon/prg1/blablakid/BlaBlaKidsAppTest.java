@@ -30,24 +30,6 @@ public class BlaBlaKidsAppTest {
 		assertNull(this.blablakid.searchKid(kid.getName()));
 	}
 	
-	@Test (expected = KidException.class)
-	public void testKidsWrongAdd() throws KidException {
-		Kid kid = new Kid("Beatriz");
-		Kid kid2 = new Kid("Manuel");
-		Kid kid3 = new Kid("Daniel");
-		Kid kid4 = new Kid("Juan");
-		this.blablakid.add(kid);
-		this.blablakid.add(kid2);
-		this.blablakid.add(kid3);
-		this.blablakid.add(kid4);
-	}
-	
-	@Test (expected = KidException.class)
-	public void testKidsWrongRemove() throws KidException {
-		Kid kid = new Kid("Beatriz");
-		this.blablakid.remove(kid);
-	}
-	
 	@Test
 	public void testParents() throws KidException, ParentException {
 		Kids kidsParents = new Kids(2);
@@ -86,27 +68,68 @@ public class BlaBlaKidsAppTest {
 	
 	@Test
 	public void testAddActivities() throws DayException, HourException, KidException, ActivityException {
-		Kid kid = new Kid("Adrian");
+		Kid kid = new Kid("Beatriz");
 		this.blablakid.add(kid);
 		Place place = new Place("Biblioteca");
 		WeekDays wDay = WeekDays.MONDAY;
 		Day day = new Day(wDay);
 		Hour startHour = new Hour(8, 00);
-		Hour endHour = new Hour(23, 59);
-		Activity activity = new Activity("Programar", place, day, startHour, endHour);
-		this.blablakid.add(activity, "Adrian");
+		Hour endHour = new Hour(10, 05);
+		Activity activity = new Activity("Baloncesto", place, day, startHour, endHour);
+		this.blablakid.add(activity, "Beatriz");
 	}
 	
 	@Test (expected = KidException.class)
-	public void testAddActivitiesWrong() throws DayException, HourException, KidException, ActivityException {
+	public void testAddActivitiesWrongKid() throws DayException, HourException, KidException, ActivityException {
 		Place place = new Place("Biblioteca");
 		WeekDays wDay = WeekDays.MONDAY;
-		Day day = new Day(wDay);
+		Day day = new Day(wDay, 0);
 		Hour startHour = new Hour(8, 00);
-		Hour endHour = new Hour(23, 59);
-		Activity activity = new Activity("Programar", place, day, startHour, endHour);
-		this.blablakid.add(activity, "Adrian");
+		Hour endHour = new Hour(10, 05);
+		Activity activity = new Activity("Baloncesto", place, day, startHour, endHour);
+		this.blablakid.add(activity, "Beatriz");
 	}
+	
+	@Test
+	public void testRemoveActivities() throws DayException, HourException, KidException, ActivityException {
+		Kid kid = new Kid("Beatriz");
+		this.blablakid.add(kid);
+		Place place = new Place("Biblioteca");
+		WeekDays wDay = WeekDays.MONDAY;
+		Day day = new Day(wDay, 0);
+		Hour startHour = new Hour(8, 00);
+		Hour endHour = new Hour(10, 05);
+		Activity activity = new Activity("Baloncesto", place, day, startHour, endHour);
+		this.blablakid.add(activity, kid.getName());
+		this.blablakid.remove(activity, "Beatriz");
+	}
+	
+	@Test (expected = KidException.class)
+	public void testRemoveActivitiesWrongKid() throws DayException, HourException, KidException, ActivityException {
+		Place place = new Place("Biblioteca");
+		WeekDays wDay = WeekDays.MONDAY;
+		Day day = new Day(wDay, 0);
+		Hour startHour = new Hour(8, 00);
+		Hour endHour = new Hour(10, 05);
+		Activity activity = new Activity("Baloncesto", place, day, startHour, endHour);
+		this.blablakid.remove(activity, "Beatriz");
+	}
+	
+	@Test (expected = KidException.class)
+	public void testRemoveActivitiesWrongActivity() throws DayException, HourException, KidException, ActivityException {
+		Kid kid = new Kid("Beatriz");
+		this.blablakid.add(kid);
+		Place place = new Place("Biblioteca");
+		WeekDays wDay = WeekDays.MONDAY;
+		Day day = new Day(wDay, 0);
+		Hour startHour = new Hour(8, 00);
+		Hour endHour = new Hour(10, 05);
+		Activity activity = new Activity("Baloncesto", place, day, startHour, endHour);
+		this.blablakid.remove(activity, "Beatriz");
+	}
+	
+	
+	
 	
 }
  
