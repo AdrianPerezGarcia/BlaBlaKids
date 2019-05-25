@@ -7,10 +7,10 @@ package es.unileon.prg1.blablakid;
  *
  **/
 
-/*
- * Logs libraries import org.apache.logging.log4j.Logger; import
- * org.apache.logging.log4j.LogManager;
- */
+/*Logs libraries 
+ import org.apache.logging.log4j.Logger; import
+ org.apache.logging.log4j.LogManager; */
+
 public class Kid {
 	/**
 	 * Name of the kid, used as his/her identifier
@@ -76,7 +76,7 @@ public class Kid {
 	 * 
 	 * @throws ActivityException If the activity cannot be added
 	 */
-	public void addActivity(Activity activity) throws ActivityException {
+	public void add(Activity activity) throws ActivityException {
 		this.activities.add(activity);
 	}
 	
@@ -88,7 +88,7 @@ public class Kid {
 	 * 
 	 * @throws ActivityException If the activity cannot be deleted
 	 */
-	public void removeActivity(Activity activity) throws ActivityException {
+	public void remove(Activity activity) throws ActivityException {
 		this.activities.remove(activity);
 	}
 

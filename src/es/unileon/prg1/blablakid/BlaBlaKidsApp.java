@@ -136,7 +136,7 @@ public class BlaBlaKidsApp {
 		if(this.kids.search(kidName) == null) {
 			throw new KidException("Error: The kid " + kidName + " doesn't exist.");
 		} else {
-			this.kids.search(kidName).addActivity(activity);
+			this.kids.search(kidName).add(activity);
 		}
 	}
 	
@@ -160,7 +160,7 @@ public class BlaBlaKidsApp {
 			throw new KidException("Error: The kid " + kidName + " doesn't have the activity " + activity.getName()
 					+ " on " + activity.getDay().toString());
 		} else {
-			this.kids.search(kidName).removeActivity(activity);
+			this.kids.search(kidName).remove(activity);
 		}
 	}
 	

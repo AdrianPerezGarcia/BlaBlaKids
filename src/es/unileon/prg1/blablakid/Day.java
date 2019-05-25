@@ -35,6 +35,14 @@ public class Day {
 		return this.rides.search(startPlace, endPlace);
 	}
 
+	public void add(Ride ride) throws RideException {
+		this.rides.addRide(ride);
+	}
+	
+	public void remove(Ride ride) throws RideException {
+		this.rides.remove(ride);
+	}
+	
 	/**
 	 * Method that checks if two days are the same
 	 * 

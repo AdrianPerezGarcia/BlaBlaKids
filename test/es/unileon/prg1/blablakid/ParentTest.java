@@ -1,8 +1,10 @@
 package es.unileon.prg1.blablakid;
-/**
+ /**
+ * 
  * @author Adrian Perez
  *
- */
+ **/
+
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -15,12 +17,12 @@ public class ParentTest {
 	@Before
 	public void setUp()throws KidException{
 		Kids parentKids = new Kids(3);
-		Kid Juan = new Kid("Beatriz");
-		Kid Roberto = new Kid("Daniel");
-		Kid Hector = new Kid("Manuel");
-		parentKids.add(Juan);
-		parentKids.add(Roberto);
-		parentKids.add(Hector);
+		Kid Beatriz = new Kid("Beatriz");
+		Kid Daniel = new Kid("Daniel");
+		Kid Manuel = new Kid("Manuel");
+		parentKids.add(Beatriz);
+		parentKids.add(Daniel);
+		parentKids.add(Manuel);
 		this.parent = new Parent("Pedro", parentKids, 6);
 	}
 
@@ -70,15 +72,30 @@ public class ParentTest {
 		assertFalse(this.parent.isSame(parent2));
 	}
 	
-	/**
 	@Test
-	public void testSearchDays() {
-		assertEquals(3,this.parent.search(Day ).getDay(2).search());
+	public void testRides() throws HourException, RideException, DayException {
+		WeekDays wDay = WeekDays.WEDNESDAY;
+		Day day = new Day(wDay);
+		Place startPlace = new Place("Palomera");
+		Place endPlace = new Place("Casa");
+		Hour startTime = new Hour(16, 00);
+		Hour endTime = new Hour(16, 30);
+		Ride ride = new Ride(startPlace, endPlace, startTime, endTime);
+		this.parent.add(ride, day);
+		assertEquals(ride.getEndPlace(), this.parent.search(day.getNumDay()).search(startPlace.toString(), endPlace.toString()).getEndPlace());
+		this.parent.remove(ride, day);
 	}
-	**/
 	
 	@Test
-	public void testSearchDaysWrong() {
-		
+	public void testSearchDays() {
+		WeekDays wDay = WeekDays.TUESDAY;
+		Day day = new Day(wDay);
+		assertEquals(day.toString() ,this.parent.search(1).toString());
+	}
+	
+	@Test
+	public void testRemoveKid() throws KidException {
+		Kid kid = new Kid(this.parent.search("Beatriz").getName());
+		this.parent.remove(kid);
 	}
 }

@@ -1,28 +1,37 @@
 package es.unileon.prg1.blablakid;
-
-//Import log4j classes.
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
-
-/**
- * 	Class that creates a parent managed by Parents
+ /**
+ * 
+ * Class that creates a parent managed by Parents
+ * 
  * @author PabloJ
  *
- */
+ **/
+
+ /*Import log4j classes.
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;*/
+
 public class Parent {
-	
 	/**
+	 * 
 	 * Name of the parent, used as his/her identifier
+	 * 
 	 */
 	private String name;
+	
 	/**
+	 * 
 	 * Number of kids assigned to the parent
+	 * 
 	 */
 	private Kids kids;
+	
 	/**
+	 * 
 	 * Number of rides assigned to the parent
+	 * 
 	 */
-	private int rides;
+	private int numberOfRides;
 	
 	/**
 	 * 
@@ -43,24 +52,32 @@ public class Parent {
 	public Parent(String name, Kids kids, int numberOfRides){
 		this.name = name;
 		this.kids = kids;
-		this.rides = numberOfRides;
+		this.numberOfRides = numberOfRides;
 		this.days = new Week(numberOfRides);
 	}
 	
 	
 
 	/**
-	 * @return the numberOfRides
+	 * 
+	 * Getter of the number of rides of the parent
+	 * 
+	 * @return integer with the numberOfRides
+	 * 
 	 */
 	public int getNumRides() {
-		return rides;
+		return this.numberOfRides;
 	}
 
 	/**
-	 * @return the name
+	 * 
+	 * Getter of the parent name
+	 * 
+	 * @return string with the name
+	 * 
 	 */
 	public String getName() {
-		return name;
+		return this.name;
 	}
 	
 	/**
@@ -70,6 +87,7 @@ public class Parent {
 	 * @param parent2 Another parent to compare
 	 * 
 	 * @return Boolean with true if the hours are equals
+	 * 
 	 */
 	public boolean isSame(Parent parent2) {
 		boolean isSame = false;
@@ -83,7 +101,7 @@ public class Parent {
 
 	}
 	
-	/*
+	/**
 	 * Search a day in the array of days
 	 * 
 	 * @param numDay number of the day
@@ -98,7 +116,7 @@ public class Parent {
 			
 	}
 	
-	/*
+	/**
 	 * 
 	 * Search a kid in the array of kids
 	 * 
@@ -108,11 +126,51 @@ public class Parent {
 	 * 
 	 */
 	public Kid search(String Kidname) {
-		
 		return this.kids.search(Kidname);
-		
 	}
 	
+	/**
+	 * 
+	 * Method that removes a kid in the array of kids
+	 * 
+	 * @param Kid that wants to be deleted
+	 * 
+	 * @throws KidException if the kid does not exist in the array
+	 * 
+	 */
+	public void remove(Kid kid) throws KidException {
+		this.kids.remove(kid);
+	}
+	
+	public Ride search(String rideStartPlace, String rideEndPlace, Day day) throws DayException {
+		if (day == null) {
+			throw new DayException("Error: Day not valid");
+		} else {
+			return day.search(rideStartPlace, rideEndPlace);
+		}
+	}
+	
+	public void add(Ride ride, Day day) throws RideException, DayException {
+		if (day == null) {
+			throw new DayException("Error: Day not valid");
+		} else {
+			day.add(ride); 
+		}
+	}
+	
+	public void remove(Ride ride, Day day) throws RideException, DayException {
+		if (day == null) {
+			throw new DayException("Error: Day not valid");
+		} else {
+			day.remove(ride); 
+		}
+	}
+	
+	/**
+	 * 
+	 * Method to String of the parents and his/her kid
+	 * 
+	 */
 	@Override
 	public String toString() {
 		StringBuilder salida = new StringBuilder();
