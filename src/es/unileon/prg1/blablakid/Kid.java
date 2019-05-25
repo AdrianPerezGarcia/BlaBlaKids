@@ -79,6 +79,18 @@ public class Kid {
 	public void addActivity(Activity activity) throws ActivityException {
 		this.activities.add(activity);
 	}
+	
+	/**
+	 * 
+	 * Method to remove an activity in the kid array
+	 * 
+	 * @param activity to remove of his/her array
+	 * 
+	 * @throws ActivityException If the activity cannot be deleted
+	 */
+	public void removeActivity(Activity activity) throws ActivityException {
+		this.activities.remove(activity);
+	}
 
 	/**
 	 * Method toString as requested in the Show Summary option
