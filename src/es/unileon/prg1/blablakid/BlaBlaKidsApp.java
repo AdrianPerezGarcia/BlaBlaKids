@@ -199,4 +199,22 @@ public class BlaBlaKidsApp {
 		}
 		**/
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder out = new StringBuilder();
+		out.append("KIDS:\n").append(this.kids.toString()).append("\n");
+		out.append("PARENTS:\n").append(this.parents.toString()).append("\n");
+		return out.toString();
+	}
+
+
+	public int getKidsLength() {
+		return this.kids.getLength();
+	}
+
+
+	public boolean isIncluded(Kid kid) {
+		return this.kids.isIncluded(kid);
+	}
 }

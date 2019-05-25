@@ -23,7 +23,7 @@ public class Day {
 
 	/**
 	 * 
-	 * Constructor of the method to the parent rides
+	 * Constructor of the class to the parent rides
 	 * 
 	 * @param day 
 	 * 
@@ -35,7 +35,7 @@ public class Day {
 	
 	/**
 	 * 
-	 * Constructor of the method to the activities
+	 * Constructor of the class to the activities
 	 * 
 	 * @param wDay
 	 * 
@@ -68,7 +68,7 @@ public class Day {
 	 * @throws RideException if the ride cannot be added
 	 * 
 	 */
-	public void add(Ride ride) throws RideException {
+	public void add(Ride ride) throws RideException{
 		this.rides.addRide(ride);
 	}
 	

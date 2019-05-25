@@ -28,7 +28,7 @@ public class TextUI {
 					case 2:
 						//TODO falta borrar el kid del array de kids de su parent, si es que estaba incluido en alguno
 						Kid kidDelete = this.askKid();
-						this.blablakid.getKids().remove(kidDelete);
+						this.blablakid.remove(kidDelete);
 						break;
 					//Add Parent
 					case 3:
@@ -37,7 +37,7 @@ public class TextUI {
 						break;
 					//Remove parent
 					case 4:
-					this.blablakid.getParents().remove(this.askParentRemove());
+					this.blablakid.remove(this.askParentRemove());
 					break;
 					//Add Activity
 					case 5:
@@ -72,12 +72,7 @@ public class TextUI {
 						break;
 					case 9:
 						System.out.println("/////////////////////////////");
-					
-						System.out.println("KIDS:");
-						System.out.println(this.blablakid.getKids().toString());
-						
-						System.out.println("\n PARENTS: \n");
-						System.out.println(this.blablakid.getParents().toString());
+						this.blablakid.toString();
 						System.out.println("/////////////////////////////");
 						break;
 					case 10:
@@ -142,21 +137,21 @@ public class TextUI {
 	 * Prints the apps ASCII Art header
 	 */
 	public void displayIntro() {
-		System.out.print("\t\t\t\t\t\t\t╔====================================================╗\n");
-		System.out.print("\t\t\t\t\t\t\t|  ██████╗ ██╗      █████╗ ██████╗ ██╗      █████╗   |\n");
-		System.out.print("\t\t\t\t\t\t\t|  ██╔══██╗██║     ██╔══██╗██╔══██╗██║     ██╔══██╗  |\n");
-		System.out.print("\t\t\t\t\t\t\t|  ██████╔╝██║     ███████║██████╔╝██║     ███████║  |\n");
-		System.out.print("\t\t\t\t\t\t\t|  ██╔══██╗██║     ██╔══██║██╔══██╗██║     ██╔══██║  |\n");
-		System.out.print("\t\t\t\t\t\t\t|  ██████╔╝███████╗██║  ██║██████╔╝███████╗██║  ██║  |\n");
-		System.out.print("\t\t\t\t\t\t\t|  ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝  |\n");
+		System.out.print("\t\t\t\t\t\t\tâ•”====================================================â•—\n");
+		System.out.print("\t\t\t\t\t\t\t|  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•— â–ˆâ–ˆâ•—      â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•— â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•— â–ˆâ–ˆâ•—      â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—   |\n");
+		System.out.print("\t\t\t\t\t\t\t|  â–ˆâ–ˆâ•”â•�â•�â–ˆâ–ˆâ•—â–ˆâ–ˆâ•‘     â–ˆâ–ˆâ•”â•�â•�â–ˆâ–ˆâ•—â–ˆâ–ˆâ•”â•�â•�â–ˆâ–ˆâ•—â–ˆâ–ˆâ•‘     â–ˆâ–ˆâ•”â•�â•�â–ˆâ–ˆâ•—  |\n");
+		System.out.print("\t\t\t\t\t\t\t|  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•”â•�â–ˆâ–ˆâ•‘     â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•‘â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•”â•�â–ˆâ–ˆâ•‘     â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•‘  |\n");
+		System.out.print("\t\t\t\t\t\t\t|  â–ˆâ–ˆâ•”â•�â•�â–ˆâ–ˆâ•—â–ˆâ–ˆâ•‘     â–ˆâ–ˆâ•”â•�â•�â–ˆâ–ˆâ•‘â–ˆâ–ˆâ•”â•�â•�â–ˆâ–ˆâ•—â–ˆâ–ˆâ•‘     â–ˆâ–ˆâ•”â•�â•�â–ˆâ–ˆâ•‘  |\n");
+		System.out.print("\t\t\t\t\t\t\t|  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•”â•�â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—â–ˆâ–ˆâ•‘  â–ˆâ–ˆâ•‘â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•”â•�â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—â–ˆâ–ˆâ•‘  â–ˆâ–ˆâ•‘  |\n");
+		System.out.print("\t\t\t\t\t\t\t|  â•šâ•�â•�â•�â•�â•�â•� â•šâ•�â•�â•�â•�â•�â•�â•�â•šâ•�â•�  â•šâ•�â•�â•šâ•�â•�â•�â•�â•�â•� â•šâ•�â•�â•�â•�â•�â•�â•�â•šâ•�â•�  â•šâ•�â•�  |\n");
 		System.out.print("\t\t\t\t\t\t\t|                                                    |\n");
-		System.out.print("\t\t\t\t\t\t\t|                 ██╗  ██╗██╗██████╗                 |\n");
-		System.out.print("\t\t\t\t\t\t\t|                 ██║ ██╔╝██║██╔══██╗                |\n");
-		System.out.print("\t\t\t\t\t\t\t|                 █████╔╝ ██║██║  ██║                |\n");
-		System.out.print("\t\t\t\t\t\t\t|                 ██╔═██╗ ██║██║  ██║                |\n");
-		System.out.print("\t\t\t\t\t\t\t|                 ██║  ██╗██║██████╔╝                |\n");
-		System.out.print("\t\t\t\t\t\t\t|                 ╚═╝  ╚═╝╚═╝╚═════╝                 |\n");
-		System.out.print("\t\t\t\t\t\t\t╚====================================================╝\n");
+		System.out.print("\t\t\t\t\t\t\t|                 â–ˆâ–ˆâ•—  â–ˆâ–ˆâ•—â–ˆâ–ˆâ•—â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—                 |\n");
+		System.out.print("\t\t\t\t\t\t\t|                 â–ˆâ–ˆâ•‘ â–ˆâ–ˆâ•”â•�â–ˆâ–ˆâ•‘â–ˆâ–ˆâ•”â•�â•�â–ˆâ–ˆâ•—                |\n");
+		System.out.print("\t\t\t\t\t\t\t|                 â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•”â•� â–ˆâ–ˆâ•‘â–ˆâ–ˆâ•‘  â–ˆâ–ˆâ•‘                |\n");
+		System.out.print("\t\t\t\t\t\t\t|                 â–ˆâ–ˆâ•”â•�â–ˆâ–ˆâ•— â–ˆâ–ˆâ•‘â–ˆâ–ˆâ•‘  â–ˆâ–ˆâ•‘                |\n");
+		System.out.print("\t\t\t\t\t\t\t|                 â–ˆâ–ˆâ•‘  â–ˆâ–ˆâ•—â–ˆâ–ˆâ•‘â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•”â•�                |\n");
+		System.out.print("\t\t\t\t\t\t\t|                 â•šâ•�â•�  â•šâ•�â•�â•šâ•�â•�â•šâ•�â•�â•�â•�â•�â•�                 |\n");
+		System.out.print("\t\t\t\t\t\t\tâ•š====================================================â•�\n");
 		return;
 	}
 
@@ -205,10 +200,10 @@ public class TextUI {
 			System.out.println("Introduce the number of kids that "+name+" has");
 			numberOfKids = Teclado.readInteger();
 			
-			if(numberOfKids<1 || numberOfKids==Integer.MIN_VALUE || numberOfKids>blablakid.getKids().getLength()) {
-				System.out.println("Introduce a valid number of kids(Between 1 and" + blablakid.getKids().getLength() + ")");
+			if(numberOfKids<1 || numberOfKids==Integer.MIN_VALUE || numberOfKids>blablakid.getKidsLength()) {
+				System.out.println("Introduce a valid number of kids(Between 1 and" + blablakid.getKidsLength() + ")");
 			}
-		}while(numberOfKids<1 || numberOfKids==Integer.MIN_VALUE || numberOfKids>blablakid.getKids().getLength());
+		}while(numberOfKids<1 || numberOfKids==Integer.MIN_VALUE || numberOfKids>blablakid.getKidsLength());
 		Kids kids = new Kids(numberOfKids);
 		
 		//Asks for the name of its kids
@@ -216,7 +211,7 @@ public class TextUI {
 			System.out.println("Kid number "+i);
 			do {
 				kid = this.askKid();
-				if(this.blablakid.getKids().isIncluded(kid) == false) {
+				if(this.blablakid.isIncluded(kid) == false) {
 					System.out.println("This kid does not exist");
 				}
 				else {
@@ -226,7 +221,7 @@ public class TextUI {
 						System.out.println(e.getMessage());
 					}
 				}
-			}while(blablakid.getKids().isIncluded(kid) == false);
+			}while(blablakid.isIncluded(kid) == false);
 		}
 
 		//Asks for the number of rides
@@ -256,7 +251,7 @@ public class TextUI {
 		
 		}while(name.equals(""));
 		
-		return this.blablakid.getParents().search(name);
+		return this.blablakid.searchParent(name);
 	}
 	
 	
