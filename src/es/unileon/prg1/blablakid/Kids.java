@@ -9,20 +9,26 @@ package es.unileon.prg1.blablakid;
 
 public class Kids {
     /**
+     * 
      * Array composed of kids
+     * 
      */
     public Kid[] kids;
    
     /**
+     * 
      * Indicator of the first position free on the array
+     * 
      */
     private int next;
    
    
     /**
+     * 
      * Constructor of the class, initializes the array and set the next at 0
      * 
      * @param numberOfKids
+     * 
      */
     public Kids(int numberOfKids){
         this.kids = new Kid[numberOfKids];
@@ -30,20 +36,24 @@ public class Kids {
     }
  
     /**
+     * 
 	 * Getter of the first free position of the array
 	 *
 	 * @return the number of kids included in the array
+	 * 
 	 */
 	public int getNumberOfKids() {
 	    return this.next;
 	}
 
 	/**
+	 * 
      * Getter of the kid at a specific position
      *
      * @param index of the array that you want to get the kid
      *
      * @return the kid at the specific position
+     * 
      */
     public Kid get(int index) {
         return this.kids[index];
@@ -51,11 +61,13 @@ public class Kids {
     
  
     /**
+     * 
 	 * Method who return in which position of the array is one Kid
 	 *
 	 * @param kid who wants to know the position
 	 *
 	 * @return Integer that contains the position (0 - length-1)
+	 * 
 	 */
 	private int getPos(Kid kid){
 	    int count = 0;
@@ -71,15 +83,18 @@ public class Kids {
 	}
 	
 	/**
+	 * 
 	 * Getter of the full length of the array
 	 * 
 	 * @return Integer with the length of the array
+	 * 
 	 */
 	public int getLength() {
     	return this.kids.length;
     }
  
     /**
+     * 
      * Method to add a kid from the array
      *
      * @param kid to add

@@ -1,24 +1,37 @@
 package es.unileon.prg1.blablakid;
-
-//Import log4j classes.
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
-
 /**
+ * 
  * @author PabloJ
  *
- */
+ **/
+
+/*Import log4j classes.
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;*/
+
 public class Parents {
 
+	/**
+	 * 
+	 * Array composed of parents
+	 * 
+	 */
 	public Parent[] parents;
 	
+	/**
+	 * 
+	 * Integer with the valor of the first free position in the array
+	 * 
+	 */
 	private int next;
 	
 	
 	/**
-	 *	Create the array which will be managed by Parents
 	 * 
-	 * @param numberOfParents of parents
+	 * Create the array which will be managed by Parents
+	 * 
+	 * @param numberOfParents the maximum number of parents
+	 * 
 	 */
 	
 	public Parents(int numberOfParents) {
@@ -28,13 +41,16 @@ public class Parents {
 	}
 
 	/**
-	 * 	This method add a parent to a array of Parents
 	 * 
-	 * @param parent
+	 * This method add a parent to a array of Parents
+	 * 
+	 * @param parent that want to be added
+	 * 
+	 * @throws ParentException if the Parent is already included or the array is full
+	 * 
 	 */
 	
 	public void add(Parent parent)throws ParentException{
-		// TODO Auto-generated method stub
 		//If the parent is not included add the parent into the first space that has no parent in it
 		if (isIncluded(parent)) {
 			throw new ParentException("Error, parent is already included");
@@ -56,7 +72,9 @@ public class Parents {
 	 * 
 	 * Method that removes a parents from the arrays of Parents
 	 * 
-	 * @param parent
+	 * @param parent that want to be deleted
+	 * 
+	 * @throws ParentException if the parent is not in the array
 	 * 
 	 */
 	
@@ -72,17 +90,17 @@ public class Parents {
 			//If parent is not founded, throws an exception
 			throw new ParentException("Error, the parent is not in the list");
 		}
-		// TODO Auto-generated method stub
 	}
 	
 	/**
 	 * 
-	 * 	Getter of the parent at a specific position
+	 * Getter of the parent at a specific position
 	 * 
 	 * @param index
+	 * 
 	 * @return Parent in the position of the index 
+	 * 
 	 */
-	
 	public Parent get(int index) {
 		return this.parents[index];
 	}
@@ -96,8 +114,9 @@ public class Parents {
 	 * 
 	 * Method that shows in which position of the array is the parent
 	 * 
-	 * @param parent
-	 * @return int of the position of the array 
+	 * @param parent that wants to get his/her position
+	 * 
+	 * @return Integer with the position of the array 
 	 * 
 	 */
 	
@@ -116,10 +135,12 @@ public class Parents {
 	}
 	
 	/**
+	 * 
 	 *  Method that returns if the parent is included
 	 *  
-	 *  @param parent
-	 *  @return result
+	 *  @param parent that wants to check if is included
+	 *  
+	 *  @return boolean true if it is included or false if not
 	 *  
 	 */
 	
@@ -138,11 +159,11 @@ public class Parents {
 	 * 
 	 *  Method that search a parent in the array of parents
 	 *  
-	 *  @param name 
-	 *  @return the parent or null if the parent isn't on the array
+	 *  @param name of the parent
+	 *  
+	 *  @return the parent or null if the parent is not on the array
 	 *  
 	 */
-	
 	public Parent search(String name) {
 		int count = 0;
 		boolean found = false;
@@ -168,7 +189,8 @@ public class Parents {
 	 * 
 	 *  Method that remove and compact
 	 *  
-	 * @param position
+	 * @param position of the deleted parent
+	 * 
 	 */
 	private void compact(int position){
 		int i;
@@ -183,7 +205,9 @@ public class Parents {
 	}
 	
 	/**
+	 * 
 	 * Method toString to print the status of the full array
+	 * 
 	 */
 	
 	@Override
