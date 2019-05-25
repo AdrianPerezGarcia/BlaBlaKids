@@ -90,6 +90,12 @@ public class ParentsTest {
 		assertEquals(3, this.parents.getLength());
 	}
 	
+	@Test
+	public void testRemoveAndGetPos() throws ParentException {
+		//Cause it is a private method, i cover it launching a method that calls him
+		this.parents.remove(parent1);
+	}
+	
 	@Test(expected = ParentException.class)
 	public void testRemoveFail() throws KidException, ParentException {
 		Kids kids = new Kids(2);
@@ -99,12 +105,6 @@ public class ParentsTest {
 		kids.add(kid2);
 		Parent parent = new Parent("Miguel", kids, 1);
 		this.parents.remove(parent);
-	}
-	
-	@Test
-	public void testInWhichPosIs() throws ParentException {
-		//Cause it is a private method, i cover it launching a method that calls him
-		this.parents.remove(parent1);
 	}
 	
 	@Test

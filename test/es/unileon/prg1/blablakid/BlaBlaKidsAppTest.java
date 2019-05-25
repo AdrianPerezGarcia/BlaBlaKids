@@ -25,9 +25,9 @@ public class BlaBlaKidsAppTest {
 	public void testKids() throws KidException {
 		Kid kid = new Kid("Beatriz");
 		this.blablakid.add(kid);
-		assertNotNull(this.blablakid.getKids().search("Beatriz"));
+		assertSame("Beatriz", this.blablakid.searchKid(kid.getName()).getName());
 		this.blablakid.remove(kid);
-		assertNull(this.blablakid.getKids().search("Beatriz"));
+		assertNull(this.blablakid.searchKid(kid.getName()));
 	}
 	
 	@Test (expected = KidException.class)
@@ -57,9 +57,9 @@ public class BlaBlaKidsAppTest {
 		kidsParents.add(kidParent2);
 		Parent parent = new Parent("Pedro", kidsParents, 3);
 		this.blablakid.add(parent);
-		assertNotNull(this.blablakid.getParents().search("Pedro"));
+		assertEquals("Pedro", this.blablakid.searchParent("Pedro").getName());
 		this.blablakid.remove(parent);
-		assertNull(this.blablakid.getParents().search("Pedro"));
+		assertNull(this.blablakid.searchParent("Pedro"));
 	}
 	
 	@Test (expected = ParentException.class)

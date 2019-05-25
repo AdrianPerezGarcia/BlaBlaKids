@@ -35,16 +35,17 @@ public class BlaBlaKidsApp {
 
 	/**
 	 * @return the kids
+	 * .
 	 */
-	public Kids getKids() {
-		return kids;
+	public Kid searchKid(String kidName) {
+		return this.kids.search(kidName);
 	}
 
 	/**
 	 * @return the parents
 	 */
-	public Parents getParents() {
-		return parents;
+	public Parent searchParent(String parentName) {
+		return this.parents.search(parentName);
 	}
 
 	public void add(Parent parent) throws ParentException {
@@ -59,7 +60,7 @@ public class BlaBlaKidsApp {
 		if(this.kids.search(kidName) == null) {
 			throw new KidException("The kid " + kidName + " doesn't exist.");
 		} else {
-			this.kids.search(kidName).getActivities().add(activity);
+			this.kids.search(kidName).addActivity(activity);
 		}
 	}
 	

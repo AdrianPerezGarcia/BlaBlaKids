@@ -48,6 +48,9 @@ public class Kid {
 		return (this.name.equals(kid2.getName()));
 	}
 
+	public void addActivity(Activity activity) throws ActivityException {
+		this.activities.add(activity);
+	}
 
 	public Activity search(String activityName, int numDay) {
 		// TODO Auto-generated method stub
