@@ -1,9 +1,12 @@
 package es.unileon.prg1.blablakid;
-
-/**
+ /**
+ * 
+ * Class that manages a array of kid's object
+ * 
  * @author Adrian Perez
  *
- */
+ **/
+
 public class Kids {
     /**
      * Array composed of kids
@@ -18,6 +21,7 @@ public class Kids {
    
     /**
      * Constructor of the class, initializes the array and set the next at 0
+     * 
      * @param numberOfKids
      */
     public Kids(int numberOfKids){
@@ -51,7 +55,7 @@ public class Kids {
 	 *
 	 * @param kid who wants to know the position
 	 *
-	 * @return int that contains the position (0 - length-1)
+	 * @return Integer that contains the position (0 - length-1)
 	 */
 	private int getPos(Kid kid){
 	    int count = 0;
@@ -69,7 +73,7 @@ public class Kids {
 	/**
 	 * Getter of the full length of the array
 	 * 
-	 * @return the length of the array
+	 * @return Integer with the length of the array
 	 */
 	public int getLength() {
     	return this.kids.length;
@@ -83,19 +87,22 @@ public class Kids {
      * @throws KidException if the kid was also included or if the array is full
      *
      */
-    public void add(Kid kid) throws KidException{
-        if( isIncluded(kid) ){
-            throw new KidException("Error: kid already included");
-        }
-        else if (this.next >= this.kids.length) {
-            throw new KidException("Error: kid list is full");
-        }
-        else {
-            kids[this.next] = kid;
-            this.next++;
-        }
-       
-    }
+	public void add(Kid kid) throws KidException {
+		StringBuilder out = new StringBuilder();
+		if (isIncluded(kid)) {
+			out.append("Error: kid " + kid.getName() + " is already included.\n");
+		} else if (this.next >= this.kids.length) {
+			out.append("Error: kid list is full.\n");
+		}
+
+		if (out.length() > 0) {
+			throw new KidException(out.toString());
+		} else {
+			kids[this.next] = kid;
+			this.next++;
+		}
+
+	}
  
     /**
      * Method to remove a kid from the array
@@ -112,7 +119,7 @@ public class Kids {
             next--;
         }
         else{
-            throw new KidException("Error: kid isn't included, so it can't be removed.");
+            throw new KidException("Error: kid " +kid.getName()+ "is not included, so it can't be removed.");
         }
     }
  

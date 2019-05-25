@@ -1,38 +1,39 @@
 package es.unileon.prg1.blablakid;
-/**
+ /**
+ * 
  * Class that creates the children that will manage the kids class
  * 
  * @author Adrian Perez
  *
- */
+ **/
 
-/* Logs libraries
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
-*/
+/*
+ * Logs libraries import org.apache.logging.log4j.Logger; import
+ * org.apache.logging.log4j.LogManager;
+ */
 public class Kid {
 	/**
 	 * Name of the kid, used as his/her identifier
 	 * 
 	 */
 	private String name;
-	
+
 	/**
 	 * Activities of each kid
 	 * 
 	 */
 	private Activities activities;
-	
+
 	/**
-	 *Creates the kid object with its name (identifier)
+	 * Creates the kid object with its name (identifier)
 	 * 
 	 * @param name Kid identifier
 	 */
-	public Kid (String name){
+	public Kid(String name) {
 		this.name = name;
 		this.activities = new Activities();
 	}
-	
+
 	/**
 	 * Getter of the kid name
 	 * 
@@ -41,7 +42,7 @@ public class Kid {
 	public String getName() {
 		return this.name;
 	}
-	
+
 	/**
 	 * Method that check is two kid object are equal
 	 * 
@@ -64,7 +65,6 @@ public class Kid {
 	 * @return the activity founded or NULL
 	 */
 	public Activity search(String activityName, int numDay) {
-		// TODO Auto-generated method stub
 		return this.activities.search(activityName, numDay);
 	}
 
@@ -92,8 +92,6 @@ public class Kid {
 		salida.append(this.activities.toString());
 		return salida.toString();
 	}
-
-
 
 }
 
