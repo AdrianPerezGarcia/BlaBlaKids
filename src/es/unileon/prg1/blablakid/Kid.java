@@ -5,6 +5,11 @@ package es.unileon.prg1.blablakid;
  * @author Adrian Perez
  *
  */
+
+/* Logs libraries
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+*/
 public class Kid {
 	/**
 	 * Name of the kid, used as his/her identifier
@@ -48,13 +53,31 @@ public class Kid {
 		return (this.name.equals(kid2.getName()));
 	}
 
-	public void addActivity(Activity activity) throws ActivityException {
-		this.activities.add(activity);
-	}
-
+	/**
+	 * 
+	 * Method that search a Activity in the kid array
+	 * 
+	 * @param activityName
+	 * 
+	 * @param numDay
+	 * 
+	 * @return the activity founded or NULL
+	 */
 	public Activity search(String activityName, int numDay) {
 		// TODO Auto-generated method stub
 		return this.activities.search(activityName, numDay);
+	}
+
+	/**
+	 * 
+	 * Method to add an activity in the kid array
+	 * 
+	 * @param activity to add in his/her array
+	 * 
+	 * @throws ActivityException If the activity cannot be added
+	 */
+	public void addActivity(Activity activity) throws ActivityException {
+		this.activities.add(activity);
 	}
 
 	/**
