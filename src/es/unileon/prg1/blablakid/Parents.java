@@ -1,5 +1,9 @@
 package es.unileon.prg1.blablakid;
 
+//Import log4j classes.
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 /**
  * @author PabloJ
  *

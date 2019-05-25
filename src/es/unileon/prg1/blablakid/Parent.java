@@ -1,4 +1,9 @@
 package es.unileon.prg1.blablakid;
+
+//Import log4j classes.
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 /**
  * 	Class that creates a parent managed by Parents
  * @author PabloJ
@@ -78,17 +83,36 @@ public class Parent {
 
 	}
 	
+	/*
+	 * Search a day in the array of days
+	 * 
+	 * @param numDay number of the day
+	 * 
+	 * @return Day  Object day 
+	 * 
+	 */
+	
 	public Day search(int numDay) {
 		
 		return this.days.search(numDay);
 			
 	}
 	
+	/*
+	 * 
+	 * Search a kid in the array of kids
+	 * 
+	 * @param Kidname String of the name of the kid
+	 * 
+	 * @return Kid The kid of the array
+	 * 
+	 */
 	public Kid search(String Kidname) {
 		
 		return this.kids.search(Kidname);
 		
 	}
+	
 	@Override
 	public String toString() {
 		StringBuilder salida = new StringBuilder();
