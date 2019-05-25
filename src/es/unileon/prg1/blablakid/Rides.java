@@ -1,7 +1,7 @@
 package es.unileon.prg1.blablakid;
 
-
 /**
+ * Class that manages an array of Ride objects
  * @author Hector Castro
  *
  */
@@ -18,8 +18,8 @@ public class Rides {
 	public int next;
 
 	/**
-	 * 
-	 * @param numberOfRides maximum number of rides that defines the arrays length
+	 * Rides contructor
+	 * @param numberOfRides Maximum number of rides that defines the arrays length.
 	 */
 	public Rides(int numberOfRides){
 	 this.rides = new Ride[numberOfRides];
@@ -27,6 +27,12 @@ public class Rides {
 	}
 
 
+	/**
+	 * Method to search a Ride object inside a Rides array
+	 * @param startPlace The start place of the Ride to find
+	 * @param endPlace The end place of the Ride to find
+	 * @return Ride inside the Rides array with the given data or null if there is no Ride with it. 
+	 */
 	public Ride search(String startPlace,String endPlace) {
 		boolean found = false;
 		int count = 0;
@@ -43,6 +49,11 @@ public class Rides {
 		return rideOut;
 	}
 	
+	/**
+	 * Method to add a Ride to a Rides array
+	 * @param ride Ride to add
+	 * @throws RideException Thows an exception if the ride is alredy included or if the array is full
+	 */
 	public void addRide(Ride ride) throws RideException{
 		//Checks if the ride is already in the array
 		if(isIncluded(ride)){
@@ -62,6 +73,11 @@ public class Rides {
 		}
 	}
 
+	/**
+	 *Method that returns the position on a Rides array of a given Ride 
+	 * @param ride Ride to search
+	 * @return	Position in the array
+	 */
 	private int getPos(Ride ride){
 		int count = 0;
 		boolean end = false;
@@ -76,11 +92,21 @@ public class Rides {
 		return count;
 	}
 	
+	/**
+	 * Method get the Ride in a given position 
+	 * @param pos Position to retrieve
+	 * @return Ride in the given position
+	 */
 	public Ride get(int pos) {
 		return this.rides[pos];
 	}
 	
 	
+	/**
+	 * Method to remove a Ride from a Rides array
+	 * @param ride Ride you want to delete
+	 * @throws RideException Thows an exception if the ride is not included in the array
+	 */		
 	public void remove(Ride ride) throws RideException {
 		//If the ride is included take the position and removes the ride from the array
 		if (this.isIncluded(ride)) {
@@ -95,6 +121,11 @@ public class Rides {
 		}
 	}
 			
+	/**
+	 * Methods that determines if a Ride is includes in a Rides array
+	 * @param ride to search
+	 * @return true if its included, false if it is not
+	 */
 	private boolean isIncluded(Ride ride) {
 		boolean same = false;
 		for (int i = 0; i < next; i++) {
@@ -105,6 +136,10 @@ public class Rides {
 		return same;
 	}
 	
+	/**
+	 * Provate method to compact the array after removing 
+	 * @param pos Position of the removed object
+	 */
 	private void compact(int pos) {
 		int i;
 		//I use a loop to travel the array until next
@@ -116,10 +151,16 @@ public class Rides {
 		this.rides[this.next-1]=null; 
 	}
 	
+	/**
+	 * @return The max lenght of the Rides array
+	 */
 	public int getLength() {
 		return this.rides.length;
 	}
 	
+	/**
+	 * Returns a summary of all the info of the Rides array as text
+	 */
 	public String toString() {
 		StringBuilder out = new StringBuilder();
 		for (int i = 0; i<this.next; i++) {
