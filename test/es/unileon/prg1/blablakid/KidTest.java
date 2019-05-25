@@ -29,10 +29,10 @@ public class KidTest {
 		WeekDays day = WeekDays.MONDAY;
 		Day today = new Day(day);
 		Activity baloncesto = new Activity("Baloncesto", palomera, today, startTime, endTime);
-		this.daniel.getActivities().add(baloncesto);
+		this.daniel.add(baloncesto);
 		Activities activities = new Activities();
 		activities.add(baloncesto);
-		assertEquals(baloncesto, this.daniel.getActivities().get(0));
+		assertEquals(baloncesto, this.daniel.search("baloncesto", 0));
 	}
 	
 	@Test

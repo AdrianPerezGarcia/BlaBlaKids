@@ -90,7 +90,9 @@ public class Day {
 	 * Method that checks if two days are the same
 	 * 
 	 * @param day
+	 * 
 	 * @return true if two days are the same, false if not
+	 * 
 	 */
 	public boolean isSame(Day day) {
 		boolean salida = false;

@@ -74,7 +74,7 @@ public class Kid {
 	 * 
 	 * @param activity to add in his/her array
 	 * 
-	 * @throws ActivityException If the activity cannot be added
+	 * @throws ActivityException if the activity cannot be added
 	 */
 	public void add(Activity activity) throws ActivityException {
 		this.activities.add(activity);

@@ -1,9 +1,10 @@
 package es.unileon.prg1.blablakid;
-
 /**
+ * 
  * @author Adrian Perez
  * 
  */
+
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -20,14 +21,14 @@ public class DayTest {
 	}
 	
 	@Test
-	public void testGetRides() throws DayException, HourException, RideException{
+	public void testGetRides() throws Exception{
 		Place startPlace = new Place("Palomera");
 		Place endPlace = new Place("Casa");
 		Hour startHour = new Hour(16, 15);
 		Hour endHour = new Hour(17, 30);
 		Ride ride = new Ride(startPlace, endPlace, startHour, endHour);
-		this.day.getRides().addRide(ride);
-		assertEquals(ride.getStartPlace(), this.day.getRides().search("Palomera", "Casa").getStartPlace());
+		this.day.add(ride);
+		assertEquals(ride.getStartPlace(), this.day.search("Palomera", "Casa").getStartPlace());
 	}
 	
 	@Test
