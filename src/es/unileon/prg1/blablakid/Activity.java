@@ -68,8 +68,36 @@ public class Activity {
 		return afterRide;
 	}
 	
-	public void setRides() {
+	/**
+	 * Method that sets a ride as a afterRide, beforeRide or doesn't set it if it's an invalid one
+	 * 
+	 * @param ride
+	 * @return true if the ride is valid, false if not
+	 * @throws RideException
+	 */
+	public boolean setRides(Ride ride) throws RideException{
 		//TODO comprobaciones, candidatos  a beforeRide, afterRide o invalido
+		boolean set = false;
+		if(this.place.isSame(ride.getEndPlace())) {
+			//Se trata de un beforeRide, por lo que compruebo las horas para no llegar tarde
+			if(this.startTime.isHigher(ride.getEndTime())) {
+				this.beforeRide = ride;
+				set = true;
+			} else {
+				throw new RideException("The ride arrives late to the activity.\n");
+			}
+		} else if(this.place.isSame(ride.getStartPlace())) {
+			//Se trata de un afterRide, compruebo que no salga antes de que acabe la actividad
+			if (this.endTime.isLower(ride.getStartTime())) {
+				this.afterRide = ride;
+				set = true;
+			} else {
+				throw new RideException("The ride starts before the end of the activity.\n");
+			}
+		} else {
+			throw new RideException("The ride doesn't match the activity.\n");
+		}
+		return set;
 	}
 
 
