@@ -167,37 +167,22 @@ public class BlaBlaKidsApp {
 	public void add(Ride ride, String parentName, String kidName, String activityName, int numDay) throws Exception {
 		StringBuilder out = new StringBuilder();
 		if (this.parents.search(parentName) == null) {
-			out.append("The parent " +parentName+ " does not exist.\n");
-		} 
-		if (this.kids.search(kidName) == null) {
-			out.append("The kid " +kidName+ " does not exist.\n");
-		} else if(this.kids.search(kidName).search(activityName, numDay) == null) {
-			out.append("The kid " +kidName+ " does not have the activity " +activityName);
-		} else if( !(this.kids.search(kidName).search(activityName, numDay).getPlace().isSame(ride.getStartPlace())) ){
-			out.append("Error: The activity " +activityName+ " is not on " +ride.getStartPlace());
+			out.append("The parent " + parentName + " does not exist.\n");
 		}
-		
-		if(out.length()>0) {
+		if (this.kids.search(kidName) == null) {
+			out.append("The kid " + kidName + " does not exist.\n");
+		} else if (this.kids.search(kidName).search(activityName, numDay) == null) {
+			out.append("The kid " + kidName + " does not have the activity " + activityName);
+		}
+
+		if (out.length() > 0) {
 			throw new BlaBlaKidException(out.toString());
 		} else {
-			this.parents.search(parentName).search(numDay).add(ride);
+			this.kids.search(kidName).search(activityName, numDay).setRides(ride);
+			if (this.kids.search(kidName).search(activityName, numDay).setRides(ride)) {
+				this.parents.search(parentName).search(numDay).add(ride);
+			}
 		}
-		/** 
-		Metodo Antiguo
-		if (this.parents.search(parentName) == null) {
-			throw new ParentException(parentName + " doesn't exist.");
-		} else if (this.kids.search(kidName) == null) {
-			throw new KidException(kidName + " doesn't exist.");
-		} else if (this.kids.search(kidName).search(activityName, numDay) == null) {
-			throw new ActivityException(kidName + " doesn't have the activity " + activityName);
-			//TODO como gestionar beforeRide y afterRide para hacer comprobaciones
-		} else if(!(this.kids.search(kidName).getActivities().search(activityName, numDay).getPlace().isSame(ride.getStartPlace()))) {
-			throw new RideException("The activity is not on that place.");
-		}else {
-			this.kids.search(kidName).getActivities().search(activityName, numDay);
-			this.parents.search(parentName).getDays().search(numDay).getRides().addRide(ride);
-		}
-		**/
 	}
 	
 	@Override

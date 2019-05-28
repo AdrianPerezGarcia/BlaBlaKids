@@ -72,7 +72,7 @@ public class TextUI {
 						break;
 					case 9:
 						System.out.println("/////////////////////////////");
-						this.blablakid.toString();
+						System.out.println(this.blablakid.toString());
 						System.out.println("/////////////////////////////");
 						break;
 					case 10:

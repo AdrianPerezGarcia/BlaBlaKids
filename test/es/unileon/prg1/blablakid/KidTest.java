@@ -32,7 +32,7 @@ public class KidTest {
 		this.daniel.add(baloncesto);
 		Activities activities = new Activities();
 		activities.add(baloncesto);
-		assertEquals(baloncesto, this.daniel.search("baloncesto", 0));
+		assertEquals(baloncesto, this.daniel.search("Baloncesto", 0));
 	}
 	
 	@Test
