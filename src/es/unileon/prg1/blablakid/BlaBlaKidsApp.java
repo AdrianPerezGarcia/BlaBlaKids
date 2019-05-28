@@ -152,8 +152,12 @@ public class BlaBlaKidsApp {
 	 * 
 	 * @throws ActivityException if the activity cannot be deleted
 	 * 
+	 * @throws RideException if the ride cannot be removed
+	 * 
 	 */
-	public void remove(Activity activity, String kidName) throws KidException, ActivityException {
+	public void remove(String activityName, String kidName, int numDay)
+			throws KidException, ActivityException, RideException {
+		Activity activity = this.kids.search(kidName).search(activityName, numDay);
 		if (this.kids.search(kidName) == null) {
 			throw new KidException("Error: The kid " + kidName + " doesn't exist");
 		} else if (this.kids.search(kidName).search(activity.getName(), activity.getDay().getNumDay()) == null) {
@@ -161,9 +165,35 @@ public class BlaBlaKidsApp {
 					+ " on " + activity.getDay().toString());
 		} else {
 			this.kids.search(kidName).remove(activity);
+			for (int i = 0; i < this.parents.getLength(); i++) {
+				if (this.parents.get(i).search(numDay).search(activity.getAfterRide().getStartPlace().getPlace(),
+						activity.getAfterRide().getEndPlace().getPlace()) != null) {
+					Ride ride = this.parents.get(i).search(numDay).search(
+							activity.getAfterRide().getStartPlace().getPlace(),
+							activity.getAfterRide().getEndPlace().getPlace());
+					this.parents.get(i).search(numDay).remove(ride);
+				}
+				
+				if(this.parents.get(i).search(numDay).search(activity.getBeforeRide().getStartPlace().getPlace(),
+						activity.getBeforeRide().getEndPlace().getPlace()) != null) {
+					Ride ride = this.parents.get(i).search(numDay).search(
+							activity.getBeforeRide().getStartPlace().getPlace(),
+							activity.getBeforeRide().getEndPlace().getPlace());
+					this.parents.get(i).search(numDay).remove(ride);
+				}
+			}
 		}
 	}
 	
+	/**
+	 * 
+	 * @param ride
+	 * @param parentName
+	 * @param kidName
+	 * @param activityName
+	 * @param numDay
+	 * @throws Exception
+	 */
 	public void add(Ride ride, String parentName, String kidName, String activityName, int numDay) throws Exception {
 		StringBuilder out = new StringBuilder();
 		if (this.parents.search(parentName) == null) {
@@ -184,6 +214,28 @@ public class BlaBlaKidsApp {
 			}
 		}
 	}
+
+	public void remove(String parentName, int numDay, String startPlace, String endPlace) throws ParentException, RideException{
+		StringBuilder out = new StringBuilder();
+		if (this.parents.search(parentName) == null) {
+			out.append("The parent " + parentName + " does not exist.\n");
+		}
+		
+		Ride ride = this.parents.search(parentName).search(numDay).search(startPlace, endPlace);
+		this.parents.search(parentName).search(numDay).remove(ride);
+		
+		//TODO falta borrar los rides de la acctividad, es posible que necesite metodos auxiliares
+		
+	}
+	
+	public int getKidsLength() {
+		return this.kids.getLength();
+	}
+
+
+	public boolean isIncluded(Kid kid) {
+		return this.kids.isIncluded(kid);
+	}
 	
 	@Override
 	public String toString() {
@@ -194,12 +246,4 @@ public class BlaBlaKidsApp {
 	}
 
 
-	public int getKidsLength() {
-		return this.kids.getLength();
-	}
-
-
-	public boolean isIncluded(Kid kid) {
-		return this.kids.isIncluded(kid);
-	}
 }
