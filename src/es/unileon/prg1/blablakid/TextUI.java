@@ -1,9 +1,12 @@
 package es.unileon.prg1.blablakid;
-
 /**
+ * 
+ * Class with the purpose of interacting with the user
+ * 
  * @author Hector Castro, Pablo Bayon
  *
  */
+
 public class TextUI {
 	private BlaBlaKidsApp blablakid;
 
