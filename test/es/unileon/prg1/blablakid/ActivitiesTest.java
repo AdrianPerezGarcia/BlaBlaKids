@@ -71,6 +71,7 @@ public class ActivitiesTest {
 	@Test
 	public void testSearchRemove() throws ActivityException {
 		this.actividades.add(actividad);
+		//Anyado dos para cubrir la branch de que no este en la primera pos del array
 		this.actividades.add(actividad2);
 		this.actividades.remove(actividades.search(name2,this.actividad.getDay().getNumDay()));
 		assertNull(this.actividades.get(0));

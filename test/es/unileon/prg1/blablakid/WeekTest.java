@@ -16,25 +16,20 @@ public class WeekTest {
 	
 	@Before
 	public void setUp() throws DayException {
-		this.week = new Week();
+		this.week = new Week(1);
 		this.day = new Day(WeekDays.MONDAY);
 		this.day1 = new Day(WeekDays.TUESDAY);
 	}
 	
 	@Test
-	public void TestAddGet() throws DayException {
-		this.week.add(day);
+	public void TestGetDay() throws DayException {
 		assertEquals(this.day.getNumDay(),this.week.getDay(0).getNumDay());
-	}
+	}	
 	
-	@Test (expected = DayException.class )
-	public void TestAddSame() throws DayException {
-		this.week.add(day);
-		this.week.add(day);
+	@Test
+	public void TestSearch() throws DayException {
+		
+		assertEquals(this.day1.getNumDay(),this.week.search(1).getNumDay());
 	}
 
-	@Test
-	public void TestRemove() throws DayException {
-		this.week.remove(this.week.search(this.day.getNumDay()));
-	}		
 }

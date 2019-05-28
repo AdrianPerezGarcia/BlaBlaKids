@@ -103,6 +103,8 @@ public class Week {
 	 * @param day
 	 * @return true if the object is included in the array, false if not
 	 */
+
+/*Sobra
 	private boolean isIncluded(Day day) {
 		boolean salida = false;
 		boolean end = false;
@@ -116,7 +118,7 @@ public class Week {
 		}
 		return salida;
 	}
-
+/*
 	/**
 	 * Method that returns an object day using its position in the array
 	 * 
