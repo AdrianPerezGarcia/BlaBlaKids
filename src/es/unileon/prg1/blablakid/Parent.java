@@ -89,6 +89,7 @@ public class Parent {
 	 * @return Boolean with true if the hours are equals
 	 * 
 	 */
+	
 	public boolean isSame(Parent parent2) {
 		boolean isSame = false;
 		
@@ -125,6 +126,7 @@ public class Parent {
 	 * @return Kid The kid of the array
 	 * 
 	 */
+	
 	public Kid search(String Kidname) {
 		return this.kids.search(Kidname);
 	}
@@ -138,9 +140,21 @@ public class Parent {
 	 * @throws KidException if the kid does not exist in the array
 	 * 
 	 */
+	
 	public void remove(Kid kid) throws KidException {
 		this.kids.remove(kid);
 	}
+	
+	/**
+	 *  Method that search a Ride in the array of Rides
+	 *  
+	 *  @param String Name of the place where the ride starts
+	 *  @param String Name of the place where the ride ends
+	 *  @param Day The day of the ride 
+	 *  
+	 *  @throws DayException if the day is wrong
+	 * 
+	 */
 	
 	public Ride search(String rideStartPlace, String rideEndPlace, Day day) throws DayException {
 		if (day == null) {
@@ -150,6 +164,18 @@ public class Parent {
 		}
 	}
 	
+	/**
+	 * 
+	 * 	Method that add a Ride into a Day
+	 * 
+	 * @param Ride ride that will be added
+	 * @param Day the day where the ride want to be added 
+	 * 
+	 * @throws RideException if the ride is wrong
+	 * @throws DayException if the day is wrong
+	 * 
+	 */
+	
 	public void add(Ride ride, Day day) throws RideException, DayException {
 		if (day == null) {
 			throw new DayException("Error: Day not valid");
@@ -157,6 +183,18 @@ public class Parent {
 			day.add(ride); 
 		}
 	}
+	
+	/**
+	 * 
+	 * Method remove a Ride of a specified day
+	 * 
+	 * @param Ride ride that will be removed 
+	 * @param Day the day where the ride want to be removed
+	 * 
+	 * @throws RideException if the ride is wrong
+	 * @throws DayException if the day is wrong
+	 * 
+	 */
 	
 	public void remove(Ride ride, Day day) throws RideException, DayException {
 		if (day == null) {
@@ -170,7 +208,10 @@ public class Parent {
 	 * 
 	 * Method to String of the parents and his/her kid
 	 * 
+	 * @return String 
+	 * 
 	 */
+	
 	@Override
 	public String toString() {
 		StringBuilder salida = new StringBuilder();

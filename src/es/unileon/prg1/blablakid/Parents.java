@@ -16,6 +16,7 @@ public class Parents {
 	 * Array composed of parents
 	 * 
 	 */
+	
 	public Parent[] parents;
 	
 	/**
@@ -23,8 +24,8 @@ public class Parents {
 	 * Integer with the valor of the first free position in the array
 	 * 
 	 */
-	private int next;
 	
+	private int next;
 	
 	/**
 	 * 
@@ -164,6 +165,7 @@ public class Parents {
 	 *  @return the parent or null if the parent is not on the array
 	 *  
 	 */
+	
 	public Parent search(String name) {
 		int count = 0;
 		boolean found = false;
@@ -178,13 +180,11 @@ public class Parents {
 			else {
 				count++;
 			}
-		}
-		
+		}	
 		/* If the parent is not founded the method returns null */
-		
-		return parentOut;
-		
+		return parentOut;		
 	}
+	
 	/**
 	 * 
 	 *  Method that remove and compact
@@ -192,6 +192,7 @@ public class Parents {
 	 * @param position of the deleted parent
 	 * 
 	 */
+	
 	private void compact(int position){
 		int i;
 		//I use a loop to travel the array until next
@@ -207,6 +208,8 @@ public class Parents {
 	/**
 	 * 
 	 * Method toString to print the status of the full array
+	 * 
+	 * @return String 
 	 * 
 	 */
 	
