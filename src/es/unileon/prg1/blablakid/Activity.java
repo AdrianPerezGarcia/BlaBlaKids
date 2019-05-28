@@ -194,6 +194,11 @@ public class Activity {
 		return day;
 	}
 
+	/**
+	 * 
+	 * 
+	 * @return
+	 */
 	public Hour getStartTime() {
 		return startTime;
 	}
