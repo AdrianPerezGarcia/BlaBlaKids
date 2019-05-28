@@ -135,7 +135,7 @@ public class Parent {
 	 * 
 	 * Method that removes a kid in the array of kids
 	 * 
-	 * @param Kid that wants to be deleted
+	 * @param kid that wants to be deleted
 	 * 
 	 * @throws KidException if the kid does not exist in the array
 	 * 

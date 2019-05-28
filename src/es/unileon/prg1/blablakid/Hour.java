@@ -21,7 +21,7 @@ public class Hour {
 	/**
 	 * Creates the hour with it hours and minutes
 	 *
-	 * @param hour   representing minutes of the Hour
+	 * @param hours representing minutes of the Hour
 	 * @param minute representing hours of the Hour
 	 *
 	 * @throws HourException if the hour or the minutes is not correct

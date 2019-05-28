@@ -89,14 +89,14 @@ public class Day {
 	 * 
 	 * Method that checks if two days are the same
 	 * 
-	 * @param day
+	 * @param day2 another day to compare
 	 * 
 	 * @return true if two days are the same, false if not
 	 * 
 	 */
-	public boolean isSame(Day day) {
+	public boolean isSame(Day day2) {
 		boolean salida = false;
-		if (this.getNumDay() == day.getNumDay()) { 
+		if (this.getNumDay() == day2.getNumDay()) { 
 			salida = true;
 		}
 		return salida;
