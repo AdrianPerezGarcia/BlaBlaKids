@@ -1,7 +1,7 @@
 package es.unileon.prg1.blablakid;
  /**
  * 
- * Class that manages a array of kid's object
+ * Class that manages a array of kid objects
  * 
  * @author Adrian Perez
  *
@@ -124,7 +124,7 @@ public class Kids {
      *
      * @param kid to remove
      *
-     * @throws KidException if the kid wasn't included in the array
+     * @throws KidException if the kid was not included in the array
      *
      */
     public void remove(Kid kid) throws KidException{
@@ -173,17 +173,17 @@ public class Kids {
     /**
      * Method to search if there is a kid named like the parameter in the array
      *
-     * @param Name to search in the array
+     * @param name to search in the array
      *
      * @return The kid if there is anyone named like the parameter or null
      */
-    public Kid search(String Name) {
+    public Kid search(String name) {
         int count = 0;
         boolean end = false;
         Kid found =  null;
         //I search in the array for a kid named as the parameter
         while( (count < this.next) && (!end) ) {
-            if ( this.kids[count].getName().equals(Name) ){
+            if ( this.kids[count].getName().equals(name) ){
                 //If i found it i set the kid valor to found and i finish the loop
             	found = kids[count];
                 end = true;
