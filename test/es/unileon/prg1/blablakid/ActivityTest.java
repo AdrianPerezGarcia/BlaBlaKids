@@ -25,6 +25,11 @@ public class ActivityTest {
 	private Hour beforeRideEnd;
 	private Hour afterRideStart;
 	private Hour afterRideEnd;
+	private Hour beforeRideEndLate;
+	private Hour afterRideStartEarly;
+	private Ride beforeRideLate;
+	private Ride afterRideEarly;
+	private Ride wrongRide;
 	
 	
 	@Before
@@ -37,28 +42,50 @@ public class ActivityTest {
 		this.startTime = new Hour(15,00);
 		this.endTime = new Hour(16,00);
 		this.beforeRideStart = new Hour(14,30);
-		this.beforeRideEnd = new Hour(15,00);
-		this.afterRideStart = new Hour (16,00);
+		this.beforeRideEnd = new Hour(14,59);
+		this.afterRideStart = new Hour (16,01);
 		this.afterRideEnd = new Hour(16,30);
+		
+		this.beforeRideEndLate = new Hour(15,10);
+		this.afterRideStartEarly = new Hour (15,50);
+
 		
 		this.actividad = new Activity(name,palomera,day,startTime,endTime);
 		this.actividad2 = new Activity(name2,palomera,day,startTime,endTime);
 		this.beforeRide = new Ride(casa,palomera,beforeRideStart,beforeRideEnd);
 		this.afterRide = new Ride(palomera,casa,afterRideStart,afterRideEnd);
-		
+		this.beforeRideLate = new Ride(casa,palomera,beforeRideStart,beforeRideEndLate);
+		this.afterRideEarly = new Ride(palomera,casa,afterRideStartEarly,afterRideEnd);
+		this.wrongRide = new Ride (casa, casa, beforeRideStart,beforeRideEnd);
 	}
 	@Test
-	public void testSetGetBeforeRide() {
-		this.actividad.setBeforeRide(beforeRide);
+	public void testSetGetBeforeRide() throws RideException {
+		this.actividad.setRides(beforeRide);
 		assertTrue(this.actividad.getBeforeRide().isSame(beforeRide));
 	}
 
 	@Test
-	public void testSetGetAfterRide() {
-		this.actividad.setAfterRide(afterRide);
+	public void testSetGetAfterRide() throws RideException {
+		this.actividad.setRides(afterRide);
 		assertTrue(this.actividad.getAfterRide().isSame(afterRide));
 	}
-
+	
+	@Test(expected = RideException.class)
+	public void testWrongRide() throws RideException {
+		this.actividad.setRides(this.wrongRide);
+	}
+	
+	@Test(expected = RideException.class)
+	public void testWrongAfterRides() throws RideException {
+		this.actividad.setRides(this.beforeRide);
+		this.actividad.setRides(this.afterRideEarly);
+	}
+	
+	@Test(expected = RideException.class)
+	public void testWrongBeforeRides() throws RideException {
+		this.actividad.setRides(this.beforeRideLate);
+	}
+	
 	@Test
 	public void testIsSame() {
 		assertTrue(this.actividad.isSame(this.actividad));
@@ -106,9 +133,9 @@ public class ActivityTest {
 	}
 
 	@Test
-	public void testToStringRides() {
-		this.actividad.setBeforeRide(beforeRide);
-		this.actividad.setAfterRide(afterRide);
+	public void testToStringRides() throws RideException {
+		this.actividad.setRides(beforeRide);
+		this.actividad.setRides(afterRide);
 		StringBuilder out = new StringBuilder();
 		out.append(name + " (" + palomera + " - " + day + ")" + startTime + " > " + endTime+"\n");
 		out.append(beforeRide.getStartPlace() + " > " + beforeRide.getEndPlace() + " : " + beforeRide.getStartTime() + "/" + beforeRide.getEndTime() + "\n");
