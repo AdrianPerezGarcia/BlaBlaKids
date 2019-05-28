@@ -17,7 +17,7 @@ public class DayTest {
 	@Before
 	public void setUp() throws DayException{
 		WeekDays wDay = WeekDays.MONDAY;
-		day = new Day(wDay);
+		day = new Day(wDay, 3);
 	}
 	
 	@Test

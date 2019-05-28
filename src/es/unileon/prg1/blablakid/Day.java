@@ -30,7 +30,7 @@ public class Day {
 	 */
 	public Day(WeekDays day, int maxRides) {
 		this.day = day;
-		this.rides = new Rides(3);
+		this.rides = new Rides(maxRides);
 	}
 	
 	/**

@@ -76,7 +76,6 @@ public class Activity {
 	 * @throws RideException
 	 */
 	public boolean setRides(Ride ride) throws RideException{
-		//TODO comprobaciones, candidatos  a beforeRide, afterRide o invalido
 		boolean set = false;
 		if(this.place.isSame(ride.getEndPlace())) {
 			//Se trata de un beforeRide, por lo que compruebo las horas para no llegar tarde

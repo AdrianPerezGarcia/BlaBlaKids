@@ -81,7 +81,7 @@ public class ParentTest {
 		Ride ride = new Ride(startPlace, endPlace, startTime, endTime);
 		Day day = this.parent.search(2);
 		this.parent.add(ride, day);
-		assertEquals(ride.getEndPlace(), this.parent.search(day.getNumDay()).search(startPlace.toString(), endPlace.toString()).getEndPlace());
+		assertEquals(ride.getEndPlace(), this.parent.search(day.getNumDay()).search(startPlace.getPlace(), endPlace.getPlace()).getEndPlace());
 		this.parent.remove(ride, day);
 	}
 	
