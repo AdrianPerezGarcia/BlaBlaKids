@@ -46,7 +46,7 @@
 			</java>
 		</target>
  	
-	<target name="doc" depends="clean">
+	<target name="doc" depends="compile">
 	      <mkdir dir="${doc}"/>
 		 <javadoc destdir="${doc}" splitindex = "true" private = "true" version = "true" author = "true" linksource = "true" overview ="../src/overview.html" >
 		        <fileset dir="${src}" />
