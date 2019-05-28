@@ -35,8 +35,8 @@ public class ActivitiesTest {
 		this.startTime = new Hour(15,00);
 		this.endTime = new Hour(16,00);
 		this.beforeRideStart = new Hour(14,30);
-		this.beforeRideEnd = new Hour(15,00);
-		this.afterRideStart = new Hour (16,00);
+		this.beforeRideEnd = new Hour(14,50);
+		this.afterRideStart = new Hour (16,10);
 		this.afterRideEnd = new Hour(16,30);
 		
 		this.actividad = new Activity(name,palomera,day,startTime,endTime);
@@ -71,7 +71,8 @@ public class ActivitiesTest {
 	@Test
 	public void testSearchRemove() throws ActivityException {
 		this.actividades.add(actividad);
-		this.actividades.remove(actividades.search(name,this.actividad.getDay().getNumDay()));
+		this.actividades.add(actividad2);
+		this.actividades.remove(actividades.search(name2,this.actividad.getDay().getNumDay()));
 		assertNull(this.actividades.get(0));
 	}
 	
@@ -85,10 +86,10 @@ public class ActivitiesTest {
 	}
 
 	@Test
-	public void testToString() throws ActivityException {
+	public void testToString() throws ActivityException, RideException {
 		this.actividades.add(actividad);
-		this.actividad.setBeforeRide(beforeRide);
-		this.actividad.setAfterRide(afterRide);
+		this.actividad.setRides(beforeRide);
+		this.actividad.setRides(afterRide);
 		StringBuilder out = new StringBuilder();
 		out.append(name + " (" + palomera + " - " + day + ")" + startTime + " > " + endTime+"\n");
 		out.append(beforeRide.getStartPlace() + " > " + beforeRide.getEndPlace() + " : " + beforeRide.getStartTime() + "/" + beforeRide.getEndTime() + "\n");
