@@ -74,13 +74,12 @@ public class ParentTest {
 	
 	@Test
 	public void testRides() throws HourException, RideException, DayException {
-		WeekDays wDay = WeekDays.WEDNESDAY;
-		Day day = new Day(wDay);
 		Place startPlace = new Place("Palomera");
 		Place endPlace = new Place("Casa");
 		Hour startTime = new Hour(16, 00);
 		Hour endTime = new Hour(16, 30);
 		Ride ride = new Ride(startPlace, endPlace, startTime, endTime);
+		Day day = this.parent.search(2);
 		this.parent.add(ride, day);
 		assertEquals(ride.getEndPlace(), this.parent.search(day.getNumDay()).search(startPlace.toString(), endPlace.toString()).getEndPlace());
 		this.parent.remove(ride, day);

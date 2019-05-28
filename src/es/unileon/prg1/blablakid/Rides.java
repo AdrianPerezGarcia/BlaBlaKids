@@ -38,7 +38,7 @@ public class Rides {
 		int count = 0;
 		Ride rideOut = null;
 		while((!found) && count<this.next) {
-			if(startPlace.equals(this.rides[count].getStartPlace().getPlace()) && endPlace.equals(this.rides[count].getEndPlace().getPlace())) {
+			if(startPlace.equals(this.rides[count].getStartPlace().toString()) && endPlace.equals(this.rides[count].getEndPlace().toString())) {
 				found = true;
 				rideOut = this.rides[count];
 			}
