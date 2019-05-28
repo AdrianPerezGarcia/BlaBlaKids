@@ -196,17 +196,31 @@ public class Activity {
 
 	/**
 	 * 
+	 * Getter of the start time of the activity
 	 * 
-	 * @return
+	 * @return a type hour object with the hour when the activity start
+	 * 
 	 */
 	public Hour getStartTime() {
 		return startTime;
 	}
 
+	/**
+	 * 
+	 * Getter of the end time of the activity
+	 * 
+	 * @return a type hour object with the hour when the activity end
+	 * 
+	 */
 	public Hour getEndTime() {
 		return endTime;
 	}
 
+	/**
+	 * 
+	 * toString version according to the show status option in textUI
+	 * 
+	 */
 	@Override
 	public String toString() {
 		StringBuilder out = new StringBuilder();
