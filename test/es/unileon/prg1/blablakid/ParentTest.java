@@ -93,6 +93,48 @@ public class ParentTest {
 	}
 	
 	@Test
+	public void testSearchRides() throws Exception{
+		Place startPlace = new Place("Palomera");
+		Place endPlace = new Place("Casa");
+		Hour startTime = new Hour(16, 00);
+		Hour endTime = new Hour(16, 30);
+		Ride ride = new Ride(startPlace, endPlace, startTime, endTime);
+		Day day = this.parent.search(2);
+		this.parent.add(ride, day);
+		assertEquals(ride.toString(), this.parent.search("Palomera", "Casa", this.parent.search(2)).toString());
+	}
+	
+	@Test (expected = DayException.class)
+	public void testSearchRidesWrong() throws DayException {
+		Day day = null;
+		this.parent.search("Palomera", "Casa",  day);
+	}
+	
+	@Test (expected = DayException.class)
+	public void testAddRideWrong() throws Exception{
+		Place startPlace = new Place("Palomera");
+		Place endPlace = new Place("Casa");
+		Hour startTime = new Hour(16, 00);
+		Hour endTime = new Hour(16, 30);
+		Ride ride = new Ride(startPlace, endPlace, startTime, endTime);
+		Day day = null;
+		this.parent.add(ride, day);
+	}
+	
+	@Test (expected = DayException.class)
+	public void testRemoveRideWrong() throws Exception{
+		Place startPlace = new Place("Palomera");
+		Place endPlace = new Place("Casa");
+		Hour startTime = new Hour(16, 00);
+		Hour endTime = new Hour(16, 30);
+		Ride ride = new Ride(startPlace, endPlace, startTime, endTime);
+		Day day = this.parent.search(2);
+		this.parent.add(ride, day);
+		Day day2 = null;
+		this.parent.remove(ride, day2);
+	}
+	
+	@Test
 	public void testRemoveKid() throws KidException {
 		Kid kid = new Kid(this.parent.search("Beatriz").getName());
 		this.parent.remove(kid);
