@@ -187,7 +187,7 @@ public class Parents {
 	
 	/**
 	 * 
-	 *  Method that remove and compact
+	 * Method that remove and compact
 	 *  
 	 * @param position of the deleted parent
 	 * 
@@ -209,10 +209,7 @@ public class Parents {
 	 * 
 	 * Method toString to print the status of the full array
 	 * 
-	 * @return String 
-	 * 
 	 */
-	
 	@Override
 	public String toString() {
 		StringBuilder salida = new StringBuilder();

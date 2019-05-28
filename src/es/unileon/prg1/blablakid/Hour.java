@@ -9,19 +9,25 @@ package es.unileon.prg1.blablakid;
 
 public class Hour {
 	/**
+	 * 
 	 * Hours of the Hour
+	 * 
 	 */
 	public int hours;
 
 	/**
+	 * 
 	 * Minutes of the Hour
+	 * 
 	 */
 	public int minutes;
 
 	/**
+	 * 
 	 * Creates the hour with it hours and minutes
 	 *
 	 * @param hours representing minutes of the Hour
+	 * 
 	 * @param minute representing hours of the Hour
 	 *
 	 * @throws HourException if the hour or the minutes is not correct
@@ -46,29 +52,35 @@ public class Hour {
 	}
 
 	/**
+	 * 
 	 * Getter of the hour valor
 	 * 
 	 * @return hours of the Hour
+	 * 
 	 */
 	public int getHour() {
 		return hours;
 	}
 
 	/**
+	 * 
 	 * Getter of the minute valor
 	 * 
 	 * @return minutes of the Hour
+	 * 
 	 */
 	public int getMinute() {
 		return minutes;
 	}
 
 	/**
+	 * 
 	 * Method to check is one hour is higher than other
 	 * 
 	 * @param hour2 Another hour to compare
 	 * 
 	 * @return Boolean that returns true if the method name is true
+	 * 
 	 */
 	public boolean isHigher(Hour hour2) {
 		boolean result = false;
@@ -84,11 +96,13 @@ public class Hour {
 	}
 
 	/**
+	 * 
 	 * Method to check if two hours are equals
 	 * 
 	 * @param hour2 Another hour to compare
 	 * 
 	 * @return Boolean that returns true if the method name is true
+	 * 
 	 */
 	public boolean isSame(Hour hour2) {
 		boolean result = false;
@@ -99,11 +113,13 @@ public class Hour {
 	}
 
 	/**
+	 * 
 	 * Method to check if one hour is lower than other
 	 * 
 	 * @param hour2 Another hour to compare
 	 * 
 	 * @return Boolean that returns true if the method name is true
+	 * 
 	 */
 	public boolean isLower(Hour hour2) {
 		boolean result = false;
@@ -119,9 +135,11 @@ public class Hour {
 	}
 
 	/**
+	 * 
 	 * Method who returns the classic version of an hour (hour:minutes)
 	 * 
 	 * @return Hour version in the classic format
+	 * 
 	 */
 	@Override
 	public String toString() {

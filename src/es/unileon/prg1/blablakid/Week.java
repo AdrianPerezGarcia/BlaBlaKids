@@ -1,27 +1,41 @@
 package es.unileon.prg1.blablakid;
-
 /**
+ * 
+ * Class that manage an array of five days
+ * 
  * @author Pablo Bayon
  *
  */
-public class Week {
 
+public class Week {
 	/**
+	 * 
 	 * Array of objects of the type Day
+	 * 
 	 */
 	private Day[] week;
 
 	/**
-	 * Integer used in order to control the next position that is going to be filled
-	 * in the array
+	 * 
+	 * Integer used in order to control the next position that is going to be filled in the array
+	 * 
 	 */
 	private int next;
 
 	/**
+	 * 
 	 * Constant that establish the maximum length of the array
+	 * 
 	 */
 	private final int MAXDAYS = 5;
 
+	/**
+	 * 
+	 * Constructor of the class that initialize all the days
+	 * 
+	 * @param maxRides that a parent can do per day
+	 * 
+	 */
 	public Week(int maxRides) {
 		this.week = new Day[MAXDAYS];
 		this.week[0] = new Day(WeekDays.MONDAY, maxRides);
@@ -119,21 +133,29 @@ public class Week {
 		return salida;
 	}
 /*
+ * 
+ */
 	/**
+	 * 
 	 * Method that returns an object day using its position in the array
 	 * 
-	 * @param pos
-	 * @return the kid located in the position specified by the param
+	 * @param pos of the day wanted
+	 * 
+	 * @return the day located in the position specified by the parameter
+	 * 
 	 */
 	public Day getDay(int pos) {
 		return this.week[pos];
 	}
 
 	/**
-	 * Method that look for an object Day in an array of days
+	 * 
+	 * Method that look for an object Day in an the array
 	 * 
 	 * @param numDay
+	 * 
 	 * @return a kid is found, null if is not
+	 * 
 	 */
 	public Day search(int numDay) {
 		Day founDay = null;
