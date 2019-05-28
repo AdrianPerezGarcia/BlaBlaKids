@@ -23,7 +23,6 @@ public class Week {
 	private final int MAXDAYS = 5;
 
 	public Week(int maxRides) {
-		this.next = 0;
 		this.week = new Day[MAXDAYS];
 		this.week[0] = new Day(WeekDays.MONDAY, maxRides);
 		this.week[1] = new Day(WeekDays.TUESDAY, maxRides);
@@ -38,6 +37,7 @@ public class Week {
 	 * @param day
 	 * @throws DayException
 	 */
+/*SOBRA
 	public void add(Day day) throws DayException {
 		if (isIncluded(day)) {
 			throw new DayException("Error: Day already included");
@@ -46,13 +46,15 @@ public class Week {
 			this.next++;
 		}
 	}
-
+*/
+	
 	/**
 	 * Method that removes an object of the array in which it's included
 	 * 
 	 * @param day
 	 * @throws DayException
 	 */
+/*SOBRA
 	public void remove(Day day) throws DayException {
 		if (this.isIncluded(day)) {
 			int pos = this.getPos(day);
@@ -62,20 +64,25 @@ public class Week {
 			throw new DayException("Error: Activity list is full");
 		}
 	}
-
+*/
+	
 	/**
 	 * Method that compacts the array and removes the object in the position of the
 	 * param
 	 * 
 	 * @param pos
 	 */
+
+/*SOBRA
 	private void compact(int pos) {
 		for (int i = 0; i < (this.next - 1); i++) {
 			week[i] = week[i + 1];
 		}
 		week[this.next - 1] = null;
 	}
-
+*/
+	
+/*SOBRA
 	private int getPos(Day day) {
 		int count = 0;
 		boolean end = false;
@@ -88,7 +95,8 @@ public class Week {
 		}
 		return count;
 	}
-
+*/
+	
 	/**
 	 * Method that checks if an object is included in the array
 	 * 
@@ -99,7 +107,7 @@ public class Week {
 		boolean salida = false;
 		boolean end = false;
 		int i = 0;
-		while (i < this.next && !end) {
+		while (i < MAXDAYS && !end) {
 			if (this.week[i].isSame(day)) {
 				salida = true;
 				end = true;
@@ -129,7 +137,7 @@ public class Week {
 		Day founDay = null;
 		boolean end = false;
 		int i = 0;
-		while ((i < this.next) && (!end)) {
+		while ((i < this.MAXDAYS) && (!end)) {
 			if (week[i].getNumDay() == numDay) {
 				end = true;
 				founDay = week[i];
