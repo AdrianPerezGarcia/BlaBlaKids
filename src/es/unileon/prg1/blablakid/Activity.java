@@ -236,10 +236,10 @@ public class Activity {
 	public String checkStatus() {
 		StringBuilder out = new StringBuilder();
 		if(this.beforeRide == null) {
-			out.append("No ride before " + this.name + " assigned.");
+			out.append("No ride before " + this.name + " assigned.\n");
 		}
 		if(this.afterRide == null) {
-			out.append("No ride after " + this.name + " assigned.");
+			out.append("No ride after " + this.name + " assigned.\n");
 		}
 		return out.toString();
 	}
