@@ -8,7 +8,6 @@ package es.unileon.prg1.blablakid;
  */
 
 import org.apache.logging.log4j.Logger;
-
 import org.apache.logging.log4j.LogManager;
 
 /*
@@ -34,6 +33,7 @@ public class BlaBlaKidsApp {
 	// Define a static logger variable so that it references the
 	// Logger instance named "MyApp".
 	private static final Logger logger = LogManager.getLogger(BlaBlaKidsApp.class);
+	private static final int DAYSOFWEEK = 6;
 
 	/**
 	 * 
@@ -122,7 +122,19 @@ public class BlaBlaKidsApp {
 	 * 
 	 */
 	public void remove(Parent parent) throws ParentException {
-		this.parents.remove(parent);
+		boolean removed = false;
+		Ride ride;
+		if(this.parents.search(parent.getName()) != null) {
+			/*
+			for(int i = 0; i < DAYSOFWEEK; i++) {
+				if(this.parents.searchRide(parent) != null) {
+					ride = this.parents.searchRide(parent);
+					this.kids.remove(ride);
+				}
+			}
+			*/
+		}
+		removed = this.parents.remove(parent);
 	}
 
 	/**
@@ -161,30 +173,30 @@ public class BlaBlaKidsApp {
 	 * @throws RideException     if the ride cannot be removed
 	 * 
 	 */
-	public void remove(String activityName, String kidName, Day numDay)
+	public void remove(String activityName, String kidName, Day day)
 			throws KidException, ActivityException, RideException {
-		Activity activity = this.kids.search(kidName).search(activityName, numDay.getNumDay());
+		Activity activity;
 		StringBuilder out = new StringBuilder();
 		if (this.kids.search(kidName) == null) {
 			out.append("Error: The kid " + kidName + " doesn't exist");
-			throw new KidException("Error: The kid " + kidName + " doesn't exist");
-		} else if (this.kids.search(kidName).search(activity.getName(), activity.getDay().getNumDay()) == null) {
-			out.append("Error: The kid " + kidName + " doesn't have the activity " + activity.getName()
-			+ " on " + activity.getDay().getWeekDay().name());
+		} else if (this.kids.search(kidName).search(activityName, day.getNumDay()) == null) {
+			out.append("Error: The kid " + kidName + " doesn't have the activity " + activityName
+			+ " on " + day.getNameDay());
 		} 
 		
 		
 		if(out.length() > 0) {
 			throw new KidException(out.toString());
 		} else {
+			activity = this.kids.search(kidName).search(activityName, day.getNumDay());
 			this.kids.search(kidName).remove(activity);
 			if (activity.getAfterRide() != null) {
 				Ride afterRide = activity.getAfterRide();
-				this.parents.remove(afterRide, numDay);
+				this.parents.remove(afterRide, day);
 			}
 			if (activity.getBeforeRide() != null) {
 				Ride beforeRide = activity.getBeforeRide();
-				this.parents.remove(beforeRide, numDay);
+				this.parents.remove(beforeRide, day);
 			}
 		}
 	}

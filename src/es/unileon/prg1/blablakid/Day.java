@@ -53,10 +53,7 @@ public class Day {
 		this.day = wDay;
 	}
 	
-	public WeekDays getWeekDay() {
-		return this.day;
-	}
-	
+
 	/**
 	 * 
 	 * Method to search a Ride in the array
@@ -126,6 +123,10 @@ public class Day {
 	 */
 	public int getNumDay() {
 		return day.ordinal();
+	}
+	
+	public String getNameDay() {
+		return day.name();
 	}
 	
 	/**

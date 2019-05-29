@@ -69,8 +69,8 @@ public class Parents {
 		}
 		else {
 				this.parents[this.next] = parent;
-				logger.info("The parent " + this.parents[this.next].getName() + "has been added");
 				this.next++;
+				logger.info("The parent " + this.parents[this.next].getName() + "has been added");
 			}
 		}	
 				
@@ -85,21 +85,24 @@ public class Parents {
 	 * 
 	 */
 	
-	public void remove(Parent parent) throws ParentException{
+	public boolean remove(Parent parent) throws ParentException{
+		boolean removed = false;
 		//If the parent is included take the position and removes the parent of the array
 		if (isIncluded(parent)) {
 			//Also compacts the array replacing the next parent
 			int position = getPos(parent);
-			logger.info("The parent "+ this.parents[position].getName() + "has been removed");
 			compact(position);
 			this.next--;
+			logger.info("The parent "+ this.parents[position].getName() + "has been removed");
+			removed = true;
 		}
 		else {
 			
-			logger.error("The parent is not found in the array, so can't be removed");
+			logger.error("The parent is not founded in the array, so can't be removed");
 			//If parent is not founded, throws an exception
 			throw new ParentException("Error, the parent is not in the list");
 		}
+		return removed;
 	}
 	
 	public void remove(Ride ride, Day numDay) throws RideException{
@@ -220,6 +223,16 @@ public class Parents {
 		/* If the parent is not founded the method returns null */
 		return parentOut;		
 	}
+	
+	/* TODO
+	public Ride searchRide(Parent parent) {
+		Ride ride = null;
+		for(int i = 0; i < this.next; i++) {
+			this.parents[i].search
+		}
+		return ride;
+	}
+	*/
 	
 	/**
 	 * 

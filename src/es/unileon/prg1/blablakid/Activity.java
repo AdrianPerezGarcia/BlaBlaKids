@@ -238,7 +238,7 @@ public class Activity {
 	@Override
 	public String toString() {
 		StringBuilder out = new StringBuilder();
-		out.append(name + " (" + place + " - " + day.getWeekDay().name() + ")" + startTime + " > " + endTime + "\n");
+		out.append(name + " (" + place + " - " + day.getNameDay() + ")" + startTime + " > " + endTime + "\n");
 		if (beforeRide != null) {
 			out.append(this.getBeforeRide().toString());
 		} else {
