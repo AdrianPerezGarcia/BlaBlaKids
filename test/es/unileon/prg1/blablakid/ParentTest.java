@@ -13,10 +13,11 @@ import org.junit.Test;
 public class ParentTest {
 	
 	private Parent parent;
+	Kids parentKids;
 
 	@Before
 	public void setUp()throws KidException{
-		Kids parentKids = new Kids(3);
+		this.parentKids = new Kids(3);
 		Kid Beatriz = new Kid("Beatriz");
 		Kid Daniel = new Kid("Daniel");
 		Kid Manuel = new Kid("Manuel");
@@ -126,5 +127,14 @@ public class ParentTest {
 	public void testRemoveKid() throws KidException {
 		Kid kid = new Kid(this.parent.search("Beatriz").getName());
 		this.parent.remove(kid);
+	}
+	
+	@Test
+	public void testToString() {
+		StringBuilder out = new StringBuilder();
+		out.append("Pedro" + "\n");
+		out.append("Kids: \n");
+		out.append(this.parentKids.toString());		
+		assertEquals(out.toString(), this.parent.toString());
 	}
 }
