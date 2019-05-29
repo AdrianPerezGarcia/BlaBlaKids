@@ -57,17 +57,20 @@ public class Parents {
 	public void add(Parent parent)throws ParentException{
 		//If the parent is not included add the parent into the first space that has no parent in it
 		if (isIncluded(parent)) {
+			logger.error("Parent is already included");
 			throw new ParentException("Error, parent is already included");
 		}
 		else if (this.next >= this.parents.length) {
-			
+				
+				logger.error("The array of parents is full");
 				//If next is equal or bigger than the size of the array , the list of parents is full
 				throw new ParentException("Error, the list of parents is full!");
 			
 		}
 		else {
 				this.parents[this.next] = parent;
-				this.next++;				
+				this.next++;
+				logger.info("The parent " + this.parents[this.next].getName() + "has been added");
 			}
 		}	
 				
@@ -89,8 +92,11 @@ public class Parents {
 			int position = getPos(parent);
 			compact(position);
 			this.next--;
+			logger.info("The parent "+ this.parents[position].getName() + "has been removed");
 		}
 		else {
+			
+			logger.error("The parent is not founded in the array, so can't be removed");
 			//If parent is not founded, throws an exception
 			throw new ParentException("Error, the parent is not in the list");
 		}
@@ -105,8 +111,24 @@ public class Parents {
 				i++;
 			}
 		}
+		
+		if (removed == false) {
+			logger.info("The Ride hasn't being found for removing");
+		}
+		else {
+			logger.info("The ride has been found for removing");
+		}
 	}
 	
+	public void remove(Kid kid ) throws KidException{
+		
+		boolean removed = false;
+		int i = 0;
+		while (!(removed) && (i< this.next)) {
+			removed = this.parents[i].remove(kid);
+			
+		}
+	}
 	/**
 	 * 
 	 * Getter of the parent at a specific position

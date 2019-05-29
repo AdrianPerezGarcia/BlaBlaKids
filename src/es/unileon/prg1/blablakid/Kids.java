@@ -133,15 +133,21 @@ public class Kids {
      * @throws KidException if the kid was not included in the array
      *
      */
-    public void remove(Kid kid) throws KidException{
+    public boolean remove(Kid kid) throws KidException{
+    	
+    	boolean removed = false; 
+    	
         if( isIncluded(kid) ){
             int pos = getPos(kid);
             compact(pos);
             next--;
+            removed =true;
         }
         else{
             throw new KidException("Error: kid " +kid.getName()+ "is not included, so it can't be removed.");
         }
+        
+        return removed;
     }
  
     /**

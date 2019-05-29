@@ -146,8 +146,11 @@ public class Parent {
 	 * 
 	 */
 	
-	public void remove(Kid kid) throws KidException {
-		this.kids.remove(kid);
+	public boolean remove(Kid kid) throws KidException {
+		boolean removed = false;
+		removed = this.kids.remove(kid);
+		
+		return removed;
 	}
 	
 	/**
@@ -165,6 +168,7 @@ public class Parent {
 	
 	public Ride search(String rideStartPlace, String rideEndPlace, Day day) throws DayException {
 		if (day == null) {
+			logger.error("The day introduced is not valid");
 			throw new DayException("Error: Day not valid");
 		} else {
 			return day.search(rideStartPlace, rideEndPlace);
