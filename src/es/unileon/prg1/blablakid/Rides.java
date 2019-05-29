@@ -139,17 +139,20 @@ public class Rides {
 	 * @throws RideException throws an exception if the ride is not included in the array
 	 * 
 	 */
-	public void remove(Ride ride) throws RideException {
+	public boolean remove(Ride ride) throws RideException {
+		boolean removed = false;
 		// If the ride is included take the position and removes the ride from the array
 		if (this.isIncluded(ride)) {
 			// Also compacts the array replacing the next parent
 			int pos = getPos(ride);
 			this.compact(pos);
 			this.next--;
+			removed = true;
 		} else {
 			// If parent is not founded, throws an exception
 			throw new RideException("Error, the ride is not in the list");
 		}
+		return removed;
 	}
 
 	/**

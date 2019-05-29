@@ -207,9 +207,9 @@ public class Parent {
 	 * 
 	 */
 	
-	public boolean remove(Ride ride, int numDay) {
+	public boolean remove(Ride ride, Day numDay) throws RideException{
 		boolean removed = false;
-		removed = this.days.remove(Ride ride, int numDay);
+		removed = this.days.remove(ride, numDay);
 		return removed;
 	}
 	

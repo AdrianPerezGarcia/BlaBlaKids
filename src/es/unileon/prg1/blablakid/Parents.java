@@ -96,7 +96,7 @@ public class Parents {
 		}
 	}
 	
-	public void remove(Ride ride, int numDay) {
+	public void remove(Ride ride, Day numDay) throws RideException{
 		boolean removed = false;
 		int i = 0;
 		while(!(removed) && (i < this.next)) {

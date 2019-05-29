@@ -177,5 +177,11 @@ public class Week {
 		}
 		return founDay;
 	}
+	
+	public boolean remove(Ride ride, Day numDay) throws RideException{
+		boolean removed = false;
+		removed = this.week[numDay.getNumDay()].remove(ride);
+		return removed;
+	}
 }
 

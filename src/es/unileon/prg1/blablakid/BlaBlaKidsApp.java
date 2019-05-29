@@ -155,9 +155,10 @@ public class BlaBlaKidsApp {
 	 * @throws RideException if the ride cannot be removed
 	 * 
 	 */
-	public void remove(String activityName, String kidName, int numDay)
+	public void remove(String activityName, String kidName, Day numDay)
 			throws KidException, ActivityException, RideException {
-		Activity activity = this.kids.search(kidName).search(activityName, numDay);
+		Activity activity = this.kids.search(kidName).search(activityName, numDay.getNumDay());
+		
 		if (this.kids.search(kidName) == null) {
 			throw new KidException("Error: The kid " + kidName + " doesn't exist");
 		} else if (this.kids.search(kidName).search(activity.getName(), activity.getDay().getNumDay()) == null) {
@@ -165,22 +166,13 @@ public class BlaBlaKidsApp {
 					+ " on " + activity.getDay().toString());
 		} else {
 			this.kids.search(kidName).remove(activity);
-			for (int i = 0; i < this.parents.getLength(); i++) {
-				if (this.parents.get(i).search(numDay).search(activity.getAfterRide().getStartPlace().getPlace(),
-						activity.getAfterRide().getEndPlace().getPlace()) != null) {
-					Ride ride = this.parents.get(i).search(numDay).search(
-							activity.getAfterRide().getStartPlace().getPlace(),
-							activity.getAfterRide().getEndPlace().getPlace());
-					this.parents.get(i).search(numDay).remove(ride);
-				}
-				
-				if(this.parents.get(i).search(numDay).search(activity.getBeforeRide().getStartPlace().getPlace(),
-						activity.getBeforeRide().getEndPlace().getPlace()) != null) {
-					Ride ride = this.parents.get(i).search(numDay).search(
-							activity.getBeforeRide().getStartPlace().getPlace(),
-							activity.getBeforeRide().getEndPlace().getPlace());
-					this.parents.get(i).search(numDay).remove(ride);
-				}
+			if(activity.getAfterRide() != null) {
+				Ride afterRide = activity.getAfterRide();
+				this.parents.remove(afterRide , numDay);
+			} 
+			if(activity.getBeforeRide() != null) {
+				Ride beforeRide = activity.getBeforeRide();
+				this.parents.remove(beforeRide , numDay);
 			}
 		}
 	}
@@ -195,29 +187,28 @@ public class BlaBlaKidsApp {
 	 * @param numDay
 	 * @throws Exception
 	 */
-	public void add(Ride ride, String parentName, String kidName, String activityName, int numDay) throws Exception {
+	public void add(Ride ride, String parentName, String kidName, String activityName, Day numDay) throws Exception {
 		StringBuilder out = new StringBuilder();
 		if (this.parents.search(parentName) == null) {
 			out.append("The parent " + parentName + " does not exist.\n");
 		}
 		if (this.kids.search(kidName) == null) {
 			out.append("The kid " + kidName + " does not exist.\n");
-		} else if (this.kids.search(kidName).search(activityName, numDay) == null) {
+		} else if (this.kids.search(kidName).search(activityName, numDay.getNumDay()) == null) {
 			out.append("The kid " + kidName + " does not have the activity " + activityName);
 		}
 
 		if (out.length() > 0) {
 			throw new BlaBlaKidException(out.toString());
 		} else {
-			this.kids.search(kidName).search(activityName, numDay).setRides(ride);
-			if (this.kids.search(kidName).search(activityName, numDay).setRides(ride)) {
-				this.parents.search(parentName).search(numDay).add(ride);
+			this.kids.search(kidName).search(activityName, numDay.getNumDay()).setRides(ride);
+			if (this.kids.search(kidName).search(activityName, numDay.getNumDay()).setRides(ride)) {
+				this.parents.search(parentName).search(numDay.getNumDay()).add(ride);
 			}
 		}
 	}
 
 	public void remove(String parentName, int numDay, String startPlace, String endPlace) throws BlaBlaKidException, RideException{
-		boolean removed = false;
 		StringBuilder out = new StringBuilder();
 		if (this.parents.search(parentName) == null) {
 			out.append("The parent " + parentName + " does not exist.\n");
@@ -232,7 +223,6 @@ public class BlaBlaKidsApp {
 			this.parents.search(parentName).search(numDay).remove(ride);
 			this.kids.remove(ride);
 		}
-		
 	}
 	
 	public int getKidsLength() {

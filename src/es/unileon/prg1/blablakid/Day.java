@@ -88,8 +88,10 @@ public class Day {
 	 * @throws RideException if the ride cannot be deleted cause it does not exist
 	 * 
 	 */
-	public void remove(Ride ride) throws RideException {
-		this.rides.remove(ride);
+	public boolean remove(Ride ride) throws RideException {
+		boolean removed = false;
+		removed = this.rides.remove(ride);
+		return removed;
 	}
 	
 	/**
