@@ -75,10 +75,9 @@ public class TextUI {
 					String activityRide = this.askString(askActivity);
 					String askKidRide = "Name of the kid taking the activity: ";
 					String kidRide = this.askString(askKidRide);
-					int numDay = askInt("Insert the number of the day of the week:\n"
-							+ "0 - Monday / 1- Tuesday / 2 - Wednesday / 3 - Thursday / 4 - Friday");
+					Day day = this.askDay();
 					Ride ride = this.askRide();
-					this.blablakid.add(ride, parentRide, kidRide, activityRide, numDay);
+					this.blablakid.add(ride, parentRide, kidRide, activityRide, day);
 					break;
 				/* Remove ride option */
 				case 8:

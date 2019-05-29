@@ -30,11 +30,11 @@ import org.apache.logging.log4j.LogManager;
  */
 
 public class BlaBlaKidsApp {
-	
+
 	// Define a static logger variable so that it references the
 	// Logger instance named "MyApp".
 	private static final Logger logger = LogManager.getLogger(BlaBlaKidsApp.class);
-	
+
 	/**
 	 * 
 	 * Array of kids in BlaBlaKidsApp
@@ -61,8 +61,14 @@ public class BlaBlaKidsApp {
 			this.parents = new Parents(numberOfKids * 2);
 		}
 	}
-
 	
+	public Kid searchKid(String kidName) {
+		return this.kids.search(kidName);
+	}
+
+	public Parent searchParent(String parentName) {
+		return this.parents.search(parentName);
+	}
 	/**
 	 * 
 	 * Method to add a kid in the kids array
@@ -73,9 +79,8 @@ public class BlaBlaKidsApp {
 	 * 
 	 */
 	public void add(Kid kid) throws KidException {
-			this.kids.add(kid);
+		this.kids.add(kid);
 	}
-
 
 	/**
 	 * 
@@ -86,10 +91,10 @@ public class BlaBlaKidsApp {
 	 * @throws KidException if the kid cannot be removed cause he do not exist
 	 * 
 	 */
-	public void remove(Kid kid)throws KidException {
-			this.kids.remove(kid);
+	public void remove(Kid kid) throws KidException {
+		this.kids.remove(kid);
+		
 	}
-
 
 	/**
 	 * 
@@ -101,9 +106,8 @@ public class BlaBlaKidsApp {
 	 * 
 	 */
 	public void add(Parent parent) throws ParentException {
-			this.parents.add(parent);
+		this.parents.add(parent);
 	}
-	
 
 	/**
 	 * 
@@ -114,10 +118,9 @@ public class BlaBlaKidsApp {
 	 * @throws ParentException if the parent does not exist
 	 * 
 	 */
-	public void remove(String parent)throws ParentException {
-		this.parents.remove(this.parents.search(parent));
+	public void remove(Parent parent) throws ParentException {
+		this.parents.remove(parent);
 	}
-
 
 	/**
 	 * 
@@ -125,40 +128,40 @@ public class BlaBlaKidsApp {
 	 * 
 	 * @param activity that wants to be included
 	 * 
-	 * @param kidName of the kid that the user want to add the activity
+	 * @param kidName  of the kid that the user want to add the activity
 	 * 
 	 * @throws ActivityException if the activity cannot be added
 	 * 
-	 * @throws KidException if the kid does not exist
+	 * @throws KidException      if the kid does not exist
 	 * 
 	 */
 	public void add(Activity activity, String kidName) throws KidException, ActivityException {
-		if(this.kids.search(kidName) == null) {
+		if (this.kids.search(kidName) == null) {
 			throw new KidException("Error: The kid " + kidName + " doesn't exist.");
 		} else {
 			this.kids.search(kidName).add(activity);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * Method to remove an activity of a kid
 	 * 
 	 * @param activity that wants to be removed
 	 * 
-	 * @param kidName of the kid that the user want to remove the activity
+	 * @param kidName  of the kid that the user want to remove the activity
 	 * 
-	 * @throws KidException if the kid does not exist
+	 * @throws KidException      if the kid does not exist
 	 * 
 	 * @throws ActivityException if the activity cannot be deleted
 	 * 
-	 * @throws RideException if the ride cannot be removed
+	 * @throws RideException     if the ride cannot be removed
 	 * 
 	 */
 	public void remove(String activityName, String kidName, Day numDay)
 			throws KidException, ActivityException, RideException {
 		Activity activity = this.kids.search(kidName).search(activityName, numDay.getNumDay());
-		
+
 		if (this.kids.search(kidName) == null) {
 			throw new KidException("Error: The kid " + kidName + " doesn't exist");
 		} else if (this.kids.search(kidName).search(activity.getName(), activity.getDay().getNumDay()) == null) {
@@ -166,19 +169,20 @@ public class BlaBlaKidsApp {
 					+ " on " + activity.getDay().toString());
 		} else {
 			this.kids.search(kidName).remove(activity);
-			if(activity.getAfterRide() != null) {
+			if (activity.getAfterRide() != null) {
 				Ride afterRide = activity.getAfterRide();
-				this.parents.remove(afterRide , numDay);
-			} 
-			if(activity.getBeforeRide() != null) {
+				this.parents.remove(afterRide, numDay);
+			}
+			if (activity.getBeforeRide() != null) {
 				Ride beforeRide = activity.getBeforeRide();
-				this.parents.remove(beforeRide , numDay);
+				this.parents.remove(beforeRide, numDay);
 			}
 		}
 	}
-	
+
 	/**
-	 * Method that adds a ride in the array of rides of the parent and in the activity
+	 * Method that adds a ride in the array of rides of the parent and in the
+	 * activity
 	 * 
 	 * @param ride
 	 * @param parentName
@@ -208,15 +212,17 @@ public class BlaBlaKidsApp {
 		}
 	}
 
-	public void remove(String parentName, int numDay, String startPlace, String endPlace) throws BlaBlaKidException, RideException{
+	public void remove(String parentName, int numDay, String startPlace, String endPlace)
+			throws BlaBlaKidException, RideException {
 		StringBuilder out = new StringBuilder();
 		if (this.parents.search(parentName) == null) {
 			out.append("The parent " + parentName + " does not exist.\n");
-		} else if(this.parents.search(parentName).search(numDay).search(startPlace, endPlace) == null) {
-			out.append("The ride that goes from " + startPlace + " to " + endPlace + " doesn't exist in the day " + numDay);
-		} 
-		
-		if(out.length() > 0) {
+		} else if (this.parents.search(parentName).search(numDay).search(startPlace, endPlace) == null) {
+			out.append("The ride that goes from " + startPlace + " to " + endPlace + " doesn't exist in the day "
+					+ numDay);
+		}
+
+		if (out.length() > 0) {
 			throw new BlaBlaKidException(out.toString());
 		} else {
 			Ride ride = this.parents.search(parentName).search(numDay).search(startPlace, endPlace);
@@ -224,16 +230,15 @@ public class BlaBlaKidsApp {
 			this.kids.remove(ride);
 		}
 	}
-	
+
 	public int getKidsLength() {
 		return this.kids.getLength();
 	}
 
-
 	public boolean isIncluded(Kid kid) {
 		return this.kids.isIncluded(kid);
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder out = new StringBuilder();
@@ -243,6 +248,5 @@ public class BlaBlaKidsApp {
 		out.append("/////////////////////////////");
 		return out.toString();
 	}
-
 
 }
