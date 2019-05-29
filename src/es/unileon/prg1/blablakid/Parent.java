@@ -225,13 +225,14 @@ public class Parent {
 	
 	@Override
 	public String toString() {
-		StringBuilder salida = new StringBuilder();
+		StringBuilder out = new StringBuilder();
 		
-		salida.append(this.name + "\n");
-		salida.append(this.kids.toString());		
-		salida.append(this.days.toString());
+		out.append(this.name + "\n");
+		out.append("Kids: \n");
+		out.append(this.kids.toString());		
+		out.append(this.days.toString());
 			
-		return salida.toString();
+		return out.toString();
 	}
 
 

@@ -10,6 +10,7 @@ package es.unileon.prg1.blablakid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+
 public class Week {
 	
 	 static final Logger logger = LogManager.getLogger(Week.class.getName());
@@ -182,6 +183,17 @@ public class Week {
 		boolean removed = false;
 		removed = this.week[numDay.getNumDay()].remove(ride);
 		return removed;
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder out = new StringBuilder();
+		for(int i = 0; i < this.next; i++) {
+			out.append(this.week[i].toString());
+			out.append("\n");
+		}
+		
+		return out.toString();
 	}
 }
 

@@ -29,7 +29,7 @@ public class TextUI {
 		int select;
 		this.displayIntro();
 		do {
-			this.blablakid.toString();
+			System.out.println(this.blablakid.toString());
 			select = this.displayMenu();
 			try {
 				switch (select) {
@@ -65,7 +65,12 @@ public class TextUI {
 				/* Remove activity option */
 				case 6:
 					// TODO
-					System.out.println("Not implemented");
+					String askKid1 = "Name of the kid taking the activity to remove: \n";
+					String askActivity1 = "Name of the activity to remove: \n";
+					String kidName1 = this.askString(askKid1);
+					String activityName = this.askString(askActivity1);
+					Day day1 = this.askDay();
+					this.blablakid.remove(activityName, kidName1, day1);
 					break;
 				/* Add ride option */
 				case 7:
@@ -82,7 +87,7 @@ public class TextUI {
 				/* Remove ride option */
 				case 8:
 					String kidInCharge = askString("Name of the kid taking the activity to remove: ");
-					String activityName = askString("Name of the activity to remove: ");
+					String activityName2 = askString("Name of the activity to remove: ");
 					int dayNum = askInt("Insert the number of the day of the week:\n"
 							+ "0 - Monday / 1- Tuesday / 2 - Wednesday / 3 - Thursday / 4 - Friday");
 					break;

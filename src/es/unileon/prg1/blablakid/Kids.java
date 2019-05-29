@@ -144,7 +144,7 @@ public class Kids {
             removed =true;
         }
         else{
-            throw new KidException("Error: kid " +kid.getName()+ "is not included, so it can't be removed.");
+            throw new KidException("Error: kid " +kid.getName()+ " is not included, so it can't be removed.");
         }
         
         return removed;

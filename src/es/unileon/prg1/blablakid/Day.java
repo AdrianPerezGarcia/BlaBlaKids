@@ -7,7 +7,9 @@ package es.unileon.prg1.blablakid;
  *
  */
 
-import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.Logger;
+
+
 import org.apache.logging.log4j.LogManager; 
 
 public class Day {
@@ -49,6 +51,10 @@ public class Day {
 	 */
 	public Day(WeekDays wDay) {
 		this.day = wDay;
+	}
+	
+	public WeekDays getWeekDay() {
+		return this.day;
 	}
 	
 	/**
@@ -124,12 +130,17 @@ public class Day {
 	
 	/**
 	 * 
-	 * Method toString with the name of the Day
+	 * 
 	 * 
 	 */
 	@Override
 	public String toString() {
-		return this.day.name();
+		StringBuilder out = new StringBuilder();
+		if(this.rides.getLength() > 0) {
+			out.append(this.day.name() + "\n");
+			out.append(this.rides.toString());
+		}
+		return out.toString();
 	}
-	
+
 }

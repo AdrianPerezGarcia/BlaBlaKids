@@ -63,7 +63,7 @@ public class Place {
 	 */
 	@Override
 	public String toString() {
-		return "Place: "+ this.place;
+		return this.place;
 	}
 	
 

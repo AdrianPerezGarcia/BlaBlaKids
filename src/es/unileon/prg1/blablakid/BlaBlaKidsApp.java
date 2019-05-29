@@ -92,8 +92,11 @@ public class BlaBlaKidsApp {
 	 * 
 	 */
 	public void remove(Kid kid) throws KidException {
-		this.kids.remove(kid);
-		
+		boolean removed = false;
+		removed = this.kids.remove(kid);
+		if(removed) {
+			this.parents.remove(kid);
+		}
 	}
 
 	/**
@@ -161,12 +164,18 @@ public class BlaBlaKidsApp {
 	public void remove(String activityName, String kidName, Day numDay)
 			throws KidException, ActivityException, RideException {
 		Activity activity = this.kids.search(kidName).search(activityName, numDay.getNumDay());
-
+		StringBuilder out = new StringBuilder();
 		if (this.kids.search(kidName) == null) {
+			out.append("Error: The kid " + kidName + " doesn't exist");
 			throw new KidException("Error: The kid " + kidName + " doesn't exist");
 		} else if (this.kids.search(kidName).search(activity.getName(), activity.getDay().getNumDay()) == null) {
-			throw new KidException("Error: The kid " + kidName + " doesn't have the activity " + activity.getName()
-					+ " on " + activity.getDay().toString());
+			out.append("Error: The kid " + kidName + " doesn't have the activity " + activity.getName()
+			+ " on " + activity.getDay().getWeekDay().name());
+		} 
+		
+		
+		if(out.length() > 0) {
+			throw new KidException(out.toString());
 		} else {
 			this.kids.search(kidName).remove(activity);
 			if (activity.getAfterRide() != null) {
@@ -212,6 +221,16 @@ public class BlaBlaKidsApp {
 		}
 	}
 
+	/**
+	 * Method that removes a ride from the app
+	 * 
+	 * @param parentName
+	 * @param numDay
+	 * @param startPlace
+	 * @param endPlace
+	 * @throws BlaBlaKidException
+	 * @throws RideException
+	 */
 	public void remove(String parentName, int numDay, String startPlace, String endPlace)
 			throws BlaBlaKidException, RideException {
 		StringBuilder out = new StringBuilder();
@@ -231,10 +250,16 @@ public class BlaBlaKidsApp {
 		}
 	}
 
+	/**
+	 * Method that returns the length of the array of kids
+	 * 
+	 * @return length of the array of kids
+	 */
 	public int getKidsLength() {
 		return this.kids.getLength();
 	}
 
+	
 	public boolean isIncluded(Kid kid) {
 		return this.kids.isIncluded(kid);
 	}
@@ -242,9 +267,13 @@ public class BlaBlaKidsApp {
 	@Override
 	public String toString() {
 		StringBuilder out = new StringBuilder();
-		out.append("/////////////////////////////");
-		out.append("KIDS:\n").append(this.kids.toString()).append("\n");
-		out.append("PARENTS:\n").append(this.parents.toString()).append("\n");
+		out.append("/////////////////////////////\n");
+		if(this.kids.getLength() > 0) {
+			out.append("KIDS:\n").append(this.kids.toString()).append("\n");
+		}
+		if(this.parents.getLength() > 0) {
+			out.append("PARENTS:\n").append(this.parents.toString()).append("\n");
+		}
 		out.append("/////////////////////////////");
 		return out.toString();
 	}

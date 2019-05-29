@@ -252,12 +252,8 @@ public class Parents {
 		for (int i = 0; i < this.next; i++) {
 			salida.append(this.parents[i].toString()).append("\n");
 		}
-		
+
 		return salida.toString();
 	}
-	
-
-
 
 }
-
