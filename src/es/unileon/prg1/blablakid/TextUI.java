@@ -9,10 +9,13 @@ package es.unileon.prg1.blablakid;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Loggers;
+
 
 public class TextUI {
-	private BlaBlaKidsApp blablakid;
-
+	static final Logger logger = LogManager.getLogger(Parent.class.getName());
+	private BlaBlaKidsApp blablakid;	
+	
 	public TextUI(BlaBlaKidsApp blablakid) {
 		this.blablakid = blablakid;
 	}
@@ -72,9 +75,10 @@ public class TextUI {
 					String activityRide = this.askString(askActivity);
 					String askKidRide = "Name of the kid taking the activity: ";
 					String kidRide = this.askString(askKidRide);
-					Day day = this.askDay();
+					int numDay = askInt("Insert the number of the day of the week:\n"
+							+ "0 - Monday / 1- Tuesday / 2 - Wednesday / 3 - Thursday / 4 - Friday");
 					Ride ride = this.askRide();
-					this.blablakid.add(ride, parentRide, kidRide, activityRide, day);
+					this.blablakid.add(ride, parentRide, kidRide, activityRide, numDay);
 					break;
 				/* Remove ride option */
 				case 8:
@@ -157,7 +161,9 @@ public class TextUI {
 
 		if (option < 0 || option > 10) {
 			System.out.println("Invalid option. Plese select from the menu");
+			logger.warn("Introduced invalid option -> "+option);
 		}
+		logger.info("Selcted option -> "+ option);
 		return option;
 	}
 
@@ -178,6 +184,7 @@ public class TextUI {
 			// Checks if the sintax is correct, if not it gives a warning
 			if (name.equals("")) {
 				System.out.println("Please, introduce a valid name");
+				logger.warn("Introduced empty String");
 			}
 
 		} while (name.equals(""));
@@ -191,50 +198,57 @@ public class TextUI {
 	 * Asks for all the data necessary to create a new Parent and creates it.
 	 * 
 	 * @return Parent with the given data
+	 * @throws KidException 
 	 * 
 	 */
-	private Parent askParent() {
+	private Parent askParent() throws KidException {
 		Parent parent;
 		String name = new String();
 		int numberOfKids, numberOfRides;
+		String kidName;
 		Kid kid;
 		// Asks for its name
 		do {
 			System.out.println("Introduce the name of the parent to add");
 			name = Teclado.readString();
-
 			// Checks if the sintax is correct, if not it gives a warning
 			if (name.equals("")) {
 				System.out.println("Please, introduce a valid name");
+				logger.warn("Introduced empty String");
 			}
 		} while (name.equals(""));
-
+		logger.info("Introduced "+name+" as name");
 		// Asks for number of kids
 		do {
 			System.out.println("Introduce the number of kids that " + name + " has");
 			numberOfKids = Teclado.readInteger();
 
-			if (numberOfKids < 1 || numberOfKids == Integer.MIN_VALUE || numberOfKids > blablakid.getKidsLength()) {
-				System.out.println("Introduce a valid number of kids(Between 1 and" + blablakid.getKidsLength() + ")");
+			if (numberOfKids < 1 || numberOfKids == Integer.MIN_VALUE || numberOfKids > this.blablakid.getKidsLength()) {
+				System.out.println("Introduce a valid number of kids(Between 1 and" + this.blablakid.getKidsLength() + ")");
+				logger.warn("Introduced invalid number of kids -> "+ numberOfKids);
 			}
-		} while (numberOfKids < 1 || numberOfKids == Integer.MIN_VALUE || numberOfKids > blablakid.getKidsLength());
+		} while (numberOfKids < 1 || numberOfKids == Integer.MIN_VALUE || numberOfKids > this.blablakid.getKidsLength());
 		Kids kids = new Kids(numberOfKids);
-
+		logger.info("Introduced "+numberOfKids+"as number of kids");
+		
 		// Asks for the name of its kids
 		for (int i = 1; i <= numberOfKids; i++) {
 			System.out.println("Kid number " + i);
 			do {
-				kid = this.askKid();
-				if (this.blablakid.isIncluded(kid) == false) {
-					System.out.println("This kid does not exist");
+				kidName = this.askString("Introduce the name of the kid to add");
+				if (this.blablakid.searchKid(kidName) == null) {
+					logger.error("The kid "+ kidName + "does not exist");
+					throw new KidException("The kid "+ kidName + "does not exist");
 				} else {
+					logger.info("Adding "+kidName);
+					kid = this.blablakid.searchKid(kidName);
 					try {
 						kids.add(kid);
 					} catch (KidException e) {
 						System.out.println(e.getMessage());
 					}
 				}
-			} while (blablakid.isIncluded(kid) == false);
+			} while (this.blablakid.isIncluded(kid) == false);
 		}
 
 		// Asks for the number of rides
@@ -243,9 +257,11 @@ public class TextUI {
 			numberOfRides = Teclado.readInteger();
 			if (numberOfRides == Integer.MIN_VALUE) {
 				System.out.println("Introduce a valid number of kids.");
+				logger.warn("Introduced invalid number of rides (Not an int)");
 			}
 		} while (numberOfRides == Integer.MIN_VALUE);
-
+		logger.info("Introduced "+numberOfRides+" as number of rides");
+		
 		parent = new Parent(name, kids, numberOfRides);
 		return parent;
 	}
@@ -257,7 +273,7 @@ public class TextUI {
 	 * @return Parent with the given data
 	 * 
 	 */
-	private String askParentRemove() {
+	private Parent askParentRemove() {
 		String name = new String();
 
 		do {
@@ -271,7 +287,7 @@ public class TextUI {
 
 		} while (name.equals(""));
 
-		return name;
+		return this.blablakid.searchParent(name);
 	}
 
 	/**
@@ -484,6 +500,7 @@ public class TextUI {
 				day = new Day(wday);
 				break;
 			default:
+				logger.error("Invalid day. Day must be between 0 and 4.");
 				throw new DayException("Invalid day. Day must be between 0 and 4.");
 			}
 		} catch (DayException e) {
