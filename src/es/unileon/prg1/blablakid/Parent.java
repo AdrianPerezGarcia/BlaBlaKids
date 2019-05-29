@@ -207,12 +207,10 @@ public class Parent {
 	 * 
 	 */
 	
-	public void remove(Ride ride, Day day) throws RideException, DayException {
-		if (day == null) {
-			throw new DayException("Error: Day not valid");
-		} else {
-			day.remove(ride); 
-		}
+	public boolean remove(Ride ride, int numDay) {
+		boolean removed = false;
+		removed = this.days.remove(Ride ride, int numDay);
+		return removed;
 	}
 	
 	/**

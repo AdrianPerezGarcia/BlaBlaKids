@@ -96,6 +96,17 @@ public class Parents {
 		}
 	}
 	
+	public void remove(Ride ride, int numDay) {
+		boolean removed = false;
+		int i = 0;
+		while(!(removed) && (i < this.next)) {
+			removed = this.parents[i].remove(ride , numDay);
+			if(!(removed)) {
+				i++;
+			}
+		}
+	}
+	
 	/**
 	 * 
 	 * Getter of the parent at a specific position
