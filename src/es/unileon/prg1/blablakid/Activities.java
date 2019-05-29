@@ -8,6 +8,9 @@ package es.unileon.prg1.blablakid;
  */
 
 import org.apache.logging.log4j.Logger;
+
+
+
 import org.apache.logging.log4j.LogManager;
 
 public class Activities {
@@ -218,6 +221,14 @@ public class Activities {
 		return removed;
 	}
 
+	public String checkStatus() {
+		StringBuilder out = new StringBuilder();
+		for(int i = 0; i < this.next; i++) {
+			out.append(this.activities[i].checkStatus());
+		}
+		return out.toString();
+	}
+	
 	/**
 	 * 
 	 * Method toString as solicited in Show Summary Option in textUI

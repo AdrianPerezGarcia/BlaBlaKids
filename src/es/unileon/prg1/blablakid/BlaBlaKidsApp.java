@@ -8,6 +8,9 @@ package es.unileon.prg1.blablakid;
  */
 
 import org.apache.logging.log4j.Logger;
+
+
+
 import org.apache.logging.log4j.LogManager;
 
 /*
@@ -247,6 +250,12 @@ public class BlaBlaKidsApp {
 		return this.kids.isIncluded(kid);
 	}
 
+	public String checkStatus() {
+		StringBuilder out = new StringBuilder();
+		out.append(this.kids.checkStatus());
+		return out.toString();
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder out = new StringBuilder();

@@ -10,6 +10,7 @@ package es.unileon.prg1.blablakid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+
 public class Kid {
 	
 	 static final Logger logger = LogManager.getLogger(Kid.class.getName());
@@ -117,6 +118,13 @@ public class Kid {
 		return removed;
 	}
 
+	public String checkStatus() {
+		StringBuilder out = new StringBuilder();
+		out.append(this.name + ": \n");
+		out.append(this.activities.checkStatus());
+		return out.toString();
+	}
+	
 	/**
 	 * 
 	 * Method toString as requested in the Show Summary option

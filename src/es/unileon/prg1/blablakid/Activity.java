@@ -7,8 +7,11 @@ package es.unileon.prg1.blablakid;
   *
   **/
 
- import org.apache.logging.log4j.Logger; 
- import org.apache.logging.log4j.LogManager; 
+ import org.apache.logging.log4j.Logger;
+
+
+
+import org.apache.logging.log4j.LogManager; 
 
 public class Activity {
 	
@@ -230,6 +233,17 @@ public class Activity {
 		return endTime;
 	}
 
+	public String checkStatus() {
+		StringBuilder out = new StringBuilder();
+		if(this.beforeRide == null) {
+			out.append("No ride before " + this.name + " assigned.");
+		}
+		if(this.afterRide == null) {
+			out.append("No ride after " + this.name + " assigned.");
+		}
+		return out.toString();
+	}
+	
 	/**
 	 * 
 	 * toString version according to the show status option in textUI

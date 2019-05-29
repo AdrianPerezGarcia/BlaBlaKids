@@ -236,6 +236,13 @@ public class Kids {
 		} 
 	}
     
+	 public String checkStatus() {
+	    	StringBuilder out = new StringBuilder();
+	    	for(int i = 0; i < this.next; i++) {
+	    		out.append(this.kids[i].checkStatus());
+	    	}
+	    	return out.toString();
+	    }
     
     /**
      * Method toString to print the full array of kids as solicited in Show Summary Option

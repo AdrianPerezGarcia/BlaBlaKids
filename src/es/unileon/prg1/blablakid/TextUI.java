@@ -12,6 +12,8 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.config.Loggers;
 
 
+
+
 public class TextUI {
 	static final Logger logger = LogManager.getLogger(Parent.class.getName());
 	private BlaBlaKidsApp blablakid;	
@@ -90,7 +92,7 @@ public class TextUI {
 					break;
 				/* Check status option */
 				case 10:
-					System.out.println("Not implemented.");
+					System.out.println(this.blablakid.checkStatus());
 					break;
 				/* Exit option */
 				case 0:
