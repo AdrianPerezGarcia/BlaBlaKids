@@ -69,8 +69,8 @@ public class Parents {
 		}
 		else {
 				this.parents[this.next] = parent;
-				this.next++;
 				logger.info("The parent " + this.parents[this.next].getName() + "has been added");
+				this.next++;
 			}
 		}	
 				
@@ -90,13 +90,13 @@ public class Parents {
 		if (isIncluded(parent)) {
 			//Also compacts the array replacing the next parent
 			int position = getPos(parent);
+			logger.info("The parent "+ this.parents[position].getName() + "has been removed");
 			compact(position);
 			this.next--;
-			logger.info("The parent "+ this.parents[position].getName() + "has been removed");
 		}
 		else {
 			
-			logger.error("The parent is not founded in the array, so can't be removed");
+			logger.error("The parent is not found in the array, so can't be removed");
 			//If parent is not founded, throws an exception
 			throw new ParentException("Error, the parent is not in the list");
 		}

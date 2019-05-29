@@ -137,7 +137,7 @@ public class Day {
 	public String toString() {
 		StringBuilder out = new StringBuilder();
 		if(this.rides.getLength() > 0) {
-			out.append(this.day.name() + "\n");
+			out.append(this.day.name());
 			out.append(this.rides.toString());
 		}
 		return out.toString();

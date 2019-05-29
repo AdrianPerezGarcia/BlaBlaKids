@@ -29,7 +29,7 @@ public class TextUI {
 		int select;
 		this.displayIntro();
 		do {
-			System.out.println(this.blablakid.toString());
+			this.blablakid.toString();
 			select = this.displayMenu();
 			try {
 				switch (select) {
@@ -65,19 +65,12 @@ public class TextUI {
 				/* Remove activity option */
 				case 6:
 					// TODO
-					String askKid1 = "Name of the kid taking the activity to remove: \n";
-					String askActivity1 = "Name of the activity to remove: \n";
-					String kidName1 = this.askString(askKid1);
-					String activityName = this.askString(askActivity1);
-					Day day1 = this.askDay();
-					this.blablakid.remove(activityName, kidName1, day1);
+					System.out.println("Not implemented");
 					break;
 				/* Add ride option */
 				case 7:
-					String askParent = "Name of the parent in charge of the ride: ";
-					String parentRide = this.askString(askParent);
-					String askActivity = "Name of the activity of the ride: ";
-					String activityRide = this.askString(askActivity);
+					String parentRide = this.askString("Name of the parent in charge of the ride: ");
+					String activityRide = this.askString("Name of the activity of the ride: ");
 					String askKidRide = "Name of the kid taking the activity: ";
 					String kidRide = this.askString(askKidRide);
 					Day day = this.askDay();
@@ -87,7 +80,7 @@ public class TextUI {
 				/* Remove ride option */
 				case 8:
 					String kidInCharge = askString("Name of the kid taking the activity to remove: ");
-					String activityName2 = askString("Name of the activity to remove: ");
+					String activityName = askString("Name of the activity to remove: ");
 					int dayNum = askInt("Insert the number of the day of the week:\n"
 							+ "0 - Monday / 1- Tuesday / 2 - Wednesday / 3 - Thursday / 4 - Friday");
 					break;
@@ -504,7 +497,7 @@ public class TextUI {
 				day = new Day(wday);
 				break;
 			default:
-				logger.error("Invalid day. Day must be between 0 and 4.");
+				logger.error("Invalid day. Day must be between 0 and 4, introduced -> "+day);
 				throw new DayException("Invalid day. Day must be between 0 and 4.");
 			}
 		} catch (DayException e) {

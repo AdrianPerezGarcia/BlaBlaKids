@@ -1,57 +1,63 @@
 <project name="BlaBlaKid" basedir="." default="todo">
-    <property name="src" value="../src"/>
-    <property name="test" value="../test"/>
-    <property name="lib" value="../lib/junit-4.8.2.jar"/>
-    <property name="classes" value="../classes"/>
-	<property name="doc" value="../doc"/>
+	<property name="src" value="../src" />
+	<property name="test" value="../test" />
+	<property name="lib" value="../lib/junit-4.8.2.jar" />
+	<property name="classes" value="../classes" />
+	<property name="doc" value="../doc" />
 
-    <property name="paquetes" value="es.unileon.prg1.blablakid"/>
-    <property name="titulo" value="BlaBlaKid"/>
-
-    <target name="clean">
-      <delete dir="${classes}"/>
-      <delete dir="${doc}"/>
-    </target>
-
-    <target name="compile" depends="clean">
-      <mkdir dir="${classes}"/>
-      <javac srcdir="${src}" destdir="${classes}" classpath="${lib}"
-		includeantruntime="false"/>
-      <echo message="Compilation...done"/>
-    </target>
+	<path id="classpath.log">
+	        <pathelement location="../lib/log4j-api-2.5.jar" />
+	        <pathelement location="../lib/log4j-core-2.5.jar" />
+	        <pathelement location="${classes}" />
+	    </path>
 	
-	<target name="compileTest" depends="compile">
-      <mkdir dir="${classes}"/>
-      <javac srcdir="${test}" destdir="${classes}" classpath="${lib}"
-		includeantruntime="false"/>
-      <echo message="Test compilation...done"/>
-    </target>
+	<target name="compile" depends="clean">
+	        <mkdir dir="${classes}" />
+	        <mkdir dir="${conf}" />
+	        <javac includeantruntime="false" srcdir="${src}" destdir="${classes}">
+	            <classpath refid="classpath.log" />
+	        </javac>
+	        <echo message="Compiling...done" />
+	    </target>
+	<target name="clean">
+		<delete dir="${classes}" />
+		<delete dir="${doc}" />
+		<delete dir="${log}" />
+	</target>
 
-    <target name="test" depends="compileTest">
+	<target name="compileTest" depends="compile">
+		<javac srcdir="${test}" destdir="${classes}" classpath="${lib}" includeantruntime="false" />
+		<echo message="Test compilation...done" />
+	</target>
+
+	<target name="test" depends="compileTest">
 		<java classname="org.junit.runner.JUnitCore">
 			<classpath>
-				<pathelement path="${classes}"/>
-				<pathelement path="${lib}"/>
+				<pathelement path="${classes}" />
+				<pathelement path="${lib}" />
 			</classpath>
-			<arg value="es.unileon.prg1.blablakid.AllTest"/>
+			<arg value="es.unileon.prg1.blablakid.AllTest" />
 		</java>
-    </target>
+	</target>
 
 	<target name="run" depends="compile">
-			<java classname="es.unileon.prg1.blablakid.Main">
-			<arg value = "3"/>
-				<classpath>
-					<pathelement path="${classes}" />
-				</classpath>
-			</java>
-		</target>
- 	
+		<java classname="es.unileon.prg1.blablakid.Main">
+			<arg value="3" />
+			<classpath>
+				<pathelement path="${classes}" />
+				<pathelement path="${lib}" />
+				<pathelement path="${lib1}" />
+				<pathelement path="${lib2}" />
+			</classpath>
+		</java>
+	</target>
+
 	<target name="doc" depends="compile">
-	      <mkdir dir="${doc}"/>
-		 <javadoc destdir="${doc}" splitindex = "true" private = "true" version = "true" author = "true" linksource = "true" overview ="../src/overview.html" >
-		        <fileset dir="${src}" />
-		 </javadoc>
-	 </target>
-	
-	  <target name="todo" depends="doc,test,run"/>
+		<mkdir dir="${doc}" />
+		<javadoc destdir="${doc}" splitindex="true" private="true" version="true" author="true" linksource="true" overview="../src/overview.html">
+			<fileset dir="${src}" />
+		</javadoc>
+	</target>
+
+	<target name="todo" depends="doc,test,run" />
 </project>

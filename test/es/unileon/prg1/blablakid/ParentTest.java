@@ -76,7 +76,7 @@ public class ParentTest {
 	public void testSearchDays() {
 		WeekDays wDay = WeekDays.TUESDAY;
 		Day day = new Day(wDay);
-		assertEquals(day.toString() ,this.parent.search(1).toString());
+		assertEquals(day.getWeekDay().name() ,this.parent.search(1).toString());
 	}
 	
 	@Test

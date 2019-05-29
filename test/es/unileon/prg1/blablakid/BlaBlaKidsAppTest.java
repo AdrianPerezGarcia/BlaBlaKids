@@ -173,6 +173,7 @@ public class BlaBlaKidsAppTest {
 		this.blablakid.add(ride, "parentName", kid.getName(), activity.getName(), day);
 	}
 	
+	
 	@Test (expected = BlaBlaKidException.class)
 	public void testAddRidesWrongKid() throws Exception{
 		Kids parentKids = new Kids(1);

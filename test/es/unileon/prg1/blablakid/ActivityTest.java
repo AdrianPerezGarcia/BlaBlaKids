@@ -126,7 +126,7 @@ public class ActivityTest {
 	@Test
 	public void testToStringNoRides() {
 		StringBuilder out = new StringBuilder();
-		out.append(name + " (" + palomera + " - " + day + ")" + startTime + " > " + endTime+"\n");
+		out.append(name + " (" + palomera + " - " + day.getWeekDay().name() + ")" + startTime + " > " + endTime+"\n");
 		out.append("No ride before "+name+" assigned\n");
 		out.append("No ride after "+name+" assigned\n");
 		assertTrue(out.toString().equals(this.actividad.toString()));
@@ -137,7 +137,7 @@ public class ActivityTest {
 		this.actividad.setRides(beforeRide);
 		this.actividad.setRides(afterRide);
 		StringBuilder out = new StringBuilder();
-		out.append(name + " (" + palomera + " - " + day + ")" + startTime + " > " + endTime+"\n");
+		out.append(name + " (" + palomera + " - " + day.getWeekDay().name() + ")" + startTime + " > " + endTime+"\n");
 		out.append(beforeRide.getStartPlace() + " > " + beforeRide.getEndPlace() + " : " + beforeRide.getStartTime() + "/" + beforeRide.getEndTime() + "\n");
 		out.append(afterRide.getStartPlace() + " > " + afterRide.getEndPlace() + " : " + afterRide.getStartTime()+ "/" + afterRide.getEndTime() + "\n");
 		assertEquals(out.toString(),(this.actividad.toString()));

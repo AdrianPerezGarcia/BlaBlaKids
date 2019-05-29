@@ -32,6 +32,6 @@ public class PlaceTest{
 	
 	@Test
 	public void testToString(){
-		assertEquals("Place: Palomera", place.toString());
+		assertEquals("Palomera", place.toString());
 	}
 }
