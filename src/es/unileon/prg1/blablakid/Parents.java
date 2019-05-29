@@ -1,15 +1,17 @@
 package es.unileon.prg1.blablakid;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * 
  * @author PabloJ
  *
  **/
 
-/*Import log4j classes.
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;*/
-
 public class Parents {
+	
+	 static final Logger logger = LogManager.getLogger(Parents.class.getName());
 
 	/**
 	 * 

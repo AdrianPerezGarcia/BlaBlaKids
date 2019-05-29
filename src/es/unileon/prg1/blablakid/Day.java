@@ -1,4 +1,9 @@
 package es.unileon.prg1.blablakid;
+
+//Import logs libraries
+import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.LogManager; 
+
  /**
  * 
  * @author Pablo Bayon
@@ -7,6 +12,8 @@ package es.unileon.prg1.blablakid;
 
 public class Day {
 
+	 static final Logger logger = LogManager.getLogger(Day.class.getName());
+	
 	/**
 	 * 
 	 * Number that establish the day of the week

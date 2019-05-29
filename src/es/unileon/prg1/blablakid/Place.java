@@ -1,4 +1,8 @@
 package es.unileon.prg1.blablakid;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * 
  * Class that creates a place 
@@ -8,6 +12,9 @@ package es.unileon.prg1.blablakid;
  */
 
 public class Place {
+	
+	 static final Logger logger = LogManager.getLogger(Place.class.getName());
+
 	/**
 	 * 
 	 * Name of the place 

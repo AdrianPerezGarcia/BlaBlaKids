@@ -1,5 +1,9 @@
 package es.unileon.prg1.blablakid;
- /**
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+/**
  * 
  * Class that creates the children that will manage the kids class
  * 
@@ -7,11 +11,10 @@ package es.unileon.prg1.blablakid;
  *
  **/
 
-/*Logs libraries 
- import org.apache.logging.log4j.Logger; import
- org.apache.logging.log4j.LogManager; */
-
 public class Kid {
+	
+	 static final Logger logger = LogManager.getLogger(Kid.class.getName());
+	
 	/**
 	 * 
 	 * Name of the kid, used as his/her identifier

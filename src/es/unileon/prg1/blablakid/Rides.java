@@ -1,5 +1,8 @@
 package es.unileon.prg1.blablakid;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * Class that manages an array of Ride objects
  * 
@@ -7,6 +10,8 @@ package es.unileon.prg1.blablakid;
  *
  */
 public class Rides {
+	
+	 static final Logger logger = LogManager.getLogger(Rides.class.getName());
 
 	/**
 	 * Array composed by Ride objects

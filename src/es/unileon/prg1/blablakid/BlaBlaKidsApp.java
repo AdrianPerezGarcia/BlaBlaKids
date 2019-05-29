@@ -1,4 +1,27 @@
 package es.unileon.prg1.blablakid;
+
+//Import log4j classes.
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
+/*
+ * import es.unileon.prg1.blablakid.Activity;
+ * import es.unileon.prg1.blablakid.Activities;
+ * import es.unileon.prg1.blablakid.Ride;
+ * import es.unileon.prg1.blablakid.Rides;
+ * import es.unileon.prg1.blablakid.Kid;
+ * import es.unileon.prg1.blablakid.Kids;
+ * import es.unileon.prg1.blablakid.Parent;
+ * import es.unileon.prg1.blablakid.Parents;
+ * import es.unileon.prg1.blablakid.Hour;
+ * import es.unileon.prg1.blablakid.Place;
+ * import es.unileon.prg1.blablakid.Day;
+ * import es.unileon.prg1.blablakid.Week;
+ * import es.unileon.prg1.blablakid.TextUI
+ * 
+ * ?????
+ */
+
 /**
  * 
  * Class that manages the app
@@ -8,7 +31,11 @@ package es.unileon.prg1.blablakid;
  */
 
 public class BlaBlaKidsApp {
-
+	
+	// Define a static logger variable so that it references the
+	// Logger instance named "MyApp".
+	private static final Logger logger = LogManager.getLogger(BlaBlaKidsApp.class);
+	
 	/**
 	 * 
 	 * Array of kids in BlaBlaKidsApp

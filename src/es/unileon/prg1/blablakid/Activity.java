@@ -7,11 +7,14 @@ package es.unileon.prg1.blablakid;
   *
   **/
 
-/*Import logs libraries
- import org.apache.logging.log4j.Logger; import
- org.apache.logging.log4j.LogManager; */
+//Import logs libraries
+ import org.apache.logging.log4j.Logger; 
+ import org.apache.logging.log4j.LogManager; 
 
 public class Activity {
+	
+	 static final Logger logger = LogManager.getLogger(Activity.class.getName());
+	
 	/**
 	 * 
 	 * Name of the activity

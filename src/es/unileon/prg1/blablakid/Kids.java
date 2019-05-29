@@ -1,5 +1,9 @@
 package es.unileon.prg1.blablakid;
- /**
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+/**
  * 
  * Class that manages a array of kid objects
  * 
@@ -8,6 +12,9 @@ package es.unileon.prg1.blablakid;
  **/
 
 public class Kids {
+	
+	 static final Logger logger = LogManager.getLogger(Kids.class.getName());
+	
     /**
      * 
      * Array composed of kids

@@ -1,4 +1,8 @@
 package es.unileon.prg1.blablakid;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * 
  * Class with the purpose of interacting with the user
@@ -8,6 +12,9 @@ package es.unileon.prg1.blablakid;
  */
 
 public class TextUI {
+	
+	 static final Logger logger = LogManager.getLogger(TextUI.class.getName());
+
 	private BlaBlaKidsApp blablakid;
 
 	public TextUI(BlaBlaKidsApp blablakid) {

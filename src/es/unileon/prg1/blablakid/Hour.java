@@ -1,5 +1,9 @@
 package es.unileon.prg1.blablakid;
- /**
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+/**
  * 
  * Class to manage the Hour of the rides or activities
  * 
@@ -8,6 +12,9 @@ package es.unileon.prg1.blablakid;
  **/
 
 public class Hour {
+	
+	 static final Logger logger = LogManager.getLogger(Hour.class.getName());
+	
 	/**
 	 * 
 	 * Hours of the Hour

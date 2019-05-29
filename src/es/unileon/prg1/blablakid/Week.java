@@ -1,4 +1,8 @@
 package es.unileon.prg1.blablakid;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * 
  * Class that manage an array of five days
@@ -8,6 +12,9 @@ package es.unileon.prg1.blablakid;
  */
 
 public class Week {
+	
+	 static final Logger logger = LogManager.getLogger(Week.class.getName());
+
 	/**
 	 * 
 	 * Array of objects of the type Day
