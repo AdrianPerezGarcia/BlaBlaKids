@@ -176,7 +176,6 @@ public class BlaBlaKidsApp {
 	public void remove(String activityName, String kidName, Day day)
 			throws KidException, ActivityException, RideException {
 		Activity activity;
-		StringBuilder out = new StringBuilder();
 		if (this.kids.search(kidName) == null) {
 			throw new KidException("Error: The kid " + kidName + " doesn't exist");
 		} else if (this.kids.search(kidName).search(activityName, day.getNumDay()) == null) {
@@ -208,18 +207,12 @@ public class BlaBlaKidsApp {
 	 * @throws Exception
 	 */
 	public void add(Ride ride, String parentName, String kidName, String activityName, Day numDay) throws Exception {
-		StringBuilder out = new StringBuilder();
 		if (this.parents.search(parentName) == null) {
-			out.append("The parent " + parentName + " does not exist.\n");
-		}
-		if (this.kids.search(kidName) == null) {
-			out.append("The kid " + kidName + " does not exist.\n");
+			throw new ParentException("The parent " + parentName + " does not exist.\n");
+		}else if (this.kids.search(kidName) == null) {
+			throw new KidException("The kid " + kidName + " does not exist.\n");
 		} else if (this.kids.search(kidName).search(activityName, numDay.getNumDay()) == null) {
-			out.append("The kid " + kidName + " does not have the activity " + activityName);
-		}
-
-		if (out.length() > 0) {
-			throw new BlaBlaKidException(out.toString());
+			throw new ActivityException("The kid " + kidName + " does not have the activity " + activityName);
 		} else {
 			this.kids.search(kidName).search(activityName, numDay.getNumDay()).setRides(ride);
 			if (this.kids.search(kidName).search(activityName, numDay.getNumDay()).setRides(ride)) {
