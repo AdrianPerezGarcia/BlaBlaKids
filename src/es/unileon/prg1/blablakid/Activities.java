@@ -196,14 +196,22 @@ public class Activities {
 	public boolean remove(Ride ride) {
 		boolean removed = false;
 		int i = 0;
+
 		while(!(removed) && (i < this.next)) {
-			if(this.activities[i].getAfterRide().equals(ride)) {
-				this.activities[i].removeAfterRide();
-				removed = true;
-			} else if(this.activities[i].getBeforeRide().equals(ride)) {
-				this.activities[i].removeBeforeRide();;
-				removed = true;
-			} else {
+			if(this.activities[i].getAfterRide() != null) {
+				if(this.activities[i].getAfterRide().isSame(ride)) {
+					removed = true;
+					this.activities[i].removeAfterRide();
+				}
+			}
+			
+			if(this.activities[i].getBeforeRide() != null) {
+				if(this.activities[i].getBeforeRide().isSame(ride)){
+					removed = true;
+					this.activities[i].removeBeforeRide();
+				}
+			}
+			if(!(removed)) {
 				i++;
 			}
 		}

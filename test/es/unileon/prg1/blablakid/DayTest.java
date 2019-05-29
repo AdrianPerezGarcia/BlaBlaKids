@@ -56,6 +56,6 @@ public class DayTest {
 	public void testToString() throws DayException {
 		WeekDays wDay2 = WeekDays.MONDAY;
 		Day day2 = new Day(wDay2);
-		assertEquals("MONDAY", day2.getWeekDay().name());
+		assertEquals("MONDAY", day2.getNameDay());
 	}
 }
