@@ -122,19 +122,7 @@ public class BlaBlaKidsApp {
 	 * 
 	 */
 	public void remove(Parent parent) throws ParentException {
-		boolean removed = false;
-		Ride ride;
-		if(this.parents.search(parent.getName()) != null) {
-			/*
-			for(int i = 0; i < DAYSOFWEEK; i++) {
-				if(this.parents.searchRide(parent) != null) {
-					ride = this.parents.searchRide(parent);
-					this.kids.remove(ride);
-				}
-			}
-			*/
-		}
-		removed = this.parents.remove(parent);
+		this.parents.remove(parent);
 	}
 
 	/**
@@ -232,17 +220,12 @@ public class BlaBlaKidsApp {
 	 * @throws RideException
 	 */
 	public void remove(String parentName, int numDay, String startPlace, String endPlace)
-			throws BlaBlaKidException, RideException {
-		StringBuilder out = new StringBuilder();
+			throws ParentException, RideException {
 		if (this.parents.search(parentName) == null) {
-			out.append("The parent " + parentName + " does not exist.\n");
+			throw new ParentException("The parent " + parentName + " does not exist.\n");
 		} else if (this.parents.search(parentName).search(numDay).search(startPlace, endPlace) == null) {
-			out.append("The ride that goes from " + startPlace + " to " + endPlace + " doesn't exist in the day "
+			throw new RideException("The ride that goes from " + startPlace + " to " + endPlace + " doesn't exist in the day "
 					+ numDay);
-		}
-
-		if (out.length() > 0) {
-			throw new BlaBlaKidException(out.toString());
 		} else {
 			Ride ride = this.parents.search(parentName).search(numDay).search(startPlace, endPlace);
 			this.parents.search(parentName).search(numDay).remove(ride);
