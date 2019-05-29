@@ -178,15 +178,10 @@ public class BlaBlaKidsApp {
 		Activity activity;
 		StringBuilder out = new StringBuilder();
 		if (this.kids.search(kidName) == null) {
-			out.append("Error: The kid " + kidName + " doesn't exist");
+			throw new KidException("Error: The kid " + kidName + " doesn't exist");
 		} else if (this.kids.search(kidName).search(activityName, day.getNumDay()) == null) {
-			out.append("Error: The kid " + kidName + " doesn't have the activity " + activityName
+			throw new ActivityException("Error: The kid " + kidName + " doesn't have the activity " + activityName
 			+ " on " + day.getNameDay());
-		} 
-		
-		
-		if(out.length() > 0) {
-			throw new KidException(out.toString());
 		} else {
 			activity = this.kids.search(kidName).search(activityName, day.getNumDay());
 			this.kids.search(kidName).remove(activity);
