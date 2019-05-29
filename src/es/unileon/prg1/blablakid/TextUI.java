@@ -280,6 +280,7 @@ public class TextUI {
 			// Checks if the syntax is correct, if not it gives a warning
 			if (name.equals("")) {
 				System.out.println("Please, introduce a valid name.");
+				logger.warn("Introduced empty String");
 			}
 
 		} while (name.equals(""));
