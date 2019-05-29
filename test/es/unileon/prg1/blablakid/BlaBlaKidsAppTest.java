@@ -21,7 +21,6 @@ public class BlaBlaKidsAppTest {
 		BlaBlaKidsApp app = new BlaBlaKidsApp(-1);
 	}
 	
-	/**
 	@Test
 	public void testKids() throws KidException {
 		Kid kid = new Kid("Beatriz");
@@ -66,6 +65,9 @@ public class BlaBlaKidsAppTest {
 		Parent parent = new Parent("Pedro", kidsParents, 7);	
 		this.blablakid.remove(parent);
 	}
+	
+	/**
+	 * 
 	
 	@Test
 	public void testAddActivities() throws DayException, HourException, KidException, ActivityException {
@@ -130,6 +132,69 @@ public class BlaBlaKidsAppTest {
 	}
 	
 	**/
+	
+	@Test
+	public void testAddRides() throws Exception{
+		Kids parentKids = new Kids(1);
+		Kid parentKid = new Kid("Beatriz");
+		parentKids.add(parentKid);
+		Parent parent = new Parent("Juan", parentKids, 3);
+		Kid kid = new Kid("Julian");
+		this.blablakid.add(kid);
+		this.blablakid.add(parent);
+		Place startPlace = new Place("Palomera");
+		Place endPlace = new Place("Casa");
+		Hour startTime = new Hour(16,00);
+		Hour endTime = new Hour(17,30);
+		Hour activityStartTime = new Hour(15,00);
+		Hour activityEndTime = new Hour(15,58);
+		Day day = new Day(WeekDays.MONDAY, 5);
+		Activity activity = new Activity("Basketball", startPlace, day, activityStartTime, activityEndTime);
+		this.blablakid.add(activity, kid.getName());
+		Ride ride = new Ride(startPlace, endPlace, startTime, endTime);
+		this.blablakid.add(ride, parent.getName(), kid.getName(), activity.getName(), day);
+		assertNotNull(this.blablakid.searchParent(parent.getName()).search("Palomera", "Casa", day));
+	}
+	
+	@Test (expected = BlaBlaKidException.class)
+	public void testAddRidesWrongParent() throws Exception{
+		Kid kid = new Kid("Julian");
+		this.blablakid.add(kid);
+		Place startPlace = new Place("Palomera");
+		Place endPlace = new Place("Casa");
+		Hour startTime = new Hour(16,00);
+		Hour endTime = new Hour(17,30);
+		Hour activityStartTime = new Hour(15,00);
+		Hour activityEndTime = new Hour(15,58);
+		Day day = new Day(WeekDays.MONDAY, 5);
+		Activity activity = new Activity("Basketball", startPlace, day, activityStartTime, activityEndTime);
+		this.blablakid.add(activity, kid.getName());
+		Ride ride = new Ride(startPlace, endPlace, startTime, endTime);
+		this.blablakid.add(ride, "parentName", kid.getName(), activity.getName(), day);
+	}
+	
+	@Test (expected = BlaBlaKidException.class)
+	public void testAddRidesWrongKid() throws Exception{
+		Kids parentKids = new Kids(1);
+		Kid parentKid = new Kid("Beatriz");
+		parentKids.add(parentKid);
+		Parent parent = new Parent("Juan", parentKids, 3);
+		Kid kid = new Kid("Julian");
+		this.blablakid.add(parent);
+		Place startPlace = new Place("Palomera");
+		Place endPlace = new Place("Casa");
+		Hour startTime = new Hour(16,00);
+		Hour endTime = new Hour(17,30);
+		Hour activityStartTime = new Hour(15,00);
+		Hour activityEndTime = new Hour(15,58);
+		Day day = new Day(WeekDays.MONDAY);
+		Activity activity = new Activity("Basketball", startPlace, day, activityStartTime, activityEndTime);
+		this.blablakid.add(activity, kid.getName());
+		Ride ride = new Ride(startPlace, endPlace, startTime, endTime);
+		this.blablakid.add(ride, parent.getName(), kid.getName(), activity.getName(), day);
+	}
+	
+	
 	
 	
 }
