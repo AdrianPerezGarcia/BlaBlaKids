@@ -207,6 +207,24 @@ public class Kids {
        return found;
     }
     
+	/**
+	 * 
+	 * Remove of a ride in a kid activity
+	 * 
+	 * @param ride wanted to be deleted
+	 * 
+	 */
+	public void remove(Ride ride) {
+		boolean removed = false;
+		int i = 0;
+		while ( (i < this.next) && (!removed) ) {
+			removed = this.kids[i].remove(ride);
+			if(!removed) {
+				i++;
+			}
+		}
+	}
+    
     
     /**
      * Method toString to print the full array of kids as solicited in Show Summary Option

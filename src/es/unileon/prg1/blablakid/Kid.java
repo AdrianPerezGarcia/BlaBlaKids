@@ -111,8 +111,10 @@ public class Kid {
 	 * @param ride wanted to be deleted
 	 * 
 	 */
-	public void remove(Ride ride) {
-		this.activities.remove(ride);
+	public boolean remove(Ride ride) {
+		boolean removed = false;
+		removed = this.activities.remove(ride);
+		return removed;
 	}
 
 	/**
