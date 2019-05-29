@@ -12,15 +12,15 @@ import org.apache.logging.log4j.Logger;
  */
 
 public class TextUI {
-	
-	 static final Logger logger = LogManager.getLogger(TextUI.class.getName());
-
 	private BlaBlaKidsApp blablakid;
 
 	public TextUI(BlaBlaKidsApp blablakid) {
 		this.blablakid = blablakid;
 	}
 
+	/**
+	 * Method in charge of displaying the header and making the menu work
+	 */
 	public void start() {
 		int select;
 		this.displayIntro();
@@ -101,7 +101,7 @@ public class TextUI {
 					// TODO Removes
 				}
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				// Catch all kind of exceptions
 				System.out.println(e.getMessage());
 			}
 		} while (select != 0);
@@ -182,6 +182,11 @@ public class TextUI {
 		return kid;
 	}
 
+	/**
+	 * Asks for all the data necesary to create a new Parent and creates it.
+	 * 
+	 * @return Parent whith the given data
+	 */
 	private Parent askParent() {
 		Parent parent;
 		String name = new String();
@@ -239,6 +244,11 @@ public class TextUI {
 		return parent;
 	}
 
+	/**
+	 * Asks for all the data necesary to delete a Parent and creates it.
+	 * 
+	 * @return Parent whith the given data
+	 */
 	private Parent askParentRemove() {
 		String name = new String();
 
@@ -256,6 +266,11 @@ public class TextUI {
 		return this.blablakid.searchParent(name);
 	}
 
+	/**
+	 * Asks for all the data necesary to create a new Activity and creates it.
+	 * 
+	 * @return Activity whith the given data
+	 */
 	private Activity askActivity() {
 		Activity activity = null;
 		String name;
@@ -299,6 +314,11 @@ public class TextUI {
 		return activity;
 	}
 
+	/**
+	 * Asks for all the data necesary to create a new Ride and creates it.
+	 * 
+	 * @return Parent whith the given data
+	 */
 	private Ride askRide() {
 		String startPlaceString = new String();
 		Place startPlace = null;
@@ -348,6 +368,11 @@ public class TextUI {
 		return ride;
 	}
 
+	/**
+	 * Asks for all the data necesary to create a new Hour and creates it.
+	 * 
+	 * @return Hour whith the given data
+	 */
 	private Hour askHour() {
 		// TODO pensar como adaptar los cambios
 		Hour hour = null;
@@ -377,6 +402,11 @@ public class TextUI {
 		return hour;
 	}
 
+	/**
+	 * Asks for all the data necesary to create a new Place and creates it.
+	 * 
+	 * @return Place whith the given data
+	 */
 	private Place askPlace() {
 		String name = new String();
 
@@ -395,6 +425,11 @@ public class TextUI {
 		return place;
 	}
 
+	/**
+	 * Asks for all the data necesary to create a new Day and creates it.
+	 * 
+	 * @return Day whith the given data
+	 */
 	private Day askDay() {
 		int numday;
 		do {
@@ -440,6 +475,13 @@ public class TextUI {
 		return day;
 	}
 
+	/**
+	 * Asks for a String
+	 * 
+	 * @param question String that will be displayed as a question before getting
+	 *                 the String
+	 * @return Introduced String
+	 */
 	private String askString(String question) {
 		String output;
 		do {
@@ -450,6 +492,13 @@ public class TextUI {
 		return output;
 	}
 
+	/**
+	 * Asks for an int
+	 * 
+	 * @param question String that will be displayed as a question before getting
+	 *                 the int
+	 * @return Introduced int
+	 */
 	private int askInt(String question) {
 		int out;
 		do {
