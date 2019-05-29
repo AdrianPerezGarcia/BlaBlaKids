@@ -132,7 +132,7 @@ public class ParentTest {
 	@Test
 	public void testToString() {
 		StringBuilder out = new StringBuilder();
-		out.append("Pedro" + "\n");
+		out.append("###### Pedro ######\n");
 		out.append("Kids: \n");
 		out.append(this.parentKids.toString());		
 		assertEquals(out.toString(), this.parent.toString());

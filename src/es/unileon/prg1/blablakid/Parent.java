@@ -227,7 +227,7 @@ public class Parent {
 	public String toString() {
 		StringBuilder out = new StringBuilder();
 		
-		out.append(this.name + "\n");
+		out.append("###### "+ this.name +" ######\n");
 		out.append("Kids: \n");
 		out.append(this.kids.toString());		
 		out.append(this.days.toString());
