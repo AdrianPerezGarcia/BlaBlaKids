@@ -153,9 +153,16 @@ public class Kids {
      */
     public boolean isIncluded(Kid kid){
         boolean result = false;
-        for (int i = 0; i < this.next; i++) {
-            if (kids[i].isSame(kid)) {
+        int count = 0;
+        boolean end = false;
+        //I search in the array for a kid named as the parameter
+        while( (count < this.next) && (!end) ) {
+            if ( this.kids[count].getName().equals(kid.getName()) ){
+                //If i found it i set the kid boolean true and i finish the loop
+                end = true;
                 result = true;
+            }else {
+                count++;
             }
         }
         return result;

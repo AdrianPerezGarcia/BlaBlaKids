@@ -1,8 +1,4 @@
 package es.unileon.prg1.blablakid;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 /**
  * 
  * Class with the purpose of interacting with the user
@@ -10,6 +6,9 @@ import org.apache.logging.log4j.Logger;
  * @author Hector Castro, Pablo Bayon
  *
  */
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class TextUI {
 	private BlaBlaKidsApp blablakid;
@@ -19,38 +18,40 @@ public class TextUI {
 	}
 
 	/**
+	 * 
 	 * Method in charge of displaying the header and making the menu work
+	 * 
 	 */
 	public void start() {
 		int select;
 		this.displayIntro();
 		do {
+			this.blablakid.toString();
 			select = this.displayMenu();
-
 			try {
 				switch (select) {
-				// Add Kid
+				/* Add kid option */
 				case 1:
 					Kid kid = this.askKid();
 					this.blablakid.add(kid);
 					break;
-				// Remove kid
+				/* Remove kid option */
 				case 2:
 					// TODO falta borrar el kid del array de kids de su parent, si es que estaba
 					// incluido en alguno
 					Kid kidDelete = this.askKid();
 					this.blablakid.remove(kidDelete);
 					break;
-				// Add Parent
+				/* Add parent option */
 				case 3:
 					Parent parent = this.askParent();
 					this.blablakid.add(parent);
 					break;
-				// Remove parent
+				/* Remove parent option */
 				case 4:
 					this.blablakid.remove(this.askParentRemove());
 					break;
-				// Add Activity
+				/* Add activity option */
 				case 5:
 					Activity activity = this.askActivity();
 					String askKid = new String("Name of the kid taking the activity: ");
@@ -58,12 +59,12 @@ public class TextUI {
 					this.blablakid.add(activity, kidName);
 
 					break;
-				// Remove Activity
+				/* Remove activity option */
 				case 6:
 					// TODO
 					System.out.println("Not implemented");
 					break;
-				// Add Ride
+				/* Add ride option */
 				case 7:
 					String askParent = "Name of the parent in charge of the ride: ";
 					String parentRide = this.askString(askParent);
@@ -76,23 +77,22 @@ public class TextUI {
 					Ride ride = this.askRide();
 					this.blablakid.add(ride, parentRide, kidRide, activityRide, numDay);
 					break;
-				// Remove Ride
+				/* Remove ride option */
 				case 8:
-					// TODO
 					String kidInCharge = askString("Name of the kid taking the activity to remove: ");
 					String activityName = askString("Name of the activity to remove: ");
 					int dayNum = askInt("Insert the number of the day of the week:\n"
 							+ "0 - Monday / 1- Tuesday / 2 - Wednesday / 3 - Thursday / 4 - Friday");
 					break;
+				/* Show summary option */
 				case 9:
-					System.out.println("/////////////////////////////");
 					System.out.println(this.blablakid.toString());
-					System.out.println("/////////////////////////////");
 					break;
+				/* Check status option */
 				case 10:
-					// TODO
 					System.out.println("Not implemented.");
 					break;
+				/* Exit option */
 				case 0:
 					System.out.println("Good Bye :)");
 					break;
@@ -101,14 +101,17 @@ public class TextUI {
 					// TODO Removes
 				}
 			} catch (Exception e) {
-				// Catch all kind of exceptions
+				/* Catcher of all kind of exceptions */
 				System.out.println(e.getMessage());
 			}
+			
 		} while (select != 0);
 	}
 
 	/**
-	 * Prints the apps ASCII Art header
+	 * 
+	 * Prints the application ASCII Art header
+	 * 
 	 */
 	private void displayIntro() {
 		System.out.print("\t\t\t\t\t\t\t╔====================================================╗\n");
@@ -130,7 +133,7 @@ public class TextUI {
 	}
 
 	/**
-	 * Prints the apps menu
+	 * Prints the applications menu
 	 * 
 	 * @return the option selected as an </CODE>int</CODE>
 	 */
@@ -160,9 +163,11 @@ public class TextUI {
 	}
 
 	/**
-	 * Asks for all the data necesary to create a new kid and creates it.
 	 * 
-	 * @return Kid whith the given data
+	 * Asks for all the data necessary to create a new kid and creates it.
+	 * 
+	 * @return Kid with the given data
+	 * 
 	 */
 	private Kid askKid() {
 		String name = new String();
@@ -183,9 +188,11 @@ public class TextUI {
 	}
 
 	/**
-	 * Asks for all the data necesary to create a new Parent and creates it.
 	 * 
-	 * @return Parent whith the given data
+	 * Asks for all the data necessary to create a new Parent and creates it.
+	 * 
+	 * @return Parent with the given data
+	 * 
 	 */
 	private Parent askParent() {
 		Parent parent;
@@ -245,9 +252,11 @@ public class TextUI {
 	}
 
 	/**
-	 * Asks for all the data necesary to delete a Parent and creates it.
 	 * 
-	 * @return Parent whith the given data
+	 * Asks for all the data necessary to delete a Parent and creates it.
+	 * 
+	 * @return Parent with the given data
+	 * 
 	 */
 	private Parent askParentRemove() {
 		String name = new String();
@@ -256,7 +265,7 @@ public class TextUI {
 			System.out.println("Introduce the name of the parent : ");
 			name = Teclado.readString();
 
-			// Checks if the sintax is correct, if not it gives a warning
+			// Checks if the syntax is correct, if not it gives a warning
 			if (name.equals("")) {
 				System.out.println("Please, introduce a valid name.");
 			}
@@ -267,9 +276,11 @@ public class TextUI {
 	}
 
 	/**
-	 * Asks for all the data necesary to create a new Activity and creates it.
 	 * 
-	 * @return Activity whith the given data
+	 * Asks for all the data necessary to create a new Activity and creates it.
+	 * 
+	 * @return Activity with the given data
+	 * 
 	 */
 	private Activity askActivity() {
 		Activity activity = null;
@@ -315,9 +326,11 @@ public class TextUI {
 	}
 
 	/**
-	 * Asks for all the data necesary to create a new Ride and creates it.
 	 * 
-	 * @return Parent whith the given data
+	 * Asks for all the data necessary to create a new Ride and creates it.
+	 * 
+	 * @return Parent with the given data
+	 * 
 	 */
 	private Ride askRide() {
 		String startPlaceString = new String();
@@ -369,12 +382,13 @@ public class TextUI {
 	}
 
 	/**
-	 * Asks for all the data necesary to create a new Hour and creates it.
 	 * 
-	 * @return Hour whith the given data
+	 * Asks for all the data necessary to create a new Hour and creates it.
+	 * 
+	 * @return Hour with the given data
+	 * 
 	 */
 	private Hour askHour() {
-		// TODO pensar como adaptar los cambios
 		Hour hour = null;
 		int hours, minutes;
 		// Asks for the hours
@@ -403,9 +417,11 @@ public class TextUI {
 	}
 
 	/**
-	 * Asks for all the data necesary to create a new Place and creates it.
 	 * 
-	 * @return Place whith the given data
+	 * Asks for all the data necessary to create a new Place and creates it.
+	 * 
+	 * @return Place with the given data
+	 * 
 	 */
 	private Place askPlace() {
 		String name = new String();
@@ -414,7 +430,7 @@ public class TextUI {
 			System.out.println("Introduce the name of the place to add: ");
 			name = Teclado.readString();
 
-			// Checks if the sintax is correct, if not it gives a warning
+			// Checks if the syntax is correct, if not it gives a warning
 			if (name.equals("")) {
 				System.out.println("Please, introduce a valid name");
 			}
@@ -426,9 +442,11 @@ public class TextUI {
 	}
 
 	/**
-	 * Asks for all the data necesary to create a new Day and creates it.
 	 * 
-	 * @return Day whith the given data
+	 * Asks for all the data necessary to create a new Day and creates it.
+	 * 
+	 * @return Day with the given data
+	 * 
 	 */
 	private Day askDay() {
 		int numday;
@@ -476,11 +494,13 @@ public class TextUI {
 	}
 
 	/**
+	 * 
 	 * Asks for a String
 	 * 
-	 * @param question String that will be displayed as a question before getting
-	 *                 the String
+	 * @param question String that will be displayed as a question before getting the String
+	 * 
 	 * @return Introduced String
+	 * 
 	 */
 	private String askString(String question) {
 		String output;
@@ -493,11 +513,13 @@ public class TextUI {
 	}
 
 	/**
-	 * Asks for an int
 	 * 
-	 * @param question String that will be displayed as a question before getting
-	 *                 the int
-	 * @return Introduced int
+	 * Asks for an integer
+	 * 
+	 * @param question String that will be displayed as a question before getting the integer
+	 * 
+	 * @return Introduced integer
+	 * 
 	 */
 	private int askInt(String question) {
 		int out;
