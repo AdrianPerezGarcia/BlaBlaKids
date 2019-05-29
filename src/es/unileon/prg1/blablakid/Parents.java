@@ -1,13 +1,12 @@
 package es.unileon.prg1.blablakid;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 /**
  * 
  * @author PabloJ
  *
  **/
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Parents {
 	

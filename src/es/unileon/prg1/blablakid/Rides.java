@@ -1,14 +1,14 @@
 package es.unileon.prg1.blablakid;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 /**
  * Class that manages an array of Ride objects
  * 
  * @author Hector Castro
  *
  */
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Rides {
 	
 	 static final Logger logger = LogManager.getLogger(Rides.class.getName());

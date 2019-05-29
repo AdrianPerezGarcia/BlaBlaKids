@@ -1,8 +1,4 @@
 package es.unileon.prg1.blablakid;
-
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
-
 /**
  * 
  * 	Class that manages a array of activity objects
@@ -10,6 +6,9 @@ import org.apache.logging.log4j.LogManager;
  * @author Pablo Bayon
  *
  */
+
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class Activities {
 	

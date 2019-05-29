@@ -1,6 +1,12 @@
 package es.unileon.prg1.blablakid;
+/**
+ * 
+ * Class that manages the app
+ * 
+ * @author Pablo Bayon
+ *
+ */
 
-//Import log4j classes.
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -20,14 +26,6 @@ import org.apache.logging.log4j.LogManager;
  * import es.unileon.prg1.blablakid.TextUI
  * 
  * ?????
- */
-
-/**
- * 
- * Class that manages the app
- * 
- * @author Pablo Bayon
- *
  */
 
 public class BlaBlaKidsApp {

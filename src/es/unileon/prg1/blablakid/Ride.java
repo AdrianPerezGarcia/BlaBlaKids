@@ -1,12 +1,13 @@
 package es.unileon.prg1.blablakid;
+/**
+ * 
+ * @author Hector Castro
+ *
+ */
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-/**
- * @author Hector Castro
- *
- */
 public class Ride {
 	
 	 static final Logger logger = LogManager.getLogger(Ride.class.getName());

@@ -1,15 +1,14 @@
 package es.unileon.prg1.blablakid;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 /**
  * 
  * Class to manage the Hour of the rides or activities
  * 
  * @author Adrian Perez
  *
- **/
+ */
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Hour {
 	

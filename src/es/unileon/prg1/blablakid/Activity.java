@@ -7,7 +7,6 @@ package es.unileon.prg1.blablakid;
   *
   **/
 
-//Import logs libraries
  import org.apache.logging.log4j.Logger; 
  import org.apache.logging.log4j.LogManager; 
 

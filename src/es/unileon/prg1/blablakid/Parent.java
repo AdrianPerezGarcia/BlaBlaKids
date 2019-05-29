@@ -1,8 +1,4 @@
 package es.unileon.prg1.blablakid;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 /**
  * 
  * Class that creates a parent managed by Parents
@@ -10,6 +6,9 @@ import org.apache.logging.log4j.Logger;
  * @author PabloJ
  *
  **/
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 public class Parent {
@@ -49,7 +48,9 @@ public class Parent {
 	 * Builder of the object Parent
 	 * 
 	 * @param name Parent identifier
+	 * 
 	 * @param kids Rides that the parent do
+	 * 
 	 * @param numberOfRides Number of kids assigned to the parent
 	 * 
 	 */
@@ -153,7 +154,9 @@ public class Parent {
 	 *  Method that search a Ride in the array of Rides
 	 *  
 	 *  @param String Name of the place where the ride starts
+	 *  
 	 *  @param String Name of the place where the ride ends
+	 *  
 	 *  @param Day The day of the ride 
 	 *  
 	 *  @throws DayException if the day is wrong
@@ -173,9 +176,11 @@ public class Parent {
 	 * 	Method that add a Ride into a Day
 	 * 
 	 * @param Ride ride that will be added
+	 * 
 	 * @param Day the day where the ride want to be added 
 	 * 
 	 * @throws RideException if the ride is wrong
+	 * 
 	 * @throws DayException if the day is wrong
 	 * 
 	 */
@@ -193,9 +198,11 @@ public class Parent {
 	 * Method remove a Ride of a specified day
 	 * 
 	 * @param Ride ride that will be removed 
+	 * 
 	 * @param Day the day where the ride want to be removed
 	 * 
 	 * @throws RideException if the ride is wrong
+	 * 
 	 * @throws DayException if the day is wrong
 	 * 
 	 */
@@ -210,9 +217,7 @@ public class Parent {
 	
 	/**
 	 * 
-	 * Method to String of the parents and his/her kid
-	 * 
-	 * @return String 
+	 * Method to String of the parents and his/her kids
 	 * 
 	 */
 	
