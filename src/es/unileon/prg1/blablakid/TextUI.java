@@ -29,7 +29,7 @@ public class TextUI {
 		int select;
 		this.displayIntro();
 		do {
-			this.blablakid.toString();
+			System.out.println(this.blablakid.toString());
 			select = this.displayMenu();
 			try {
 				switch (select) {
@@ -272,7 +272,7 @@ public class TextUI {
 	 */
 	private Parent askParentRemove() {
 		String name = new String();
-
+		Parent parent = null;
 		do {
 			System.out.println("Introduce the name of the parent : ");
 			name = Teclado.readString();
@@ -285,7 +285,8 @@ public class TextUI {
 
 		} while (name.equals(""));
 
-		return this.blablakid.searchParent(name);
+		parent = this.blablakid.searchParent(name);
+		return parent;
 	}
 
 	/**
