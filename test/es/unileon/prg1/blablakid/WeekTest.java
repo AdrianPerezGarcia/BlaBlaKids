@@ -31,5 +31,17 @@ public class WeekTest {
 		
 		assertEquals(this.day1.getNumDay(),this.week.search(1).getNumDay());
 	}
+	
+	@Test
+	public void testToString() {
+		
+		StringBuilder out = new StringBuilder();
+		for(int i = 0; i < this.next; i++) {
+			out.append(this.week[i].toString());
+			out.append("\n");
+		}
+		
+		assertEquals(out.toString(),this.week.toString());
+	}
 
 }

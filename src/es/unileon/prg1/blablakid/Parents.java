@@ -69,9 +69,9 @@ public class Parents {
 		}
 		else {
 				this.parents[this.next] = parent;
-				this.next++;
 				logger.info("The parent " + this.parents[this.next].getName() + "has been added");
-			}
+				this.next++;
+			}	
 		}	
 				
 	
@@ -92,8 +92,9 @@ public class Parents {
 			//Also compacts the array replacing the next parent
 			int position = getPos(parent);
 			compact(position);
-			this.next--;
 			logger.info("The parent "+ this.parents[position].getName() + "has been removed");
+			this.next--;
+			
 			removed = true;
 		}
 		else {
@@ -113,13 +114,6 @@ public class Parents {
 			if(!(removed)) {
 				i++;
 			}
-		}
-		
-		if (removed == false) {
-			logger.info("The Ride hasn't being found for removing");
-		}
-		else {
-			logger.info("The ride has been found for removing");
 		}
 	}
 	
