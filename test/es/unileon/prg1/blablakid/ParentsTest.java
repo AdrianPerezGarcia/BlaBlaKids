@@ -1,6 +1,6 @@
 package es.unileon.prg1.blablakid;
-
 /**
+ * 
  * @author Adrian Perez
  *
  */
@@ -94,6 +94,7 @@ public class ParentsTest {
 	public void testRemoveAndGetPos() throws ParentException {
 		//Cause it is a private method, i cover it launching a method that calls him
 		this.parents.remove(parent1);
+		assertNull(this.parents.search("Juan"));
 	}
 	
 	@Test(expected = ParentException.class)

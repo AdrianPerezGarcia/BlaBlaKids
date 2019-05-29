@@ -1,15 +1,11 @@
 package es.unileon.prg1.blablakid;
-
 /**
  * 
  * @author Pablo Bayon
  * 
  */
+
 import static org.junit.Assert.*;
-
-import java.sql.Time;
-import java.time.DayOfWeek;
-
 import org.junit.Before;
 import org.junit.Test;
 
