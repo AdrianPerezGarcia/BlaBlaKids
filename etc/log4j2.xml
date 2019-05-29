@@ -1,15 +1,71 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN">
- <Appenders>
- <Console name="Console" target="SYSTEM_OUT">
- <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} -
-%msg%n"/>
- </Console>
- </Appenders>
- <Loggers>
-  <Root level="error">
- <AppenderRef ref="Console"/>
- </Root>
- </Loggers>
-</Configuration>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration debug="true"
+	xmlns:log4j='http://jakarta.apache.org/log4j/'>
 
+	<appender name="file" class="org.apache.log4j.RollingFileAppender">
+	   <param name="append" value="false" />
+	   <param name="maxFileSize" value="10KB" />
+	   <param name="maxBackupIndex" value="5" />
+	   <!-- For Tomcat -->
+	   <param name="file" value="../log/BlaBlaKids.log" />
+	   <layout class="org.apache.log4j.PatternLayout">
+		<param name="ConversionPattern" 
+			value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+	   </layout>
+	</appender>
+	
+	<logger name = "es.unileon.prg1.blablakid.Activity">
+		<level value= "ALL" />
+	</logger>
+	
+	<logger name = "es.unileon.prg1.blablakid.Activities">
+		<level value= "ALL" />
+	</logger>
+	
+	<logger name = "es.unileon.prg1.blablakid.Kid">
+		<level value= "ALL" />
+	</logger>
+	
+	<logger name = "es.unileon.prg1.blablakid.Kids">
+		<level value= "ALL" />
+	</logger>
+	
+	<logger name = "es.unileon.prg1.blablakid.Parent">
+		<level value= "ALL" />
+	</logger>
+	
+	<logger name = "es.unileon.prg1.blablakid.Parents">
+		<level value= "ALL" />
+	</logger>
+	
+	<logger name = "es.unileon.prg1.blablakid.Ride">
+		<level value= "ALL" />
+	</logger>
+	
+	<logger name = "es.unileon.prg1.blablakid.Rides">
+		<level value= "ALL" />
+	</logger>
+
+	<logger name = "es.unileon.prg1.blablakid.Hour">
+		<level value= "ALL" />
+	</logger>
+	
+	<logger name = "es.unileon.prg1.blablakid.Place">
+		<level value= "ALL" />
+	</logger>
+	
+	<logger name = "es.unileon.prg1.blablakid.Week">
+		<level value= "ALL" />
+	</logger>
+	
+	<logger name = "es.unileon.prg1.blablakid.Day">
+		<level value= "ALL" />
+	</logger>
+	
+	<root>
+		<level value="ERROR" />
+		<appender-ref ref="file" />
+	</root>
+
+</log4j:configuration>
