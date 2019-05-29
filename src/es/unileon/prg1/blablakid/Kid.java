@@ -103,11 +103,21 @@ public class Kid {
 	public void remove(Activity activity) throws ActivityException {
 		this.activities.remove(activity);
 	}
+	
+	/**
+	 * 
+	 * Remove of a ride in a kid activity
+	 * 
+	 * @param ride wanted to be deleted
+	 * 
+	 */
+	public void remove(Ride ride) {
+		this.activities.remove(ride);
+	}
 
 	/**
-	 * Method toString as requested in the Show Summary option
 	 * 
-	 * @return String version with the name of the kid
+	 * Method toString as requested in the Show Summary option
 	 * 
 	 */
 	@Override
