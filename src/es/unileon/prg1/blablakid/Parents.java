@@ -1,6 +1,8 @@
 package es.unileon.prg1.blablakid;
 /**
  * 
+ * Class that manages an array of parents
+ * 
  * @author PabloJ
  *
  **/

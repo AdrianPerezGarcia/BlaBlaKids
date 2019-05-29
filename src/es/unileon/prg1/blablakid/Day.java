@@ -1,6 +1,8 @@
 package es.unileon.prg1.blablakid;
  /**
  * 
+ * Class that creates a day
+ * 
  * @author Pablo Bayon
  *
  */

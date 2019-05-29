@@ -1,6 +1,8 @@
 package es.unileon.prg1.blablakid;
 /**
  * 
+ * Class that creates a ride for an activity
+ * 
  * @author Hector Castro
  *
  */
