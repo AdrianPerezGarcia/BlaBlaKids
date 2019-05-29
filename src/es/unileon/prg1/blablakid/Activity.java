@@ -142,7 +142,19 @@ public class Activity {
 		}
 		return set;
 	}
-
+	/**
+	 * 
+	 */
+	public void removeAfterRide() {
+		this.afterRide = null;
+	}
+	
+	/**
+	 * 
+	 */
+	public void removeBeforeRide() {
+		this.beforeRide = null;
+	}
 
 	/**
 	 * 

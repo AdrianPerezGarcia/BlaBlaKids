@@ -258,7 +258,7 @@ public class TextUI {
 	 * @return Parent with the given data
 	 * 
 	 */
-	private Parent askParentRemove() {
+	private String askParentRemove() {
 		String name = new String();
 
 		do {
@@ -272,7 +272,7 @@ public class TextUI {
 
 		} while (name.equals(""));
 
-		return this.blablakid.searchParent(name);
+		return name;
 	}
 
 	/**

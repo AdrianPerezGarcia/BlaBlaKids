@@ -192,6 +192,23 @@ public class Activities {
 		} 
 		return found;
 	}
+	
+	public boolean remove(Ride ride) {
+		boolean removed = false;
+		int i = 0;
+		while(!(removed) && (i < this.next)) {
+			if(this.activities[i].getAfterRide().equals(ride)) {
+				this.activities[i].removeAfterRide();
+				removed = true;
+			} else if(this.activities[i].getBeforeRide().equals(ride)) {
+				this.activities[i].removeBeforeRide();;
+				removed = true;
+			} else {
+				i++;
+			}
+		}
+		return removed;
+	}
 
 	/**
 	 * 

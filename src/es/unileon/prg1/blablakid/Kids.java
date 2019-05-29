@@ -222,7 +222,7 @@ public class Kids {
 			if(!removed) {
 				i++;
 			}
-		}
+		} 
 	}
     
     

@@ -8,6 +8,7 @@ package es.unileon.prg1.blablakid;
  */
 
 import org.apache.logging.log4j.Logger;
+
 import org.apache.logging.log4j.LogManager;
 
 /*
@@ -64,20 +65,6 @@ public class BlaBlaKidsApp {
 	
 	/**
 	 * 
-	 * Method to search an kid in the kids array
-	 * 
-	 * @param kidName
-	 * 
-	 * @return the kid founded or null
-	 * 
-	 */
-	public Kid searchKid(String kidName) {
-		return this.kids.search(kidName);
-	}
-
-	
-	/**
-	 * 
 	 * Method to add a kid in the kids array
 	 * 
 	 * @param kid that want to be added
@@ -106,19 +93,6 @@ public class BlaBlaKidsApp {
 
 	/**
 	 * 
-	 * Method to search a parent in the parents array
-	 * 
-	 * @param parentName
-	 * 
-	 * @return the parent founded or null
-	 * 
-	 */
-	public Parent searchParent(String parentName) {
-		return this.parents.search(parentName);
-	}
-
-	/**
-	 * 
 	 * Method to add a parent in the parents array
 	 * 
 	 * @param parent that want to be added
@@ -129,6 +103,7 @@ public class BlaBlaKidsApp {
 	public void add(Parent parent) throws ParentException {
 			this.parents.add(parent);
 	}
+	
 
 	/**
 	 * 
@@ -139,8 +114,8 @@ public class BlaBlaKidsApp {
 	 * @throws ParentException if the parent does not exist
 	 * 
 	 */
-	public void remove(Parent parent)throws ParentException {
-			this.parents.remove(parent);
+	public void remove(String parent)throws ParentException {
+		this.parents.remove(this.parents.search(parent));
 	}
 
 
@@ -211,6 +186,7 @@ public class BlaBlaKidsApp {
 	}
 	
 	/**
+	 * Method that adds a ride in the array of rides of the parent and in the activity
 	 * 
 	 * @param ride
 	 * @param parentName
@@ -240,16 +216,22 @@ public class BlaBlaKidsApp {
 		}
 	}
 
-	public void remove(String parentName, int numDay, String startPlace, String endPlace) throws ParentException, RideException{
+	public void remove(String parentName, int numDay, String startPlace, String endPlace) throws BlaBlaKidException, RideException{
+		boolean removed = false;
 		StringBuilder out = new StringBuilder();
 		if (this.parents.search(parentName) == null) {
 			out.append("The parent " + parentName + " does not exist.\n");
+		} else if(this.parents.search(parentName).search(numDay).search(startPlace, endPlace) == null) {
+			out.append("The ride that goes from " + startPlace + " to " + endPlace + " doesn't exist in the day " + numDay);
+		} 
+		
+		if(out.length() > 0) {
+			throw new BlaBlaKidException(out.toString());
+		} else {
+			Ride ride = this.parents.search(parentName).search(numDay).search(startPlace, endPlace);
+			this.parents.search(parentName).search(numDay).remove(ride);
+			this.kids.remove(ride);
 		}
-		
-		Ride ride = this.parents.search(parentName).search(numDay).search(startPlace, endPlace);
-		this.parents.search(parentName).search(numDay).remove(ride);
-		
-		//TODO falta borrar los rides de la acctividad, es posible que necesite metodos auxiliares
 		
 	}
 	
@@ -265,8 +247,10 @@ public class BlaBlaKidsApp {
 	@Override
 	public String toString() {
 		StringBuilder out = new StringBuilder();
+		out.append("/////////////////////////////");
 		out.append("KIDS:\n").append(this.kids.toString()).append("\n");
 		out.append("PARENTS:\n").append(this.parents.toString()).append("\n");
+		out.append("/////////////////////////////");
 		return out.toString();
 	}
 
