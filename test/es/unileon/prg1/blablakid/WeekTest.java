@@ -13,11 +13,19 @@ public class WeekTest {
 	private Week week;
 	private Day day;
 	private Day day1;
+	private Place start = new Place("Palomera");
+	private Place end = new Place("Casa");
+	private Hour startHour;
+	private Hour endHour;
+	private Ride ride;
 	
 	@Before
-	public void setUp() throws DayException {
+	public void setUp() throws DayException, HourException, RideException {
+		this.startHour = new Hour(10,30);
+		this.endHour = new Hour(11,30);
+		this.ride = new Ride(this.start,this.end,this.startHour,this.endHour);
 		this.week = new Week(1);
-		this.day = new Day(WeekDays.MONDAY);
+		this.day = new Day(WeekDays.MONDAY,1);
 		this.day1 = new Day(WeekDays.TUESDAY);
 	}
 	
@@ -33,15 +41,12 @@ public class WeekTest {
 	}
 	
 	@Test
-	public void testToString() {
-		
+	public void testToString() throws RideException {
 		StringBuilder out = new StringBuilder();
-		for(int i = 0; i < this.next; i++) {
-			out.append(this.week[i].toString());
-			out.append("\n");
-		}
-		
-		assertEquals(out.toString(),this.week.toString());
+		this.day.add(ride);
+		out.append(this.day.toString());
+		out.append("\n");
+		 assertEquals(out.toString(),this.week.toString());
 	}
 
 }
