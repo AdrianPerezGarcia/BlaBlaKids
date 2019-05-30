@@ -19,14 +19,14 @@ public class Rides {
 	 * Array composed by Ride objects
 	 * 
 	 */
-	public Ride[] rides;
+	private Ride[] rides;
 
 	/**
 	 * 
 	 * First free position in the array
 	 * 
 	 */
-	public int next;
+	private int next;
 
 	/**
 	 * 
@@ -201,7 +201,7 @@ public class Rides {
 	 * 
 	 */
 	public int getLength() {
-		return this.rides.length;
+		return this.next;
 	}
 
 	/**
@@ -212,7 +212,9 @@ public class Rides {
 	public String toString() {
 		StringBuilder out = new StringBuilder();
 		for (int i = 0; i < this.next; i++) {
-			out.append(this.get(i).toString()).append("\n");
+			if(this.get(i)!=null) {
+				out.append(this.get(i).toString()+"\n");
+			}
 		}
 		return out.toString();
 	}

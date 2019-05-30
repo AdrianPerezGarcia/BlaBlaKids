@@ -43,9 +43,8 @@ public class WeekTest {
 	@Test
 	public void testToString() throws RideException {
 		StringBuilder out = new StringBuilder();
-		this.day.add(ride);
-		out.append(this.day.toString());
-		out.append("\n");
+		this.week.search(0).add(ride);
+		out.append(this.week.getDay(0).toString());
 		 assertEquals(out.toString(),this.week.toString());
 	}
 

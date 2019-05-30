@@ -188,9 +188,9 @@ public class Week {
 	@Override
 	public String toString() {
 		StringBuilder out = new StringBuilder();
-		for(int i = 0; i < this.next; i++) {
+
+		for(int i = 0; i < MAXDAYS; i++) {
 			out.append(this.week[i].toString());
-			out.append("\n");
 		}
 		
 		return out.toString();
