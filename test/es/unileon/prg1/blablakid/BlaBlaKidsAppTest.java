@@ -122,9 +122,18 @@ public class BlaBlaKidsAppTest {
 		this.activity = new Activity("Baloncesto", this.rideStartPlace, this.day, this.activityStartHour, this.activityEndHour);
 		this.blablakid.add(this.activity, "Julian");
 		this.blablakid.add(this.parent);
-		this.ride = new Ride(this.rideStartPlace, this.rideEndPlace, this.rideStartHour, this.rideEndHour);
+		
+		Place startPlace = new Place("Palomera");
+		Place endPlace = new Place("Casa");
+		
+		Hour startHour = new Hour(16,00);
+		Hour endHour = new Hour(17,00);
+		
+		this.ride = new Ride(startPlace, endPlace, startHour, endHour);
+		
 		this.blablakid.add(this.ride, this.parent.getName(), this.kid.getName(), this.activityName, this.day);
-		assertEquals(this.ride, this.blablakid.searchParent(this.parent.getName()).search(this.rideStartPlace.getPlace(), this.rideEndPlace.getPlace(), this.day));
+		
+		assertEquals(this.ride.toString(), this.blablakid.searchParent(this.parent.getName()).search(startPlace.getPlace(), endPlace.getPlace(), this.day).toString());
 	}
 	
 	@Test (expected = ParentException.class)
