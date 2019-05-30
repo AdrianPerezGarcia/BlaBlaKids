@@ -229,7 +229,7 @@ public class Kids {
 		boolean removed = false;
 		int i = 0;
 		while ( (i < this.next) && (!removed) ) {
-			removed = this.kids[i].remove(ride);
+			removed = this.kids[i].remove(ride); 
 			if(!removed) {
 				i++;
 			}

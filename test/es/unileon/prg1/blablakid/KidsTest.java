@@ -65,6 +65,32 @@ public class KidsTest {
 		assertEquals(daniel, this.kids.get(0));
 	}
 
+	@Test 
+	public void testRemove() throws KidException{
+		this.kids.remove(manuel);
+	}
+	
+	@Test 
+	public void testRemoveRide() throws RideException, HourException, ActivityException{
+		Place end = new Place("Palomera");
+		Place start = new Place("Casa");
+		Day day = new Day(WeekDays.MONDAY, 3);
+		Hour startTime = new Hour(18,00);
+		Hour endTime = new Hour(19,00);
+		Hour startRide = new Hour(17,00);
+		Hour endRide = new Hour(17, 59);
+		Hour otherStart = new Hour(19, 01);
+		Hour otherEnd = new Hour(20, 00);
+		Activity activity = new Activity("Basket", end, day, startTime, endTime);
+		Ride ride = new Ride(start, end, startRide, endRide);
+		Ride otherRide = new Ride(end, start, otherStart, otherEnd);
+		activity.setRides(otherRide);
+		activity.setRides(ride);
+		this.beatriz.add(activity);
+		this.kids.remove(ride);
+
+	}
+	
 	@Test(expected = KidException.class)
 	public void testRemoveFail() throws KidException {
 		Kid kid = new Kid("Pablo");

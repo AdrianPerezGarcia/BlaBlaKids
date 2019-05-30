@@ -72,7 +72,10 @@ public class TextUI {
 				/* Remove activity option */
 				case 6:
 					logger.info("Removing an Activity");
-					
+					String kidRemove = this.askString("Name of the kid taking the activity to remove: \n");
+					String activityRemove = this.askString("Name of the activity to remove: \n");
+					Day dayRemove = this.askDay();
+					this.blablakid.remove(activityRemove, kidRemove, dayRemove);
 					break;
 				/* Add ride option */
 				case 7:
