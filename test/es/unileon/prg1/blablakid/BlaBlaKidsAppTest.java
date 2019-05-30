@@ -178,7 +178,7 @@ public class BlaBlaKidsAppTest {
 		this.blablakid.remove("asd", this.day.getNumDay(), this.rideStartPlace.getPlace(), this.rideEndPlace.getPlace());
 	}
 	
-	@Test (expected = ParentException.class)
+	@Test (expected = RideException.class)
 	public void testRemoveRidesWrongRide() throws Exception{
 		this.blablakid.add(this.kid);
 		this.activity = new Activity("Baloncesto", this.rideStartPlace, this.day, this.activityStartHour, this.activityEndHour);
