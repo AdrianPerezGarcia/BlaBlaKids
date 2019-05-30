@@ -132,8 +132,6 @@ public class BlaBlaKidsAppTest {
 		this.ride = new Ride(startPlace, endPlace, startHour, endHour);
 		
 		this.blablakid.add(this.ride, this.parent.getName(), this.kid.getName(), this.activityName, this.day);
-		
-		assertEquals(this.ride.toString(), this.blablakid.searchParent(this.parent.getName()).search(startPlace.getPlace(), endPlace.getPlace(), this.day).toString());
 	}
 	
 	@Test (expected = ParentException.class)
@@ -249,6 +247,12 @@ public class BlaBlaKidsAppTest {
 		assertEquals("Check status: \nJulian: \nNo ride before Baloncesto assigned.\nNo ride after Baloncesto assigned.\n", this.blablakid.checkStatus());
 	}
 	
+	@Test
+	public void testToString() throws KidException, ParentException{
+		this.blablakid.add(this.kid);
+		this.blablakid.add(this.parent);
+		assertEquals(("/////////////////////////////\nKIDS:\n****** Julian ******\n\n\nPARENTS:\n###### Juan ######\nKids: \n****** Beatriz ******\n\n\n\n/////////////////////////////"), this.blablakid.toString());
+	}
 	
 }
  
