@@ -80,6 +80,7 @@ public class Rides {
 	public void addRide(Ride ride) throws RideException {
 		// Checks if the ride is already in the array
 		if (isIncluded(ride)) {
+			logger.error("The ride "+ ride + "is already included");
 			throw new RideException("Error: Ride already included");
 		}
 
@@ -87,9 +88,11 @@ public class Rides {
 		else {
 			// Throws an exception if the array is full
 			if (this.next >= this.rides.length) {
+				logger.error("The ride list is full");
 				throw new RideException("Error: Ride list is full");
 			} else {
 				this.rides[this.next] = ride;
+				logger.info("The ride"+ ride +"has been added correctly");
 				this.next++;
 			}
 		}

@@ -334,6 +334,7 @@ public class TextUI {
 			} while (endTime == null);
 			if (!startTime.isLower(endTime)) {
 				System.out.println("Activity end time must be higher than start time");
+				logger.error("Activity end time is lower than start time");
 			}
 		} while (!startTime.isLower(endTime));
 
@@ -386,6 +387,7 @@ public class TextUI {
 			} while (endTime == null);
 			if (!startTime.isLower(endTime)) {
 				System.out.println("Activity end time must be higher than start time");
+				logger.error("Activity end time is lower than start time");
 			}
 		} while (!startTime.isLower(endTime));
 		try {
@@ -413,6 +415,7 @@ public class TextUI {
 			hours = Teclado.readInteger();
 			if (hours == Integer.MIN_VALUE) {
 				System.out.println("Introduce a valid number");
+				logger.error("Invalid number for hours");
 			}
 		} while (hours == Integer.MIN_VALUE);
 
@@ -421,6 +424,7 @@ public class TextUI {
 			minutes = Teclado.readInteger();
 			if (minutes == Integer.MIN_VALUE) {
 				System.out.println("Introduce a valid number");
+				logger.error("Invalid number for minutes");
 			}
 		} while (minutes == Integer.MIN_VALUE);
 
@@ -452,7 +456,7 @@ public class TextUI {
 			}
 
 		} while (name.equals(""));
-
+		
 		Place place = new Place(name);
 		return place;
 	}
@@ -471,6 +475,7 @@ public class TextUI {
 			numday = Teclado.readInteger();
 			if (numday == Integer.MIN_VALUE) {
 				System.out.println("Introduce a valid number");
+				logger.error("Invalid numday");
 			}
 		} while (numday == Integer.MIN_VALUE);
 
@@ -546,6 +551,7 @@ public class TextUI {
 
 			if (out == Integer.MIN_VALUE) {
 				System.out.println("Introduce a valid number");
+				logger.warn("Introduced invalid number integer");
 			}
 
 		} while (out == Integer.MIN_VALUE);

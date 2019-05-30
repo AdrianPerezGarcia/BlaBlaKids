@@ -199,10 +199,13 @@ public class BlaBlaKidsApp {
 	 */
 	public void add(Ride ride, String parentName, String kidName, String activityName, Day numDay) throws Exception {
 		if (this.parents.search(parentName) == null) {
+			logger.error("The parent "+ parentName +"doesn't exist");
 			throw new ParentException("The parent " + parentName + " does not exist.\n");
 		}else if (this.kids.search(kidName) == null) {
+			logger.error("The kid "+ kidName + "does not exist.\n");
 			throw new KidException("The kid " + kidName + " does not exist.\n");
 		} else if (this.kids.search(kidName).search(activityName, numDay.getNumDay()) == null) {
+			logger.error("The kid "+ kidName + "does not have the activity "+ activityName);
 			throw new ActivityException("The kid " + kidName + " does not have the activity " + activityName);
 		} else {
 			this.kids.search(kidName).search(activityName, numDay.getNumDay()).setRides(ride);
