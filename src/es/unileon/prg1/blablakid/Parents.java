@@ -91,8 +91,8 @@ public class Parents {
 		if (isIncluded(parent)) {
 			//Also compacts the array replacing the next parent
 			int position = getPos(parent);
-			compact(position);
 			logger.info("The parent "+ this.parents[position].getName() + "has been removed");
+			compact(position);
 			this.next--;
 			
 			removed = true;

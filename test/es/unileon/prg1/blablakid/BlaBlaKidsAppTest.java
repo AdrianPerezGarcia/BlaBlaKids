@@ -50,7 +50,7 @@ public class BlaBlaKidsAppTest {
 		this.rideEndPlace = new Place("Casa");
 		this.rideStartHour = new Hour(16,00);
 		this.rideEndHour = new Hour(17,30);
-		this.activityStartHour = new Hour(15,00);
+		this.activityStartHour = new Hour(15,05);
 		this.activityEndHour = new Hour(15,58);
 		this.activityName = "Baloncesto";
 		this.day = new Day(WeekDays.MONDAY, 5);
@@ -79,9 +79,8 @@ public class BlaBlaKidsAppTest {
 	public void testParents() throws Exception {
 		this.blablakid.add(this.parent);
 		assertEquals("Juan", this.blablakid.searchParent("Juan").getName());
-		/*
 		this.blablakid.remove(this.parent);
-		assertNull(this.blablakid.searchParent("Juan"));*/
+		assertNull(this.blablakid.searchParent("Juan"));
 	}
 	
 	@Test
@@ -92,6 +91,13 @@ public class BlaBlaKidsAppTest {
 		assertEquals(this.activity.toString(), this.blablakid.searchKid(kid.getName()).search("Baloncesto", this.day.getNumDay()).toString());
 		this.blablakid.remove(this.activityName, this.kid.getName(), this.day);
 		assertNull(this.blablakid.searchKid(kid.getName()).search("Baloncesto", this.day.getNumDay()));
+	}
+	
+	@Test (expected = KidException.class)
+	public void testAddActivitiesWrongKid() throws Exception {
+		this.blablakid.add(this.kid);
+		this.activity = new Activity("Baloncesto", this.rideStartPlace, this.day, this.activityStartHour, this.activityEndHour);
+		this.blablakid.add(this.activity, "Julia");
 	}
 	
 	@Test (expected = KidException.class)
@@ -121,7 +127,7 @@ public class BlaBlaKidsAppTest {
 		assertEquals(this.ride, this.blablakid.searchParent(this.parent.getName()).search(this.rideStartPlace.getPlace(), this.rideEndPlace.getPlace(), this.day));
 	}
 	
-	@Test (expected = BlaBlaKidException.class)
+	@Test (expected = ParentException.class)
 	public void testAddRideWrongParent() throws Exception {
 		this.blablakid.add(this.kid);
 		this.activity = new Activity("Baloncesto", this.rideStartPlace, this.day, this.activityStartHour, this.activityEndHour);
@@ -131,7 +137,7 @@ public class BlaBlaKidsAppTest {
 		this.blablakid.add(this.ride, "asd" , this.kid.getName(), this.activityName, this.day);
 	}
 	
-	@Test (expected = BlaBlaKidException.class)
+	@Test (expected = KidException.class)
 	public void testAddRideWrongKid() throws Exception {
 		this.blablakid.add(this.kid);
 		this.activity = new Activity("Baloncesto", this.rideStartPlace, this.day, this.activityStartHour, this.activityEndHour);
@@ -141,7 +147,7 @@ public class BlaBlaKidsAppTest {
 		this.blablakid.add(this.ride, this.parent.getName() , "asd", this.activityName, this.day);
 	}
 	
-	@Test (expected = BlaBlaKidException.class)
+	@Test (expected = ActivityException.class)
 	public void testAddRideWrongActivity() throws Exception{
 		this.blablakid.add(this.kid);
 		this.blablakid.add(this.parent);
@@ -160,89 +166,71 @@ public class BlaBlaKidsAppTest {
 		this.blablakid.remove(this.parent.getName(), this.day.getNumDay(), this.rideStartPlace.getPlace(), this.rideEndPlace.getPlace());
 		assertNull(this.blablakid.searchParent(this.parent.getName()).search(this.rideStartPlace.getPlace(), this.rideEndPlace.getPlace(), this.day));
 	}
-	/**
-	@Test
-	public void testRemoveActivities() throws DayException, HourException, KidException, ActivityException {
-		Kid kid = new Kid("Beatriz");
-		this.blablakid.add(kid);
-		Place place = new Place("Biblioteca");
-		WeekDays wDay = WeekDays.MONDAY;
-		Day day = new Day(wDay, 0);
-		Hour startHour = new Hour(8, 00);
-		Hour endHour = new Hour(10, 05);
-		Activity activity = new Activity("Baloncesto", place, day, startHour, endHour);
-		this.blablakid.add(activity, kid.getName());
-		this.blablakid.remove(activity, "Beatriz");
+	
+	@Test (expected = ParentException.class)
+	public void testRemoveRidesWrongParent() throws Exception{
+		this.blablakid.add(this.kid);
+		this.activity = new Activity("Baloncesto", this.rideStartPlace, this.day, this.activityStartHour, this.activityEndHour);
+		this.blablakid.add(this.activity, "Julian");
+		this.blablakid.add(this.parent);
+		this.ride = new Ride(this.rideStartPlace, this.rideEndPlace, this.rideStartHour, this.rideEndHour);
+		this.blablakid.add(this.ride, this.parent.getName(), this.kid.getName(), this.activityName, this.day);
+		this.blablakid.remove("asd", this.day.getNumDay(), this.rideStartPlace.getPlace(), this.rideEndPlace.getPlace());
 	}
 	
-	@Test (expected = KidException.class)
-	public void testRemoveActivitiesWrongKid() throws DayException, HourException, KidException, ActivityException {
-		Place place = new Place("Biblioteca");
-		WeekDays wDay = WeekDays.MONDAY;
-		Day day = new Day(wDay, 0);
-		Hour startHour = new Hour(8, 00);
-		Hour endHour = new Hour(10, 05);
-		Activity activity = new Activity("Baloncesto", place, day, startHour, endHour);
-		this.blablakid.remove(activity, "Beatriz");
-	}
-	
-	@Test (expected = KidException.class)
-	public void testRemoveActivitiesWrongActivity() throws DayException, HourException, KidException, ActivityException {
-		Kid kid = new Kid("Beatriz");
-		this.blablakid.add(kid);
-		Place place = new Place("Biblioteca");
-		WeekDays wDay = WeekDays.MONDAY;
-		Day day = new Day(wDay, 0);
-		Hour startHour = new Hour(8, 00);
-		Hour endHour = new Hour(10, 05);
-		Activity activity = new Activity("Baloncesto", place, day, startHour, endHour);
-		this.blablakid.remove(activity, "Beatriz");
+	@Test (expected = ParentException.class)
+	public void testRemoveRidesWrongRide() throws Exception{
+		this.blablakid.add(this.kid);
+		this.activity = new Activity("Baloncesto", this.rideStartPlace, this.day, this.activityStartHour, this.activityEndHour);
+		this.blablakid.add(this.activity, "Julian");
+		this.blablakid.add(this.parent);
+		this.ride = new Ride(this.rideStartPlace, this.rideEndPlace, this.rideStartHour, this.rideEndHour);
+		this.blablakid.add(this.ride, this.parent.getName(), this.kid.getName(), this.activityName, this.day);
+		this.blablakid.remove(this.parent.getName(), this.day.getNumDay(), "asd", this.rideEndPlace.getPlace());
 	}
 	
 	@Test
-	public void testAddRides() throws Exception{
-		assertNotNull(this.blablakid.searchParent(parent.getName()).search("Palomera", "Casa", day));
+	public void testSetBeforeRide() throws Exception{
+		this.blablakid.add(this.kid);
+		
+		this.blablakid.add(this.parent);
+		
+		Place activitySite = new Place("Palomera");
+		Place home = new Place("Casa");
+		
+		Hour beforeRideStartHour = new Hour(14, 00);
+		Hour beforeRideEndHour = new Hour(15, 00);
+		
+		Hour activityStartTime = new Hour(15, 05);
+		Hour activityEndTime = new Hour(15, 55);
+		
+		Hour afterRideStartHour = new Hour(16, 00);
+		Hour afterRideEndHour = new Hour(17, 00);
+		
+		Activity activity = new Activity("Baloncesto", activitySite, this.day, activityStartTime, activityEndTime);
+		
+		this.blablakid.add(activity, this.kid.getName());
+		
+		Ride beforeRide = new Ride(home, activitySite, beforeRideStartHour, beforeRideEndHour);
+		Ride afterRide = new Ride(activitySite, home, afterRideStartHour, afterRideEndHour);
+		
+		this.blablakid.add(beforeRide, this.parent.getName(), this.kid.getName(), "Baloncesto", this.day);
+		this.blablakid.add(afterRide, this.parent.getName(), this.kid.getName(), "Baloncesto", this.day);
+		
+		this.blablakid.remove("Baloncesto", kid.getName(), this.day);
 	}
 	
-	@Test (expected = BlaBlaKidException.class)
-	public void testAddRidesWrongParent() throws Exception{
-		Kid kid = new Kid("Julian");
-		this.blablakid.add(kid);
-		Place startPlace = new Place("Palomera");
-		Place endPlace = new Place("Casa");
-		Hour startTime = new Hour(16,00);
-		Hour endTime = new Hour(17,30);
-		Hour activityStartTime = new Hour(15,00);
-		Hour activityEndTime = new Hour(15,58);
-		Day day = new Day(WeekDays.MONDAY, 5);
-		Activity activity = new Activity("Basketball", startPlace, day, activityStartTime, activityEndTime);
-		this.blablakid.add(activity, kid.getName());
-		Ride ride = new Ride(startPlace, endPlace, startTime, endTime);
-		this.blablakid.add(ride, "parentName", kid.getName(), activity.getName(), day);
+	@Test
+	public void testIsKidIncluded() throws KidException {
+		this.blablakid.add(this.kid);
+		boolean result = this.blablakid.isIncluded(kid);
+		assertTrue(result);
 	}
 	
-	
-	@Test (expected = BlaBlaKidException.class)
-	public void testAddRidesWrongKid() throws Exception{
-		Kids parentKids = new Kids(1);
-		Kid parentKid = new Kid("Beatriz");
-		parentKids.add(parentKid);
-		Parent parent = new Parent("Juan", parentKids, 3);
-		Kid kid = new Kid("Julian");
-		this.blablakid.add(parent);
-		Place startPlace = new Place("Palomera");
-		Place endPlace = new Place("Casa");
-		Hour startTime = new Hour(16,00);
-		Hour endTime = new Hour(17,30);
-		Hour activityStartTime = new Hour(15,00);
-		Hour activityEndTime = new Hour(15,58);
-		Day day = new Day(WeekDays.MONDAY);
-		Activity activity = new Activity("Basketball", startPlace, day, activityStartTime, activityEndTime);
-		this.blablakid.add(activity, kid.getName());
-		Ride ride = new Ride(startPlace, endPlace, startTime, endTime);
-		this.blablakid.add(ride, parent.getName(), kid.getName(), activity.getName(), day);
+	@Test
+	public void testGetLength() throws KidException{
+		assertEquals(3, this.blablakid.getKidsLength());
 	}
-	**/
 	
 	
 	
