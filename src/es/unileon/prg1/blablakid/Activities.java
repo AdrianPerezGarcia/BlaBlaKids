@@ -227,6 +227,7 @@ public class Activities {
 			out.append(this.activities[i].checkStatus());
 		}
 		return out.toString();
+	
 	}
 	
 	/**

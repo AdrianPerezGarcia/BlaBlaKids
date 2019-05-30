@@ -241,6 +241,13 @@ public class BlaBlaKidsAppTest {
 		assertEquals(3, this.blablakid.getKidsLength());
 	}
 	
+	@Test
+	public void testCheckStatus() throws ActivityException, KidException{
+		this.activity = new Activity("Baloncesto", new Place("Palomera") , this.day, this.activityStartHour, this.activityEndHour);
+		this.blablakid.add(kid);
+		this.blablakid.add(activity, kid.getName());
+		assertEquals("Check status: \nJulian: \nNo ride before Baloncesto assigned.\nNo ride after Baloncesto assigned.\n", this.blablakid.checkStatus());
+	}
 	
 	
 }

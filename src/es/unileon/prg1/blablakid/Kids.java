@@ -243,6 +243,7 @@ public class Kids {
 	    	}
 	    	return out.toString();
 	    }
+	
     
     /**
      * Method toString to print the full array of kids as solicited in Show Summary Option

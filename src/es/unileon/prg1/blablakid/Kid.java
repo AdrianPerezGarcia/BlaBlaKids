@@ -124,6 +124,7 @@ public class Kid {
 		out.append(this.activities.checkStatus());
 		return out.toString();
 	}
+
 	
 	/**
 	 * 

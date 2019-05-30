@@ -53,6 +53,6 @@ public class KidTest {
 	
 	@Test
 	public void testToString() {
-		assertEquals("****** Daniel ******", this.daniel.toString());
+		assertEquals("****** Daniel ******\n", this.daniel.toString());
 	}
 }

@@ -255,10 +255,11 @@ public class BlaBlaKidsApp {
 
 	public String checkStatus() {
 		StringBuilder out = new StringBuilder();
-		out.append("Check status: \n");
+		out.append("Check status: \n"); 
 		out.append(this.kids.checkStatus());
 		return out.toString();
 	}
+
 	
 	@Override
 	public String toString() {
