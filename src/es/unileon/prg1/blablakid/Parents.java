@@ -106,11 +106,11 @@ public class Parents {
 		return removed;
 	}
 	
-	public void remove(Ride ride, Day numDay) throws RideException{
+	public void remove(Ride ride, Day day) throws RideException{
 		boolean removed = false;
 		int i = 0;
 		while(!(removed) && (i < this.next)) {
-			removed = this.parents[i].remove(ride , numDay);
+			removed = this.parents[i].remove(ride , day);
 			if(!(removed)) {
 				i++;
 			}

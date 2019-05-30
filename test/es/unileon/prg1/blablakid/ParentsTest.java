@@ -109,6 +109,18 @@ public class ParentsTest {
 	}
 	
 	@Test
+	public void testRemoveRide() throws HourException, RideException, DayException {
+		Place end = new Place("Palomera");
+		Place start = new Place("Casa");
+		Day day = new Day(WeekDays.MONDAY, 3);
+		Hour startRide = new Hour(17,00);
+		Hour endRide = new Hour(17, 59);
+		Ride ride = new Ride(start, end, startRide, endRide);
+		this.parent2.add(ride, day);
+		this.parents.remove(ride, day);
+	}
+	
+	@Test
 	public void testSearchOk() {
 		assertEquals(parent1, this.parents.search("Juan"));
 	}
