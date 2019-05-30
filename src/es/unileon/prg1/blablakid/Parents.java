@@ -57,8 +57,8 @@ public class Parents {
 	public void add(Parent parent)throws ParentException{
 		//If the parent is not included add the parent into the first space that has no parent in it
 		if (isIncluded(parent)) {
-			logger.error("Parent is already included");
-			throw new ParentException("Error, parent is already included");
+			logger.error("Parent "+ parent.getName() +" is already included");
+			throw new ParentException("Error, parent "+ parent.getName() +" is already included");
 		}
 		else if (this.next >= this.parents.length) {
 				
@@ -69,7 +69,7 @@ public class Parents {
 		}
 		else {
 				this.parents[this.next] = parent;
-				logger.info("The parent " + this.parents[this.next].getName() + "has been added");
+				logger.info("The parent " + this.parents[this.next].getName() + " has been added successfully");
 				this.next++;
 			}	
 		}	

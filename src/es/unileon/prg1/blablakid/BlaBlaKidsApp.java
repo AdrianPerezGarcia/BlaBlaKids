@@ -143,6 +143,7 @@ public class BlaBlaKidsApp {
 	 */
 	public void add(Activity activity, String kidName) throws KidException, ActivityException {
 		if (this.kids.search(kidName) == null) {
+			logger.error("The kid "+ kidName +" doesn't exist.");
 			throw new KidException("Error: The kid " + kidName + " doesn't exist.");
 		} else {
 			this.kids.search(kidName).add(activity);
@@ -153,7 +154,7 @@ public class BlaBlaKidsApp {
 	 * 
 	 * Method to remove an activity of a kid
 	 * 
-	 * @param activity that wants to be removed
+	 * @param activityName that wants to be removed
 	 * 
 	 * @param kidName  of the kid that the user want to remove the activity
 	 * 
@@ -168,8 +169,10 @@ public class BlaBlaKidsApp {
 			throws KidException, ActivityException, RideException {
 		Activity activity;
 		if (this.kids.search(kidName) == null) {
+			logger.error("The kid "+ kidName +" doesn't exist");
 			throw new KidException("Error: The kid " + kidName + " doesn't exist");
 		} else if (this.kids.search(kidName).search(activityName, day.getNumDay()) == null) {
+			logger.error("The kid "+ kidName +" doesn't have the activity "+ activityName +" on "+ day.getNameDay());
 			throw new ActivityException("Error: The kid " + kidName + " doesn't have the activity " + activityName
 			+ " on " + day.getNameDay());
 		} else {

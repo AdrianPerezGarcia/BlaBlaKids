@@ -105,11 +105,14 @@ public class Activities {
 	 */
 	public void add(Activity activity) throws ActivityException {
 		if (this.isIncluded(activity)) {
+			logger.error("Activity "+ activity.getName()+" is already included");
 			throw new ActivityException("Error: Activity already included");
 		} else if (this.next >= this.MAXACTIVITIES) {
+			logger.error("Activity list is full");
 			throw new ActivityException("Error: Activity list is full");
 		} else {
 			activities[this.next] = activity;
+			logger.info("The activity "+activity.getName()+" has been successfully added");
 			this.next++;
 		}
 	}
@@ -149,8 +152,10 @@ public class Activities {
 		if (this.isIncluded(activity)) {
 			int pos = this.getPos(activity);
 			this.compact(pos);
+			logger.info("The activity "+activity.getName()+" has been successfully removed");
 			this.next--;
 		} else {
+			logger.error("The activity "+activity.getName()+" wasn't included");
 			throw new ActivityException("Error: Activity wasn't included");
 		}
 	}

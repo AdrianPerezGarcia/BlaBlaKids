@@ -80,7 +80,7 @@ public class Rides {
 	public void addRide(Ride ride) throws RideException {
 		// Checks if the ride is already in the array
 		if (isIncluded(ride)) {
-			logger.error("The ride "+ ride + "is already included");
+			logger.error("The ride is already included");
 			throw new RideException("Error: Ride already included");
 		}
 
@@ -92,7 +92,7 @@ public class Rides {
 				throw new RideException("Error: Ride list is full");
 			} else {
 				this.rides[this.next] = ride;
-				logger.info("The ride"+ ride +"has been added correctly");
+				logger.info("The ride has been added correctly");
 				this.next++;
 			}
 		}
@@ -149,10 +149,12 @@ public class Rides {
 			// Also compacts the array replacing the next parent
 			int pos = getPos(ride);
 			this.compact(pos);
+			logger.info("The ride has been removed successfully");
 			this.next--;
 			removed = true;
 		} else {
 			// If parent is not founded, throws an exception
+			logger.error("The ride is not in the list");
 			throw new RideException("Error, the ride is not in the list");
 		}
 		return removed;

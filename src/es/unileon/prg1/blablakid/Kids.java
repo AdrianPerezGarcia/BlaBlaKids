@@ -112,7 +112,7 @@ public class Kids {
 		StringBuilder out = new StringBuilder();
 		if (isIncluded(kid)) {
 			out.append("Error: kid " + kid.getName() + " is already included.\n");
-			logger.error("The kid is already included");
+			logger.error("The kid "+ kid.getName() +" is already included");
 		} else if (this.next >= this.kids.length) {
 			out.append("Error: kid list is full.\n");
 			logger.error("The kid list is full");
@@ -122,7 +122,7 @@ public class Kids {
 			throw new KidException(out.toString());
 		} else {
 			kids[this.next] = kid;
-			logger.info("The kid has been added");
+			logger.info("The kid "+ kids[this.next].getName()+" has been added");
 			this.next++;
 		}
 
@@ -143,12 +143,12 @@ public class Kids {
         if( isIncluded(kid) ){
             int pos = getPos(kid);
             compact(pos);
-            logger.info("The kid "+ this.kids[pos] +"has been removed");
+            logger.info("The kid "+ this.kids[pos].getName() +" has been removed");
             next--;
             removed =true;
         }
         else{
-        	logger.error("The kid "+ kid.getName() +"is not included, so it can't be removed");
+        	logger.error("The kid "+ kid.getName() +" is not included, so it can't be removed");
             throw new KidException("Error: kid " +kid.getName()+ " is not included, so it can't be removed.");
         }
         
