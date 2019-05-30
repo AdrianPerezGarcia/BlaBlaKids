@@ -77,7 +77,7 @@ public class ParentTest {
 	public void testSearchDays() {
 		WeekDays wDay = WeekDays.TUESDAY;
 		Day day = new Day(wDay);
-		assertEquals(day.getNameDay() ,this.parent.search(1).toString());
+		assertEquals(day.getNumDay() ,this.parent.search(1).getNumDay());
 	}
 	
 	@Test
@@ -126,6 +126,7 @@ public class ParentTest {
 	@Test
 	public void testRemoveKid() throws KidException {
 		Kid kid = new Kid(this.parent.search("Beatriz").getName());
+		
 		this.parent.remove(kid);
 	}
 	
