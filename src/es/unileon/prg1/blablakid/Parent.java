@@ -156,11 +156,11 @@ public class Parent {
 	/**
 	 *  Method that search a Ride in the array of Rides
 	 *  
-	 *  @param String Name of the place where the ride starts
+	 *  @param rideStartPlace Name of the place where the ride starts
 	 *  
-	 *  @param String Name of the place where the ride ends
+	 *  @param rideEndPlace Name of the place where the ride ends
 	 *  
-	 *  @param Day The day of the ride 
+	 *  @param day The day of the ride 
 	 *  
 	 *  @throws DayException if the day is wrong
 	 * 
@@ -179,9 +179,9 @@ public class Parent {
 	 * 
 	 * 	Method that add a Ride into a Day
 	 * 
-	 * @param Ride ride that will be added
+	 * @param ride that will be added
 	 * 
-	 * @param Day the day where the ride want to be added 
+	 * @param day the day where the ride want to be added 
 	 * 
 	 * @throws RideException if the ride is wrong
 	 * 
@@ -201,9 +201,9 @@ public class Parent {
 	 * 
 	 * Method remove a Ride of a specified day
 	 * 
-	 * @param Ride ride that will be removed 
+	 * @param ride ride that will be removed 
 	 * 
-	 * @param Day the day where the ride want to be removed
+	 * @param day the day where the ride want to be removed
 	 * 
 	 * @throws RideException if the ride is wrong
 	 * 
