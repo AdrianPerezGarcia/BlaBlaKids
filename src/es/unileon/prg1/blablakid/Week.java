@@ -1,4 +1,9 @@
 package es.unileon.prg1.blablakid;
+
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * 
  * Class that manage an array of five days
@@ -6,10 +11,6 @@ package es.unileon.prg1.blablakid;
  * @author Pablo Bayon
  *
  */
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 
 public class Week {
 	
@@ -53,96 +54,6 @@ public class Week {
 	}
 
 	/**
-	 * Method that add an object day to an array of days if it's possible
-	 * 
-	 * @param day
-	 * @throws DayException
-	 */
-/*SOBRA
-	public void add(Day day) throws DayException {
-		if (isIncluded(day)) {
-			throw new DayException("Error: Day already included");
-		} else {
-			week[this.next] = day;
-			this.next++;
-		}
-	}
-*/
-	
-	/**
-	 * Method that removes an object of the array in which it's included
-	 * 
-	 * @param day
-	 * @throws DayException
-	 */
-/*SOBRA
-	public void remove(Day day) throws DayException {
-		if (this.isIncluded(day)) {
-			int pos = this.getPos(day);
-			this.compact(pos);
-			this.next--;
-		} else {
-			throw new DayException("Error: Activity list is full");
-		}
-	}
-*/
-	
-	/**
-	 * Method that compacts the array and removes the object in the position of the
-	 * param
-	 * 
-	 * @param pos
-	 */
-
-/*SOBRA
-	private void compact(int pos) {
-		for (int i = 0; i < (this.next - 1); i++) {
-			week[i] = week[i + 1];
-		}
-		week[this.next - 1] = null;
-	}
-*/
-	
-/*SOBRA
-	private int getPos(Day day) {
-		int count = 0;
-		boolean end = false;
-		while (week[count] != null && end) {
-			if (week[count].isSame(day)) {
-				end = true;
-			} else {
-				count++;
-			}
-		}
-		return count;
-	}
-*/
-	
-	/**
-	 * Method that checks if an object is included in the array
-	 * 
-	 * @param day
-	 * @return true if the object is included in the array, false if not
-	 */
-
-/*Sobra
-	private boolean isIncluded(Day day) {
-		boolean salida = false;
-		boolean end = false;
-		int i = 0;
-		while (i < MAXDAYS && !end) {
-			if (this.week[i].isSame(day)) {
-				salida = true;
-				end = true;
-			}
-			i++;
-		}
-		return salida;
-	}
-/*
- * 
- */
-	/**
 	 * 
 	 * Method that returns an object day using its position in the array
 	 * 
@@ -179,11 +90,26 @@ public class Week {
 		return founDay;
 	}
 	
+	/**
+	 * 
+	 * Method that removes a Ride from a Day in the array 
+	 * 
+	 * @param ride
+	 * @param numDay
+	 * @return
+	 * @throws RideException
+	 */
 	public boolean remove(Ride ride, Day numDay) throws RideException{
 		boolean removed = false;
 		removed = this.week[numDay.getNumDay()].remove(ride);
 		return removed;
 	}
+	 /**
+	  * 
+	  * Method toString of Week
+	  * 
+	  * 
+	  */
 	
 	@Override
 	public String toString() {

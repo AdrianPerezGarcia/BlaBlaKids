@@ -1,4 +1,9 @@
 package es.unileon.prg1.blablakid;
+
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * 
  * Class that manages an array of parents
@@ -6,9 +11,6 @@ package es.unileon.prg1.blablakid;
  * @author PabloJ
  *
  **/
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class Parents {
 	
@@ -105,7 +107,14 @@ public class Parents {
 		}
 		return removed;
 	}
-	
+	/**
+	 * 
+	 * Method that removes a Ride from a Day
+	 * 
+	 * @param ride
+	 * @param day
+	 * @throws RideException
+	 */
 	public void remove(Ride ride, Day day) throws RideException{
 		boolean removed = false;
 		int i = 0;
@@ -116,6 +125,15 @@ public class Parents {
 			}
 		}
 	}
+	
+	
+	/**
+	 * 
+	 * Method that removes a Kid from the array of kids of the parent
+	 * 
+	 * @param kid
+	 * @throws KidException
+	 */
 	
 	public void remove(Kid kid ) throws KidException{
 		
@@ -138,6 +156,14 @@ public class Parents {
 	public Parent get(int index) {
 		return this.parents[index];
 	}
+	
+	
+	/**
+	 * 
+	 * Method that returns the length of the array	
+	 * 
+	 * @return length of the array
+	 */
 	
 	public int getLength() {
 		return this.parents.length;
@@ -217,16 +243,6 @@ public class Parents {
 		/* If the parent is not founded the method returns null */
 		return parentOut;		
 	}
-	
-	/* TODO
-	public Ride searchRide(Parent parent) {
-		Ride ride = null;
-		for(int i = 0; i < this.next; i++) {
-			this.parents[i].search
-		}
-		return ride;
-	}
-	*/
 	
 	/**
 	 * 

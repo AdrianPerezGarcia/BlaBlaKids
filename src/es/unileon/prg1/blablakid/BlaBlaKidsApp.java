@@ -1,4 +1,9 @@
 package es.unileon.prg1.blablakid;
+
+import org.apache.logging.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+
 /**
  * 
  * Class that manages the app
@@ -6,31 +11,6 @@ package es.unileon.prg1.blablakid;
  * @author Pablo Bayon
  *
  */
-
-import org.apache.logging.log4j.Logger;
-
-
-
-import org.apache.logging.log4j.LogManager;
-
-/*
- * import es.unileon.prg1.blablakid.Activity;
- * import es.unileon.prg1.blablakid.Activities;
- * import es.unileon.prg1.blablakid.Ride;
- * import es.unileon.prg1.blablakid.Rides;
- * import es.unileon.prg1.blablakid.Kid;
- * import es.unileon.prg1.blablakid.Kids;
- * import es.unileon.prg1.blablakid.Parent;
- * import es.unileon.prg1.blablakid.Parents;
- * import es.unileon.prg1.blablakid.Hour;
- * import es.unileon.prg1.blablakid.Place;
- * import es.unileon.prg1.blablakid.Day;
- * import es.unileon.prg1.blablakid.Week;
- * import es.unileon.prg1.blablakid.TextUI
- * 
- * ?????
- */
-
 public class BlaBlaKidsApp {
 
 	// Define a static logger variable so that it references the
@@ -65,13 +45,28 @@ public class BlaBlaKidsApp {
 		}
 	}
 	
+	/**
+	 * 
+	 * Method that search a kid int the array of kids
+	 * 
+	 * @param kidName
+	 * @return Kid of the array
+	 */
 	public Kid searchKid(String kidName) {
 		return this.kids.search(kidName);
 	}
 
+	/**
+	 * 
+	 * Method that search a parent in the array of parents
+	 * 
+	 * @param parentName
+	 * @return Parent of the array
+	 */
 	public Parent searchParent(String parentName) {
 		return this.parents.search(parentName);
 	}
+
 	/**
 	 * 
 	 * Method to add a kid in the kids array
@@ -97,7 +92,7 @@ public class BlaBlaKidsApp {
 	public void remove(Kid kid) throws KidException {
 		boolean removed = false;
 		removed = this.kids.remove(kid);
-		if(removed) {
+		if (removed) {
 			this.parents.remove(kid);
 		}
 	}
@@ -143,7 +138,7 @@ public class BlaBlaKidsApp {
 	 */
 	public void add(Activity activity, String kidName) throws KidException, ActivityException {
 		if (this.kids.search(kidName) == null) {
-			logger.error("The kid "+ kidName +" doesn't exist.");
+			logger.error("The kid " + kidName + " doesn't exist.");
 			throw new KidException("Error: The kid " + kidName + " doesn't exist.");
 		} else {
 			this.kids.search(kidName).add(activity);
@@ -156,7 +151,7 @@ public class BlaBlaKidsApp {
 	 * 
 	 * @param activityName that wants to be removed
 	 * 
-	 * @param kidName  of the kid that the user want to remove the activity
+	 * @param kidName      of the kid that the user want to remove the activity
 	 * 
 	 * @throws KidException      if the kid does not exist
 	 * 
@@ -169,12 +164,13 @@ public class BlaBlaKidsApp {
 			throws KidException, ActivityException, RideException {
 		Activity activity;
 		if (this.kids.search(kidName) == null) {
-			logger.error("The kid "+ kidName +" doesn't exist");
+			logger.error("The kid " + kidName + " doesn't exist");
 			throw new KidException("Error: The kid " + kidName + " doesn't exist");
 		} else if (this.kids.search(kidName).search(activityName, day.getNumDay()) == null) {
-			logger.error("The kid "+ kidName +" doesn't have the activity "+ activityName +" on "+ day.getNameDay());
+			logger.error(
+					"The kid " + kidName + " doesn't have the activity " + activityName + " on " + day.getNameDay());
 			throw new ActivityException("Error: The kid " + kidName + " doesn't have the activity " + activityName
-			+ " on " + day.getNameDay());
+					+ " on " + day.getNameDay());
 		} else {
 			activity = this.kids.search(kidName).search(activityName, day.getNumDay());
 			this.kids.search(kidName).remove(activity);
@@ -202,13 +198,13 @@ public class BlaBlaKidsApp {
 	 */
 	public void add(Ride ride, String parentName, String kidName, String activityName, Day numDay) throws Exception {
 		if (this.parents.search(parentName) == null) {
-			logger.error("The parent "+ parentName +"doesn't exist");
+			logger.error("The parent " + parentName + "doesn't exist");
 			throw new ParentException("The parent " + parentName + " does not exist.\n");
-		}else if (this.kids.search(kidName) == null) {
-			logger.error("The kid "+ kidName + "does not exist.\n");
+		} else if (this.kids.search(kidName) == null) {
+			logger.error("The kid " + kidName + "does not exist.\n");
 			throw new KidException("The kid " + kidName + " does not exist.\n");
 		} else if (this.kids.search(kidName).search(activityName, numDay.getNumDay()) == null) {
-			logger.error("The kid "+ kidName + "does not have the activity "+ activityName);
+			logger.error("The kid " + kidName + "does not have the activity " + activityName);
 			throw new ActivityException("The kid " + kidName + " does not have the activity " + activityName);
 		} else {
 			this.kids.search(kidName).search(activityName, numDay.getNumDay()).setRides(ride);
@@ -233,8 +229,8 @@ public class BlaBlaKidsApp {
 		if (this.parents.search(parentName) == null) {
 			throw new ParentException("The parent " + parentName + " does not exist.\n");
 		} else if (this.parents.search(parentName).search(numDay).search(startPlace, endPlace) == null) {
-			throw new RideException("The ride that goes from " + startPlace + " to " + endPlace + " doesn't exist in the day "
-					+ numDay);
+			throw new RideException("The ride that goes from " + startPlace + " to " + endPlace
+					+ " doesn't exist in the day " + numDay);
 		} else {
 			Ride ride = this.parents.search(parentName).search(numDay).search(startPlace, endPlace);
 			this.parents.search(parentName).search(numDay).remove(ride);
@@ -251,27 +247,43 @@ public class BlaBlaKidsApp {
 		return this.kids.getLength();
 	}
 
-	
+	/**
+	 * 
+	 * Method that check if the kid is included in the array of kids
+	 * 
+	 * @param kid
+	 * @return true if the kid is include, false if not
+	 */
 	public boolean isIncluded(Kid kid) {
 		return this.kids.isIncluded(kid);
 	}
 
+	/**
+	 * 
+	 * Method that checks if a kid hasn't got activities without rides
+	 * 
+	 * @return String with the status
+	 */
 	public String checkStatus() {
 		StringBuilder out = new StringBuilder();
-		out.append("Check status: \n"); 
+		out.append("Check status: \n");
 		out.append(this.kids.checkStatus());
 		return out.toString();
 	}
 
-	
+	/**
+	 * 
+	 * toString version according to the show summary in BlaBlaKids
+	 * 
+	 */
 	@Override
 	public String toString() {
 		StringBuilder out = new StringBuilder();
 		out.append("/////////////////////////////\n");
-		if(this.kids.getLength() > 0) {
+		if (this.kids.getLength() > 0) {
 			out.append("KIDS:\n").append(this.kids.toString()).append("\n");
 		}
-		if(this.parents.getLength() > 0) {
+		if (this.parents.getLength() > 0) {
 			out.append("PARENTS:\n").append(this.parents.toString()).append("\n");
 		}
 		out.append("/////////////////////////////");

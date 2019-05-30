@@ -1,4 +1,11 @@
 package es.unileon.prg1.blablakid;
+
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Loggers;
+
+
 /**
  * 
  * Class with the purpose of interacting with the user
@@ -6,13 +13,6 @@ package es.unileon.prg1.blablakid;
  * @author Hector Castro, Pablo Bayon
  *
  */
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.config.Loggers;
-
-
-
 
 public class TextUI {
 	static final Logger logger = LogManager.getLogger(Parent.class.getName());
