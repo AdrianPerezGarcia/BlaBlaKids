@@ -37,11 +37,13 @@ public class TextUI {
 				switch (select) {
 				/* Add kid option */
 				case 1:
+					logger.info("Adding a Kid");
 					Kid kid = this.askKid();
 					this.blablakid.add(kid);
 					break;
 				/* Remove kid option */
 				case 2:
+					logger.info("Removing a Kid");
 					// TODO falta borrar el kid del array de kids de su parent, si es que estaba
 					// incluido en alguno
 					Kid kidDelete = this.askKid();
@@ -49,15 +51,18 @@ public class TextUI {
 					break;
 				/* Add parent option */
 				case 3:
+					logger.info("Adding a Parent");
 					Parent parent = this.askParent();
 					this.blablakid.add(parent);
 					break;
 				/* Remove parent option */
 				case 4:
+					logger.info("Removing a Parent");
 					this.blablakid.remove(this.askParentRemove());
 					break;
 				/* Add activity option */
 				case 5:
+					logger.info("Adding an Activity");
 					Activity activity = this.askActivity();
 					String askKid = new String("Name of the kid taking the activity: ");
 					String kidName = this.askString(askKid);
@@ -66,11 +71,12 @@ public class TextUI {
 					break;
 				/* Remove activity option */
 				case 6:
-					// TODO
-					System.out.println("Not implemented");
+					logger.info("Removing an Activity");
+					
 					break;
 				/* Add ride option */
 				case 7:
+					logger.info("Adding a Ride");
 					String parentRide = this.askString("Name of the parent in charge of the ride: ");
 					String activityRide = this.askString("Name of the activity of the ride: ");
 					String askKidRide = "Name of the kid taking the activity: ";
@@ -81,6 +87,7 @@ public class TextUI {
 					break;
 				/* Remove ride option */
 				case 8:
+					logger.info("Removing a Ride");
 					String kidInCharge = askString("Name of the kid taking the activity to remove: ");
 					String activityName = askString("Name of the activity to remove: ");
 					int dayNum = askInt("Insert the number of the day of the week:\n"
@@ -88,14 +95,17 @@ public class TextUI {
 					break;
 				/* Show summary option */
 				case 9:
+					logger.info("Printing toSting");
 					System.out.println(this.blablakid.toString());
 					break;
 				/* Check status option */
 				case 10:
+					logger.info("Printing check status");
 					System.out.println(this.blablakid.checkStatus());
 					break;
 				/* Exit option */
 				case 0:
+					logger.info("Exit");
 					System.out.println("Good Bye :)");
 					break;
 				default:
@@ -228,7 +238,7 @@ public class TextUI {
 			}
 		} while (numberOfKids < 1 || numberOfKids == Integer.MIN_VALUE || numberOfKids > this.blablakid.getKidsLength());
 		Kids kids = new Kids(numberOfKids);
-		logger.info("Introduced "+numberOfKids+"as number of kids");
+		logger.info("Introduced "+numberOfKids+" as number of kids");
 		
 		// Asks for the name of its kids
 		for (int i = 1; i <= numberOfKids; i++) {
