@@ -203,7 +203,7 @@ public class Parent {
 	 * 
 	 * @param ride ride that will be removed 
 	 * 
-	 * @param day the day where the ride want to be removed
+	 * @param numDay the day where the ride want to be removed
 	 * 
 	 * @throws RideException if the ride is wrong
 	 * 
