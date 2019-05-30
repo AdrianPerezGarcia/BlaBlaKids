@@ -73,8 +73,7 @@ public class KidsTest {
 
 	@Test
 	public void testInWhichPosIs() throws KidException {
-		// Al ser un metodo privado, cubro la branch que me faltaba a traves del metodo
-		// remove
+		// Cause it is a private method, i cover the test launching another method
 		this.kids.remove(beatriz);
 	}
 
@@ -86,11 +85,6 @@ public class KidsTest {
 	@Test
 	public void testSearchFail() {
 		assertNull(this.kids.search("Martin"));
-	}
-
-	@Test
-	public void testToString() {
-		assertEquals("****** Daniel ******\n****** Beatriz ******\n****** Manuel ******\n", this.kids.toString());
 	}
 	
 	@Test
