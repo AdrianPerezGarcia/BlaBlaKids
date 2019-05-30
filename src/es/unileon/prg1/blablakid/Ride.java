@@ -1,4 +1,9 @@
 package es.unileon.prg1.blablakid;
+
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * 
  * Class that creates a ride for an activity
@@ -6,10 +11,6 @@ package es.unileon.prg1.blablakid;
  * @author Hector Castro
  *
  */
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 public class Ride {
 	
 	 static final Logger logger = LogManager.getLogger(Ride.class.getName());
@@ -20,6 +21,7 @@ public class Ride {
 	private Hour endTime;
 
 	/**
+	 * Constructor that receives the places and hours of the ride
 	 * 
 	 * @param startPlace
 	 * @param endPlace
@@ -86,7 +88,7 @@ public class Ride {
 	}
 
 	/**
-	 * Returns a summary of all the info of the Ride as text
+	 * toString version according to the show summary option in textUI
 	 */
 	public String toString() {
 		StringBuilder out = new StringBuilder();

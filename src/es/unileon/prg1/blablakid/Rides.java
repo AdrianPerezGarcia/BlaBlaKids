@@ -1,4 +1,9 @@
 package es.unileon.prg1.blablakid;
+
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * 
  * Class that manages an array of Ride objects
@@ -6,10 +11,6 @@ package es.unileon.prg1.blablakid;
  * @author Hector Castro
  *
  */
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 public class Rides {
 	
 	 static final Logger logger = LogManager.getLogger(Rides.class.getName());
@@ -198,8 +199,9 @@ public class Rides {
 	}
 
 	/**
+	 * Method that returns the number of elements in the array
 	 * 
-	 * @return The max length of the Rides array
+	 * @return The number of elements in the array
 	 * 
 	 */
 	public int getLength() {
@@ -208,7 +210,7 @@ public class Rides {
 
 	/**
 	 * 
-	 * Method toString as required in Show Summary option in textUI
+	 * toString version according to the show summary option in textUI
 	 * 
 	 */
 	public String toString() {

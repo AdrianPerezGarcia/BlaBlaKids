@@ -1,15 +1,16 @@
 package es.unileon.prg1.blablakid;
-/**
- * 
- * Main made to checks the parameters and start the application
- * 
- * @author Adrian Perez
- *
- */
+
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * 
+ * Main class that checks the parameters and start the application
+ * 
+ * @author Adrian Perez
+ *
+ */
 public class Main {
 	
 	 static final Logger logger = LogManager.getLogger(Main.class.getName());

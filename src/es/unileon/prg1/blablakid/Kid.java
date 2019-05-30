@@ -1,4 +1,8 @@
 package es.unileon.prg1.blablakid;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * 
  * Class that creates the children that will manage the kids class
@@ -6,15 +10,10 @@ package es.unileon.prg1.blablakid;
  * @author Adrian Perez
  *
  **/
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-
 public class Kid {
-	
-	 static final Logger logger = LogManager.getLogger(Kid.class.getName());
-	
+
+	static final Logger logger = LogManager.getLogger(Kid.class.getName());
+
 	/**
 	 * 
 	 * Name of the kid, used as his/her identifier
@@ -91,7 +90,7 @@ public class Kid {
 	public void add(Activity activity) throws ActivityException {
 		this.activities.add(activity);
 	}
-	
+
 	/**
 	 * 
 	 * Method to remove an activity in the kid array
@@ -104,7 +103,7 @@ public class Kid {
 	public void remove(Activity activity) throws ActivityException {
 		this.activities.remove(activity);
 	}
-	
+
 	/**
 	 * 
 	 * Remove of a ride in a kid activity
@@ -118,6 +117,11 @@ public class Kid {
 		return removed;
 	}
 
+	/**
+	 * Method that checks if an activity hasn't got rides assigned to it
+	 * 
+	 * @return the rides that are missing
+	 */
 	public String checkStatus() {
 		StringBuilder out = new StringBuilder();
 		out.append(this.name + ": \n");
@@ -125,7 +129,6 @@ public class Kid {
 		return out.toString();
 	}
 
-	
 	/**
 	 * 
 	 * Method toString as requested in the Show Summary option
@@ -140,4 +143,3 @@ public class Kid {
 	}
 
 }
-

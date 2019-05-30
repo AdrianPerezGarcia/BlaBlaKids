@@ -1,15 +1,16 @@
 package es.unileon.prg1.blablakid;
-/**
- * 
- * Class to manage the Hour of the rides or activities
- * 
- * @author Adrian Perez
- *
- */
+
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * 
+ * Class that manages the Hour of the rides or activities
+ * 
+ * @author Adrian Perez
+ *
+ */
 public class Hour {
 	
 	 static final Logger logger = LogManager.getLogger(Hour.class.getName());
@@ -140,12 +141,9 @@ public class Hour {
 		return result;
 	}
 
+	
 	/**
-	 * 
-	 * Method who returns the classic version of an hour (hour:minutes)
-	 * 
-	 * @return Hour version in the classic format
-	 * 
+	 *toString version according to the show summary option in textUI
 	 */
 	@Override
 	public String toString() {

@@ -10,7 +10,13 @@ package es.unileon.prg1.blablakid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-
+/**
+ * 
+ * Class that creates a parent managed by Parents
+ * 
+ * @author PabloJ
+ *
+ **/
 public class Parent {
 	
 	 static final Logger logger = LogManager.getLogger(Parent.class.getName());
@@ -219,7 +225,7 @@ public class Parent {
 	
 	/**
 	 * 
-	 * Method to String of the parents and his/her kids
+	 * toString version according to the show summary option in textUI
 	 * 
 	 */
 	

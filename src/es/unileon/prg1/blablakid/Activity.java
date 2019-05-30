@@ -1,22 +1,20 @@
 package es.unileon.prg1.blablakid;
- /**
-  * 
-  * Class that create an activity that will be managed by Activities  
-  * 
-  * @author Pablo Bayon
-  *
-  **/
 
- import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Logger;
 
+import org.apache.logging.log4j.LogManager;
 
-
-import org.apache.logging.log4j.LogManager; 
-
+/**
+ * 
+ * Class that create an activity that will be managed by Activities
+ * 
+ * @author Pablo Bayon
+ *
+ **/
 public class Activity {
-	
-	 static final Logger logger = LogManager.getLogger(Activity.class.getName());
-	
+
+	static final Logger logger = LogManager.getLogger(Activity.class.getName());
+
 	/**
 	 * 
 	 * Name of the activity
@@ -70,7 +68,7 @@ public class Activity {
 	 * 
 	 * Creates a activity with its name, place, day and times of start and end
 	 * 
-	 * @param name Activity identifier
+	 * @param name      Activity identifier
 	 * 
 	 * @param place
 	 * 
@@ -110,30 +108,32 @@ public class Activity {
 	public Ride getAfterRide() {
 		return afterRide;
 	}
-	
+
 	/**
 	 * 
-	 * Method that sets a ride as a afterRide, beforeRide or doesn't set it if it's an invalid one
+	 * Method that sets a ride as a afterRide, beforeRide or doesn't set it if it's
+	 * an invalid one
 	 * 
-	 * @param ride to 
-
+	 * @param ride to
+	 * 
 	 * @return true if the ride is valid, false if not
 	 * 
 	 * @throws RideException if the ride is not valid in its context
 	 * 
 	 */
-	public boolean setRides(Ride ride) throws RideException{
+	public boolean setRides(Ride ride) throws RideException {
 		boolean set = false;
-		if(this.place.isSame(ride.getEndPlace())) {
-			//If it is an beforeRide, i check the hours to do not be late
-			if(this.startTime.isHigher(ride.getEndTime())) {
+		if (this.place.isSame(ride.getEndPlace())) {
+			// If it is an beforeRide, i check the hours to do not be late
+			if (this.startTime.isHigher(ride.getEndTime())) {
 				this.beforeRide = ride;
 				set = true;
 			} else {
 				throw new RideException("The ride arrives late to the activity.\n");
 			}
-		} else if(this.place.isSame(ride.getStartPlace())) {
-			//If it is an afterRide, i check the hours because it cannot start before the activity end
+		} else if (this.place.isSame(ride.getStartPlace())) {
+			// If it is an afterRide, i check the hours because it cannot start before the
+			// activity end
 			if (this.endTime.isLower(ride.getStartTime())) {
 				this.afterRide = ride;
 				set = true;
@@ -145,15 +145,16 @@ public class Activity {
 		}
 		return set;
 	}
+
 	/**
-	 * 
+	 * Method that removes the attribute afterRide
 	 */
 	public void removeAfterRide() {
 		this.afterRide = null;
 	}
-	
+
 	/**
-	 * 
+	 * Method that removes the attribute beforeRide
 	 */
 	public void removeBeforeRide() {
 		this.beforeRide = null;
@@ -233,20 +234,25 @@ public class Activity {
 		return endTime;
 	}
 
+	/**
+	 * Method that checks if an activity hasn't got rides assigned to it
+	 * 
+	 * @return the rides that are missing
+	 */
 	public String checkStatus() {
 		StringBuilder out = new StringBuilder();
-		if(this.beforeRide == null) {
+		if (this.beforeRide == null) {
 			out.append("No ride before " + this.name + " assigned.\n");
 		}
-		if(this.afterRide == null) {
+		if (this.afterRide == null) {
 			out.append("No ride after " + this.name + " assigned.\n");
 		}
 		return out.toString();
 	}
-	
+
 	/**
 	 * 
-	 * toString version according to the show status option in textUI
+	 * toString version according to the show summary option in textUI
 	 * 
 	 */
 	@Override

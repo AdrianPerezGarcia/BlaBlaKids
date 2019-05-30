@@ -1,22 +1,20 @@
 package es.unileon.prg1.blablakid;
+
+import org.apache.logging.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+
 /**
  * 
- * 	Class that manages a array of activity objects
+ * Class that manages an array of objects of the type activity
  * 
  * @author Pablo Bayon
  *
  */
-
-import org.apache.logging.log4j.Logger;
-
-
-
-import org.apache.logging.log4j.LogManager;
-
 public class Activities {
-	
-	 static final Logger logger = LogManager.getLogger(Activities.class.getName());
-	
+
+	static final Logger logger = LogManager.getLogger(Activities.class.getName());
+
 	/**
 	 * 
 	 * Array of objects of the type Activity
@@ -26,7 +24,8 @@ public class Activities {
 
 	/**
 	 * 
-	 * Integer used in order to control the next position that is going to be filled in the array
+	 * Integer used in order to control the next position that is going to be filled
+	 * in the array
 	 * 
 	 */
 	private int next;
@@ -82,7 +81,7 @@ public class Activities {
 	 * 
 	 */
 	private int getPos(Activity activity) {
-		int count = 0; 
+		int count = 0;
 		boolean end = false;
 		while (count < this.next && !end) {
 			if (activities[count].isSame(activity)) {
@@ -96,23 +95,25 @@ public class Activities {
 
 	/**
 	 * 
-	 * Method that add an object activity to an array of activities if it is possible
+	 * Method that add an object activity to an array of activities if it is
+	 * possible
 	 * 
 	 * @param activity to add
 	 * 
-	 * @throws ActivityException if the activity was also included or the activity list is full
+	 * @throws ActivityException if the activity was also included or the activity
+	 *                           list is full
 	 * 
 	 */
 	public void add(Activity activity) throws ActivityException {
 		if (this.isIncluded(activity)) {
-			logger.error("Activity "+ activity.getName()+" is already included");
+			logger.error("Activity " + activity.getName() + " is already included");
 			throw new ActivityException("Error: Activity already included");
 		} else if (this.next >= this.MAXACTIVITIES) {
 			logger.error("Activity list is full");
 			throw new ActivityException("Error: Activity list is full");
 		} else {
 			activities[this.next] = activity;
-			logger.info("The activity "+activity.getName()+" has been successfully added");
+			logger.info("The activity " + activity.getName() + " has been successfully added");
 			this.next++;
 		}
 	}
@@ -152,10 +153,10 @@ public class Activities {
 		if (this.isIncluded(activity)) {
 			int pos = this.getPos(activity);
 			this.compact(pos);
-			logger.info("The activity "+activity.getName()+" has been successfully removed");
+			logger.info("The activity " + activity.getName() + " has been successfully removed");
 			this.next--;
 		} else {
-			logger.error("The activity "+activity.getName()+" wasn't included");
+			logger.error("The activity " + activity.getName() + " wasn't included");
 			throw new ActivityException("Error: Activity wasn't included");
 		}
 	}
@@ -180,7 +181,7 @@ public class Activities {
 	 * 
 	 * @param name to search in the array
 	 * 
-	 * @param day when the activity will take place
+	 * @param day  when the activity will take place
 	 * 
 	 * @return The activity if it exists or null
 	 * 
@@ -190,60 +191,72 @@ public class Activities {
 		boolean end = false;
 		int i = 0;
 		while ((i < this.next) && (!end)) {
-			
-			if ((this.activities[i].getName().equals(name) ) && (this.activities[i].getDay().getNumDay() == day)) {
+
+			if ((this.activities[i].getName().equals(name)) && (this.activities[i].getDay().getNumDay() == day)) {
 				end = true;
 				found = activities[i];
 			} else {
 				i++;
 			}
-		} 
+		}
 		return found;
 	}
-	
+
+	/**
+	 * Method that decides if afterRide, beforeRide or neither of them has to be
+	 * removed
+	 * 
+	 * @param ride
+	 * @return true if the ride is removed, false if not
+	 */
 	public boolean remove(Ride ride) {
 		boolean removed = false;
 		int i = 0;
 
-		while(!(removed) && (i < this.next)) {
-			if(this.activities[i].getAfterRide() != null) {
-				if(this.activities[i].getAfterRide().isSame(ride)) {
+		while (!(removed) && (i < this.next)) {
+			if (this.activities[i].getAfterRide() != null) {
+				if (this.activities[i].getAfterRide().isSame(ride)) {
 					removed = true;
 					this.activities[i].removeAfterRide();
 				}
 			}
-			
-			if(this.activities[i].getBeforeRide() != null) {
-				if(this.activities[i].getBeforeRide().isSame(ride)){
+
+			if (this.activities[i].getBeforeRide() != null) {
+				if (this.activities[i].getBeforeRide().isSame(ride)) {
 					removed = true;
 					this.activities[i].removeBeforeRide();
 				}
 			}
-			if(!(removed)) {
+			if (!(removed)) {
 				i++;
 			}
 		}
 		return removed;
 	}
 
+	/**
+	 * Method that checks if an activity hasn't got rides assigned to it
+	 * 
+	 * @return the rides that are missing
+	 */
 	public String checkStatus() {
 		StringBuilder out = new StringBuilder();
-		for(int i = 0; i < this.next; i++) {
+		for (int i = 0; i < this.next; i++) {
 			out.append(this.activities[i].checkStatus());
 		}
 		return out.toString();
-	
+
 	}
-	
+
 	/**
 	 * 
-	 * Method toString as solicited in Show Summary Option in textUI
+	 * toString version according to the show summary option in textUI
 	 * 
 	 */
 	@Override
 	public String toString() {
 		StringBuilder out = new StringBuilder();
-		for (int i = 0; i<this.next; i++) {
+		for (int i = 0; i < this.next; i++) {
 			out.append(this.get(i).toString());
 		}
 		return out.toString();

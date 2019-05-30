@@ -1,17 +1,18 @@
 package es.unileon.prg1.blablakid;
- /**
- * 
- * Class that creates a day
- * 
- * @author Pablo Bayon
- *
- */
+ 
 
 import org.apache.logging.log4j.Logger;
 
 
 import org.apache.logging.log4j.LogManager; 
 
+/**
+ * 
+ * Class that creates a day
+ * 
+ * @author Pablo Bayon
+ *
+ */
 public class Day {
 
 	 static final Logger logger = LogManager.getLogger(Day.class.getName());
@@ -116,22 +117,27 @@ public class Day {
 	
 	/**
 	 * 
-	 * Method to get the ordinal of the Day object
+	 * Method that removes the int ordinal of the day
 	 * 
-	 * @return Integer with the ordinal valor
+	 * @return the ordinal value of the day
 	 * 
 	 */
 	public int getNumDay() {
 		return day.ordinal();
 	}
 	
+	/**
+	 * Method that returns the object String of the name of the day
+	 * 
+	 * @return the String name of the day
+	 */
 	public String getNameDay() {
 		return day.name();
 	}
 	
 	/**
 	 * 
-	 * 
+	 * toString version according to the show summary option in textUI
 	 * 
 	 */
 	@Override
