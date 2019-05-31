@@ -140,8 +140,8 @@ public class Kids {
 
 		if (isIncluded(kid)) {
 			int pos = getPos(kid);
-			compact(pos);
 			logger.info("The kid " + this.kids[pos].getName() + " has been removed");
+			compact(pos);
 			next--;
 			removed = true;
 		} else {
